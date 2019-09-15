@@ -1,6 +1,24 @@
 const boldRootConsonant = str => "<strong>" + str + "</strong>";
 
-const gVerbalAdjectiveGenerator = (root, vowel = "i", attested, wordClass) => {
+const feminineChange = (rootVowel, vowel) => {
+  // phonological rules
+  if (vowel.length > 0) {
+    // both consonants are in contact
+    const turnIntoT = ["ṭ", "n", "d"];
+    if (turnIntoT.includes(rootVowel)) return "t";
+    const turnIntoSH = ["s", "ṣ", "z"];
+    if (turnIntoSH.includes(rootVowel)) return "š";
+  }
+
+  return rootVowel;
+};
+
+const gVerbalAdjectiveGenerator = (
+  [...root],
+  vowel = "i",
+  attested,
+  wordClass
+) => {
   // checks if vowel is attested or not in lexicon
   let firstChar = "";
   if (!attested) firstChar = "*";
@@ -20,7 +38,7 @@ const gVerbalAdjectiveGenerator = (root, vowel = "i", attested, wordClass) => {
       "a" +
       boldRootConsonant(root[1]) +
       vowel +
-      boldRootConsonant(root[2]) +
+      boldRootConsonant(feminineChange(root[2], vowel)) +
       (vowel.length === 0 ? "a" : "") +
       "tum",
     firstChar +

@@ -1,6 +1,10 @@
 const boldRootConsonant = str => "<strong>" + str + "</strong>";
 
-const gPreteriteGenerator = (root, themeVowel) => {
+const gPreteriteGenerator = ([...root], themeVowel) => {
+  // PHONOLOGICAL CHANGES
+  // Verbs I–n
+  if (root[0] === "n") root[0] = root[1];
+
   return {
     "3cs":
       "i" +
