@@ -169,6 +169,55 @@ const lexicon = {
     verbalAdjectiveVowel: undefined,
     class: "verb",
     meaning: "to mount, to ride, to board"
+  },
+  banûm: {
+    themeVowel: "i",
+    root: ["b", "n", "Ø"],
+    verbalAdjectiveVowel: "i",
+    class: "verb",
+    meaning: "to build"
+  },
+  ḫadûm: {
+    themeVowel: "u",
+    root: ["ḫ", "d", "Ø"],
+    verbalAdjectiveVowel: "i",
+    class: "verb",
+    meaning: "to rejoice, to be happy"
+  },
+  lequm: {
+    themeVowel: "e",
+    root: ["l", "q", "Ø"],
+    verbalAdjectiveVowel: undefined,
+    class: "verb",
+    meaning: "to take, to accept"
+  },
+  malûm: {
+    themeVowel: "a",
+    root: ["m", "l", "Ø"],
+    verbalAdjectiveVowel: "i",
+    class: "verb",
+    meaning: "to become full, to fill with"
+  },
+  rabûm: {
+    themeVowel: "i",
+    root: ["r", "b", "Ø"],
+    verbalAdjectiveVowel: "i",
+    class: "verb",
+    meaning: "to become large, great, to grow"
+  },
+  šemum: {
+    themeVowel: "e",
+    root: ["š", "m", "Ø"],
+    verbalAdjectiveVowel: "i",
+    class: "verb",
+    meaning: "to hear, to listen"
+  },
+  zakûm: {
+    themeVowel: "u",
+    root: ["z", "k", "Ø"],
+    verbalAdjectiveVowel: "u",
+    class: "adjective",
+    meaning: "to become clean, clear"
   }
 };
 

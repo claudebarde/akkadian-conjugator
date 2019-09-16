@@ -1,5 +1,3 @@
-const boldRootConsonant = str => "<strong>" + str + "</strong>";
-
 const feminineChange = (rootVowel, vowel) => {
   // phonological rules
   if (vowel.length > 0) {
@@ -28,27 +26,24 @@ const gVerbalAdjectiveGenerator = (
   }
 
   // returns masculine, feminine and base
-  return [
-    boldRootConsonant(root[0]) +
+  let adjectiveForms = [
+    root[0] + "a" + root[1] + root[2] + "um",
+    root[0] +
       "a" +
-      boldRootConsonant(root[1]) +
-      boldRootConsonant(root[2]) +
-      "um",
-    boldRootConsonant(root[0]) +
-      "a" +
-      boldRootConsonant(root[1]) +
+      root[1] +
       vowel +
-      boldRootConsonant(feminineChange(root[2], vowel)) +
+      feminineChange(root[2], vowel) +
       (vowel.length === 0 ? "a" : "") +
       "tum",
-    firstChar +
-      boldRootConsonant(root[0]) +
-      "a" +
-      boldRootConsonant(root[1]) +
-      vowel +
-      boldRootConsonant(root[2]) +
-      "-"
+    firstChar + root[0] + "a" + root[1] + vowel + root[2] + "-"
   ];
+
+  // Verbs III-weak
+  if (root[2] === "Ø") {
+    root[2] = "";
+  }
+
+  return adjectiveForms;
 };
 
 export default gVerbalAdjectiveGenerator;

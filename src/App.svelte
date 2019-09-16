@@ -3,11 +3,14 @@
   import { fade } from "svelte/transition";
 
   import Navbar from "./Navbar/Navbar.svelte";
+  import Sidebar from "./Sidebar/Sidebar.svelte";
   import ConjugationBox from "./conjugations/ConjugationBox.svelte";
 
   import lexicon from "./lexicon/lexicon.js";
   import gPreteriteGenerator from "./conjugations/g-preterite.js";
   import gVerbalAdjectiveGenerator from "./conjugations/g-verbal-adjective.js";
+
+  import { contiguousVowels } from "./settings/phonologicalRules.js";
 
   let verbInput = "";
   let themeVowel = "";
@@ -25,7 +28,10 @@
 
   $: if (verbInput.trim().length > 0) {
     // must be at least 2 letters
-    if (verbInput.trim().length > 1) {
+    if (
+      verbInput.trim().length > 1 &&
+      document.getElementById("infinitive-input") === document.activeElement
+    ) {
       resultsVisible = true;
     } else {
       resultsVisible = false;
@@ -97,6 +103,7 @@
           lexicon[verbInput].class
         );
       }
+      resultsVisible = false;
     }
   };
 
@@ -124,6 +131,7 @@
 
   onMount(() => {
     positionVerbResults();
+    console.log(contiguousVowels("i", "ā"));
   });
 </script>
 
@@ -174,96 +182,109 @@
 
 <Navbar />
 <main>
-  <div class="input-infinitive">
-    <div>
-      <p>Enter infinitive form here:</p>
-    </div>
-    <div>
-      <div class="buttons are-small diacritic-inputs">
-        <button class="button" on:click={() => addConsonanttoInput('sz')}>
-          Š
-        </button>
-        <button class="button" on:click={() => addConsonanttoInput('sj')}>
-          Ṣ
-        </button>
-        <button class="button" on:click={() => addConsonanttoInput('tj')}>
-          Ṭ
-        </button>
-        <button class="button" on:click={() => addConsonanttoInput('hj')}>
-          Ḫ
-        </button>
-      </div>
-    </div>
-    <div>
-      <input
-        id="infinitive-input"
-        class="input infinitive-input"
-        type="text"
-        bind:value={verbInput}
-        placeholder="Infinitive form"
-        on:keydown={event => validateVerb(verbInput, event.keyCode)}
-        on:blur={() => window.setTimeout(() => {
-            resultsVisible = false;
-          }, 150)}
-        on:focus={() => (verbInput.trim().length > 0 ? (resultsVisible = true) : null)} />
-      <div class="box search-results" id="search-results">
-        {#if resultsVisible}
-          <div class="menu">
-            <ul class="menu-list" id="search-results-menu">
-              {#each Object.keys(lexicon)
-                .filter(item => item.includes(verbInput.trim()))
-                .sort() as item, i (item)}
-                <li on:click={() => selectVerb(item)}>
-                  <a href="#">{item}</a>
-                </li>
-              {:else}
-                <li>
-                  <a href="#">No result</a>
-                </li>
-              {/each}
-            </ul>
-          </div>
-        {/if}
-      </div>
-    </div>
-    <div>
-      <p>Theme Vowel :</p>
-    </div>
-    <div>
-      <div class="select is-small">
-        <select
-          value={themeVowel}
-          on:change={event => (themeVowel = event.target.value)}>
-          <option value="">Theme Vowel</option>
-          <option value="a">A</option>
-          <option value="i">I</option>
-          <option value="u">U</option>
-        </select>
-      </div>
-    </div>
-  </div>
   <div class="columns">
-    <div class="column is-one-third">
-      {#if gPreterite}
-        <ConjugationBox verb={gPreterite} title="G Preterite" />
-      {/if}
+    <div class="column is-2">
+      <Sidebar
+        on:selectVerb={event => {
+          const verb = event.detail;
+          verbInput = verb.verb;
+          themeVowel = verb.details.themeVowel;
+          validateVerb(verb, 13);
+        }} />
     </div>
-  </div>
-  <div class="columns">
-    <div class="column is-one-third">
-      {#if gVerbalAdjective}
-        <div class="box">
-          <p class="has-text-weight-bold">G Verbal Adjective:</p>
-          <p class="verbal-adjective">
-            {@html gVerbalAdjective[0]}
-            /
-            {@html gVerbalAdjective[1]}
-            (
-            {@html gVerbalAdjective[2]}
-            )
-          </p>
+    <div class="column">
+      <div class="input-infinitive">
+        <div>
+          <p>Enter infinitive form here:</p>
         </div>
-      {/if}
+        <div>
+          <div class="buttons are-small diacritic-inputs">
+            <button class="button" on:click={() => addConsonanttoInput('sz')}>
+              Š
+            </button>
+            <button class="button" on:click={() => addConsonanttoInput('sj')}>
+              Ṣ
+            </button>
+            <button class="button" on:click={() => addConsonanttoInput('tj')}>
+              Ṭ
+            </button>
+            <button class="button" on:click={() => addConsonanttoInput('hj')}>
+              Ḫ
+            </button>
+          </div>
+        </div>
+        <div>
+          <input
+            id="infinitive-input"
+            class="input infinitive-input"
+            type="text"
+            bind:value={verbInput}
+            placeholder="Infinitive form"
+            on:keydown={event => validateVerb(verbInput, event.keyCode)}
+            on:blur={() => window.setTimeout(() => {
+                resultsVisible = false;
+              }, 150)}
+            on:focus={() => (verbInput.trim().length > 0 ? (resultsVisible = true) : null)} />
+          <div class="box search-results" id="search-results">
+            {#if resultsVisible}
+              <div class="menu">
+                <ul class="menu-list" id="search-results-menu">
+                  {#each Object.keys(lexicon)
+                    .filter(item => item.includes(verbInput.trim()))
+                    .sort() as item, i (item)}
+                    <li on:click={() => selectVerb(item)}>
+                      <a href="#">{item}</a>
+                    </li>
+                  {:else}
+                    <li>
+                      <a href="#">No result</a>
+                    </li>
+                  {/each}
+                </ul>
+              </div>
+            {/if}
+          </div>
+        </div>
+        <div>
+          <p>Theme Vowel :</p>
+        </div>
+        <div>
+          <div class="select is-small">
+            <select
+              value={themeVowel}
+              on:change={event => (themeVowel = event.target.value)}>
+              <option value="">Theme Vowel</option>
+              <option value="a">A</option>
+              <option value="i">I</option>
+              <option value="u">U</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column is-one-third">
+          {#if gPreterite}
+            <ConjugationBox verb={gPreterite} title="G Preterite" />
+          {/if}
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column is-one-third">
+          {#if gVerbalAdjective}
+            <div class="box">
+              <p class="has-text-weight-bold">G Verbal Adjective:</p>
+              <p class="verbal-adjective">
+                {@html gVerbalAdjective[0]}
+                /
+                {@html gVerbalAdjective[1]}
+                (
+                {@html gVerbalAdjective[2]}
+                )
+              </p>
+            </div>
+          {/if}
+        </div>
+      </div>
     </div>
   </div>
 </main>

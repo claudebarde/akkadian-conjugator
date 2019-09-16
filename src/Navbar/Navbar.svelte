@@ -11,6 +11,12 @@
     <a href="#" class="navbar-item">Akkadian Conjugator</a>
   </div>
   <div class="navbar-end">
-    <div class="navbar-item">{Object.keys(lexicon).length} verbs</div>
+    <a
+      href="https://github.com/claudebarde/akkadian-conjugator"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="navbar-item">
+      <img src="images/github.svg" alt="github" />
+    </a>
   </div>
 </nav>
