@@ -218,6 +218,66 @@ const lexicon = {
     verbalAdjectiveVowel: "u",
     class: "adjective",
     meaning: "to become clean, clear"
+  },
+  amārum: {
+    themeVowel: "u",
+    root: ["Ø", "m", "r"],
+    verbalAdjectiveVowel: "i",
+    class: "verb",
+    meaning: "to see, to find, ro read"
+  },
+  arākum: {
+    themeVowel: "i",
+    root: ["Ø", "r", "k"],
+    verbalAdjectiveVowel: "i",
+    class: "adjective",
+    meaning: "to be long, to last long, to be delayed"
+  },
+  epēšum: {
+    themeVowel: "u",
+    root: ["Ø", "p", "š"],
+    verbalAdjectiveVowel: "i",
+    class: "verb",
+    I_eVerb: true,
+    meaning: "to do"
+  },
+  ezēbum: {
+    themeVowel: "i",
+    root: ["Ø", "z", "b"],
+    verbalAdjectiveVowel: "i",
+    class: "verb",
+    I_eVerb: true,
+    meaning: "to leave, to divorce"
+  },
+  alākum: {
+    themeVowel: "i",
+    root: ["Ø", "l", "k"],
+    verbalAdjectiveVowel: undefined,
+    class: "verb",
+    meaning: "to go"
+  },
+  aḫāzum: {
+    themeVowel: "u",
+    root: ["Ø", "ḫ", "z"],
+    verbalAdjectiveVowel: undefined,
+    class: "verb",
+    meaning: "to seize, to take, to marry, to learn"
+  },
+  erēbum: {
+    themeVowel: "u",
+    root: ["Ø", "r", "b"],
+    verbalAdjectiveVowel: "i",
+    class: "verb",
+    I_eVerb: true,
+    meaning: "to leave, to divorce"
+  },
+  ešērum: {
+    themeVowel: "i",
+    root: ["Ø", "š", "r"],
+    verbalAdjectiveVowel: undefined,
+    class: "verb",
+    I_eVerb: true,
+    meaning: "to do"
   }
 };
 

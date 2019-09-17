@@ -1,4 +1,5 @@
 import { contiguousVowels, lengthenVowel } from "../settings/phonologicalRules";
+import lexicon from "../lexicon/lexicon";
 
 const feminineChange = (rootVowel, vowel) => {
   // phonological rules
@@ -13,14 +14,15 @@ const feminineChange = (rootVowel, vowel) => {
   return rootVowel;
 };
 
-const gVerbalAdjectiveGenerator = ({
-  root,
-  vowel = "i",
-  themeVowel,
-  attested,
-  wordClass
-}) => {
+const gVerbalAdjectiveGenerator = verbInput => {
+  let { root, vowel = "i", themeVowel, attested, wordClass, I_eVerb } = lexicon[
+    verbInput
+  ];
   root = [...root];
+  // IRREGULAR VERBAL ADJECTIVES
+  // ešērum => išarum
+  if (verbInput === "ešērum") return ["išarum", "išartum", "išar-"];
+
   // checks if vowel is attested or not in lexicon
   let firstChar = "";
   if (!attested) firstChar = "*";
@@ -38,6 +40,12 @@ const gVerbalAdjectiveGenerator = ({
   // returns masculine, feminine and base
   let adjectiveForms = [];
 
+  // Verbs I-a and I-e
+  if (root[0] === "Ø") {
+    root[0] = "";
+    if (I_eVerb) baseVowel = "e";
+  }
+
   // Verbs III-weak
   if (root[2] === "Ø") {
     root[2] = "";
@@ -53,15 +61,15 @@ const gVerbalAdjectiveGenerator = ({
     ];
   } else {
     adjectiveForms = [
-      root[0] + "a" + root[1] + root[2] + "um",
+      root[0] + baseVowel + root[1] + root[2] + "um",
       root[0] +
-        "a" +
+        baseVowel +
         root[1] +
         vowel +
         feminineChange(root[2], vowel) +
         (vowel.length === 0 ? "a" : "") +
         "tum",
-      firstChar + root[0] + "a" + root[1] + vowel + root[2] + "-"
+      firstChar + root[0] + baseVowel + root[1] + vowel + root[2] + "-"
     ];
   }
 

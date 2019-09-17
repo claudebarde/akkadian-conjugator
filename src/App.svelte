@@ -90,17 +90,8 @@
     if (keyCode == 13) {
       const entries = Object.keys(lexicon);
       if (entries.includes(verbInput)) {
-        gPreterite = gPreteriteGenerator(
-          lexicon[verbInput].root,
-          lexicon[verbInput].themeVowel
-        );
-        gVerbalAdjective = gVerbalAdjectiveGenerator({
-          root: lexicon[verbInput].root,
-          vowel: lexicon[verbInput].verbalAdjectiveVowel,
-          themeVowel: lexicon[verbInput].themeVowel,
-          attested: !!lexicon[verbInput].verbalAdjectiveVowel,
-          wordClass: lexicon[verbInput].class
-        });
+        gPreterite = gPreteriteGenerator(verbInput);
+        gVerbalAdjective = gVerbalAdjectiveGenerator(verbInput);
       }
       resultsVisible = false;
     }

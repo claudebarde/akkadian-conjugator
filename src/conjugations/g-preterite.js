@@ -1,3 +1,4 @@
+import lexicon from "../lexicon/lexicon";
 import {
   allFlavorsOfVowels,
   contiguousVowels
@@ -8,56 +9,80 @@ const vowel_3mp = "ū";
 const vowel_3fp = "ā";
 const vowel_2cp = "ā";
 
-const gPreteriteGenerator = ([...root], themeVowel) => {
+const gPreteriteGenerator = verbInput => {
+  let { root, themeVowel, I_eVerb } = lexicon[verbInput];
+  root = [...root];
+  let firstPersonPrefix = "a";
+  let secondPersonPrefix = "ta";
+  let thirdPersonPrefix = "i";
+  let firstPersonPluralPrefix = "ni";
+
+  // Irregular Verb alākum
+  if (verbInput === "alākum") {
+    return {
+      "3cs": "illik",
+      "2ms": "tallik",
+      "2fs": "tallikī",
+      "1cs": "allik",
+      "3mp": "illukū",
+      "3fp": "illukā",
+      "2cp": "tallikā",
+      "1cp": "nillik"
+    };
+  }
+
   // PHONOLOGICAL CHANGES
   // Verbs I–n
   if (root[0] === "n") root[0] = root[1];
 
   // Vocalic harmony
-  let firstPersonPrefix,
-    secondPersonPrefix = "";
   if (root[2] === "Ø" && themeVowel === "e") {
     firstPersonPrefix = "e";
     secondPersonPrefix = "te";
-  } else {
-    firstPersonPrefix = "a";
-    secondPersonPrefix = "ta";
+  } else if (root[0] === "Ø" && I_eVerb === true) {
+    firstPersonPrefix = "ē";
+    secondPersonPrefix = "tē";
+  }
+
+  // Verbs III-weak
+  if (root[2] === "Ø") {
+    // we remove the missing radical
+    root[2] = "";
+    // Verbs I-a and I-e
+  } else if (root[0] === "Ø") {
+    // we remove the missing radical
+    root[0] = "";
+    // we lengthen the person prefix
+    // we don not lengthen for first and second if already done above
+    if (!I_eVerb) {
+      firstPersonPrefix = "ā";
+      secondPersonPrefix = "tā";
+    }
+    thirdPersonPrefix = "ī";
+    firstPersonPluralPrefix = "nī";
   }
 
   let conjugatedVerb = {
-    "3cs": "i" + root[0] + root[1] + themeVowel + root[2],
+    "3cs": thirdPersonPrefix + root[0] + root[1] + themeVowel + root[2],
     "2ms": secondPersonPrefix + root[0] + root[1] + themeVowel + root[2],
     "2fs":
       secondPersonPrefix + root[0] + root[1] + themeVowel + root[2] + vowel_2fs,
     "1cs": firstPersonPrefix + root[0] + root[1] + themeVowel + root[2],
-    "3mp": "i" + root[0] + root[1] + themeVowel + root[2] + vowel_3mp,
-    "3fp": "i" + root[0] + root[1] + themeVowel + root[2] + vowel_3fp,
+    "3mp":
+      thirdPersonPrefix + root[0] + root[1] + themeVowel + root[2] + vowel_3mp,
+    "3fp":
+      thirdPersonPrefix + root[0] + root[1] + themeVowel + root[2] + vowel_3fp,
     "2cp":
       secondPersonPrefix + root[0] + root[1] + themeVowel + root[2] + vowel_2cp,
-    "1cp": "ni" + root[0] + root[1] + themeVowel + root[2]
+    "1cp": firstPersonPluralPrefix + root[0] + root[1] + themeVowel + root[2]
   };
 
   // Verbs III-weak
-  if (root[2] === "Ø") {
-    Object.keys(conjugatedVerb).forEach(person => {
-      // remove last placeholder
-      if (conjugatedVerb[person][conjugatedVerb[person].length - 1] === "Ø") {
-        conjugatedVerb[person] = conjugatedVerb[person].slice(
-          0,
-          conjugatedVerb[person].length - 1
-        );
-      } // remove penultimate placeholder
-      else if (
-        conjugatedVerb[person][conjugatedVerb[person].length - 2] === "Ø"
-      ) {
-        conjugatedVerb[person] =
-          conjugatedVerb[person].slice(0, -2) +
-          conjugatedVerb[person].slice(-1);
-      }
-
-      // remove contiguous vowels
-      const lastChar = conjugatedVerb[person].slice(-1);
-      const penultimateChar = conjugatedVerb[person].slice(-2, -1);
+  if (root[2] === "") {
+    // we contract the last 2 consecutive vowels
+    Object.keys(conjugatedVerb).forEach(ps => {
+      const lastChar = conjugatedVerb[ps].slice(-1);
+      const penultimateChar = conjugatedVerb[ps].slice(-2, -1);
       if (
         allFlavorsOfVowels.includes(lastChar) &&
         allFlavorsOfVowels.includes(penultimateChar)
@@ -65,8 +90,9 @@ const gPreteriteGenerator = ([...root], themeVowel) => {
         // we get the contracted vowel
         const newLastChar = contiguousVowels(penultimateChar, lastChar);
         // we replace the 2 vowels with the contracted vowel
-        conjugatedVerb[person] =
-          conjugatedVerb[person].slice(0, -2) + newLastChar;
+        conjugatedVerb[ps] =
+          conjugatedVerb[ps].slice(0, conjugatedVerb[ps].length - 2) +
+          newLastChar;
       }
     });
   }
