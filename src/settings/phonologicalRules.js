@@ -47,3 +47,15 @@ export const contiguousVowels = (a, b) => {
     }
   }
 };
+
+export const lengthenVowel = vowel => {
+  if (vowel === "a") {
+    return "ā";
+  } else if (vowel === "e") {
+    return "ē";
+  } else if (vowel === "i") {
+    return "ī";
+  } else if (vowel === "u") {
+    return "ū";
+  }
+};

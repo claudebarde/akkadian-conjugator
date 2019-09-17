@@ -10,8 +10,6 @@
   import gPreteriteGenerator from "./conjugations/g-preterite.js";
   import gVerbalAdjectiveGenerator from "./conjugations/g-verbal-adjective.js";
 
-  import { contiguousVowels } from "./settings/phonologicalRules.js";
-
   let verbInput = "";
   let themeVowel = "";
   let gPreterite = undefined;
@@ -96,12 +94,13 @@
           lexicon[verbInput].root,
           lexicon[verbInput].themeVowel
         );
-        gVerbalAdjective = gVerbalAdjectiveGenerator(
-          lexicon[verbInput].root,
-          lexicon[verbInput].verbalAdjectiveVowel,
-          !!lexicon[verbInput].verbalAdjectiveVowel,
-          lexicon[verbInput].class
-        );
+        gVerbalAdjective = gVerbalAdjectiveGenerator({
+          root: lexicon[verbInput].root,
+          vowel: lexicon[verbInput].verbalAdjectiveVowel,
+          themeVowel: lexicon[verbInput].themeVowel,
+          attested: !!lexicon[verbInput].verbalAdjectiveVowel,
+          wordClass: lexicon[verbInput].class
+        });
       }
       resultsVisible = false;
     }
@@ -131,7 +130,6 @@
 
   onMount(() => {
     positionVerbResults();
-    console.log(contiguousVowels("i", "ā"));
   });
 </script>
 
@@ -255,6 +253,7 @@
               on:change={event => (themeVowel = event.target.value)}>
               <option value="">Theme Vowel</option>
               <option value="a">A</option>
+              <option value="e">E</option>
               <option value="i">I</option>
               <option value="u">U</option>
             </select>
