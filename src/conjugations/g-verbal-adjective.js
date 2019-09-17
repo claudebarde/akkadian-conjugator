@@ -15,17 +15,23 @@ const feminineChange = (rootVowel, vowel) => {
 };
 
 const gVerbalAdjectiveGenerator = verbInput => {
-  let { root, vowel = "i", themeVowel, attested, wordClass, I_eVerb } = lexicon[
-    verbInput
-  ];
+  let {
+    root,
+    verbalAdjectiveVowel,
+    themeVowel,
+    attested,
+    wordClass,
+    I_eVerb
+  } = lexicon[verbInput];
   root = [...root];
+  let vowel = verbalAdjectiveVowel || "i";
   // IRREGULAR VERBAL ADJECTIVES
   // ešērum => išarum
   if (verbInput === "ešērum") return ["išarum", "išartum", "išar-"];
 
   // checks if vowel is attested or not in lexicon
   let firstChar = "";
-  if (!attested) firstChar = "*";
+  if (!verbalAdjectiveVowel) firstChar = "*";
   // checks if verbal adjective with R1 and R2 being the same
   if (wordClass === "adjective" && root[1] === root[2]) {
     vowel = "";
@@ -58,6 +64,15 @@ const gVerbalAdjectiveGenerator = verbInput => {
         "m",
       root[0] + baseVowel + root[1] + lengthenVowel(vowel) + root[2] + "tum",
       firstChar + root[0] + baseVowel + root[1] + vowel + root[2] + "-"
+    ];
+  }
+  // Verbs II-weak
+  else if (root[1] === "Ø") {
+    root[1] = "";
+    adjectiveForms = [
+      root[0] + vowel + root[1] + root[2] + "um",
+      root[0] + vowel + root[1] + feminineChange(root[2], "t") + "tum",
+      firstChar + root[0] + vowel + root[1] + root[2] + "-"
     ];
   } else {
     adjectiveForms = [

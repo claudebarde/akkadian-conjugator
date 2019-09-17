@@ -244,9 +244,13 @@
               on:change={event => (themeVowel = event.target.value)}>
               <option value="">Theme Vowel</option>
               <option value="a">A</option>
+              <option value="ā">Ā</option>
               <option value="e">E</option>
+              <option value="ē">Ē</option>
               <option value="i">I</option>
+              <option value="ī">Ī</option>
               <option value="u">U</option>
+              <option value="ū">Ū</option>
             </select>
           </div>
         </div>

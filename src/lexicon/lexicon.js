@@ -205,7 +205,7 @@ const lexicon = {
     class: "verb",
     meaning: "to become large, great, to grow"
   },
-  šemum: {
+  šemûm: {
     themeVowel: "e",
     root: ["š", "m", "Ø"],
     verbalAdjectiveVowel: "i",
@@ -278,6 +278,77 @@ const lexicon = {
     class: "verb",
     I_eVerb: true,
     meaning: "to do"
+  },
+  kânum: {
+    themeVowel: "ū",
+    root: ["k", "Ø", "n"],
+    verbalAdjectiveVowel: "ī",
+    class: "adjective",
+    meaning: "to be true, honest, correct"
+  },
+  qiāšum: {
+    themeVowel: "ī",
+    root: ["q", "Ø", "š"],
+    verbalAdjectiveVowel: "ī",
+    class: "verb",
+    meaning: "to give, to bestow, to grant"
+  },
+  šâmum: {
+    themeVowel: "ā",
+    root: ["š", "Ø", "m"],
+    verbalAdjectiveVowel: "ā",
+    class: "verb",
+    meaning: "to buy, to purchase"
+  },
+  nêrum: {
+    themeVowel: "ē",
+    root: ["n", "Ø", "r"],
+    verbalAdjectiveVowel: "ē",
+    class: "verb",
+    meaning: "to kill, to slay, to defeat"
+  },
+  agārum: {
+    themeVowel: "u",
+    root: ["Ø", "g", "r"],
+    verbalAdjectiveVowel: "i",
+    class: "verb",
+    meaning: "to hire, to rent"
+  },
+  enēšum: {
+    themeVowel: "i",
+    root: ["Ø", "n", "š"],
+    verbalAdjectiveVowel: "i",
+    class: "adjective",
+    I_eVerb: true,
+    meaning: "to be weak, powerless"
+  },
+  miādum: {
+    themeVowel: "ī",
+    root: ["m", "Ø", "d"],
+    verbalAdjectiveVowel: "ā",
+    class: "verb",
+    meaning: "to increase, to become numerous"
+  },
+  šatûm: {
+    themeVowel: "i",
+    root: ["š", "t", "Ø"],
+    verbalAdjectiveVowel: undefined,
+    class: "verb",
+    meaning: "to drink"
+  },
+  târum: {
+    themeVowel: "ū",
+    root: ["t", "Ø", "r"],
+    verbalAdjectiveVowel: "ā",
+    class: "verb",
+    meaning: "to return, to come back"
+  },
+  ṭiābum: {
+    themeVowel: "ī",
+    root: ["ṭ", "Ø", "b"],
+    verbalAdjectiveVowel: "ā",
+    class: "adjective",
+    meaning: "to become pleasant, sweet"
   }
 };
 

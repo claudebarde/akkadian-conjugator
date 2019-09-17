@@ -33,23 +33,22 @@ const gPreteriteGenerator = verbInput => {
 
   // PHONOLOGICAL CHANGES
   // Verbs I–n
-  if (root[0] === "n") root[0] = root[1];
+  if (root[0] === "n" && root[1] !== "Ø") root[0] = root[1];
 
   // Vocalic harmony
   if (root[2] === "Ø" && themeVowel === "e") {
     firstPersonPrefix = "e";
     secondPersonPrefix = "te";
-  } else if (root[0] === "Ø" && I_eVerb === true) {
+  } else if (
+    (root[0] === "Ø" && I_eVerb === true) ||
+    (root[1] === "Ø" && themeVowel === "ē")
+  ) {
     firstPersonPrefix = "ē";
     secondPersonPrefix = "tē";
   }
 
-  // Verbs III-weak
-  if (root[2] === "Ø") {
-    // we remove the missing radical
-    root[2] = "";
-    // Verbs I-a and I-e
-  } else if (root[0] === "Ø") {
+  // Verbs I-a and I-e
+  if (root[0] === "Ø") {
     // we remove the missing radical
     root[0] = "";
     // we lengthen the person prefix
@@ -60,6 +59,16 @@ const gPreteriteGenerator = verbInput => {
     }
     thirdPersonPrefix = "ī";
     firstPersonPluralPrefix = "nī";
+  }
+  // Verbs II-weak
+  else if (root[1] === "Ø") {
+    // we remove the missing radical
+    root[1] = "";
+  }
+  // Verbs III-weak
+  else if (root[2] === "Ø") {
+    // we remove the missing radical
+    root[2] = "";
   }
 
   let conjugatedVerb = {
