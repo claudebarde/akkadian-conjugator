@@ -13,14 +13,27 @@ const gPreteriteGenerator = ([...root], themeVowel) => {
   // Verbs I–n
   if (root[0] === "n") root[0] = root[1];
 
+  // Vocalic harmony
+  let firstPersonPrefix,
+    secondPersonPrefix = "";
+  if (root[2] === "Ø" && themeVowel === "e") {
+    firstPersonPrefix = "e";
+    secondPersonPrefix = "te";
+  } else {
+    firstPersonPrefix = "a";
+    secondPersonPrefix = "ta";
+  }
+
   let conjugatedVerb = {
     "3cs": "i" + root[0] + root[1] + themeVowel + root[2],
-    "2ms": "ta" + root[0] + root[1] + themeVowel + root[2],
-    "2fs": "ta" + root[0] + root[1] + themeVowel + root[2] + vowel_2fs,
-    "1cs": "a" + root[0] + root[1] + themeVowel + root[2],
+    "2ms": secondPersonPrefix + root[0] + root[1] + themeVowel + root[2],
+    "2fs":
+      secondPersonPrefix + root[0] + root[1] + themeVowel + root[2] + vowel_2fs,
+    "1cs": firstPersonPrefix + root[0] + root[1] + themeVowel + root[2],
     "3mp": "i" + root[0] + root[1] + themeVowel + root[2] + vowel_3mp,
     "3fp": "i" + root[0] + root[1] + themeVowel + root[2] + vowel_3fp,
-    "2cp": "ta" + root[0] + root[1] + themeVowel + root[2] + vowel_2cp,
+    "2cp":
+      secondPersonPrefix + root[0] + root[1] + themeVowel + root[2] + vowel_2cp,
     "1cp": "ni" + root[0] + root[1] + themeVowel + root[2]
   };
 
