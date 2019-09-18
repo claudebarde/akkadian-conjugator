@@ -119,7 +119,7 @@
     const navbarHeight = document.getElementById("navbar").offsetHeight;
     document.getElementById("search-results").style.top =
       pos.top - navbarHeight + height + "px";
-    document.getElementById("search-results").style.left = pos.left + "px";
+    document.getElementById("search-results").style.left = pos.left - 10 + "px";
     document.getElementById("search-results").style.display = "none";
   };
 
@@ -133,17 +133,18 @@
     padding: 5px 20px;
   }
 
-  .input-infinitive {
+  .input-tools {
     padding: 10px;
     width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
+    align-items: center;
     text-align: center;
   }
 
-  .input-infinitive div {
-    margin: 2px;
+  .input-tools div {
+    margin: 2px 10px;
   }
 
   .infinitive-input {
@@ -186,10 +187,7 @@
         }} />
     </div>
     <div class="column">
-      <div class="input-infinitive">
-        <div>
-          <p>Enter infinitive form here:</p>
-        </div>
+      <div class="input-tools">
         <div>
           <div class="buttons are-small diacritic-inputs">
             <button class="button" on:click={() => addConsonanttoInput('sz')}>
@@ -239,9 +237,6 @@
           </div>
         </div>
         <div>
-          <p>Theme Vowel :</p>
-        </div>
-        <div>
           <div class="select is-small">
             <select
               value={themeVowel}
@@ -267,7 +262,7 @@
       </div>
       <div class="columns">
         <div class="column is-one-third">
-          {#if gPreterite}
+          {#if gPreterite && lexicon[verbInput]}
             <ConjugationBox
               verb={gPreterite}
               title="G Preterite"
@@ -277,7 +272,7 @@
           {/if}
         </div>
         <div class="column is-one-third">
-          {#if gDurative}
+          {#if gDurative && lexicon[verbInput]}
             <ConjugationBox
               verb={gDurative}
               title="G Durative"
@@ -289,7 +284,7 @@
       </div>
       <div class="columns">
         <div class="column is-one-third">
-          {#if gVerbalAdjective}
+          {#if gVerbalAdjective && lexicon[verbInput]}
             <div class="box">
               <p class="has-text-weight-bold">G Verbal Adjective:</p>
               <p class="verbal-adjective">
