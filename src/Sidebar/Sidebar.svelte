@@ -11,6 +11,7 @@
 <style>
   .verbs-menu {
     height: 90vh;
+    padding-bottom: 20px;
     overflow: auto;
   }
 

@@ -1,10 +1,11 @@
 <script>
   import { onMount } from "svelte";
-  import { fade } from "svelte/transition";
+  import { fly } from "svelte/transition";
 
   import Navbar from "./Navbar/Navbar.svelte";
   import Sidebar from "./Sidebar/Sidebar.svelte";
   import ConjugationBox from "./conjugations/ConjugationBox.svelte";
+  import settings from "./settings/settings.js";
 
   import lexicon from "./lexicon/lexicon.js";
   import gPreteriteGenerator from "./conjugations/g-preterite.js";
@@ -130,7 +131,9 @@
 
 <style>
   main {
-    padding: 5px 20px;
+    padding: 20px 20px;
+    height: 100%;
+    overflow: hidden;
   }
 
   .input-tools {
@@ -171,6 +174,11 @@
 
   .verbal-adjective {
     margin-left: 15px;
+  }
+
+  .tables {
+    margin-top: 20px;
+    overflow: auto;
   }
 </style>
 
@@ -260,7 +268,7 @@
           </label>
         </div>
       </div>
-      <div class="columns">
+      <div class="columns tables">
         <div class="column is-one-third">
           {#if gPreterite && lexicon[verbInput]}
             <ConjugationBox
@@ -268,7 +276,8 @@
               title="G Preterite"
               root={lexicon[verbInput].root}
               conjugation="gPreterite"
-              rootHighlight={highlightRoot} />
+              rootHighlight={highlightRoot}
+              infinitive={verbInput} />
           {/if}
         </div>
         <div class="column is-one-third">
@@ -278,14 +287,17 @@
               title="G Durative"
               root={lexicon[verbInput].root}
               conjugation="gDurative"
-              rootHighlight={highlightRoot} />
+              rootHighlight={highlightRoot}
+              infinitive={verbInput} />
           {/if}
         </div>
       </div>
       <div class="columns">
         <div class="column is-one-third">
           {#if gVerbalAdjective && lexicon[verbInput]}
-            <div class="box">
+            <div
+              class="box"
+              transition:fly={{ y: settings.transitionY, duration: settings.transtionDuration }}>
               <p class="has-text-weight-bold">G Verbal Adjective:</p>
               <p class="verbal-adjective">
                 {@html gVerbalAdjective[0]}

@@ -66,9 +66,96 @@ const posDurIIIweak = {
   "1cp": [2, 5]
 };
 
-const highlightRoot = (verb, root, conjugation, ps) => {
-  let highlightedVerb = "";
-  //console.log(root);
+const highlightRoot = ({ verb, root, conjugation, ps, infinitive }) => {
+  let highlightedVerb = [];
+  //console.log(infinitive);
+  // HIGHLIGHT IRREGULAR VERBS
+  if (infinitive === "babālum" && conjugation === "gPreterite") {
+    switch (ps) {
+      case "3cs":
+        highlightedVerb = [
+          "u",
+          "<strong>b</strong>",
+          "i",
+          "<strong>l</strong>"
+        ];
+        break;
+      case "2ms":
+        highlightedVerb = [
+          "tu",
+          "<strong>b</strong>",
+          "i",
+          "<strong>l</strong>"
+        ];
+        break;
+      case "2fs":
+        highlightedVerb = [
+          "tu",
+          "<strong>b</strong>",
+          "<strong>l</strong>",
+          "ī/tu",
+          "<strong>b</strong>",
+          "i",
+          "<strong>l</strong>",
+          "ī"
+        ];
+        break;
+      case "1cs":
+        highlightedVerb = [
+          "u",
+          "<strong>b</strong>",
+          "i",
+          "<strong>l</strong>"
+        ];
+        break;
+      case "3mp":
+        highlightedVerb = [
+          "u",
+          "<strong>b</strong>",
+          "<strong>l</strong>",
+          "ū/u",
+          "<strong>b</strong>",
+          "i",
+          "<strong>l</strong>",
+          "ū"
+        ];
+        break;
+      case "3fp":
+        highlightedVerb = [
+          "u",
+          "<strong>b</strong>",
+          "<strong>l</strong>",
+          "ā/u",
+          "<strong>b</strong>",
+          "i",
+          "<strong>l</strong>",
+          "ā"
+        ];
+        break;
+      case "2cp":
+        highlightedVerb = [
+          "tu",
+          "<strong>b</strong>",
+          "<strong>l</strong>",
+          "ā/tu",
+          "<strong>b</strong>",
+          "i",
+          "<strong>l</strong>",
+          "ā"
+        ];
+        break;
+      case "1cp":
+        highlightedVerb = [
+          "nu",
+          "<strong>b</strong>",
+          "i",
+          "<strong>l</strong>"
+        ];
+        break;
+    }
+
+    return highlightedVerb.join("");
+  }
 
   if (conjugation === "gPreterite") {
     // 3 consonant root
