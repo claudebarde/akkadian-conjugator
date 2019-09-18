@@ -1,9 +1,6 @@
 import lexicon from "../lexicon/lexicon";
-import {
-  allFlavorsOfVowels,
-  contiguousVowels
-} from "../settings/phonologicalRules";
 import gPreteritePrefixes from "./selectPrefixes";
+import contractLastVowels from "../settings/contractLastVowels";
 
 const vowel_2fs = "ī";
 const vowel_3mp = "ū";
@@ -22,7 +19,13 @@ const gDurativeGenerator = verbInput => {
     thirdPersonPrefix,
     firstPersonPluralPrefix
   } = gPreteritePrefixes({ root, themeVowel, I_eVerb });
-  let firstVowel = "a";
+  let firstVowel = themeVowel === "e" ? "e" : "a";
+
+  // Verbs III-weak
+  if (root[2] === "Ø") {
+    // we remove the missing radical
+    root[2] = "";
+  }
 
   let conjugatedVerb = {
     "3cs":
@@ -94,6 +97,12 @@ const gDurativeGenerator = verbInput => {
       themeVowel +
       root[2]
   };
+
+  // Verbs III-weak
+  if (root[2] === "") {
+    // we contract the last 2 consecutive vowels
+    conjugatedVerb = contractLastVowels(conjugatedVerb);
+  }
 
   return conjugatedVerb;
 };

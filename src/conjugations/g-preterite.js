@@ -1,9 +1,6 @@
 import lexicon from "../lexicon/lexicon";
-import {
-  allFlavorsOfVowels,
-  contiguousVowels
-} from "../settings/phonologicalRules";
 import gPreteritePrefixes from "./selectPrefixes";
+import contractLastVowels from "../settings/contractLastVowels";
 
 const vowel_2fs = "ī";
 const vowel_3mp = "ū";
@@ -85,21 +82,7 @@ const gPreteriteGenerator = verbInput => {
   // Verbs III-weak
   if (root[2] === "") {
     // we contract the last 2 consecutive vowels
-    Object.keys(conjugatedVerb).forEach(ps => {
-      const lastChar = conjugatedVerb[ps].slice(-1);
-      const penultimateChar = conjugatedVerb[ps].slice(-2, -1);
-      if (
-        allFlavorsOfVowels.includes(lastChar) &&
-        allFlavorsOfVowels.includes(penultimateChar)
-      ) {
-        // we get the contracted vowel
-        const newLastChar = contiguousVowels(penultimateChar, lastChar);
-        // we replace the 2 vowels with the contracted vowel
-        conjugatedVerb[ps] =
-          conjugatedVerb[ps].slice(0, conjugatedVerb[ps].length - 2) +
-          newLastChar;
-      }
-    });
+    conjugatedVerb = contractLastVowels(conjugatedVerb);
   }
 
   return conjugatedVerb;

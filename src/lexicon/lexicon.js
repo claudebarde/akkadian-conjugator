@@ -472,6 +472,43 @@ const lexicon = {
     verbalAdjectiveVowel: undefined,
     class: "verb",
     meaning: "to see, to look at, to consider"
+  },
+  rašûm: {
+    themeVowel: "i",
+    root: ["r", "š", "Ø"],
+    verbalAdjectiveVowel: undefined,
+    meaning: "to receive, to gain"
+  },
+  ṭeḫûm: {
+    themeVowel: "e",
+    root: ["ṭ", "ḫ", "Ø"],
+    verbalAdjectiveVowel: undefined,
+    meaning: "to go near, to approach"
+  },
+  ḫepûm: {
+    themeVowel: "e",
+    root: ["ḫ", "p", "Ø"],
+    verbalAdjectiveVowel: "i",
+    meaning: "to smash, to destroy, to break"
+  },
+  kanāšum: {
+    themeVowel: "u",
+    root: ["k", "n", "š"],
+    verbalAdjectiveVowel: "i",
+    meaning: "to bow down, to submit"
+  },
+  pašāḫum: {
+    themeVowel: "a",
+    root: ["p", "š", "ḫ"],
+    verbalAdjectiveVowel: undefined,
+    meaning: "to refresh oneself, to calm down"
+  },
+  saḫāpum: {
+    themeVowel: "a",
+    durativeVowel: "u",
+    root: ["s", "ḫ", "p"],
+    verbalAdjectiveVowel: undefined,
+    meaning: "to cover, to spread over, to overwhelm"
   }
 };
 

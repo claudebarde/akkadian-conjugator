@@ -56,19 +56,19 @@ const posDur3C = {
 };
 
 const posDurIIIweak = {
-  "3cs": [1, 4, 6],
-  "2ms": [2, 5, 7],
-  "2fs": [2, 5, 7],
-  "1cs": [1, 4, 6],
-  "3mp": [1, 4, 6],
-  "3fp": [1, 4, 6],
-  "2cp": [2, 5, 7],
-  "1cp": [2, 5, 7]
+  "3cs": [1, 4],
+  "2ms": [2, 5],
+  "2fs": [2, 5],
+  "1cs": [1, 4],
+  "3mp": [1, 4],
+  "3fp": [1, 4],
+  "2cp": [2, 5],
+  "1cp": [2, 5]
 };
 
 const highlightRoot = (verb, root, conjugation, ps) => {
   let highlightedVerb = "";
-  console.log(root);
+  //console.log(root);
 
   if (conjugation === "gPreterite") {
     // 3 consonant root
@@ -119,6 +119,16 @@ const highlightRoot = (verb, root, conjugation, ps) => {
     if (!root.includes("Ø")) {
       highlightedVerb = [...verb].map((letter, i) => {
         if (posDur3C[ps].includes(i)) {
+          // if this is a position to highlight
+          return "<strong>" + letter + "</strong>";
+        } else {
+          // if the position is not to be highlighted
+          return letter;
+        }
+      });
+    } else if (root[2] === "Ø") {
+      highlightedVerb = [...verb].map((letter, i) => {
+        if (posDurIIIweak[ps].includes(i)) {
           // if this is a position to highlight
           return "<strong>" + letter + "</strong>";
         } else {
