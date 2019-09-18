@@ -8,12 +8,14 @@
 
   import lexicon from "./lexicon/lexicon.js";
   import gPreteriteGenerator from "./conjugations/g-preterite.js";
+  import gDurativeGenerator from "./conjugations/g-durative.js";
   import gVerbalAdjectiveGenerator from "./conjugations/g-verbal-adjective.js";
 
   let verbInput = "";
   let themeVowel = "";
   let gPreterite = undefined;
   let gVerbalAdjective = undefined;
+  let gDurative = undefined;
   let resultsVisible = false;
 
   $: if (resultsVisible) {
@@ -92,6 +94,7 @@
       if (entries.includes(verbInput)) {
         gPreterite = gPreteriteGenerator(verbInput);
         gVerbalAdjective = gVerbalAdjectiveGenerator(verbInput);
+        gDurative = gDurativeGenerator(verbInput);
       }
       resultsVisible = false;
     }
@@ -259,6 +262,11 @@
         <div class="column is-one-third">
           {#if gPreterite}
             <ConjugationBox verb={gPreterite} title="G Preterite" />
+          {/if}
+        </div>
+        <div class="column is-one-third">
+          {#if gDurative}
+            <ConjugationBox verb={gDurative} title="G Durative" />
           {/if}
         </div>
       </div>

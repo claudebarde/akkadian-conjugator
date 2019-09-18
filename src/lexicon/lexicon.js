@@ -8,6 +8,7 @@ const lexicon = {
   },
   šakānum: {
     themeVowel: "u",
+    durativeVowel: "a",
     root: ["š", "k", "n"],
     verbalAdjectiveVowel: undefined,
     class: "verb",
@@ -42,6 +43,7 @@ const lexicon = {
   },
   kašādum: {
     themeVowel: "u",
+    durativeVowel: "a",
     root: ["k", "š", "d"],
     verbalAdjectiveVowel: undefined,
     meaning: "to arrive, to reach, to conquer"
@@ -88,6 +90,7 @@ const lexicon = {
   },
   gamārum: {
     themeVowel: "u",
+    durativeVowel: "a",
     root: ["g", "m", "r"],
     verbalAdjectiveVowel: "i",
     class: "verb",
@@ -95,6 +98,7 @@ const lexicon = {
   },
   kanākum: {
     themeVowel: "u",
+    durativeVowel: "a",
     root: ["k", "n", "k"],
     verbalAdjectiveVowel: "i",
     class: "verb",
@@ -102,6 +106,7 @@ const lexicon = {
   },
   maḫārum: {
     themeVowel: "u",
+    durativeVowel: "a",
     root: ["m", "ḫ", "r"],
     verbalAdjectiveVowel: "i",
     class: "verb",
@@ -123,6 +128,7 @@ const lexicon = {
   },
   naqārum: {
     themeVowel: "u",
+    durativeVowel: "a",
     root: ["n", "q", "r"],
     verbalAdjectiveVowel: "i",
     class: "verb",
@@ -130,6 +136,7 @@ const lexicon = {
   },
   nasāḫum: {
     themeVowel: "u",
+    durativeVowel: "a",
     root: ["n", "s", "ḫ"],
     verbalAdjectiveVowel: "i",
     class: "verb",
@@ -137,6 +144,7 @@ const lexicon = {
   },
   naṣārum: {
     themeVowel: "u",
+    durativeVowel: "a",
     root: ["n", "ṣ", "r"],
     verbalAdjectiveVowel: "i",
     class: "verb",
@@ -151,6 +159,7 @@ const lexicon = {
   },
   pašāšum: {
     themeVowel: "u",
+    durativeVowel: "a",
     root: ["p", "š", "š"],
     verbalAdjectiveVowel: "i",
     class: "verb",
@@ -409,6 +418,60 @@ const lexicon = {
     verbalAdjectiveVowel: "ī",
     class: "adjective",
     meaning: "to become old, grey"
+  },
+  kaṣārum: {
+    themeVowel: "u",
+    durativeVowel: "a",
+    root: ["k", "ṣ", "r"],
+    verbalAdjectiveVowel: "i",
+    class: "verb",
+    meaning: "to bind, to tie, to join"
+  },
+  parāsum: {
+    themeVowel: "u",
+    durativeVowel: "a",
+    root: ["p", "r", "s"],
+    verbalAdjectiveVowel: "i",
+    class: "verb",
+    meaning: "to divide, to spearate"
+  },
+  šaṭārum: {
+    themeVowel: "u",
+    durativeVowel: "a",
+    root: ["š", "ṭ", "r"],
+    verbalAdjectiveVowel: "i",
+    class: "verb",
+    meaning: "to inscribe, to write, to register, to assign"
+  },
+  ṭarādum: {
+    themeVowel: "u",
+    durativeVowel: "a",
+    root: ["ṭ", "r", "d"],
+    verbalAdjectiveVowel: "i",
+    class: "verb",
+    meaning: "to send, to dispatch, to drive away"
+  },
+  nakāsum: {
+    themeVowel: "i",
+    root: ["n", "k", "s"],
+    verbalAdjectiveVowel: "i",
+    class: "verb",
+    meaning: "to cut off, to cut down"
+  },
+  nasākum: {
+    themeVowel: "u",
+    root: ["n", "s", "k"],
+    verbalAdjectiveVowel: undefined,
+    class: "verb",
+    meaning: "to throw, to shoot, to pile up"
+  },
+  naṭālum: {
+    themeVowel: "u",
+    durativeVowel: "a",
+    root: ["n", "ṭ", "l"],
+    verbalAdjectiveVowel: undefined,
+    class: "verb",
+    meaning: "to see, to look at, to consider"
   }
 };
 
