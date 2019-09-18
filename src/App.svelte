@@ -17,6 +17,7 @@
   let gVerbalAdjective = undefined;
   let gDurative = undefined;
   let resultsVisible = false;
+  $: highlightRoot = true;
 
   $: if (resultsVisible) {
     if (document.getElementById("search-results"))
@@ -257,16 +258,32 @@
             </select>
           </div>
         </div>
+        <div>
+          <label class="checkbox">
+            <input type="checkbox" bind:checked={highlightRoot} />
+            Highlight Root
+          </label>
+        </div>
       </div>
       <div class="columns">
         <div class="column is-one-third">
           {#if gPreterite}
-            <ConjugationBox verb={gPreterite} title="G Preterite" />
+            <ConjugationBox
+              verb={gPreterite}
+              title="G Preterite"
+              root={lexicon[verbInput].root}
+              conjugation="gPreterite"
+              rootHighlight={highlightRoot} />
           {/if}
         </div>
         <div class="column is-one-third">
           {#if gDurative}
-            <ConjugationBox verb={gDurative} title="G Durative" />
+            <ConjugationBox
+              verb={gDurative}
+              title="G Durative"
+              root={lexicon[verbInput].root}
+              conjugation="gDurative"
+              rootHighlight={highlightRoot} />
           {/if}
         </div>
       </div>

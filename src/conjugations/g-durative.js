@@ -12,6 +12,7 @@ const vowel_2cp = "ā";
 
 const gDurativeGenerator = verbInput => {
   let { root, themeVowel, I_eVerb, durativeVowel } = lexicon[verbInput];
+  root = [...root];
   // replaces theme vowel with durative vowel if necessary
   if (durativeVowel) themeVowel = durativeVowel;
   // Person Prefixes
