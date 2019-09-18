@@ -30,6 +30,19 @@ const gPreteriteGenerator = verbInput => {
       "1cp": "nillik"
     };
   }
+  // Irregular Verb babālum
+  if (verbInput === "babālum") {
+    return {
+      "3cs": "ubil",
+      "2ms": "tubil",
+      "2fs": "tublī/tubilī",
+      "1cs": "ubil",
+      "3mp": "ublū/ubilū",
+      "3fp": "ublā/ubilā",
+      "2cp": "tublā/tubilā",
+      "1cp": "nubil"
+    };
+  }
 
   // PHONOLOGICAL CHANGES
   // Verbs I–n

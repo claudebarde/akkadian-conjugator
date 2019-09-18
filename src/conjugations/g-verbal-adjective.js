@@ -27,7 +27,8 @@ const gVerbalAdjectiveGenerator = verbInput => {
   let vowel = verbalAdjectiveVowel || "i";
   // IRREGULAR VERBAL ADJECTIVES
   // ešērum => išarum
-  if (verbInput === "ešērum") return ["išarum", "išartum", "išar-"];
+  if (verbInput === "ešērum") return ["išarum", "išartum", "išar-"]; // ešērum => išarum
+  if (verbInput === "edēšum") return ["eššum", "eššetum", "ešš-"];
 
   // checks if vowel is attested or not in lexicon
   let firstChar = "";

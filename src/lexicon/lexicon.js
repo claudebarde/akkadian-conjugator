@@ -365,6 +365,50 @@ const lexicon = {
     class: "verb",
     I_eVerb: false,
     meaning: "to sit, to remain"
+  },
+  babālum: {
+    themeVowel: "i",
+    root: ["b", "b", "l"],
+    verbalAdjectiveVowel: "i",
+    class: "verb",
+    I_eVerb: false,
+    meaning: "to carry, to bear, to transport"
+  },
+  akālum: {
+    themeVowel: "u",
+    root: ["Ø", "k", "l"],
+    verbalAdjectiveVowel: undefined,
+    class: "verb",
+    meaning: "to eat, to consume, to use"
+  },
+  edēšum: {
+    themeVowel: "i",
+    root: ["Ø", "d", "š"],
+    verbalAdjectiveVowel: "i",
+    class: "adjective",
+    I_eVerb: true,
+    meaning: "to be new"
+  },
+  labārum: {
+    themeVowel: "i",
+    root: ["l", "b", "r"],
+    verbalAdjectiveVowel: "i",
+    class: "verb",
+    meaning: "to become old, to last, to endure"
+  },
+  mâtum: {
+    themeVowel: "ū",
+    root: ["m", "Ø", "t"],
+    verbalAdjectiveVowel: "ī",
+    class: "verb",
+    meaning: "to die"
+  },
+  šiābum: {
+    themeVowel: "ī",
+    root: ["š", "Ø", "b"],
+    verbalAdjectiveVowel: "ī",
+    class: "adjective",
+    meaning: "to become old, grey"
   }
 };
 
