@@ -3,6 +3,7 @@ import {
   allFlavorsOfVowels,
   contiguousVowels
 } from "../settings/phonologicalRules";
+import gPreteritePrefixes from "./selectPrefixes";
 
 const vowel_2fs = "ī";
 const vowel_3mp = "ū";
@@ -12,10 +13,6 @@ const vowel_2cp = "ā";
 const gPreteriteGenerator = verbInput => {
   let { root, themeVowel, I_eVerb } = lexicon[verbInput];
   root = [...root];
-  let firstPersonPrefix = "a";
-  let secondPersonPrefix = "ta";
-  let thirdPersonPrefix = "i";
-  let firstPersonPluralPrefix = "ni";
 
   // Irregular Verb alākum
   if (verbInput === "alākum") {
@@ -47,38 +44,16 @@ const gPreteriteGenerator = verbInput => {
   // PHONOLOGICAL CHANGES
   // Verbs I–n
   if (root[0] === "n" && root[1] !== "Ø") root[0] = root[1];
-
-  // Vocalic harmony
-  if (root[2] === "Ø" && themeVowel === "e") {
-    firstPersonPrefix = "e";
-    secondPersonPrefix = "te";
-  } else if (
-    ((root[0] === "Ø" || root[0] === "w") && I_eVerb === true) ||
-    (root[1] === "Ø" && themeVowel === "ē")
-  ) {
-    firstPersonPrefix = "ē";
-    secondPersonPrefix = "tē";
-  }
+  // Person Prefixes
+  let {
+    firstPersonPrefix,
+    secondPersonPrefix,
+    thirdPersonPrefix,
+    firstPersonPluralPrefix
+  } = gPreteritePrefixes({ root, themeVowel, I_eVerb });
 
   // Verbs I-a and I-e and I-w
   if (root[0] === "Ø" || root[0] === "w") {
-    if (root[0] === "Ø") {
-      // we lengthen the person prefix
-      // we do not lengthen for first and second if already done above
-      if (!I_eVerb) {
-        firstPersonPrefix = "ā";
-        secondPersonPrefix = "tā";
-      }
-      thirdPersonPrefix = "ī";
-      firstPersonPluralPrefix = "nī";
-    } else if (root[0] === "w") {
-      // active I-w verbs have special "u" for person perfix
-      firstPersonPrefix = "u";
-      secondPersonPrefix = "tu";
-      thirdPersonPrefix = "u";
-      firstPersonPluralPrefix = "nu";
-    }
-    // we remove the missing radical
     root[0] = "";
   }
   // Verbs II-weak
