@@ -349,6 +349,22 @@ const lexicon = {
     verbalAdjectiveVowel: "ā",
     class: "adjective",
     meaning: "to become pleasant, sweet"
+  },
+  watārum: {
+    themeVowel: "i",
+    root: ["w", "t", "r"],
+    verbalAdjectiveVowel: "a",
+    class: "adjective",
+    I_eVerb: true,
+    meaning: "to become exceeding, to exceed"
+  },
+  wašābum: {
+    themeVowel: "i",
+    root: ["w", "š", "b"],
+    verbalAdjectiveVowel: "i",
+    class: "verb",
+    I_eVerb: false,
+    meaning: "to sit, to remain"
   }
 };
 
