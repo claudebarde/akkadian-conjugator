@@ -8,7 +8,7 @@ const vowel_3fp = "ā";
 const vowel_2cp = "ā";
 
 const gPreteriteGenerator = verbInput => {
-  let { root, themeVowel, I_eVerb } = lexicon[verbInput];
+  let { root, themeVowel, I_eVerb, type } = lexicon[verbInput];
   root = [...root];
 
   // Irregular Verb alākum
@@ -47,7 +47,7 @@ const gPreteriteGenerator = verbInput => {
     secondPersonPrefix,
     thirdPersonPrefix,
     firstPersonPluralPrefix
-  } = gPreteritePrefixes({ root, themeVowel, I_eVerb, durative: false });
+  } = gPreteritePrefixes({ root, themeVowel, I_eVerb, type, durative: false });
 
   // Verbs I-a and I-e and I-w
   if (root[0] === "Ø" || root[0] === "w") {

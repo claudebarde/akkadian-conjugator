@@ -364,14 +364,17 @@ const lexicon = {
     verbalAdjectiveVowel: "a",
     class: "adjective",
     I_eVerb: true,
+    type: "stative",
     meaning: "to become exceeding, to exceed"
   },
   wašābum: {
     themeVowel: "i",
+    durativeVowel: "a",
     root: ["w", "š", "b"],
     verbalAdjectiveVowel: "i",
     class: "verb",
     I_eVerb: false,
+    type: "active",
     meaning: "to sit, to remain"
   },
   babālum: {

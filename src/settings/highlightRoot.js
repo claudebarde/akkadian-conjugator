@@ -43,6 +43,17 @@ const posPretIIweak = {
   "1cp": [2, 4]
 };
 
+const posPretIw = {
+  "3cs": [1, 3],
+  "2ms": [2, 4],
+  "2fs": [2, 4],
+  "1cs": [1, 3],
+  "3mp": [1, 3],
+  "3fp": [1, 3],
+  "2cp": [2, 4],
+  "1cp": [2, 4]
+};
+
 // position to highlight for durative
 const posDur3C = {
   "3cs": [1, 4, 6],
@@ -88,6 +99,17 @@ const posDurIIweak = {
   "1cp": [2, 5]
 };
 
+const posDurIw = {
+  "3cs": [2, 4],
+  "2ms": [3, 5],
+  "2fs": [3, 5],
+  "1cs": [2, 4],
+  "3mp": [2, 4],
+  "3fp": [2, 4],
+  "2cp": [3, 5],
+  "1cp": [3, 5]
+};
+
 const verbalAdjective = {
   sound: {
     masculin: [0, 2, 3],
@@ -108,6 +130,11 @@ const verbalAdjective = {
     masculin: [0, 2],
     feminin: [0, 2],
     radical: [0, 2]
+  },
+  Iw: {
+    masculin: [2, 3],
+    feminin: [2, 4],
+    radical: [2, 4]
   }
 };
 
@@ -204,7 +231,7 @@ const highlightRoot = ({ verb, root, conjugation, ps, infinitive }) => {
 
   if (conjugation === "gPreterite") {
     // 3 consonant root
-    if (!root.includes("Ø")) {
+    if (!root.includes("Ø") && root[0] !== "w") {
       highlightedVerb = [...verb].map((letter, i) => {
         if (posPret3C[ps].includes(i)) {
           // if this is a position to highlight
@@ -244,11 +271,21 @@ const highlightRoot = ({ verb, root, conjugation, ps, infinitive }) => {
           return letter;
         }
       });
+    } else if (root[0] === "w") {
+      highlightedVerb = [...verb].map((letter, i) => {
+        if (posPretIw[ps].includes(i)) {
+          // if this is a position to highlight
+          return "<strong>" + letter + "</strong>";
+        } else {
+          // if the position is not to be highlighted
+          return letter;
+        }
+      });
     } else {
       highlightedVerb = [...verb];
     }
   } else if (conjugation === "gDurative") {
-    if (!root.includes("Ø")) {
+    if (!root.includes("Ø") && root[0] !== "w") {
       highlightedVerb = [...verb].map((letter, i) => {
         if (posDur3C[ps].includes(i)) {
           // if this is a position to highlight
@@ -288,6 +325,16 @@ const highlightRoot = ({ verb, root, conjugation, ps, infinitive }) => {
           return letter;
         }
       });
+    } else if (root[0] === "w") {
+      highlightedVerb = [...verb].map((letter, i) => {
+        if (posDurIw[ps].includes(i)) {
+          // if this is a position to highlight
+          return "<strong>" + letter + "</strong>";
+        } else {
+          // if the position is not to be highlighted
+          return letter;
+        }
+      });
     } else {
       highlightedVerb = [...verb];
     }
@@ -299,7 +346,7 @@ const highlightRoot = ({ verb, root, conjugation, ps, infinitive }) => {
       nonAttested = true;
     }
 
-    if (!root.includes("Ø")) {
+    if (!root.includes("Ø") && root[0] !== "w") {
       highlightedVerb = [...verb].map((letter, i) => {
         if (verbalAdjective.sound[ps].includes(i)) {
           // if this is a position to highlight
@@ -332,6 +379,16 @@ const highlightRoot = ({ verb, root, conjugation, ps, infinitive }) => {
     } else if (root[2] === "Ø") {
       highlightedVerb = [...verb].map((letter, i) => {
         if (verbalAdjective.IIIweak[ps].includes(i)) {
+          // if this is a position to highlight
+          return "<strong>" + letter + "</strong>";
+        } else {
+          // if the position is not to be highlighted
+          return letter;
+        }
+      });
+    } else if (root[0] === "w") {
+      highlightedVerb = [...verb].map((letter, i) => {
+        if (verbalAdjective.Iw[ps].includes(i)) {
           // if this is a position to highlight
           return "<strong>" + letter + "</strong>";
         } else {

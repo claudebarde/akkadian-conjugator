@@ -13,7 +13,7 @@ const vowel_3fp = "ā";
 const vowel_2cp = "ā";
 
 const gDurativeGenerator = verbInput => {
-  let { root, themeVowel, I_eVerb, durativeVowel } = lexicon[verbInput];
+  let { root, themeVowel, I_eVerb, type, durativeVowel } = lexicon[verbInput];
   root = [...root];
   let originalThemeVowel = themeVowel;
   // replaces theme vowel with durative vowel if necessary
@@ -24,11 +24,11 @@ const gDurativeGenerator = verbInput => {
     secondPersonPrefix,
     thirdPersonPrefix,
     firstPersonPluralPrefix
-  } = gPreteritePrefixes({ root, themeVowel, I_eVerb, durative: true });
+  } = gPreteritePrefixes({ root, themeVowel, I_eVerb, type, durative: true });
   let firstVowel = themeVowel === "e" ? "e" : "a";
 
-  //Verbs I-a and I-e
-  if (root[0] === "Ø") {
+  //Verbs I-a and I-e and I-w
+  if (root[0] === "Ø" || root[0] === "w") {
     // we remove the missing radical
     root[0] = "";
     // first vowel disappears

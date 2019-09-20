@@ -1,4 +1,4 @@
-const gPreteritePrefixes = ({ root, themeVowel, I_eVerb, durative }) => {
+const gPreteritePrefixes = ({ root, themeVowel, I_eVerb, type, durative }) => {
   let firstPersonPrefix = "a";
   let secondPersonPrefix = "ta";
   let thirdPersonPrefix = "i";
@@ -31,12 +31,24 @@ const gPreteritePrefixes = ({ root, themeVowel, I_eVerb, durative }) => {
       }
       thirdPersonPrefix = "ī";
       firstPersonPluralPrefix = "nī";
-    } else if (root[0] === "w" && durative === false) {
-      // active I-w verbs have special "u" for person perfix
+    } else if (root[0] === "w" && type === "active") {
+      // active I-w verbs have special "u" for person prefix
       firstPersonPrefix = "u";
       secondPersonPrefix = "tu";
       thirdPersonPrefix = "u";
       firstPersonPluralPrefix = "nu";
+    } else if (root[0] === "w" && type === "stative" && durative === false) {
+      // stative I-w verbs
+      firstPersonPrefix = "ē";
+      secondPersonPrefix = "tē";
+      thirdPersonPrefix = "ī";
+      firstPersonPluralPrefix = "nī";
+    } else if (root[0] === "w" && type === "stative" && durative === true) {
+      // stative I-w verbs
+      firstPersonPrefix = "e";
+      secondPersonPrefix = "te";
+      thirdPersonPrefix = "i";
+      firstPersonPluralPrefix = "ni";
     } else if (root[0] === "Ø" && durative === true) {
       // durative uses same vowels but they are not lengthened
       if (I_eVerb) {
