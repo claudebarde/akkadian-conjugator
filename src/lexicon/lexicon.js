@@ -26,14 +26,14 @@ const lexicon = {
     root: ["d", "m", "q"],
     verbalAdjectiveVowel: "i",
     class: "adjective",
-    meaning: "good"
+    meaning: "to be good"
   },
   danānum: {
     themeVowel: "i",
     root: ["d", "n", "n"],
     verbalAdjectiveVowel: undefined,
     class: "adjective",
-    meaning: "strong"
+    meaning: "to be strong"
   },
   ḫalāqum: {
     themeVowel: "i",
@@ -65,21 +65,14 @@ const lexicon = {
     root: ["m", "r", "ṣ"],
     verbalAdjectiveVowel: "u",
     class: "adjective",
-    meaning: "sick, difficult"
+    meaning: "to be sick, difficult"
   },
   rapāšum: {
     themeVowel: "i",
     root: ["r", "p", "š"],
     verbalAdjectiveVowel: "a",
     class: "adjective",
-    meaning: "wide, broad"
-  },
-  danānum: {
-    themeVowel: "i",
-    root: ["d", "n", "n"],
-    verbalAdjectiveVowel: "Ø",
-    class: "adjective",
-    meaning: "wide, broad"
+    meaning: "to be wide, broad"
   },
   balāṭum: {
     themeVowel: "u",

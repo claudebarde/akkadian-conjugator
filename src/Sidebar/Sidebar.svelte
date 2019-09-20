@@ -9,9 +9,13 @@
 </script>
 
 <style>
+  .mainMenu {
+    padding-top: 20px;
+  }
+
   .verbs-menu {
-    height: 90vh;
-    padding-bottom: 20px;
+    height: 87vh;
+    padding-bottom: 0px;
     overflow: auto;
   }
 
@@ -24,7 +28,7 @@
   }
 </style>
 
-<div class="is-hidden-mobile">
+<div class="mainMenu">
   <aside class="menu">
     <p class="menu-label">Verbs ({Object.keys(lexicon).length})</p>
     <ul class="menu-list verbs-menu">

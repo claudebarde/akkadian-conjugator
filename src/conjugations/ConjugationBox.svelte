@@ -26,6 +26,54 @@
 </style>
 
 <div
+  class="message is-primary conjugation-box"
+  transition:fly={{ y: settings.transitionY, duration: settings.transtionDuration }}>
+  <div class="message-header">
+    <p>{title}</p>
+  </div>
+  <div class="message-body">
+    <div class="columns">
+      <div class="column is-half">
+        {#each personsSing as ps}
+          <p>
+            <span class="conjugation-person has-text-grey-light">{ps}:</span>
+            {#if rootHighlight}
+              {@html highlightRoot({
+                verb: verb[ps],
+                root,
+                conjugation,
+                ps,
+                infinitive
+              })}
+            {:else}
+              {@html verb[ps]}
+            {/if}
+          </p>
+        {/each}
+      </div>
+      <div class="column is-half">
+        {#each personsPlur as ps}
+          <p>
+            <span class="conjugation-person has-text-grey-light">{ps}:</span>
+            {#if rootHighlight}
+              {@html highlightRoot({
+                verb: verb[ps],
+                root,
+                conjugation,
+                ps,
+                infinitive
+              })}
+            {:else}
+              {@html verb[ps]}
+            {/if}
+          </p>
+        {/each}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--<div
   class="box conjugation-box"
   transition:fly={{ y: settings.transitionY, duration: settings.transtionDuration }}>
   <h2 class="has-text-weight-bold">{title}</h2>
@@ -68,4 +116,4 @@
       {/each}
     </div>
   </div>
-</div>
+</div>-->
