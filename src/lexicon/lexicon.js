@@ -547,7 +547,6 @@ const lexicon = {
   },
   diānum: {
     themeVowel: "ī",
-    durativeVowel: "a",
     root: ["d", "Ø", "n"],
     verbalAdjectiveVowel: "ī",
     class: "verb",
@@ -558,6 +557,7 @@ const lexicon = {
     root: ["Ø", "m", "d"],
     verbalAdjectiveVowel: undefined,
     class: "verb",
+    I_eVerb: true,
     meaning: "to lean against, to touch, to reach"
   },
   qabûm: {

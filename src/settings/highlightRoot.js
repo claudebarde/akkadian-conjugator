@@ -77,9 +77,43 @@ const posDurIweak = {
   "1cp": [3, 5]
 };
 
+const posDurIIweak = {
+  "3cs": [1, 4],
+  "2ms": [2, 5],
+  "2fs": [2, 5],
+  "1cs": [1, 4],
+  "3mp": [1, 4],
+  "3fp": [1, 4],
+  "2cp": [2, 5],
+  "1cp": [2, 5]
+};
+
+const verbalAdjective = {
+  sound: {
+    masculin: [0, 2, 3],
+    feminin: [0, 2, 4],
+    radical: [0, 2, 4]
+  },
+  Iweak: {
+    masculin: [1, 2],
+    feminin: [1, 3],
+    radical: [1, 3]
+  },
+  IIweak: {
+    masculin: [0, 2],
+    feminin: [0, 2],
+    radical: [0, 2]
+  },
+  IIIweak: {
+    masculin: [0, 2],
+    feminin: [0, 2],
+    radical: [0, 2]
+  }
+};
+
 const highlightRoot = ({ verb, root, conjugation, ps, infinitive }) => {
   let highlightedVerb = [];
-  //console.log(infinitive);
+  //console.log(verb, root, conjugation, ps, infinitive);
   // HIGHLIGHT IRREGULAR VERBS
   if (infinitive === "babālum" && conjugation === "gPreterite") {
     switch (ps) {
@@ -234,6 +268,16 @@ const highlightRoot = ({ verb, root, conjugation, ps, infinitive }) => {
           return letter;
         }
       });
+    } else if (root[1] === "Ø") {
+      highlightedVerb = [...verb].map((letter, i) => {
+        if (posDurIIweak[ps].includes(i)) {
+          // if this is a position to highlight
+          return "<strong>" + letter + "</strong>";
+        } else {
+          // if the position is not to be highlighted
+          return letter;
+        }
+      });
     } else if (root[2] === "Ø") {
       highlightedVerb = [...verb].map((letter, i) => {
         if (posDurIIIweak[ps].includes(i)) {
@@ -247,6 +291,59 @@ const highlightRoot = ({ verb, root, conjugation, ps, infinitive }) => {
     } else {
       highlightedVerb = [...verb];
     }
+  } else if (conjugation === "verbalAdjective") {
+    // we store the non attested status to add it back after highlighting
+    let nonAttested = false;
+    if (verb[0] === "*") {
+      verb = verb.slice(1);
+      nonAttested = true;
+    }
+
+    if (!root.includes("Ø")) {
+      highlightedVerb = [...verb].map((letter, i) => {
+        if (verbalAdjective.sound[ps].includes(i)) {
+          // if this is a position to highlight
+          return "<strong>" + letter + "</strong>";
+        } else {
+          // if the position is not to be highlighted
+          return letter;
+        }
+      });
+    } else if (root[0] === "Ø") {
+      highlightedVerb = [...verb].map((letter, i) => {
+        if (verbalAdjective.Iweak[ps].includes(i)) {
+          // if this is a position to highlight
+          return "<strong>" + letter + "</strong>";
+        } else {
+          // if the position is not to be highlighted
+          return letter;
+        }
+      });
+    } else if (root[1] === "Ø") {
+      highlightedVerb = [...verb].map((letter, i) => {
+        if (verbalAdjective.IIweak[ps].includes(i)) {
+          // if this is a position to highlight
+          return "<strong>" + letter + "</strong>";
+        } else {
+          // if the position is not to be highlighted
+          return letter;
+        }
+      });
+    } else if (root[2] === "Ø") {
+      highlightedVerb = [...verb].map((letter, i) => {
+        if (verbalAdjective.IIIweak[ps].includes(i)) {
+          // if this is a position to highlight
+          return "<strong>" + letter + "</strong>";
+        } else {
+          // if the position is not to be highlighted
+          return letter;
+        }
+      });
+    } else {
+      highlightedVerb = [...verb];
+    }
+    // we reinstate the asterisk if necessary
+    if (nonAttested) highlightedVerb = ["*", ...highlightedVerb];
   } else {
     highlightedVerb = [...verb];
   }

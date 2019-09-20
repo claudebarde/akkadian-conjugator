@@ -6,6 +6,7 @@
   import Sidebar from "./Sidebar/Sidebar.svelte";
   import ConjugationBox from "./conjugations/ConjugationBox.svelte";
   import settings from "./settings/settings.js";
+  import highlightRoot from "./settings/highlightRoot.js";
 
   import lexicon from "./lexicon/lexicon.js";
   import gPreteriteGenerator from "./conjugations/g-preterite.js";
@@ -18,7 +19,7 @@
   let gVerbalAdjective = undefined;
   let gDurative = undefined;
   let resultsVisible = false;
-  $: highlightRoot = true;
+  $: rootHighlight = true;
 
   $: if (resultsVisible) {
     if (document.getElementById("search-results"))
@@ -180,7 +181,7 @@
               title="G Preterite"
               root={lexicon[verbInput].root}
               conjugation="gPreterite"
-              rootHighlight={highlightRoot}
+              {rootHighlight}
               infinitive={verbInput} />
           {/if}
         </div>
@@ -191,7 +192,7 @@
               title="G Durative"
               root={lexicon[verbInput].root}
               conjugation="gDurative"
-              rootHighlight={highlightRoot}
+              {rootHighlight}
               infinitive={verbInput} />
           {/if}
         </div>
@@ -210,11 +211,53 @@
                   <strong>Verbal Adjective:</strong>
                 </p>
                 <p class="verbal-adjective">
-                  {@html gVerbalAdjective[0]}
+                  {#if rootHighlight}
+                    <span>
+                      {@html highlightRoot({
+                        verb: gVerbalAdjective[0],
+                        root: lexicon[verbInput].root,
+                        conjugation: 'verbalAdjective',
+                        ps: 'masculin',
+                        infinitive: verbInput
+                      })}
+                    </span>
+                  {:else}
+                    <span>
+                      {@html gVerbalAdjective[0]}
+                    </span>
+                  {/if}
                   /
-                  {@html gVerbalAdjective[1]}
+                  {#if rootHighlight}
+                    <span>
+                      {@html highlightRoot({
+                        verb: gVerbalAdjective[1],
+                        root: lexicon[verbInput].root,
+                        conjugation: 'verbalAdjective',
+                        ps: 'feminin',
+                        infinitive: verbInput
+                      })}
+                    </span>
+                  {:else}
+                    <span>
+                      {@html gVerbalAdjective[1]}
+                    </span>
+                  {/if}
                   (
-                  {@html gVerbalAdjective[2]}
+                  {#if rootHighlight}
+                    <span>
+                      {@html highlightRoot({
+                        verb: gVerbalAdjective[2],
+                        root: lexicon[verbInput].root,
+                        conjugation: 'verbalAdjective',
+                        ps: 'feminin',
+                        infinitive: verbInput
+                      })}
+                    </span>
+                  {:else}
+                    <span>
+                      {@html gVerbalAdjective[2]}
+                    </span>
+                  {/if}
                   )
                 </p>
               </div>
