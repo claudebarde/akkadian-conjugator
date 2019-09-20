@@ -140,7 +140,7 @@
   }
 </style>
 
-<Navbar class="welcome" />
+<Navbar />
 <main>
   <div class="columns">
     <div class="column is-hidden-mobile is-2">

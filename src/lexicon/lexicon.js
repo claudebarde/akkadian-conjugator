@@ -529,6 +529,49 @@ const lexicon = {
     verbalAdjectiveVowel: "ī",
     class: "verb",
     meaning: "to divide, to separate"
+  },
+  apālum: {
+    themeVowel: "u",
+    durativeVowel: "a",
+    root: ["Ø", "p", "l"],
+    verbalAdjectiveVowel: undefined,
+    class: "verb",
+    meaning: "to answer, to reply, to pay"
+  },
+  dâkum: {
+    themeVowel: "ū",
+    root: ["d", "Ø", "k"],
+    verbalAdjectiveVowel: undefined,
+    class: "verb",
+    meaning: "to kill, to execute, to defeat"
+  },
+  diānum: {
+    themeVowel: "ī",
+    durativeVowel: "a",
+    root: ["d", "Ø", "n"],
+    verbalAdjectiveVowel: "ī",
+    class: "verb",
+    meaning: "to judge, to give a judgment"
+  },
+  emēdum: {
+    themeVowel: "i",
+    root: ["Ø", "m", "d"],
+    verbalAdjectiveVowel: undefined,
+    class: "verb",
+    meaning: "to lean against, to touch, to reach"
+  },
+  qabûm: {
+    themeVowel: "i",
+    root: ["q", "b", "Ø"],
+    verbalAdjectiveVowel: undefined,
+    meaning: "to say, to speak, to give orders"
+  },
+  sadārum: {
+    themeVowel: "a",
+    durativeVowel: "u",
+    root: ["s", "d", "r"],
+    verbalAdjectiveVowel: "i",
+    meaning: "to arrange, to put in order"
   }
 };
 
