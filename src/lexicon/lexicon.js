@@ -196,7 +196,7 @@ const lexicon = {
   lequm: {
     themeVowel: "e",
     root: ["l", "q", "Ø"],
-    verbalAdjectiveVowel: undefined,
+    verbalAdjectiveVowel: "i",
     class: "verb",
     meaning: "to take, to accept"
   },
@@ -230,6 +230,7 @@ const lexicon = {
   },
   amārum: {
     themeVowel: "u",
+    durativeVowel: "a",
     root: ["Ø", "m", "r"],
     verbalAdjectiveVowel: "i",
     class: "verb",
@@ -244,6 +245,7 @@ const lexicon = {
   },
   epēšum: {
     themeVowel: "u",
+    durativeVowel: "e",
     root: ["Ø", "p", "š"],
     verbalAdjectiveVowel: "i",
     class: "verb",
@@ -260,6 +262,7 @@ const lexicon = {
   },
   alākum: {
     themeVowel: "i",
+    durativeVowel: "a",
     root: ["Ø", "l", "k"],
     verbalAdjectiveVowel: undefined,
     class: "verb",
@@ -267,6 +270,7 @@ const lexicon = {
   },
   aḫāzum: {
     themeVowel: "u",
+    durativeVowel: "a",
     root: ["Ø", "ḫ", "z"],
     verbalAdjectiveVowel: undefined,
     class: "verb",
@@ -290,6 +294,7 @@ const lexicon = {
   },
   kânum: {
     themeVowel: "ū",
+    durativeVowel: "a",
     root: ["k", "Ø", "n"],
     verbalAdjectiveVowel: "ī",
     class: "adjective",
@@ -318,6 +323,7 @@ const lexicon = {
   },
   agārum: {
     themeVowel: "u",
+    durativeVowel: "a",
     root: ["Ø", "g", "r"],
     verbalAdjectiveVowel: "i",
     class: "verb",
@@ -385,6 +391,7 @@ const lexicon = {
   },
   akālum: {
     themeVowel: "u",
+    durativeVowel: "a",
     root: ["Ø", "k", "l"],
     verbalAdjectiveVowel: undefined,
     class: "verb",
@@ -509,6 +516,26 @@ const lexicon = {
     root: ["s", "ḫ", "p"],
     verbalAdjectiveVowel: undefined,
     meaning: "to cover, to spread over, to overwhelm"
+  },
+  ragāmum: {
+    themeVowel: "u",
+    durativeVowel: "a",
+    root: ["r", "g", "m"],
+    verbalAdjectiveVowel: undefined,
+    meaning: "to shout, to call, to complain"
+  },
+  tamûm: {
+    themeVowel: "u",
+    root: ["t", "m", "Ø"],
+    verbalAdjectiveVowel: undefined,
+    meaning: "to swear, to take an oath"
+  },
+  zâzum: {
+    themeVowel: "ū",
+    root: ["z", "Ø", "z"],
+    verbalAdjectiveVowel: "ī",
+    class: "verb",
+    meaning: "to divide, to separate"
   }
 };
 

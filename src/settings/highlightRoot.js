@@ -66,6 +66,17 @@ const posDurIIIweak = {
   "1cp": [2, 5]
 };
 
+const posDurIweak = {
+  "3cs": [2, 4],
+  "2ms": [3, 5],
+  "2fs": [3, 5],
+  "1cs": [2, 4],
+  "3mp": [2, 4],
+  "3fp": [2, 4],
+  "2cp": [3, 5],
+  "1cp": [3, 5]
+};
+
 const highlightRoot = ({ verb, root, conjugation, ps, infinitive }) => {
   let highlightedVerb = [];
   //console.log(infinitive);
@@ -206,6 +217,16 @@ const highlightRoot = ({ verb, root, conjugation, ps, infinitive }) => {
     if (!root.includes("Ø")) {
       highlightedVerb = [...verb].map((letter, i) => {
         if (posDur3C[ps].includes(i)) {
+          // if this is a position to highlight
+          return "<strong>" + letter + "</strong>";
+        } else {
+          // if the position is not to be highlighted
+          return letter;
+        }
+      });
+    } else if (root[0] === "Ø") {
+      highlightedVerb = [...verb].map((letter, i) => {
+        if (posDurIweak[ps].includes(i)) {
           // if this is a position to highlight
           return "<strong>" + letter + "</strong>";
         } else {

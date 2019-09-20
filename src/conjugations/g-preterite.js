@@ -47,7 +47,7 @@ const gPreteriteGenerator = verbInput => {
     secondPersonPrefix,
     thirdPersonPrefix,
     firstPersonPluralPrefix
-  } = gPreteritePrefixes({ root, themeVowel, I_eVerb });
+  } = gPreteritePrefixes({ root, themeVowel, I_eVerb, durative: false });
 
   // Verbs I-a and I-e and I-w
   if (root[0] === "Ø" || root[0] === "w") {

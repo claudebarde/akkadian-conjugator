@@ -1,8 +1,9 @@
-const gPreteritePrefixes = ({ root, themeVowel, I_eVerb }) => {
+const gPreteritePrefixes = ({ root, themeVowel, I_eVerb, durative }) => {
   let firstPersonPrefix = "a";
   let secondPersonPrefix = "ta";
   let thirdPersonPrefix = "i";
   let firstPersonPluralPrefix = "ni";
+  root = [...root];
 
   // Vocalic harmony
   if (root[2] === "Ø" && themeVowel === "e") {
@@ -18,7 +19,7 @@ const gPreteritePrefixes = ({ root, themeVowel, I_eVerb }) => {
 
   // Verbs I-a and I-e and I-w
   if (root[0] === "Ø" || root[0] === "w") {
-    if (root[0] === "Ø") {
+    if (root[0] === "Ø" && durative === false) {
       // we lengthen the person prefix
       // we do not lengthen for first and second if already done above
       if (!I_eVerb) {
@@ -27,12 +28,23 @@ const gPreteritePrefixes = ({ root, themeVowel, I_eVerb }) => {
       }
       thirdPersonPrefix = "ī";
       firstPersonPluralPrefix = "nī";
-    } else if (root[0] === "w") {
+    } else if (root[0] === "w" && durative === false) {
       // active I-w verbs have special "u" for person perfix
       firstPersonPrefix = "u";
       secondPersonPrefix = "tu";
       thirdPersonPrefix = "u";
       firstPersonPluralPrefix = "nu";
+    } else if (root[0] === "Ø" && durative === true) {
+      // durative uses same vowels but they are not lengthened
+      if (I_eVerb) {
+        firstPersonPrefix = "e";
+        secondPersonPrefix = "te";
+      } else {
+        firstPersonPrefix = "a";
+        secondPersonPrefix = "ta";
+      }
+      thirdPersonPrefix = "i";
+      firstPersonPluralPrefix = "ni";
     }
     // we remove the missing radical
     root[0] = "";

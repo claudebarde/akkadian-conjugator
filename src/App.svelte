@@ -137,17 +137,7 @@
   }
 
   .input-tools {
-    padding: 10px;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
     text-align: center;
-  }
-
-  .input-tools div {
-    margin: 2px 10px;
   }
 
   .infinitive-input {
@@ -195,8 +185,8 @@
         }} />
     </div>
     <div class="column">
-      <div class="input-tools">
-        <div>
+      <div class="columns input-tools">
+        <div class="column is-2 is-offset-2">
           <div class="buttons are-small diacritic-inputs">
             <button class="button" on:click={() => addConsonanttoInput('sz')}>
               Š
@@ -212,7 +202,7 @@
             </button>
           </div>
         </div>
-        <div>
+        <div class="column is-2">
           <input
             id="infinitive-input"
             class="input infinitive-input"
@@ -244,7 +234,7 @@
             {/if}
           </div>
         </div>
-        <div>
+        <div class="column is-2">
           <div class="select is-small">
             <select
               value={themeVowel}
@@ -261,7 +251,7 @@
             </select>
           </div>
         </div>
-        <div>
+        <div class="column is-2">
           <label class="checkbox">
             <input type="checkbox" bind:checked={highlightRoot} />
             Highlight Root

@@ -59,3 +59,15 @@ export const lengthenVowel = vowel => {
     return "ū";
   }
 };
+
+export const shortenVowel = vowel => {
+  if (vowel === "ā" || vowel === "â") {
+    return "a";
+  } else if (vowel === "ē" || vowel === "ê") {
+    return "e";
+  } else if (vowel === "ī" || vowel === "î") {
+    return "i";
+  } else if (vowel === "ū" || vowel === "û") {
+    return "u";
+  }
+};

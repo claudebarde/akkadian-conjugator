@@ -24,7 +24,7 @@
   }
 </style>
 
-<div>
+<div class="is-hidden-mobile">
   <aside class="menu">
     <p class="menu-label">Verbs ({Object.keys(lexicon).length})</p>
     <ul class="menu-list verbs-menu">
