@@ -6,12 +6,15 @@ const gPreteritePrefixes = ({ root, themeVowel, I_eVerb, durative }) => {
   root = [...root];
 
   // Vocalic harmony
-  if (root[2] === "Ø" && themeVowel === "e") {
+  if (
+    (root[2] === "Ø" && themeVowel === "e") ||
+    (root[1] === "Ø" && themeVowel === "ē" && durative === true)
+  ) {
     firstPersonPrefix = "e";
     secondPersonPrefix = "te";
   } else if (
     ((root[0] === "Ø" || root[0] === "w") && I_eVerb === true) ||
-    (root[1] === "Ø" && themeVowel === "ē")
+    (root[1] === "Ø" && themeVowel === "ē" && durative === false)
   ) {
     firstPersonPrefix = "ē";
     secondPersonPrefix = "tē";
