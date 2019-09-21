@@ -346,6 +346,7 @@ const lexicon = {
   },
   târum: {
     themeVowel: "ū",
+    durativeVowel: "a",
     root: ["t", "Ø", "r"],
     verbalAdjectiveVowel: "ā",
     class: "verb",
@@ -575,6 +576,13 @@ const lexicon = {
     root: ["s", "d", "r"],
     verbalAdjectiveVowel: "i",
     meaning: "to arrange, to put in order"
+  },
+  maqātum: {
+    themeVowel: "u",
+    root: ["m", "q", "t"],
+    verbalAdjectiveVowel: "i",
+    class: "verb",
+    meaning: "to fall, to collapse, to happen"
   }
 };
 

@@ -1,14 +1,17 @@
 <script>
   import { fly } from "svelte/transition";
+  import state from "../state/state";
 
   import highlightRoot from "../settings/highlightRoot.js";
   import settings from "../settings/settings.js";
+  import addVentive from "../settings/addVentive";
+
   export let verb;
   export let title;
   export let root;
   export let conjugation;
-  export let rootHighlight;
   export let infinitive;
+  export let wVerbType;
 
   const personsSing = ["3cs", "2ms", "2fs", "1cs"];
   const personsPlur = ["3mp", "3fp", "2cp", "1cp"];
@@ -37,16 +40,32 @@
         {#each personsSing as ps}
           <p>
             <span class="conjugation-person has-text-grey-light">{ps}:</span>
-            {#if rootHighlight}
+            {#if $state.rootHighlight}
               {@html highlightRoot({
-                verb: verb[ps],
+                verb: $state.ventive
+                  ? addVentive({
+                      verb: verb[ps],
+                      ps,
+                      conjugation,
+                      root,
+                      infinitive
+                    })
+                  : verb[ps],
                 root,
                 conjugation,
                 ps,
-                infinitive
+                infinitive,
+                ventive: $state.ventive,
+                wVerbType
               })}
             {:else}
-              {@html verb[ps]}
+              {@html $state.ventive ? addVentive({
+                    verb: verb[ps],
+                    ps,
+                    conjugation,
+                    root,
+                    infinitive
+                  }) : verb[ps]}
             {/if}
           </p>
         {/each}
@@ -55,16 +74,32 @@
         {#each personsPlur as ps}
           <p>
             <span class="conjugation-person has-text-grey-light">{ps}:</span>
-            {#if rootHighlight}
+            {#if $state.rootHighlight}
               {@html highlightRoot({
-                verb: verb[ps],
+                verb: $state.ventive
+                  ? addVentive({
+                      verb: verb[ps],
+                      ps,
+                      conjugation,
+                      root,
+                      infinitive
+                    })
+                  : verb[ps],
                 root,
                 conjugation,
                 ps,
-                infinitive
+                infinitive,
+                ventive: $state.ventive,
+                wVerbType
               })}
             {:else}
-              {@html verb[ps]}
+              {@html $state.ventive ? addVentive({
+                    verb: verb[ps],
+                    ps,
+                    conjugation,
+                    root,
+                    infinitive
+                  }) : verb[ps]}
             {/if}
           </p>
         {/each}

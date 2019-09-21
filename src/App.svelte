@@ -1,6 +1,7 @@
 <script>
   import { onMount } from "svelte";
   import { fly } from "svelte/transition";
+  import state from "./state/state";
 
   import Navbar from "./Navbar/Navbar.svelte";
   import Sidebar from "./Sidebar/Sidebar.svelte";
@@ -18,57 +19,6 @@
   let gPreterite = undefined;
   let gVerbalAdjective = undefined;
   let gDurative = undefined;
-  let resultsVisible = false;
-  $: rootHighlight = true;
-  $: ventive = false;
-
-  $: if (resultsVisible) {
-    if (document.getElementById("search-results"))
-      document.getElementById("search-results").style.display = "block";
-  } else {
-    if (document.getElementById("search-results"))
-      document.getElementById("search-results").style.display = "none";
-  }
-
-  $: if (verbInput.trim().length > 0) {
-    // must be at least 2 letters
-    if (
-      verbInput.trim().length > 1 &&
-      document.getElementById("infinitive-input") === document.activeElement
-    ) {
-      resultsVisible = true;
-    } else {
-      resultsVisible = false;
-    }
-    if (verbInput.toLowerCase().match(/[aeiu]_/g)) {
-      // puts macrons on long vowels
-      const matches = verbInput.trim().match(/[aeiu]_/g);
-      matches.forEach(match => {
-        switch (match[0]) {
-          case "a":
-            verbInput = verbInput.replace(match, "ā");
-            break;
-          case "e":
-            verbInput = verbInput.replace(match, "ē");
-            break;
-          case "i":
-            verbInput = verbInput.replace(match, "ī");
-            break;
-          case "u":
-            verbInput = verbInput.replace(match, "ū");
-            break;
-          default:
-            break;
-        }
-      });
-      verbInput = verbInput.toLowerCase().trim();
-    } else {
-      verbInput = verbInput.toLowerCase().trim();
-    }
-  } else {
-    resultsVisible = false;
-    themeVowel = "";
-  }
 
   const addConsonanttoInput = cons => {
     // adds consonants with diacritics after button is pressed
@@ -92,26 +42,13 @@
     document.getElementById("infinitive-input").focus();
   };
 
-  const validateVerb = (verb, keyCode) => {
-    if (keyCode == 13) {
-      const entries = Object.keys(lexicon);
-      if (entries.includes(verbInput)) {
-        gPreterite = gPreteriteGenerator(verbInput);
-        gVerbalAdjective = gVerbalAdjectiveGenerator(verbInput);
-        gDurative = gDurativeGenerator(verbInput);
-      }
-      resultsVisible = false;
-    }
-  };
-
-  const selectVerb = verb => {
-    verbInput = verb;
+  const validateVerb = verb => {
     const entries = Object.keys(lexicon);
     if (entries.includes(verbInput)) {
-      themeVowel = lexicon[verb].themeVowel;
-      gPreterite = gPreteriteGenerator(verbInput);
+      gPreterite = gPreteriteGenerator(verbInput, $state.ventive);
       gVerbalAdjective = gVerbalAdjectiveGenerator(verbInput);
       gDurative = gDurativeGenerator(verbInput);
+      state.updateVerb({ gPreterite, gDurative, gVerbalAdjective });
     }
   };
 </script>
@@ -155,7 +92,7 @@
           const verb = event.detail;
           verbInput = verb.verb;
           themeVowel = verb.details.themeVowel;
-          validateVerb(verb, 13);
+          validateVerb(verb);
         }} />
     </div>
     {#if !verbInput}
@@ -163,7 +100,7 @@
         Select a verb in the left panel to start.
       </div>
     {/if}
-    <div class="column">
+    <div class="column is-10">
       {#if verbInput}
         <div class="columns">
           <div class="column is-6 is-offset-3 verbTitle">
@@ -180,39 +117,45 @@
         <div class="columns">
           <div class="column is-3 is-offset-3 conjugatorOptions">
             <label class="checkbox">
-              <input type="checkbox" bind:checked={rootHighlight} />
+              <input
+                type="checkbox"
+                checked={$state.rootHighlight}
+                on:change={state.toggleRootHighlighting} />
               Root highlighting
             </label>
           </div>
           <div class="column is-3 conjugatorOptions">
             <label class="checkbox">
-              <input type="checkbox" bind:checked={ventive} />
+              <input
+                type="checkbox"
+                checked={$state.ventive}
+                on:change={state.toggleVentive} />
               Ventive
             </label>
           </div>
         </div>
       {/if}
       <div class="columns tables">
-        <div class="column is-one-third">
+        <div class="column is-two-fifths is-offset-1">
           {#if gPreterite && lexicon[verbInput]}
             <ConjugationBox
               verb={gPreterite}
               title="G Preterite"
               root={lexicon[verbInput].root}
               conjugation="gPreterite"
-              {rootHighlight}
-              infinitive={verbInput} />
+              infinitive={verbInput}
+              wVerbType={lexicon[verbInput].type} />
           {/if}
         </div>
-        <div class="column is-one-third">
+        <div class="column is-two-fifths">
           {#if gDurative && lexicon[verbInput]}
             <ConjugationBox
               verb={gDurative}
               title="G Durative"
               root={lexicon[verbInput].root}
               conjugation="gDurative"
-              {rootHighlight}
-              infinitive={verbInput} />
+              infinitive={verbInput}
+              wVerbType={lexicon[verbInput].type} />
           {/if}
         </div>
       </div>
@@ -230,7 +173,7 @@
                   <strong>Verbal Adjective:</strong>
                 </p>
                 <p class="verbal-adjective">
-                  {#if rootHighlight}
+                  {#if $state.rootHighlight}
                     <span>
                       {@html highlightRoot({
                         verb: gVerbalAdjective[0],
@@ -246,7 +189,7 @@
                     </span>
                   {/if}
                   /
-                  {#if rootHighlight}
+                  {#if $state.rootHighlight}
                     <span>
                       {@html highlightRoot({
                         verb: gVerbalAdjective[1],
@@ -262,7 +205,7 @@
                     </span>
                   {/if}
                   (
-                  {#if rootHighlight}
+                  {#if $state.rootHighlight}
                     <span>
                       {@html highlightRoot({
                         verb: gVerbalAdjective[2],
