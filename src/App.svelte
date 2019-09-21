@@ -20,6 +20,7 @@
   let gDurative = undefined;
   let resultsVisible = false;
   $: rootHighlight = true;
+  $: ventive = false;
 
   $: if (resultsVisible) {
     if (document.getElementById("search-results"))
@@ -139,6 +140,10 @@
   .lastColumns {
     padding-bottom: 50px;
   }
+
+  .conjugatorOptions {
+    text-align: center;
+  }
 </style>
 
 <Navbar />
@@ -170,6 +175,20 @@
                 <p>{lexicon[verbInput].meaning}</p>
               </div>
             </article>
+          </div>
+        </div>
+        <div class="columns">
+          <div class="column is-3 is-offset-3 conjugatorOptions">
+            <label class="checkbox">
+              <input type="checkbox" bind:checked={rootHighlight} />
+              Root highlighting
+            </label>
+          </div>
+          <div class="column is-3 conjugatorOptions">
+            <label class="checkbox">
+              <input type="checkbox" bind:checked={ventive} />
+              Ventive
+            </label>
           </div>
         </div>
       {/if}

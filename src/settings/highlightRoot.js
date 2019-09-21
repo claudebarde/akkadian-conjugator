@@ -32,6 +32,17 @@ const posPretIweak = {
   "1cp": [2, 4]
 };
 
+const posPretalakum = {
+  "3cs": [2, 4],
+  "2ms": [3, 5],
+  "2fs": [3, 5],
+  "1cs": [2, 4],
+  "3mp": [2, 4],
+  "3fp": [2, 4],
+  "2cp": [3, 5],
+  "1cp": [3, 5]
+};
+
 const posPretIIweak = {
   "3cs": [1, 3],
   "2ms": [2, 4],
@@ -243,12 +254,22 @@ const highlightRoot = ({ verb, root, conjugation, ps, infinitive }) => {
       });
     } else if (root[0] === "Ø") {
       highlightedVerb = [...verb].map((letter, i) => {
-        if (posPretIweak[ps].includes(i)) {
-          // if this is a position to highlight
-          return "<strong>" + letter + "</strong>";
+        if (infinitive === "alākum") {
+          if (posPretalakum[ps].includes(i)) {
+            // if this is a position to highlight
+            return "<strong>" + letter + "</strong>";
+          } else {
+            // if the position is not to be highlighted
+            return letter;
+          }
         } else {
-          // if the position is not to be highlighted
-          return letter;
+          if (posPretIweak[ps].includes(i)) {
+            // if this is a position to highlight
+            return "<strong>" + letter + "</strong>";
+          } else {
+            // if the position is not to be highlighted
+            return letter;
+          }
         }
       });
     } else if (root[1] === "Ø") {
