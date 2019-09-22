@@ -48,7 +48,14 @@
       gPreterite = gPreteriteGenerator(verbInput, $state.ventive);
       gVerbalAdjective = gVerbalAdjectiveGenerator(verbInput);
       gDurative = gDurativeGenerator(verbInput);
-      state.updateVerb({ gPreterite, gDurative, gVerbalAdjective });
+      state.updateVerb({
+        gPreterite,
+        gDurative,
+        gVerbalAdjective,
+        root: lexicon[verbInput].root,
+        wVerbType: lexicon[verbInput].type,
+        infinitive: verbInput
+      });
     }
   };
 </script>
@@ -141,10 +148,7 @@
             <ConjugationBox
               verb={gPreterite}
               title="G Preterite"
-              root={lexicon[verbInput].root}
-              conjugation="gPreterite"
-              infinitive={verbInput}
-              wVerbType={lexicon[verbInput].type} />
+              conjugation="gPreterite" />
           {/if}
         </div>
         <div class="column is-two-fifths">
@@ -152,10 +156,7 @@
             <ConjugationBox
               verb={gDurative}
               title="G Durative"
-              root={lexicon[verbInput].root}
-              conjugation="gDurative"
-              infinitive={verbInput}
-              wVerbType={lexicon[verbInput].type} />
+              conjugation="gDurative" />
           {/if}
         </div>
       </div>

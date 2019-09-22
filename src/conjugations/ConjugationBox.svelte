@@ -8,10 +8,7 @@
 
   export let verb;
   export let title;
-  export let root;
   export let conjugation;
-  export let infinitive;
-  export let wVerbType;
 
   const personsSing = ["3cs", "2ms", "2fs", "1cs"];
   const personsPlur = ["3mp", "3fp", "2cp", "1cp"];
@@ -47,24 +44,24 @@
                       verb: verb[ps],
                       ps,
                       conjugation,
-                      root,
-                      infinitive
+                      root: $state.root,
+                      infinitive: $state.infinitive
                     })
                   : verb[ps],
-                root,
+                root: $state.root,
                 conjugation,
                 ps,
-                infinitive,
+                infinitive: $state.infinitive,
                 ventive: $state.ventive,
-                wVerbType
+                wVerbType: $state.wVerbType
               })}
             {:else}
               {@html $state.ventive ? addVentive({
                     verb: verb[ps],
                     ps,
                     conjugation,
-                    root,
-                    infinitive
+                    root: $state.root,
+                    infinitive: $state.infinitive
                   }) : verb[ps]}
             {/if}
           </p>
@@ -81,24 +78,24 @@
                       verb: verb[ps],
                       ps,
                       conjugation,
-                      root,
-                      infinitive
+                      root: $state.root,
+                      infinitive: $state.infinitive
                     })
                   : verb[ps],
-                root,
+                root: $state.root,
                 conjugation,
                 ps,
-                infinitive,
+                infinitive: $state.infinitive,
                 ventive: $state.ventive,
-                wVerbType
+                wVerbType: $state.wVerbType
               })}
             {:else}
               {@html $state.ventive ? addVentive({
                     verb: verb[ps],
                     ps,
                     conjugation,
-                    root,
-                    infinitive
+                    root: $state.root,
+                    infinitive: $state.infinitive
                   }) : verb[ps]}
             {/if}
           </p>

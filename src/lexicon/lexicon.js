@@ -583,6 +583,42 @@ const lexicon = {
     verbalAdjectiveVowel: "i",
     class: "verb",
     meaning: "to fall, to collapse, to happen"
+  },
+  madādum: {
+    themeVowel: "u",
+    durativeVowel: "a",
+    root: ["m", "d", "d"],
+    verbalAdjectiveVowel: undefined,
+    class: "verb",
+    meaning: "to measure out"
+  },
+  šapārum: {
+    themeVowel: "u",
+    durativeVowel: "a",
+    root: ["š", "p", "r"],
+    verbalAdjectiveVowel: undefined,
+    class: "verb",
+    meaning: "to send (someone/a message)"
+  },
+  warādum: {
+    themeVowel: "i",
+    durativeVowel: "a",
+    root: ["w", "r", "d"],
+    verbalAdjectiveVowel: undefined,
+    class: "verb",
+    I_eVerb: false,
+    type: "active",
+    meaning: "to descend, to go/come down"
+  },
+  waṣābum: {
+    themeVowel: "i",
+    durativeVowel: "a",
+    root: ["w", "ṣ", "b"],
+    verbalAdjectiveVowel: undefined,
+    class: "verb",
+    I_eVerb: false,
+    type: "active",
+    meaning: "to add, to increase"
   }
 };
 

@@ -2,7 +2,7 @@ import { writable } from "svelte/store";
 
 const store = writable({
   rootHighlight: true,
-  ventive: true,
+  ventive: false,
   gPreterite: undefined,
   gDurative: undefined,
   gVerbalAdjective: undefined
