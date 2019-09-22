@@ -56,6 +56,16 @@ const addVentive = ({ verb, ps, conjugation, root, infinitive }) => {
     }
   }
 
+  // vowel syncope for 2ms in G Imperative
+  if (
+    conjugation === "gImperative" &&
+    (!root.includes("Ø") || root[0] === "Ø") &&
+    ps === "2ms" &&
+    root[0] !== "w"
+  ) {
+    verb = verb.slice(0, -4) + verb.slice(-3);
+  }
+
   return verb;
 };
 

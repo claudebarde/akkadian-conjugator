@@ -1,10 +1,10 @@
 <script>
   import { fly } from "svelte/transition";
-  import state from "../state/state";
+  import state from "../../state/state";
 
-  import highlightRoot from "../settings/highlightRoot.js";
-  import settings from "../settings/settings.js";
-  import addVentive from "../settings/addVentive";
+  import highlightRoot from "../../settings/highlightRoot.js";
+  import settings from "../../settings/settings.js";
+  import addVentive from "../../settings/addVentive";
 
   export let verb;
   export let title;

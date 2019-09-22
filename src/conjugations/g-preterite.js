@@ -8,49 +8,10 @@ const vowel_3mp = "ū";
 const vowel_3fp = "ā";
 const vowel_2cp = "ā";
 
-const gPreteriteGenerator = (verbInput, ventive) => {
+const gPreteriteGenerator = verbInput => {
   let { root, themeVowel, I_eVerb, type } = lexicon[verbInput];
   root = [...root];
   let verbType = undefined;
-
-  // Irregular Verb babālum
-  /*if (verbInput === "babālum") {
-    if (ventive) {
-      return {
-        "3cs": "ublam",
-        "2ms": "tublam",
-        "2fs": "tubliam",
-        "1cs": "ublam",
-        "3mp": "ublûm",
-        "3fp": "ublâm",
-        "2cp": "tublâm",
-        "1cp": "nublam"
-      };
-    } else {
-      return {
-        "3cs": "ubil",
-        "2ms": "tubil",
-        "2fs": "tublī/tubilī",
-        "1cs": "ubil",
-        "3mp": "ublū/ubilū",
-        "3fp": "ublā/ubilā",
-        "2cp": "tublā/tubilā",
-        "1cp": "nubil"
-      };
-    }
-  }*/
-
-  /*
-  {
-        "3cs": ventive ? "ublam" : "ubil",
-        "2ms": ventive ? "tublam" : "tubil",
-        "2fs": ventive ? "tubliam" : "tublī/tubilī",
-        "1cs": ventive ? "ublam" : "ubil",
-        "3mp": ventive ? "ublûm" : "ublū/ubilū",
-        "3fp": ventive ? "ublâm" : "ublā/ubilā",
-        "2cp": ventive ? "tublâm" : "tublā/tubilā",
-        "1cp": ventive ? "nublam" : "nubil"
-      }*/
 
   // Irregular Verb alākum
   if (verbInput === "alākum") {

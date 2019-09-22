@@ -5,13 +5,16 @@
 
   import Navbar from "./Navbar/Navbar.svelte";
   import Sidebar from "./Sidebar/Sidebar.svelte";
-  import ConjugationBox from "./conjugations/ConjugationBox.svelte";
+  import ConjugationBox from "./conjugations/components/ConjugationBox.svelte";
+  import VerbalAdjectiveBox from "./conjugations/components/VerbalAdjectiveBox.svelte";
+  import ImperativeBox from "./conjugations/components/ImperativeBox.svelte";
   import settings from "./settings/settings.js";
   import highlightRoot from "./settings/highlightRoot.js";
 
   import lexicon from "./lexicon/lexicon.js";
   import gPreteriteGenerator from "./conjugations/g-preterite.js";
   import gDurativeGenerator from "./conjugations/g-durative.js";
+  import gImperativeGenerator from "./conjugations/g-imperative.js";
   import gVerbalAdjectiveGenerator from "./conjugations/g-verbal-adjective.js";
 
   let verbInput = "";
@@ -19,6 +22,7 @@
   let gPreterite = undefined;
   let gVerbalAdjective = undefined;
   let gDurative = undefined;
+  let gImperative = undefined;
 
   const addConsonanttoInput = cons => {
     // adds consonants with diacritics after button is pressed
@@ -45,15 +49,16 @@
   const validateVerb = verb => {
     const entries = Object.keys(lexicon);
     if (entries.includes(verbInput)) {
-      gPreterite = gPreteriteGenerator(verbInput, $state.ventive);
+      gPreterite = gPreteriteGenerator(verbInput);
       gVerbalAdjective = gVerbalAdjectiveGenerator(verbInput);
       gDurative = gDurativeGenerator(verbInput);
+      gImperative = gImperativeGenerator(verbInput);
       state.updateVerb({
+        ...lexicon[verbInput],
         gPreterite,
         gDurative,
         gVerbalAdjective,
-        root: lexicon[verbInput].root,
-        wVerbType: lexicon[verbInput].type,
+        gImperative,
         infinitive: verbInput
       });
     }
@@ -160,71 +165,17 @@
           {/if}
         </div>
       </div>
+      <div class="columns">
+        <div class="column is-one-third">
+          {#if gImperative && lexicon[verbInput]}
+            <ImperativeBox verb={gImperative} />
+          {/if}
+        </div>
+      </div>
       <div class="columns lastColumns">
         <div class="column is-one-third">
           {#if gVerbalAdjective && lexicon[verbInput]}
-            <div
-              class="message is-primary"
-              transition:fly={{ y: settings.transitionY, duration: settings.transtionDuration }}>
-              <div class="message-header">
-                <p>Non-finite forms</p>
-              </div>
-              <div class="message-body">
-                <p>
-                  <strong>Verbal Adjective:</strong>
-                </p>
-                <p class="verbal-adjective">
-                  {#if $state.rootHighlight}
-                    <span>
-                      {@html highlightRoot({
-                        verb: gVerbalAdjective[0],
-                        root: lexicon[verbInput].root,
-                        conjugation: 'verbalAdjective',
-                        ps: 'masculin',
-                        infinitive: verbInput
-                      })}
-                    </span>
-                  {:else}
-                    <span>
-                      {@html gVerbalAdjective[0]}
-                    </span>
-                  {/if}
-                  /
-                  {#if $state.rootHighlight}
-                    <span>
-                      {@html highlightRoot({
-                        verb: gVerbalAdjective[1],
-                        root: lexicon[verbInput].root,
-                        conjugation: 'verbalAdjective',
-                        ps: 'feminin',
-                        infinitive: verbInput
-                      })}
-                    </span>
-                  {:else}
-                    <span>
-                      {@html gVerbalAdjective[1]}
-                    </span>
-                  {/if}
-                  (
-                  {#if $state.rootHighlight}
-                    <span>
-                      {@html highlightRoot({
-                        verb: gVerbalAdjective[2],
-                        root: lexicon[verbInput].root,
-                        conjugation: 'verbalAdjective',
-                        ps: 'feminin',
-                        infinitive: verbInput
-                      })}
-                    </span>
-                  {:else}
-                    <span>
-                      {@html gVerbalAdjective[2]}
-                    </span>
-                  {/if}
-                  )
-                </p>
-              </div>
-            </div>
+            <VerbalAdjectiveBox />
           {/if}
         </div>
       </div>
