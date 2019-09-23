@@ -5,63 +5,24 @@
 
   import Navbar from "./Navbar/Navbar.svelte";
   import Sidebar from "./Sidebar/Sidebar.svelte";
-  import ConjugationBox from "./conjugations/components/ConjugationBox.svelte";
+  import GPreteriteBox from "./conjugations/components/GPreteriteBox.svelte";
+  import GDurativeBox from "./conjugations/components/GDurativeBox.svelte";
   import VerbalAdjectiveBox from "./conjugations/components/VerbalAdjectiveBox.svelte";
   import ImperativeBox from "./conjugations/components/ImperativeBox.svelte";
   import settings from "./settings/settings.js";
   import highlightRoot from "./settings/highlightRoot.js";
 
   import lexicon from "./lexicon/lexicon.js";
-  import gPreteriteGenerator from "./conjugations/g-preterite.js";
-  import gDurativeGenerator from "./conjugations/g-durative.js";
-  import gImperativeGenerator from "./conjugations/g-imperative.js";
-  import gVerbalAdjectiveGenerator from "./conjugations/g-verbal-adjective.js";
 
   let verbInput = "";
-  let themeVowel = "";
-  let gPreterite = undefined;
-  let gVerbalAdjective = undefined;
-  let gDurative = undefined;
-  let gImperative = undefined;
-
-  const addConsonanttoInput = cons => {
-    // adds consonants with diacritics after button is pressed
-    switch (cons) {
-      case "sz":
-        verbInput = verbInput + "š";
-        break;
-      case "sj":
-        verbInput = verbInput + "ṣ";
-        break;
-      case "tj":
-        verbInput = verbInput + "ṭ";
-        break;
-      case "hj":
-        verbInput = verbInput + "ḫ";
-        break;
-      default:
-        verbInput = verbInput + "";
-        break;
-    }
-    document.getElementById("infinitive-input").focus();
-  };
 
   const validateVerb = verb => {
     const entries = Object.keys(lexicon);
-    if (entries.includes(verbInput)) {
-      gPreterite = gPreteriteGenerator(verbInput);
-      gVerbalAdjective = gVerbalAdjectiveGenerator(verbInput);
-      gDurative = gDurativeGenerator(verbInput);
-      gImperative = gImperativeGenerator(verbInput);
+    if (entries.includes(verbInput))
       state.updateVerb({
         ...lexicon[verbInput],
-        gPreterite,
-        gDurative,
-        gVerbalAdjective,
-        gImperative,
         infinitive: verbInput
       });
-    }
   };
 </script>
 
@@ -103,7 +64,6 @@
         on:selectVerb={event => {
           const verb = event.detail;
           verbInput = verb.verb;
-          themeVowel = verb.details.themeVowel;
           validateVerb(verb);
         }} />
     </div>
@@ -149,34 +109,20 @@
       {/if}
       <div class="columns tables">
         <div class="column is-two-fifths is-offset-1">
-          {#if gPreterite && lexicon[verbInput]}
-            <ConjugationBox
-              verb={gPreterite}
-              title="G Preterite"
-              conjugation="gPreterite" />
-          {/if}
+          <GPreteriteBox />
         </div>
         <div class="column is-two-fifths">
-          {#if gDurative && lexicon[verbInput]}
-            <ConjugationBox
-              verb={gDurative}
-              title="G Durative"
-              conjugation="gDurative" />
-          {/if}
+          <GDurativeBox />
         </div>
       </div>
       <div class="columns">
-        <div class="column is-one-third">
-          {#if gImperative && lexicon[verbInput]}
-            <ImperativeBox verb={gImperative} />
-          {/if}
+        <div class="column is-one-quarter">
+          <ImperativeBox />
         </div>
       </div>
       <div class="columns lastColumns">
         <div class="column is-one-third">
-          {#if gVerbalAdjective && lexicon[verbInput]}
-            <VerbalAdjectiveBox />
-          {/if}
+          <VerbalAdjectiveBox />
         </div>
       </div>
     </div>

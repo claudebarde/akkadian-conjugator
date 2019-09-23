@@ -71,3 +71,16 @@ export const shortenVowel = vowel => {
     return "u";
   }
 };
+
+export const feminineChange = (rootVowel, vowel) => {
+  // phonological rules
+  if (vowel.length > 0) {
+    // both consonants are in contact
+    const turnIntoT = ["ṭ", "n", "d"];
+    if (turnIntoT.includes(rootVowel)) return "t";
+    const turnIntoSH = ["s", "ṣ", "z"];
+    if (turnIntoSH.includes(rootVowel)) return "š";
+  }
+
+  return rootVowel;
+};

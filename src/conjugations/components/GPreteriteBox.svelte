@@ -1,0 +1,167 @@
+<script>
+  import ConjugationBox from "./ConjugationBox.svelte";
+  import state from "../../state/state";
+  import lexicon from "../../lexicon/lexicon";
+  import gPreteritePrefixes from "../selectPrefixes";
+  import contractLastVowels from "../../settings/contractLastVowels";
+  import addVentive from "../../settings/addVentive";
+
+  const vowel_2fs = "ī";
+  const vowel_3mp = "ū";
+  const vowel_3fp = "ā";
+  const vowel_2cp = "ā";
+
+  let conjugatedVerb = {};
+  let verbInput = undefined;
+
+  $: if ($state.infinitive !== verbInput) {
+    verbInput = $state.infinitive;
+    // Irregular Verb alākum
+    if (verbInput === "alākum") {
+      conjugatedVerb = {
+        "3cs": "illik",
+        "2ms": "tallik",
+        "2fs": "tallikī",
+        "1cs": "allik",
+        "3mp": "illukū",
+        "3fp": "illukā",
+        "2cp": "tallikā",
+        "1cp": "nillik"
+      };
+    }
+    // Irregular Verb babālum
+    else if (verbInput === "babālum") {
+      conjugatedVerb = {
+        "3cs": "ubil",
+        "2ms": "tubil",
+        "2fs": "tublī/tubilī",
+        "1cs": "ubil",
+        "3mp": "ublū/ubilū",
+        "3fp": "ublā/ubilā",
+        "2cp": "tublā/tubilā",
+        "1cp": "nubil"
+      };
+    } else {
+      let thisRoot = [...$state.root];
+      let { themeVowel, I_eVerb, type } = $state;
+      let verbType = undefined;
+
+      // PHONOLOGICAL CHANGES
+      // Verbs I–n
+      if (thisRoot[0] === "n" && thisRoot[1] !== "Ø") thisRoot[0] = thisRoot[1];
+      // Person Prefixes
+      let {
+        firstPersonPrefix,
+        secondPersonPrefix,
+        thirdPersonPrefix,
+        firstPersonPluralPrefix
+      } = gPreteritePrefixes({
+        root: thisRoot,
+        themeVowel,
+        I_eVerb,
+        type,
+        durative: false
+      });
+
+      // Verbs I-a and I-e and I-w
+      if (thisRoot[0] === "Ø" || thisRoot[0] === "w") {
+        if (thisRoot[0] === "w") verbType = "I-w";
+        thisRoot[0] = "";
+      }
+      // Verbs II-weak
+      else if (thisRoot[1] === "Ø") {
+        // we remove the missing radical
+        thisRoot[1] = "";
+      }
+      // Verbs III-weak
+      else if (thisRoot[2] === "Ø") {
+        // we remove the missing radical
+        thisRoot[2] = "";
+      }
+
+      conjugatedVerb = {
+        "3cs":
+          thirdPersonPrefix +
+          thisRoot[0] +
+          thisRoot[1] +
+          themeVowel +
+          thisRoot[2],
+        "2ms":
+          secondPersonPrefix +
+          thisRoot[0] +
+          thisRoot[1] +
+          themeVowel +
+          thisRoot[2],
+        "2fs":
+          secondPersonPrefix +
+          thisRoot[0] +
+          thisRoot[1] +
+          themeVowel +
+          thisRoot[2] +
+          vowel_2fs,
+        "1cs":
+          firstPersonPrefix +
+          thisRoot[0] +
+          thisRoot[1] +
+          themeVowel +
+          thisRoot[2],
+        "3mp":
+          thirdPersonPrefix +
+          thisRoot[0] +
+          thisRoot[1] +
+          themeVowel +
+          thisRoot[2] +
+          vowel_3mp,
+        "3fp":
+          thirdPersonPrefix +
+          thisRoot[0] +
+          thisRoot[1] +
+          themeVowel +
+          thisRoot[2] +
+          vowel_3fp,
+        "2cp":
+          secondPersonPrefix +
+          thisRoot[0] +
+          thisRoot[1] +
+          themeVowel +
+          thisRoot[2] +
+          vowel_2cp,
+        "1cp":
+          firstPersonPluralPrefix +
+          thisRoot[0] +
+          thisRoot[1] +
+          themeVowel +
+          thisRoot[2]
+      };
+
+      // Verbs III-weak
+      if (thisRoot[2] === "") {
+        // we contract the last 2 consecutive vowels
+        conjugatedVerb = contractLastVowels(conjugatedVerb);
+      }
+
+      // Verbs I-w
+      if (verbType === "I-w") {
+        // when a vocalic ending (i.e., an ending beginning with a vowel) is added,
+        // the theme-vowel i is lost through syncope
+        Object.keys(conjugatedVerb).forEach(ps => {
+          if (["ī", "ū", "ā"].includes(conjugatedVerb[ps].slice(-1))) {
+            conjugatedVerb[ps] =
+              conjugatedVerb[ps].slice(0, -3) + conjugatedVerb[ps].slice(-2);
+          }
+        });
+      }
+    }
+
+    state.updateVerb({ ...state, gPreterite: conjugatedVerb });
+  }
+</script>
+
+{#if $state.gPreterite === undefined}
+  <div />
+{:else}
+  <ConjugationBox
+    verb={$state.gPreterite}
+    title="G Preterite"
+    conjugation="gPreterite" />
+{/if}

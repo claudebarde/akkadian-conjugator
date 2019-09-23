@@ -53,7 +53,7 @@
                 ps,
                 infinitive: $state.infinitive,
                 ventive: $state.ventive,
-                wVerbType: $state.wVerbType
+                wVerbType: $state.type
               })}
             {:else}
               {@html $state.ventive ? addVentive({
@@ -87,7 +87,7 @@
                 ps,
                 infinitive: $state.infinitive,
                 ventive: $state.ventive,
-                wVerbType: $state.wVerbType
+                wVerbType: $state.type
               })}
             {:else}
               {@html $state.ventive ? addVentive({
