@@ -17,7 +17,8 @@ const addVentive = ({ verb, ps, conjugation, root, infinitive }) => {
   let infinitiv;
 
   // IRREGULAR VERBS
-  if (infinitive === "babālum") return babalum[ps];
+  if (infinitive === "babālum" && conjugation === "gPreterite")
+    return babalum[ps];
   // -am on the 3cs, 2ms, 1cs, and 1cp
   if (["3cs", "2ms", "1cs", "1cp"].includes(ps)) {
     suffix = "am";
@@ -61,7 +62,8 @@ const addVentive = ({ verb, ps, conjugation, root, infinitive }) => {
     conjugation === "gImperative" &&
     (!root.includes("Ø") || root[0] === "Ø") &&
     ps === "2ms" &&
-    root[0] !== "w"
+    root[0] !== "w" &&
+    infinitive !== "babālum"
   ) {
     verb = verb.slice(0, -4) + verb.slice(-3);
   }

@@ -16,6 +16,11 @@ const gDurativeGenerator = verbInput => {
   let { root, themeVowel, I_eVerb, type, durativeVowel } = lexicon[verbInput];
   root = [...root];
   let originalThemeVowel = themeVowel;
+  let firstVowel = themeVowel === "e" ? "e" : "a";
+  // irregular word babālum
+  if (verbInput === "babālum") {
+    root[0] = "w";
+  }
   // replaces theme vowel with durative vowel if necessary
   if (durativeVowel) themeVowel = durativeVowel;
   // Person Prefixes
@@ -25,7 +30,6 @@ const gDurativeGenerator = verbInput => {
     thirdPersonPrefix,
     firstPersonPluralPrefix
   } = gPreteritePrefixes({ root, themeVowel, I_eVerb, type, durative: true });
-  let firstVowel = themeVowel === "e" ? "e" : "a";
 
   //Verbs I-a and I-e and I-w
   if (root[0] === "Ø" || root[0] === "w") {

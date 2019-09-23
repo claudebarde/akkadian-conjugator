@@ -380,10 +380,12 @@ const lexicon = {
   },
   babālum: {
     themeVowel: "i",
+    durativeVowel: "a",
     root: ["b", "b", "l"],
     verbalAdjectiveVowel: "i",
     class: "verb",
     I_eVerb: false,
+    type: "active",
     meaning: "to carry, to bear, to transport"
   },
   akālum: {
