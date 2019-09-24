@@ -1,10 +1,12 @@
 <script>
-  import ConjugationBox from "./ConjugationBox.svelte";
-  import state from "../../state/state";
-  import lexicon from "../../lexicon/lexicon";
-  import gPreteritePrefixes from "../selectPrefixes";
-  import contractLastVowels from "../../settings/contractLastVowels";
-  import addVentive from "../../settings/addVentive";
+  import ConjugationBox from "../ConjugationBox.svelte";
+  import state from "../../../state/state";
+  import lexicon from "../../../lexicon/lexicon";
+  import gPreteritePrefixes from "../../selectPrefixes";
+  import contractLastVowels from "../../../settings/contractLastVowels";
+  import addVentive from "../../../settings/addVentive";
+
+  export let vetitive = false;
 
   const vowel_2fs = "ī";
   const vowel_3mp = "ū";
@@ -81,18 +83,21 @@
 
       conjugatedVerb = {
         "3cs":
+          (vetitive ? "ayy" : "") +
           thirdPersonPrefix +
           thisRoot[0] +
           thisRoot[1] +
           themeVowel +
           thisRoot[2],
         "2ms":
+          (vetitive ? "ē" : "") +
           secondPersonPrefix +
           thisRoot[0] +
           thisRoot[1] +
           themeVowel +
           thisRoot[2],
         "2fs":
+          (vetitive ? "ē" : "") +
           secondPersonPrefix +
           thisRoot[0] +
           thisRoot[1] +
@@ -100,12 +105,14 @@
           thisRoot[2] +
           vowel_2fs,
         "1cs":
+          (vetitive ? "ayy" : "") +
           firstPersonPrefix +
           thisRoot[0] +
           thisRoot[1] +
           themeVowel +
           thisRoot[2],
         "3mp":
+          (vetitive ? "ayy" : "") +
           thirdPersonPrefix +
           thisRoot[0] +
           thisRoot[1] +
@@ -113,6 +120,7 @@
           thisRoot[2] +
           vowel_3mp,
         "3fp":
+          (vetitive ? "ayy" : "") +
           thirdPersonPrefix +
           thisRoot[0] +
           thisRoot[1] +
@@ -120,6 +128,7 @@
           thisRoot[2] +
           vowel_3fp,
         "2cp":
+          (vetitive ? "ē" : "") +
           secondPersonPrefix +
           thisRoot[0] +
           thisRoot[1] +
@@ -127,6 +136,7 @@
           thisRoot[2] +
           vowel_2cp,
         "1cp":
+          (vetitive ? "ē" : "") +
           firstPersonPluralPrefix +
           thisRoot[0] +
           thisRoot[1] +
@@ -153,7 +163,11 @@
       }
     }
 
-    state.updateVerb({ ...state, gPreterite: conjugatedVerb });
+    if (vetitive) {
+      state.updateVerb({ ...state, gVetitive: conjugatedVerb });
+    } else {
+      state.updateVerb({ ...state, gPreterite: conjugatedVerb });
+    }
   }
 </script>
 
@@ -161,7 +175,8 @@
   <div />
 {:else}
   <ConjugationBox
-    verb={$state.gPreterite}
-    title="G Preterite"
-    conjugation="gPreterite" />
+    verb={vetitive ? $state.gVetitive : $state.gPreterite}
+    title={vetitive ? 'G Vetitive' : 'G Preterite'}
+    conjugation="gPreterite"
+    {vetitive} />
 {/if}

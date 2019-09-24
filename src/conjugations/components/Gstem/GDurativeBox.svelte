@@ -1,14 +1,14 @@
 <script>
-  import ConjugationBox from "./ConjugationBox.svelte";
-  import state from "../../state/state";
-  import lexicon from "../../lexicon/lexicon";
-  import gPreteritePrefixes from "../selectPrefixes";
-  import contractLastVowels from "../../settings/contractLastVowels";
+  import ConjugationBox from "../ConjugationBox.svelte";
+  import state from "../../../state/state";
+  import lexicon from "../../../lexicon/lexicon";
+  import gPreteritePrefixes from "../../selectPrefixes";
+  import contractLastVowels from "../../../settings/contractLastVowels";
   import {
     contiguousVowels,
     allFlavorsOfVowels,
     shortenVowel
-  } from "../../settings/phonologicalRules";
+  } from "../../../settings/phonologicalRules";
 
   const vowel_2fs = "ī";
   const vowel_3mp = "ū";

@@ -1,14 +1,14 @@
 <script>
   import { fly } from "svelte/transition";
-  import state from "../../state/state";
-  import settings from "../../settings/settings";
-  import contractLastVowels from "../../settings/contractLastVowels";
+  import state from "../../../state/state";
+  import settings from "../../../settings/settings";
+  import contractLastVowels from "../../../settings/contractLastVowels";
   import {
     contiguousVowels,
     lengthenVowel
-  } from "../../settings/phonologicalRules";
-  import highlightRoot from "../../settings/highlightRoot";
-  import addVentive from "../../settings/addVentive";
+  } from "../../../settings/phonologicalRules";
+  import highlightRoot from "../../../settings/highlightRoot";
+  import addVentive from "../../../settings/addVentive";
 
   const personSing = ["3cs", "1cs"];
   const personPlur = ["3mp", "3fp", "1cp"];

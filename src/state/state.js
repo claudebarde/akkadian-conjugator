@@ -5,6 +5,9 @@ const store = writable({
   ventive: false,
   gPreterite: undefined,
   gDurative: undefined,
+  gImperative: undefined,
+  gPrecative: undefined,
+  gVetitive: undefined,
   gVerbalAdjective: undefined
 });
 

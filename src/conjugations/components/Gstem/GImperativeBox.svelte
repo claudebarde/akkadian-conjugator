@@ -1,10 +1,10 @@
 <script>
   import { fly } from "svelte/transition";
-  import state from "../../state/state";
-  import settings from "../../settings/settings";
-  import { contiguousVowels } from "../../settings/phonologicalRules";
-  import highlightRoot from "../../settings/highlightRoot";
-  import addVentive from "../../settings/addVentive";
+  import state from "../../../state/state";
+  import settings from "../../../settings/settings";
+  import { contiguousVowels } from "../../../settings/phonologicalRules";
+  import highlightRoot from "../../../settings/highlightRoot";
+  import addVentive from "../../../settings/addVentive";
 
   const persons = ["2ms", "2fs", "2cp"];
   let verbInput = undefined;

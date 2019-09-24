@@ -5,11 +5,11 @@
 
   import Navbar from "./Navbar/Navbar.svelte";
   import Sidebar from "./Sidebar/Sidebar.svelte";
-  import GPreteriteBox from "./conjugations/components/GPreteriteBox.svelte";
-  import GDurativeBox from "./conjugations/components/GDurativeBox.svelte";
-  import GPrecativeBox from "./conjugations/components/GPrecativeBox.svelte";
+  import GPreteriteBox from "./conjugations/components/Gstem/GPreteriteBox.svelte";
+  import GDurativeBox from "./conjugations/components/Gstem/GDurativeBox.svelte";
+  import GPrecativeBox from "./conjugations/components/Gstem/GPrecativeBox.svelte";
   import VerbalAdjectiveBox from "./conjugations/components/VerbalAdjectiveBox.svelte";
-  import GImperativeBox from "./conjugations/components/GImperativeBox.svelte";
+  import GImperativeBox from "./conjugations/components/Gstem/GImperativeBox.svelte";
   import settings from "./settings/settings.js";
   import highlightRoot from "./settings/highlightRoot.js";
 
@@ -114,6 +114,11 @@
         </div>
         <div class="column is-two-fifths">
           <GDurativeBox />
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column is-two-fifths is-offset-1">
+          <GPreteriteBox vetitive={true} />
         </div>
       </div>
       <div class="columns">

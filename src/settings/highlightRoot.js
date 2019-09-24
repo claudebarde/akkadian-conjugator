@@ -276,11 +276,23 @@ const highlightRoot = ({
   ps,
   infinitive,
   ventive,
-  wVerbType
+  wVerbType,
+  vetitive
 }) => {
   let highlightedVerb = [];
+  let vetitivePrefix = undefined;
 
   if (conjugation === "gPreterite") {
+    // we remove vetitive prefix before highlighting the root
+    if (vetitive) {
+      if (verb[0] === "ē") {
+        verb = verb.slice(1);
+        vetitivePrefix = "ē";
+      } else {
+        verb = verb.slice(3);
+        vetitivePrefix = "ayy";
+      }
+    }
     // 3 consonant root
     if (!root.includes("Ø") && root[0] !== "w" && infinitive !== "babālum") {
       highlightedVerb = highlightVerb(verb, ps, posPret3C);
@@ -440,6 +452,11 @@ const highlightRoot = ({
     if (nonAttested) highlightedVerb = ["*", ...highlightedVerb];
   } else {
     highlightedVerb = [...verb];
+  }
+
+  // reinstate vetitive prefix if it was removed at the beginning
+  if (vetitive) {
+    highlightedVerb.unshift(vetitivePrefix);
   }
 
   return highlightedVerb.join("");
