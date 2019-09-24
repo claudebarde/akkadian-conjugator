@@ -32,7 +32,9 @@
   <aside class="menu">
     <p class="menu-label">Verbs ({Object.keys(lexicon).length})</p>
     <ul class="menu-list verbs-menu">
-      {#each Object.keys(lexicon).sort() as item}
+      {#each Object.keys(lexicon).sort(function(a, b) {
+        return a.localeCompare(b);
+      }) as item}
         {#if !letters.includes(item[0].toUpperCase())}
           <span class="letter-order">
             {letters.push(item[0].toUpperCase())}

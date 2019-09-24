@@ -141,7 +141,7 @@
       {#each persons as ps}
         <p>
           <span class="conjugation-person has-text-grey-light">{ps}:</span>
-          {#if $state.thisRootHighlight}
+          {#if $state.rootHighlight}
             {@html highlightRoot({
               verb: $state.ventive
                 ? addVentive({

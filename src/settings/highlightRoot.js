@@ -154,6 +154,81 @@ const posPretVentBabalum = {
   "1cp": [2, 3]
 };
 
+const posImpNoVent3C = {
+  "2ms": [0, 2, 4],
+  "2fs": [0, 2, 3],
+  "2cp": [0, 2, 3]
+};
+
+const posImpVent3C = {
+  "2ms": [0, 2, 3],
+  "2fs": [0, 2, 3],
+  "2cp": [0, 2, 3]
+};
+
+const posImpNoVentIweak = {
+  "2ms": [1, 3],
+  "2fs": [1, 2],
+  "2cp": [1, 2]
+};
+const posImpVentIweak = {
+  "2ms": [1, 2],
+  "2fs": [1, 2],
+  "2cp": [1, 2]
+};
+
+const posImpIInIIIweak = {
+  "2ms": [0, 2],
+  "2fs": [0, 2],
+  "2cp": [0, 2]
+};
+
+const posImpIw = {
+  "2ms": [0, 2],
+  "2fs": [0, 2],
+  "2cp": [0, 2]
+};
+
+const posPrec3C = {
+  "3cs": [2, 3, 5],
+  "1cs": [2, 3, 5],
+  "3mp": [2, 3, 5],
+  "3fp": [2, 3, 5],
+  "1cp": [4, 5, 7]
+};
+
+const posPrecInIIweak = {
+  "3cs": [2, 4],
+  "1cs": [2, 4],
+  "3mp": [2, 4],
+  "3fp": [2, 4],
+  "1cp": [4, 6]
+};
+
+const posPrecIIIweak = {
+  "3cs": [2, 3],
+  "1cs": [2, 3],
+  "3mp": [2, 3],
+  "3fp": [2, 3],
+  "1cp": [4, 5]
+};
+
+const posPrecNoVentIweak = {
+  "3cs": [2, 4],
+  "1cs": [2, 4],
+  "3mp": [2, 4],
+  "3fp": [2, 4],
+  "1cp": [4, 6]
+};
+
+const posPrecVentIweak = {
+  "3cs": [2, 3],
+  "1cs": [2, 3],
+  "3mp": [2, 4],
+  "3fp": [2, 4],
+  "1cp": [4, 5]
+};
+
 const verbalAdjective = {
   sound: {
     masculin: [0, 2, 3],
@@ -182,6 +257,18 @@ const verbalAdjective = {
   }
 };
 
+const highlightVerb = (verb, ps, template) => {
+  return [...verb].map((letter, i) => {
+    if (template[ps].includes(i)) {
+      // if this is a position to highlight
+      return "<strong>" + letter + "</strong>";
+    } else {
+      // if the position is not to be highlighted
+      return letter;
+    }
+  });
+};
+
 const highlightRoot = ({
   verb,
   root,
@@ -196,15 +283,7 @@ const highlightRoot = ({
   if (conjugation === "gPreterite") {
     // 3 consonant root
     if (!root.includes("Ø") && root[0] !== "w" && infinitive !== "babālum") {
-      highlightedVerb = [...verb].map((letter, i) => {
-        if (posPret3C[ps].includes(i)) {
-          // if this is a position to highlight
-          return "<strong>" + letter + "</strong>";
-        } else {
-          // if the position is not to be highlighted
-          return letter;
-        }
-      });
+      highlightedVerb = highlightVerb(verb, ps, posPret3C);
     } else if (root[0] === "Ø") {
       highlightedVerb = [...verb].map((letter, i) => {
         if (infinitive === "alākum") {
@@ -226,129 +305,73 @@ const highlightRoot = ({
         }
       });
     } else if (root[1] === "Ø") {
-      highlightedVerb = [...verb].map((letter, i) => {
-        if (posPretIIweak[ps].includes(i)) {
-          // if this is a position to highlight
-          return "<strong>" + letter + "</strong>";
-        } else {
-          // if the position is not to be highlighted
-          return letter;
-        }
-      });
+      highlightedVerb = highlightVerb(verb, ps, posPretIIweak);
     } else if (root[2] === "Ø") {
-      highlightedVerb = [...verb].map((letter, i) => {
-        if (posPretIIIweak[ps].includes(i)) {
-          // if this is a position to highlight
-          return "<strong>" + letter + "</strong>";
-        } else {
-          // if the position is not to be highlighted
-          return letter;
-        }
-      });
+      highlightedVerb = highlightVerb(verb, ps, posPretIIIweak);
     } else if (root[0] === "w" && ventive === false) {
-      highlightedVerb = [...verb].map((letter, i) => {
-        if (posPretIw[ps].includes(i)) {
-          // if this is a position to highlight
-          return "<strong>" + letter + "</strong>";
-        } else {
-          // if the position is not to be highlighted
-          return letter;
-        }
-      });
+      highlightedVerb = highlightVerb(verb, ps, posPretIw);
     } else if (root[0] === "w" && ventive == true && wVerbType === "active") {
-      highlightedVerb = [...verb].map((letter, i) => {
-        if (posPretIwVentive[ps].includes(i)) {
-          // if this is a position to highlight
-          return "<strong>" + letter + "</strong>";
-        } else {
-          // if the position is not to be highlighted
-          return letter;
-        }
-      });
+      highlightedVerb = highlightVerb(verb, ps, posPretIwVentive);
     } else if (root[0] === "w" && ventive == true && wVerbType === "stative") {
-      highlightedVerb = [...verb].map((letter, i) => {
-        if (posPretIw[ps].includes(i)) {
-          // if this is a position to highlight
-          return "<strong>" + letter + "</strong>";
-        } else {
-          // if the position is not to be highlighted
-          return letter;
-        }
-      });
+      highlightedVerb = highlightVerb(verb, ps, posPretIw);
     } else if (infinitive === "babālum" && ventive === false) {
-      highlightedVerb = [...verb].map((letter, i) => {
-        if (posPretNoVentBabalum[ps].includes(i)) {
-          // if this is a position to highlight
-          return "<strong>" + letter + "</strong>";
-        } else {
-          // if the position is not to be highlighted
-          return letter;
-        }
-      });
+      highlightedVerb = highlightVerb(verb, ps, posPretNoVentBabalum);
     } else if (infinitive === "babālum" && ventive === true) {
-      highlightedVerb = [...verb].map((letter, i) => {
-        if (posPretVentBabalum[ps].includes(i)) {
-          // if this is a position to highlight
-          return "<strong>" + letter + "</strong>";
-        } else {
-          // if the position is not to be highlighted
-          return letter;
-        }
-      });
+      highlightedVerb = highlightVerb(verb, ps, posPretVentBabalum);
     } else {
       highlightedVerb = [...verb];
     }
   } else if (conjugation === "gDurative") {
     if (!root.includes("Ø") && root[0] !== "w") {
-      highlightedVerb = [...verb].map((letter, i) => {
-        if (posDur3C[ps].includes(i)) {
-          // if this is a position to highlight
-          return "<strong>" + letter + "</strong>";
-        } else {
-          // if the position is not to be highlighted
-          return letter;
-        }
-      });
+      highlightedVerb = highlightVerb(verb, ps, posDur3C);
     } else if (root[0] === "Ø") {
-      highlightedVerb = [...verb].map((letter, i) => {
-        if (posDurIweak[ps].includes(i)) {
-          // if this is a position to highlight
-          return "<strong>" + letter + "</strong>";
-        } else {
-          // if the position is not to be highlighted
-          return letter;
-        }
-      });
+      highlightedVerb = highlightVerb(verb, ps, posDurIweak);
     } else if (root[1] === "Ø") {
-      highlightedVerb = [...verb].map((letter, i) => {
-        if (posDurIIweak[ps].includes(i)) {
-          // if this is a position to highlight
-          return "<strong>" + letter + "</strong>";
-        } else {
-          // if the position is not to be highlighted
-          return letter;
-        }
-      });
+      highlightedVerb = highlightVerb(verb, ps, posDurIIweak);
     } else if (root[2] === "Ø") {
-      highlightedVerb = [...verb].map((letter, i) => {
-        if (posDurIIIweak[ps].includes(i)) {
-          // if this is a position to highlight
-          return "<strong>" + letter + "</strong>";
-        } else {
-          // if the position is not to be highlighted
-          return letter;
-        }
-      });
+      highlightedVerb = highlightVerb(verb, ps, posDurIIIweak);
     } else if (root[0] === "w") {
-      highlightedVerb = [...verb].map((letter, i) => {
-        if (posDurIw[ps].includes(i)) {
-          // if this is a position to highlight
-          return "<strong>" + letter + "</strong>";
-        } else {
-          // if the position is not to be highlighted
-          return letter;
-        }
-      });
+      highlightedVerb = highlightVerb(verb, ps, posDurIw);
+    } else {
+      highlightedVerb = [...verb];
+    }
+  } else if (conjugation === "gImperative") {
+    if (!root.includes("Ø") && root[0] !== "w") {
+      if (ventive) {
+        highlightedVerb = highlightVerb(verb, ps, posImpVent3C);
+      } else {
+        highlightedVerb = highlightVerb(verb, ps, posImpNoVent3C);
+      }
+    } else if (root[0] === "Ø") {
+      if (ventive) {
+        highlightedVerb = highlightVerb(verb, ps, posImpVentIweak);
+      } else {
+        highlightedVerb = highlightVerb(verb, ps, posImpNoVentIweak);
+      }
+    } else if (root[1] === "Ø") {
+      highlightedVerb = highlightVerb(verb, ps, posImpIInIIIweak);
+    } else if (root[2] === "Ø") {
+      highlightedVerb = highlightVerb(verb, ps, posImpIInIIIweak);
+    } else if (root[0] === "w") {
+      highlightedVerb = highlightVerb(verb, ps, posImpIw);
+    } else {
+      highlightedVerb = [...verb];
+    }
+  } else if (conjugation === "gPrecative") {
+    if (!root.includes("Ø") && root[0] !== "w") {
+      highlightedVerb = highlightVerb(verb, ps, posPrec3C);
+    } else if (root[0] === "Ø") {
+      highlightedVerb = highlightVerb(verb, ps, posPrecInIIweak);
+    } else if (root[1] === "Ø") {
+      highlightedVerb = highlightVerb(verb, ps, posPrecInIIweak);
+    } else if (root[2] === "Ø") {
+      highlightedVerb = highlightVerb(verb, ps, posPrecIIIweak);
+    } else if (root[0] === "w") {
+      if (ventive) {
+        highlightedVerb = highlightVerb(verb, ps, posPrecVentIweak);
+      } else {
+        highlightedVerb = highlightVerb(verb, ps, posPrecNoVentIweak);
+      }
     } else {
       highlightedVerb = [...verb];
     }
