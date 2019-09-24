@@ -68,6 +68,16 @@ const addVentive = ({ verb, ps, conjugation, root, infinitive }) => {
     verb = verb.slice(0, -4) + verb.slice(-3);
   }
 
+  // vowel syncope for I-w in G precative
+  if (
+    conjugation === "gPrecative" &&
+    (root[0] === "w" && lexicon[infinitive].type === "active")
+  ) {
+    if (ps === "3cs" || ps === "1cs" || ps === "1cp") {
+      verb = verb.slice(0, -4) + verb.slice(-3);
+    }
+  }
+
   return verb;
 };
 
