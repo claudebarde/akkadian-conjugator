@@ -7,8 +7,9 @@
   import Sidebar from "./Sidebar/Sidebar.svelte";
   import GPreteriteBox from "./conjugations/components/GPreteriteBox.svelte";
   import GDurativeBox from "./conjugations/components/GDurativeBox.svelte";
+  import GPrecativeBox from "./conjugations/components/GPrecativeBox.svelte";
   import VerbalAdjectiveBox from "./conjugations/components/VerbalAdjectiveBox.svelte";
-  import ImperativeBox from "./conjugations/components/ImperativeBox.svelte";
+  import GImperativeBox from "./conjugations/components/GImperativeBox.svelte";
   import settings from "./settings/settings.js";
   import highlightRoot from "./settings/highlightRoot.js";
 
@@ -116,8 +117,11 @@
         </div>
       </div>
       <div class="columns">
-        <div class="column is-one-quarter">
-          <ImperativeBox />
+        <div class="column is-3">
+          <GImperativeBox />
+        </div>
+        <div class="column is-4">
+          <GPrecativeBox />
         </div>
       </div>
       <div class="columns lastColumns">
