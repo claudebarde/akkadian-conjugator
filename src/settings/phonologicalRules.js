@@ -57,6 +57,8 @@ export const lengthenVowel = vowel => {
     return "ī";
   } else if (vowel === "u") {
     return "ū";
+  } else {
+    return vowel;
   }
 };
 

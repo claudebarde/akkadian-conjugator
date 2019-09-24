@@ -3,7 +3,10 @@
   import state from "../../state/state";
   import settings from "../../settings/settings";
   import contractLastVowels from "../../settings/contractLastVowels";
-  import { contiguousVowels } from "../../settings/phonologicalRules";
+  import {
+    contiguousVowels,
+    lengthenVowel
+  } from "../../settings/phonologicalRules";
   import highlightRoot from "../../settings/highlightRoot";
   import addVentive from "../../settings/addVentive";
 
@@ -14,7 +17,7 @@
     "1cs": "lu",
     "3mp": "li",
     "3fp": "li",
-    "1cp": "i "
+    "1cp": "i ni"
   };
 
   let verbInput = undefined;
@@ -23,55 +26,77 @@
     verbInput = $state.infinitive;
     let conjugatedVerb = {};
     let verbType = undefined;
-    let { themeVowel, root } = $state;
+    let { themeVowel, root, type } = $state;
     let thisRoot = [...root];
+    let prefixes = { ...precativePrefixes };
 
     // III-weak
     if (thisRoot[2] === "Ø") {
       thisRoot[2] = "";
       verbType = "III-weak";
     }
+    //I-n verbs
+    if (thisRoot[0] === "n") {
+      thisRoot[0] = thisRoot[1];
+    }
+    //I-a and I-e verbs and I-w verbs
+    if (thisRoot[0] === "Ø" || (thisRoot[0] === "w" && type === "stative")) {
+      thisRoot[0] = "";
+      // In verbs I–" and stative verbs I–w, in which the prefix vowel of the
+      // Preterite is long (because of the loss of the initial consonant), the vowel
+      // of the prefix in the Precative is likewise long
+      Object.keys(precativePrefixes).forEach(ps => {
+        prefixes[ps] =
+          prefixes[ps].slice(0, -1) + lengthenVowel(prefixes[ps].slice(-1));
+      });
+    } else if (thisRoot[0] === "w" && type === "active") {
+      thisRoot[0] = "";
+      prefixes["1cp"] = "i nu";
+      verbType = "I-w";
+    }
+    // II-weak verbs
+    if (thisRoot[1] === "Ø") {
+      thisRoot[1] = "";
+    }
 
     conjugatedVerb = {
       "3cs":
-        precativePrefixes["3cs"] +
-        thisRoot[0] +
-        thisRoot[1] +
-        themeVowel +
-        thisRoot[2],
+        prefixes["3cs"] + thisRoot[0] + thisRoot[1] + themeVowel + thisRoot[2],
       "1cs":
-        precativePrefixes["1cs"] +
-        thisRoot[0] +
-        thisRoot[1] +
-        themeVowel +
-        thisRoot[2],
+        prefixes["1cs"] + thisRoot[0] + thisRoot[1] + themeVowel + thisRoot[2],
       "3mp":
-        precativePrefixes["3mp"] +
+        prefixes["3mp"] +
         thisRoot[0] +
         thisRoot[1] +
         themeVowel +
         thisRoot[2] +
         "ū",
       "3fp":
-        precativePrefixes["3fp"] +
+        prefixes["3fp"] +
         thisRoot[0] +
         thisRoot[1] +
         themeVowel +
         thisRoot[2] +
         "ā",
       "1cp":
-        precativePrefixes["1cp"] +
-        "ni" +
-        thisRoot[0] +
-        thisRoot[1] +
-        themeVowel +
-        thisRoot[2]
+        prefixes["1cp"] + thisRoot[0] + thisRoot[1] + themeVowel + thisRoot[2]
     };
 
     // III-weak verbs
-    if ((verbType = "III-weak")) {
+    if (verbType === "III-weak") {
+      conjugatedVerb = contractLastVowels(conjugatedVerb);
+    }
+
+    // I-w active verbs with vowel syncope
+    if (verbType === "I-w" && type === "active") {
       Object.keys(conjugatedVerb).forEach(ps => {
-        conjugatedVerb[ps] = contractLastVowels(conjugatedVerb[ps]);
+        if (
+          conjugatedVerb[ps].slice(-1) === "ā" ||
+          conjugatedVerb[ps].slice(-1) === "ū"
+        ) {
+          conjugatedVerb[ps] =
+            conjugatedVerb[ps].slice(0, -3) + conjugatedVerb[ps].slice(-2);
+        }
       });
     }
 
