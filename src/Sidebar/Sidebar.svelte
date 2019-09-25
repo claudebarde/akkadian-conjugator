@@ -6,6 +6,17 @@
   const dispatch = createEventDispatcher();
 
   const letters = [];
+
+  const selectNewVerb = item => {
+    dispatch("selectVerb", { verb: item, details: lexicon[item] });
+    // removes all active elements
+    const els = document.getElementsByClassName("is-active");
+    while (els[0]) {
+      els[0].classList.remove("is-active");
+    }
+    // adds new active element
+    document.getElementById(item).className += " is-active";
+  };
 </script>
 
 <style>
@@ -32,21 +43,15 @@
   <aside class="menu">
     <p class="menu-label">Verbs ({Object.keys(lexicon).length})</p>
     <ul class="menu-list verbs-menu">
-      {#each Object.keys(lexicon).sort(function(a, b) {
-        return a.localeCompare(b);
-      }) as item}
+      {#each Object.keys(lexicon).sort(Intl.Collator().compare) as item}
         {#if !letters.includes(item[0].toUpperCase())}
           <span class="letter-order">
             {letters.push(item[0].toUpperCase())}
           </span>
           <p class="menu-label">{item[0].toUpperCase()}</p>
         {/if}
-        <li
-          on:click={() => dispatch('selectVerb', {
-              verb: item,
-              details: lexicon[item]
-            })}>
-          <a>{item}</a>
+        <li on:click={() => selectNewVerb(item)}>
+          <a id={item}>{item}</a>
         </li>
       {/each}
     </ul>

@@ -621,6 +621,57 @@ const lexicon = {
     I_eVerb: false,
     type: "active",
     meaning: "to add, to increase"
+  },
+  etēqum: {
+    themeVowel: "i",
+    root: ["Ø", "t", "q"],
+    verbalAdjectiveVowel: undefined,
+    class: "verb",
+    I_eVerb: true,
+    meaning: "to pass along, to advance, to avoid"
+  },
+  palāḫum: {
+    themeVowel: "a",
+    root: ["p", "l", "ḫ"],
+    verbalAdjectiveVowel: "i",
+    class: "verb",
+    meaning: "to fear, to worship, to respect"
+  },
+  petûm: {
+    themeVowel: "e",
+    root: ["p", "t", "Ø"],
+    verbalAdjectiveVowel: "i",
+    class: "verb",
+    meaning: "to open"
+  },
+  redûm: {
+    themeVowel: "e",
+    root: ["r", "d", "Ø"],
+    verbalAdjectiveVowel: "i",
+    class: "verb",
+    meaning: "to escort, to lead, to drive"
+  },
+  šaqālum: {
+    themeVowel: "u",
+    durativeVowel: "a",
+    root: ["š", "q", "l"],
+    verbalAdjectiveVowel: "i",
+    class: "verb",
+    meaning: "to weigh out, to pay"
+  },
+  takālum: {
+    themeVowel: "a",
+    root: ["t", "k", "l"],
+    verbalAdjectiveVowel: "i",
+    class: "verb",
+    meaning: "to trust"
+  },
+  tebûm: {
+    themeVowel: "e",
+    root: ["t", "b", "Ø"],
+    verbalAdjectiveVowel: "i",
+    class: "verb",
+    meaning: "to arise, to stand up, to occur"
   }
 };
 

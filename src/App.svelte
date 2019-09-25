@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-  import { fly } from "svelte/transition";
+  import { fly, fade } from "svelte/transition";
   import state from "./state/state";
 
   import Navbar from "./Navbar/Navbar.svelte";
@@ -16,6 +16,7 @@
   import lexicon from "./lexicon/lexicon.js";
 
   let verbInput = "";
+  let verbTag = false;
 
   const validateVerb = verb => {
     const entries = Object.keys(lexicon);
@@ -25,22 +26,44 @@
         infinitive: verbInput
       });
   };
+
+  const displayVerbTitle = event => {
+    const verbTitle = document.getElementById("verbTitle");
+    const verbTitlePos = verbTitle.getBoundingClientRect();
+    if (verbTitlePos.top < 0) {
+      verbTitle.style.visibility = "hidden";
+      verbTag = true;
+    } else {
+      verbTitle.style.visibility = "visible";
+      verbTag = false;
+    }
+  };
 </script>
 
 <style>
   main {
     padding: 0px 20px;
     height: 100%;
+    overflow: hidden;
   }
 
   .welcome {
     text-align: center;
-    padding-top: 50px;
+    margin-top: 50px;
   }
 
-  .verbTitle {
+  #verbTitle {
     text-align: center;
-    padding-top: 50px;
+    margin-top: 50px;
+  }
+
+  #scrolledTitle {
+    position: fixed;
+    margin-top: 10px;
+    padding: 5px 20px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    z-index: 99;
   }
 
   .tables {
@@ -54,6 +77,17 @@
 
   .conjugatorOptions {
     text-align: center;
+  }
+
+  .mainColumn {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 95vh;
+  }
+
+  .mainColumn::-webkit-scrollbar {
+    width: 0px; /* Remove scrollbar space */
+    background: transparent; /* Optional: just make scrollbar invisible */
   }
 </style>
 
@@ -74,66 +108,83 @@
       </div>
     {/if}
     <div class="column is-10">
-      {#if verbInput}
-        <div class="columns">
-          <div class="column is-6 is-offset-3 verbTitle">
-            <article class="message is-primary">
-              <div class="message-body">
-                <p>
-                  <strong>{verbInput.toUpperCase()}</strong>
-                </p>
-                <p>{lexicon[verbInput].meaning}</p>
-              </div>
-            </article>
-          </div>
+      {#if verbTag}
+        <div
+          class="has-background-grey-light"
+          id="scrolledTitle"
+          transition:fade>
+          <p>
+            <strong class="has-text-white is-size-7">
+              {verbInput.toUpperCase()}
+            </strong>
+          </p>
         </div>
-        <div class="columns">
-          <div class="column is-3 is-offset-3 conjugatorOptions">
-            <label class="checkbox">
-              <input
-                type="checkbox"
-                checked={$state.rootHighlight}
-                on:change={state.toggleRootHighlighting} />
-              Root highlighting
-            </label>
+      {/if}
+      {#if verbInput}
+        <div class="mainColumn" on:scroll={displayVerbTitle}>
+          <div class="columns">
+            <div class="column is-6 is-offset-3">
+              <article
+                class="message is-primary"
+                id="verbTitle"
+                transition:fade>
+                <div class="message-body">
+                  <p>
+                    <strong>{verbInput.toUpperCase()}</strong>
+                  </p>
+                  <p>{lexicon[verbInput].meaning}</p>
+                </div>
+              </article>
+            </div>
           </div>
-          <div class="column is-3 conjugatorOptions">
-            <label class="checkbox">
-              <input
-                type="checkbox"
-                checked={$state.ventive}
-                on:change={state.toggleVentive} />
-              Ventive
-            </label>
+          <div class="columns">
+            <div class="column is-3 is-offset-3 conjugatorOptions">
+              <label class="checkbox">
+                <input
+                  type="checkbox"
+                  checked={$state.rootHighlight}
+                  on:change={state.toggleRootHighlighting} />
+                Root highlighting
+              </label>
+            </div>
+            <div class="column is-3 conjugatorOptions">
+              <label class="checkbox">
+                <input
+                  type="checkbox"
+                  checked={$state.ventive}
+                  on:change={state.toggleVentive} />
+                Ventive
+              </label>
+            </div>
+          </div>
+          <div class="columns tables">
+            <div class="column is-two-fifths is-offset-1">
+              <GPreteriteBox />
+            </div>
+            <div class="column is-two-fifths">
+              <GDurativeBox />
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column is-two-fifths is-offset-1">
+              <GPreteriteBox vetitive={true} />
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column is-3">
+              <GImperativeBox />
+            </div>
+            <div class="column is-4">
+              <GPrecativeBox />
+            </div>
+          </div>
+          <div class="columns lastColumns">
+            <div class="column is-one-third">
+              <VerbalAdjectiveBox />
+            </div>
           </div>
         </div>
       {/if}
-      <div class="columns tables">
-        <div class="column is-two-fifths is-offset-1">
-          <GPreteriteBox />
-        </div>
-        <div class="column is-two-fifths">
-          <GDurativeBox />
-        </div>
-      </div>
-      <div class="columns">
-        <div class="column is-two-fifths is-offset-1">
-          <GPreteriteBox vetitive={true} />
-        </div>
-      </div>
-      <div class="columns">
-        <div class="column is-3">
-          <GImperativeBox />
-        </div>
-        <div class="column is-4">
-          <GPrecativeBox />
-        </div>
-      </div>
-      <div class="columns lastColumns">
-        <div class="column is-one-third">
-          <VerbalAdjectiveBox />
-        </div>
-      </div>
     </div>
   </div>
 </main>
