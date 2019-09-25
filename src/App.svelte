@@ -17,6 +17,7 @@
 
   let verbInput = "";
   let verbTag = false;
+  let verbInfo = "";
 
   const validateVerb = verb => {
     const entries = Object.keys(lexicon);
@@ -25,6 +26,12 @@
         ...lexicon[verbInput],
         infinitive: verbInput
       });
+    const { durativeVowel, themeVowel } = lexicon[verbInput];
+    if (durativeVowel) {
+      verbInfo = `( ${durativeVowel} - ${themeVowel} )`;
+    } else {
+      verbInfo = `( ${themeVowel} )`;
+    }
   };
 
   const displayVerbTitle = event => {
@@ -60,9 +67,9 @@
   #scrolledTitle {
     position: fixed;
     margin-top: 10px;
-    padding: 5px 20px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+    padding: 0px;
+    /*border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;*/
     z-index: 99;
   }
 
@@ -109,15 +116,18 @@
     {/if}
     <div class="column is-10">
       {#if verbTag}
-        <div
-          class="has-background-grey-light"
-          id="scrolledTitle"
-          transition:fade>
-          <p>
+        <div id="scrolledTitle" transition:fade>
+          <!--<p>
             <strong class="has-text-white is-size-7">
               {verbInput.toUpperCase()}
             </strong>
-          </p>
+          </p>-->
+          <div class="control">
+            <div class="tags has-addons">
+              <span class="tag is-dark">{verbInput.toUpperCase()}</span>
+              <span class="tag is-info">{verbInfo}</span>
+            </div>
+          </div>
         </div>
       {/if}
       {#if verbInput}
@@ -139,7 +149,7 @@
           </div>
           <div class="columns">
             <div class="column is-3 is-offset-3 conjugatorOptions">
-              <label class="checkbox">
+              <label class="checkbox is-size-7-mobile">
                 <input
                   type="checkbox"
                   checked={$state.rootHighlight}
@@ -148,7 +158,7 @@
               </label>
             </div>
             <div class="column is-3 conjugatorOptions">
-              <label class="checkbox">
+              <label class="checkbox is-size-7-mobile">
                 <input
                   type="checkbox"
                   checked={$state.ventive}

@@ -131,8 +131,52 @@
 {#if $state.gImperative === undefined}
   <div />
 {:else}
+  <!-- MOBILE VERSION -->
   <div
-    class="message is-primary conjugation-box"
+    class="message is-primary is-small is-hidden-tablet conjugation-box"
+    transition:fly={{ y: settings.transitionY, duration: settings.transtionDuration }}>
+    <div class="message-header">
+      <p>Imperative</p>
+    </div>
+    <div class="message-body">
+      {#each persons as ps}
+        <p>
+          <span class="conjugation-person has-text-grey-light">{ps}:</span>
+          {#if $state.rootHighlight}
+            {@html highlightRoot({
+              verb: $state.ventive
+                ? addVentive({
+                    verb: $state.gImperative[ps],
+                    ps,
+                    conjugation: 'gImperative',
+                    root: $state.root,
+                    infinitive: $state.infinitive
+                  })
+                : $state.gImperative[ps],
+              root: $state.root,
+              conjugation: 'gImperative',
+              ps,
+              infinitive: $state.infinitive,
+              ventive: $state.ventive,
+              wVerbType: $state.wVerbType
+            })}
+          {:else}
+            {@html $state.ventive ? addVentive({
+                  verb: $state.gImperative[ps],
+                  ps,
+                  conjugation: 'gImperative',
+                  root: $state.root,
+                  infinitive: $state.infinitive
+                }) : $state.gImperative[ps]}
+          {/if}
+        </p>
+      {/each}
+    </div>
+  </div>
+
+  <!-- COMPUTER VERSION -->
+  <div
+    class="message is-primary is-hidden-mobile conjugation-box"
     transition:fly={{ y: settings.transitionY, duration: settings.transtionDuration }}>
     <div class="message-header">
       <p>Imperative</p>

@@ -26,14 +26,98 @@
   }
 </style>
 
+<!-- MOBILE VERSION -->
 <div
-  class="message is-primary conjugation-box"
+  class="message is-primary is-small is-hidden-tablet conjugation-box"
   transition:fly={{ y: settings.transitionY, duration: settings.transtionDuration }}>
   <div class="message-header">
     <p>{title}</p>
   </div>
   <div class="message-body">
-    <div class="columns">
+    <div class="columns is-mobile">
+      <div class="column is-half">
+        {#each personsSing as ps}
+          <p>
+            <span class="conjugation-person has-text-grey-light">{ps}:</span>
+            {#if $state.rootHighlight}
+              {@html highlightRoot({
+                verb: $state.ventive
+                  ? addVentive({
+                      verb: verb[ps],
+                      ps,
+                      conjugation,
+                      root: $state.root,
+                      infinitive: $state.infinitive
+                    })
+                  : verb[ps],
+                root: $state.root,
+                conjugation,
+                ps,
+                infinitive: $state.infinitive,
+                ventive: $state.ventive,
+                wVerbType: $state.type,
+                vetitive
+              })}
+            {:else}
+              {@html $state.ventive ? addVentive({
+                    verb: verb[ps],
+                    ps,
+                    conjugation,
+                    root: $state.root,
+                    infinitive: $state.infinitive
+                  }) : verb[ps]}
+            {/if}
+          </p>
+        {/each}
+      </div>
+      <div class="column is-half">
+        {#each personsPlur as ps}
+          <p>
+            <span class="conjugation-person has-text-grey-light">{ps}:</span>
+            {#if $state.rootHighlight}
+              {@html highlightRoot({
+                verb: $state.ventive
+                  ? addVentive({
+                      verb: verb[ps],
+                      ps,
+                      conjugation,
+                      root: $state.root,
+                      infinitive: $state.infinitive
+                    })
+                  : verb[ps],
+                root: $state.root,
+                conjugation,
+                ps,
+                infinitive: $state.infinitive,
+                ventive: $state.ventive,
+                wVerbType: $state.type,
+                vetitive
+              })}
+            {:else}
+              {@html $state.ventive ? addVentive({
+                    verb: verb[ps],
+                    ps,
+                    conjugation,
+                    root: $state.root,
+                    infinitive: $state.infinitive
+                  }) : verb[ps]}
+            {/if}
+          </p>
+        {/each}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COMPUTER VERSION -->
+<div
+  class="message is-primary is-hidden-mobile conjugation-box"
+  transition:fly={{ y: settings.transitionY, duration: settings.transtionDuration }}>
+  <div class="message-header">
+    <p>{title}</p>
+  </div>
+  <div class="message-body">
+    <div class="columns is-mobile">
       <div class="column is-half">
         {#each personsSing as ps}
           <p>
