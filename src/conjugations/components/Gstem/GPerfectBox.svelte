@@ -17,21 +17,11 @@
 
   $: if ($state.infinitive !== verbInput) {
     verbInput = $state.infinitive;
-    let thisRoot = [...$state.root];
-    let { themeVowel, I_eVerb, type, durativeVowel, ventive } = $state;
+    let { themeVowel, I_eVerb, type, durativeVowel, ventive, root } = $state;
+    let thisRoot = [...root];
     let verbType = undefined;
     let infix = "ta";
 
-    // The vowel between R2 and R3 is the theme-vowel of the Durative
-    if (durativeVowel) themeVowel = durativeVowel;
-
-    // When the first radical of the root is d, †, s, ß, or z (but not ⇥),
-    // the infixed -t- of the Perfect is assimilated completely to that consonant
-    if (assimilatingConsonants.includes(thisRoot[0])) infix = thisRoot[0] + "a";
-
-    // PHONOLOGICAL CHANGES
-    // Verbs I–n
-    if (thisRoot[0] === "n") thisRoot[0] = "t";
     // Person Prefixes
     let {
       firstPersonPrefix,
@@ -45,6 +35,24 @@
       type,
       durative: false
     });
+
+    // The vowel between R2 and R3 is the theme-vowel of the Durative
+    if (durativeVowel) themeVowel = durativeVowel;
+
+    // When the first radical of the root is d, †, s, ß, or z (but not ⇥),
+    // the infixed -t- of the Perfect is assimilated completely to that consonant
+    if (assimilatingConsonants.includes(thisRoot[0])) infix = thisRoot[0] + "a";
+
+    // PHONOLOGICAL CHANGES
+    // Verbs I–n
+    if (thisRoot[0] === "n") thisRoot[0] = "t";
+    // Verbs III-weak
+    if (thisRoot[2] === "Ø") {
+      thisRoot[2] = "";
+      if (themeVowel === "e") {
+        infix = infix[0] + "e";
+      }
+    }
 
     conjugatedVerb = {
       "3cs":
@@ -112,13 +120,15 @@
     // When a vocalic suffix (pl -ū, -ā, 2fs -ī, the Ventive -am,
     // Subordination marker -u [§19.2]) is added, the themevowel
     // between R2 and R3 drops out
-    if (!thisRoot.includes("Ø") && ventive === false) {
+    if (!root.includes("Ø")) {
       Object.keys(conjugatedVerb).forEach(ps => {
         if (ps === "2fs" || ps === "3mp" || ps === "3fp" || ps === "2cp") {
           conjugatedVerb[ps] =
             conjugatedVerb[ps].slice(0, -3) + conjugatedVerb[ps].slice(-2);
         }
       });
+    } else if (root[2] === "Ø") {
+      conjugatedVerb = contractLastVowels(conjugatedVerb);
     }
 
     state.updateVerb({ ...state, gPerfect: conjugatedVerb });
