@@ -9,7 +9,8 @@ const blankState = {
   gPrecative: undefined,
   gVetitive: undefined,
   gVerbalAdjective: undefined,
-  gPerfect: undefined
+  gPerfect: undefined,
+  infoModal: { open: false, verb: undefined, person: undefined }
 };
 
 const store = writable(blankState);
@@ -27,6 +28,18 @@ const state = {
   },
   setVerb: newForms => {
     store.set({ ...blankState, ...newForms });
+  },
+  toggleInfoModal: () => {
+    store.update(items => ({
+      ...items,
+      infoModal: { ...items.infoModal, open: !items.infoModal.open }
+    }));
+  },
+  updateInfoModal: info => {
+    store.update(items => ({
+      ...items,
+      infoModal: { open: info.open, verb: info.verb, person: info.person }
+    }));
   }
 };
 

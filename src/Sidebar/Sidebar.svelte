@@ -1,5 +1,6 @@
 <script>
   import { createEventDispatcher } from "svelte";
+  import state from "../state/state";
 
   import lexicon from "../lexicon/lexicon.js";
 
@@ -8,14 +9,16 @@
   const letters = [];
 
   const selectNewVerb = item => {
-    dispatch("selectVerb", { verb: item, details: lexicon[item] });
-    // removes all active elements
-    const els = document.getElementsByClassName("is-active");
-    while (els[0]) {
-      els[0].classList.remove("is-active");
+    if (item !== $state.infinitive) {
+      dispatch("selectVerb", { verb: item, details: lexicon[item] });
+      // removes all active elements
+      const els = document.getElementsByClassName("is-active");
+      while (els[0]) {
+        els[0].classList.remove("is-active");
+      }
+      // adds new active element
+      document.getElementById(item).className += " is-active";
     }
-    // adds new active element
-    document.getElementById(item).className += " is-active";
   };
 </script>
 

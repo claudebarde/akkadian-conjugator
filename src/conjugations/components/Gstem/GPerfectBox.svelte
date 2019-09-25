@@ -22,6 +22,10 @@
     let verbType = undefined;
     let infix = "ta";
 
+    // IRREGULAR VERB alākum
+    // alākum behaves like a verb I–n in the Perfect
+    if (verbInput === "alākum") thisRoot[0] = "n";
+
     // Person Prefixes
     let {
       firstPersonPrefix,
@@ -42,6 +46,10 @@
     // When the first radical of the root is d, †, s, ß, or z (but not ⇥),
     // the infixed -t- of the Perfect is assimilated completely to that consonant
     if (assimilatingConsonants.includes(thisRoot[0])) infix = thisRoot[0] + "a";
+    // I-a and I-e verbs
+    if (themeVowel === "e" || I_eVerb) {
+      infix = infix[0] + "e";
+    }
 
     // PHONOLOGICAL CHANGES
     // Verbs I–n
@@ -49,9 +57,10 @@
     // Verbs III-weak
     if (thisRoot[2] === "Ø") {
       thisRoot[2] = "";
-      if (themeVowel === "e") {
-        infix = infix[0] + "e";
-      }
+    }
+    // I-weak verbs
+    if (thisRoot[0] === "Ø") {
+      thisRoot[0] = "";
     }
 
     conjugatedVerb = {
@@ -120,7 +129,7 @@
     // When a vocalic suffix (pl -ū, -ā, 2fs -ī, the Ventive -am,
     // Subordination marker -u [§19.2]) is added, the themevowel
     // between R2 and R3 drops out
-    if (!root.includes("Ø")) {
+    if (!root.includes("Ø") || root[0] === "Ø") {
       Object.keys(conjugatedVerb).forEach(ps => {
         if (ps === "2fs" || ps === "3mp" || ps === "3fp" || ps === "2cp") {
           conjugatedVerb[ps] =

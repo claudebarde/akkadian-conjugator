@@ -13,6 +13,10 @@
 
   const personsSing = ["3cs", "2ms", "2fs", "1cs"];
   const personsPlur = ["3mp", "3fp", "2cp", "1cp"];
+
+  const displayInfo = (verb, person) => {
+    state.updateInfoModal({ open: true, verb, person });
+  };
 </script>
 
 <style>
@@ -37,7 +41,7 @@
     <div class="columns is-mobile">
       <div class="column is-half">
         {#each personsSing as ps}
-          <p>
+          <p style="cursor:pointer;" on:click={() => displayInfo(verb[ps], ps)}>
             <span class="conjugation-person has-text-grey-light">{ps}:</span>
             {#if $state.rootHighlight}
               {@html highlightRoot({
@@ -72,7 +76,7 @@
       </div>
       <div class="column is-half">
         {#each personsPlur as ps}
-          <p>
+          <p style="cursor:pointer;" on:click={() => displayInfo(verb[ps], ps)}>
             <span class="conjugation-person has-text-grey-light">{ps}:</span>
             {#if $state.rootHighlight}
               {@html highlightRoot({
@@ -120,7 +124,7 @@
     <div class="columns is-mobile">
       <div class="column is-half">
         {#each personsSing as ps}
-          <p>
+          <p style="cursor:pointer;" on:click={() => displayInfo(verb[ps], ps)}>
             <span class="conjugation-person has-text-grey-light">{ps}:</span>
             {#if $state.rootHighlight}
               {@html highlightRoot({
@@ -155,7 +159,7 @@
       </div>
       <div class="column is-half">
         {#each personsPlur as ps}
-          <p>
+          <p style="cursor:pointer;" on:click={() => displayInfo(verb[ps], ps)}>
             <span class="conjugation-person has-text-grey-light">{ps}:</span>
             {#if $state.rootHighlight}
               {@html highlightRoot({

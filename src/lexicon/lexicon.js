@@ -672,6 +672,20 @@ const lexicon = {
     verbalAdjectiveVowel: "i",
     class: "verb",
     meaning: "to arise, to stand up, to occur"
+  },
+  kalûm: {
+    themeVowel: "a",
+    root: ["k", "l", "Ø"],
+    verbalAdjectiveVowel: undefined,
+    meaning: "to detain, to delay, to prevent"
+  },
+  paṭārum: {
+    themeVowel: "u",
+    durativeVowel: "a",
+    root: ["m", "q", "t"],
+    verbalAdjectiveVowel: "i",
+    class: "verb",
+    meaning: "to loosen, to remove, to end"
   }
 };
 

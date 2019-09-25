@@ -11,9 +11,10 @@
   import VerbalAdjectiveBox from "./conjugations/components/VerbalAdjectiveBox.svelte";
   import GImperativeBox from "./conjugations/components/Gstem/GImperativeBox.svelte";
   import GPerfectBox from "./conjugations/components/Gstem/GPerfectBox.svelte";
+  import InfoModal from "./conjugations/components/InfoModal.svelte";
+
   import settings from "./settings/settings.js";
   import highlightRoot from "./settings/highlightRoot.js";
-
   import lexicon from "./lexicon/lexicon.js";
 
   let verbInput = "";
@@ -202,3 +203,4 @@
     </div>
   </div>
 </main>
+<InfoModal />
