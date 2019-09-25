@@ -1,8 +1,10 @@
 <script>
+  import { fade } from "svelte/transition";
   import state from "../../state/state";
   import {
     allFlavorsOfVowels,
-    contiguousVowels
+    contiguousVowels,
+    lengthenVowel
   } from "../../settings/phonologicalRules";
 
   const personsSing = ["1cs", "2ms", "2fs", "3ms", "3fs"];
@@ -43,7 +45,6 @@
         if (allFlavorsOfVowels.includes(verb[verb.length - 1])) {
           // if vowel at the end of the verb
           const vowel = contiguousVowels(verb[verb.length - 1], "a");
-          console.log(vowel);
           verb = verb.slice(0, -1);
           suffix = vowel + suffix.slice(1);
         }
@@ -59,6 +60,24 @@
 
       return verb + "<strong>" + suffix + "</strong>";
     } else {
+      // When any of the suffixes, except the 1cs forms, is added directly to
+      // a form of a III–weak verb ending in a short vowel, that vowel is lengthened
+      if ($state.root[2] === "Ø") {
+        if (allFlavorsOfVowels.includes(verb[verb.length - 1])) {
+          verb = verb.slice(0, -1) + lengthenVowel(verb.slice(-1));
+        }
+      }
+      // The third person forms of both sets of suffixes are subject to the
+      // same changes as their genitive counterparts: final d, t, ṭ, s, ṣ, z, š, plus the
+      // š of the suffix change to -ss-,
+      if (
+        ["d", "t", "ṭ", "s", "ṣ", "z", "š"].includes(verb.slice(-1)) &&
+        suffix[0] === "š"
+      ) {
+        verb = verb.slice(0, -1) + "s";
+        suffix = "s" + suffix.slice(1);
+      }
+
       return verb + "<strong>" + suffix + "</strong>";
     }
   };
@@ -75,105 +94,109 @@
   }
 </style>
 
-<!-- MOBILE VERSION -->
-<div
-  class={`modal is-size-7-tablet is-hidden-tablet ${$state.infoModal.open ? 'is-active' : ''}`}>
-  <div class="modal-background" />
-  <div class="modal-content" style="overflow:hidden">
-    <article class="message is-info is-small">
-      <div class="message-header">
-        <p>Object Pronominal Suffixes</p>
-        <button
-          class="delete"
-          aria-label="delete"
-          on:click={state.toggleInfoModal} />
-      </div>
-      <div class="message-body" style="height:90%;overflow:auto;">
-        <table class="table">
-          <thead>
-            <tr>
-              <th />
-              <th>Accusative</th>
-              <th>Dative</th>
-            </tr>
-          </thead>
-          <tbody>
-            {#each personsSing as ps}
+{#if $state.infoModal.open}
+  <!-- MOBILE VERSION -->
+  <div
+    class="modal is-size-7-tablet is-hidden-tablet is-active"
+    ransition:fade={{ duration: 100 }}>
+    <div class="modal-background" />
+    <div class="modal-content" style="overflow:hidden">
+      <article class="message is-info is-small">
+        <div class="message-header">
+          <p>Object Pronominal Suffixes</p>
+          <button
+            class="delete"
+            aria-label="delete"
+            on:click={state.toggleInfoModal} />
+        </div>
+        <div class="message-body" style="height:90%;overflow:auto;">
+          <table class="table">
+            <thead>
               <tr>
-                <td>{ps}</td>
-                <td>
-                  {@html mergeSuffix($state.infoModal.verb, verb.accusative[ps], ps)}
-                </td>
-                <td>
-                  {@html mergeSuffix($state.infoModal.verb, verb.dative[ps], ps)}
-                </td>
+                <th />
+                <th>Accusative</th>
+                <th>Dative</th>
               </tr>
-            {/each}
-            {#each personsPlur as ps}
-              <tr>
-                <td>{ps}</td>
-                <td>
-                  {@html mergeSuffix($state.infoModal.verb, verb.accusative[ps], ps)}
-                </td>
-                <td>
-                  {@html mergeSuffix($state.infoModal.verb, verb.dative[ps], ps)}
-                </td>
-              </tr>
-            {/each}
-          </tbody>
-        </table>
-      </div>
-    </article>
+            </thead>
+            <tbody>
+              {#each personsSing as ps}
+                <tr>
+                  <td>{ps}</td>
+                  <td>
+                    {@html mergeSuffix($state.infoModal.verb, verb.accusative[ps], ps)}
+                  </td>
+                  <td>
+                    {@html mergeSuffix($state.infoModal.verb, verb.dative[ps], ps)}
+                  </td>
+                </tr>
+              {/each}
+              {#each personsPlur as ps}
+                <tr>
+                  <td>{ps}</td>
+                  <td>
+                    {@html mergeSuffix($state.infoModal.verb, verb.accusative[ps], ps)}
+                  </td>
+                  <td>
+                    {@html mergeSuffix($state.infoModal.verb, verb.dative[ps], ps)}
+                  </td>
+                </tr>
+              {/each}
+            </tbody>
+          </table>
+        </div>
+      </article>
+    </div>
   </div>
-</div>
-<!-- COMPUTER VERSION -->
-<div
-  class={`modal is-hidden-mobile ${$state.infoModal.open ? 'is-active' : ''}`}>
-  <div class="modal-background" />
-  <div class="modal-content">
-    <article class="message is-info">
-      <div class="message-header">
-        <p>Object Pronominal Suffixes</p>
-        <button
-          class="delete"
-          aria-label="delete"
-          on:click={state.toggleInfoModal} />
-      </div>
-      <div class="message-body">
-        <table class="table">
-          <thead>
-            <tr>
-              <th />
-              <th>Accusative</th>
-              <th>Dative</th>
-            </tr>
-          </thead>
-          <tbody>
-            {#each personsSing as ps}
+  <!-- COMPUTER VERSION -->
+  <div
+    class="modal is-hidden-mobile is-active"
+    transition:fade={{ duration: 100 }}>
+    <div class="modal-background" />
+    <div class="modal-content">
+      <article class="message is-info">
+        <div class="message-header">
+          <p>Object Pronominal Suffixes</p>
+          <button
+            class="delete"
+            aria-label="delete"
+            on:click={state.toggleInfoModal} />
+        </div>
+        <div class="message-body">
+          <table class="table">
+            <thead>
               <tr>
-                <td>{ps}</td>
-                <td>
-                  {@html mergeSuffix($state.infoModal.verb, verb.accusative[ps], ps)}
-                </td>
-                <td>
-                  {@html mergeSuffix($state.infoModal.verb, verb.dative[ps], ps)}
-                </td>
+                <th />
+                <th>Accusative</th>
+                <th>Dative</th>
               </tr>
-            {/each}
-            {#each personsPlur as ps}
-              <tr>
-                <td>{ps}</td>
-                <td>
-                  {@html mergeSuffix($state.infoModal.verb, verb.accusative[ps], ps)}
-                </td>
-                <td>
-                  {@html mergeSuffix($state.infoModal.verb, verb.dative[ps], ps)}
-                </td>
-              </tr>
-            {/each}
-          </tbody>
-        </table>
-      </div>
-    </article>
+            </thead>
+            <tbody>
+              {#each personsSing as ps}
+                <tr>
+                  <td>{ps}</td>
+                  <td>
+                    {@html mergeSuffix($state.infoModal.verb, verb.accusative[ps], ps)}
+                  </td>
+                  <td>
+                    {@html mergeSuffix($state.infoModal.verb, verb.dative[ps], ps)}
+                  </td>
+                </tr>
+              {/each}
+              {#each personsPlur as ps}
+                <tr>
+                  <td>{ps}</td>
+                  <td>
+                    {@html mergeSuffix($state.infoModal.verb, verb.accusative[ps], ps)}
+                  </td>
+                  <td>
+                    {@html mergeSuffix($state.infoModal.verb, verb.dative[ps], ps)}
+                  </td>
+                </tr>
+              {/each}
+            </tbody>
+          </table>
+        </div>
+      </article>
+    </div>
   </div>
-</div>
+{/if}

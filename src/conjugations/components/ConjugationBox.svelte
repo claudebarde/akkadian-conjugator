@@ -17,6 +17,41 @@
   const displayInfo = (verb, person) => {
     state.updateInfoModal({ open: true, verb, person });
   };
+
+  const insertVerb = (verb, ps) => {
+    return highlightRoot({
+      verb: $state.ventive
+        ? addVentive({
+            verb,
+            ps,
+            conjugation,
+            root: $state.root,
+            infinitive: $state.infinitive
+          })
+        : verb,
+      root: $state.root,
+      conjugation,
+      ps,
+      infinitive: $state.infinitive,
+      ventive: $state.ventive,
+      wVerbType: $state.type,
+      vetitive
+    });
+  };
+
+  const insertVentive = (verb, ps) => {
+    if ($state.ventive) {
+      return addVentive({
+        verb,
+        ps,
+        conjugation,
+        root: $state.root,
+        infinitive: $state.infinitive
+      });
+    } else {
+      return verb;
+    }
+  };
 </script>
 
 <style>
@@ -41,70 +76,28 @@
     <div class="columns is-mobile">
       <div class="column is-half">
         {#each personsSing as ps}
-          <p style="cursor:pointer;" on:click={() => displayInfo(verb[ps], ps)}>
+          <p
+            style="cursor:pointer;"
+            on:click={() => displayInfo(insertVentive(verb[ps], ps), ps)}>
             <span class="conjugation-person has-text-grey-light">{ps}:</span>
             {#if $state.rootHighlight}
-              {@html highlightRoot({
-                verb: $state.ventive
-                  ? addVentive({
-                      verb: verb[ps],
-                      ps,
-                      conjugation,
-                      root: $state.root,
-                      infinitive: $state.infinitive
-                    })
-                  : verb[ps],
-                root: $state.root,
-                conjugation,
-                ps,
-                infinitive: $state.infinitive,
-                ventive: $state.ventive,
-                wVerbType: $state.type,
-                vetitive
-              })}
+              {@html insertVerb(verb[ps], ps)}
             {:else}
-              {@html $state.ventive ? addVentive({
-                    verb: verb[ps],
-                    ps,
-                    conjugation,
-                    root: $state.root,
-                    infinitive: $state.infinitive
-                  }) : verb[ps]}
+              {@html insertVentive(verb[ps], ps)}
             {/if}
           </p>
         {/each}
       </div>
       <div class="column is-half">
         {#each personsPlur as ps}
-          <p style="cursor:pointer;" on:click={() => displayInfo(verb[ps], ps)}>
+          <p
+            style="cursor:pointer;"
+            on:click={() => displayInfo(insertVentive(verb[ps], ps), ps)}>
             <span class="conjugation-person has-text-grey-light">{ps}:</span>
             {#if $state.rootHighlight}
-              {@html highlightRoot({
-                verb: $state.ventive
-                  ? addVentive({
-                      verb: verb[ps],
-                      ps,
-                      conjugation,
-                      root: $state.root,
-                      infinitive: $state.infinitive
-                    })
-                  : verb[ps],
-                root: $state.root,
-                conjugation,
-                ps,
-                infinitive: $state.infinitive,
-                ventive: $state.ventive,
-                wVerbType: $state.type,
-                vetitive
-              })}
+              {@html insertVerb(verb[ps], ps)}
             {:else}
-              {@html $state.ventive ? addVentive({
-                    verb: verb[ps],
-                    ps,
-                    conjugation,
-                    root: $state.root,
-                    infinitive: $state.infinitive
-                  }) : verb[ps]}
+              {@html insertVentive(verb[ps], ps)}
             {/if}
           </p>
         {/each}
@@ -124,70 +117,28 @@
     <div class="columns is-mobile">
       <div class="column is-half">
         {#each personsSing as ps}
-          <p style="cursor:pointer;" on:click={() => displayInfo(verb[ps], ps)}>
+          <p
+            style="cursor:pointer;"
+            on:click={() => displayInfo(insertVentive(verb[ps], ps), ps)}>
             <span class="conjugation-person has-text-grey-light">{ps}:</span>
             {#if $state.rootHighlight}
-              {@html highlightRoot({
-                verb: $state.ventive
-                  ? addVentive({
-                      verb: verb[ps],
-                      ps,
-                      conjugation,
-                      root: $state.root,
-                      infinitive: $state.infinitive
-                    })
-                  : verb[ps],
-                root: $state.root,
-                conjugation,
-                ps,
-                infinitive: $state.infinitive,
-                ventive: $state.ventive,
-                wVerbType: $state.type,
-                vetitive
-              })}
+              {@html insertVerb(verb[ps], ps)}
             {:else}
-              {@html $state.ventive ? addVentive({
-                    verb: verb[ps],
-                    ps,
-                    conjugation,
-                    root: $state.root,
-                    infinitive: $state.infinitive
-                  }) : verb[ps]}
+              {@html insertVentive(verb[ps], ps)}
             {/if}
           </p>
         {/each}
       </div>
       <div class="column is-half">
         {#each personsPlur as ps}
-          <p style="cursor:pointer;" on:click={() => displayInfo(verb[ps], ps)}>
+          <p
+            style="cursor:pointer;"
+            on:click={() => displayInfo(insertVentive(verb[ps], ps), ps)}>
             <span class="conjugation-person has-text-grey-light">{ps}:</span>
             {#if $state.rootHighlight}
-              {@html highlightRoot({
-                verb: $state.ventive
-                  ? addVentive({
-                      verb: verb[ps],
-                      ps,
-                      conjugation,
-                      root: $state.root,
-                      infinitive: $state.infinitive
-                    })
-                  : verb[ps],
-                root: $state.root,
-                conjugation,
-                ps,
-                infinitive: $state.infinitive,
-                ventive: $state.ventive,
-                wVerbType: $state.type,
-                vetitive
-              })}
+              {@html insertVerb(verb[ps], ps)}
             {:else}
-              {@html $state.ventive ? addVentive({
-                    verb: verb[ps],
-                    ps,
-                    conjugation,
-                    root: $state.root,
-                    infinitive: $state.infinitive
-                  }) : verb[ps]}
+              {@html insertVentive(verb[ps], ps)}
             {/if}
           </p>
         {/each}
