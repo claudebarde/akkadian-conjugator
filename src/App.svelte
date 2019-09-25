@@ -10,6 +10,7 @@
   import GPrecativeBox from "./conjugations/components/Gstem/GPrecativeBox.svelte";
   import VerbalAdjectiveBox from "./conjugations/components/VerbalAdjectiveBox.svelte";
   import GImperativeBox from "./conjugations/components/Gstem/GImperativeBox.svelte";
+  import GPerfectBox from "./conjugations/components/Gstem/GPerfectBox.svelte";
   import settings from "./settings/settings.js";
   import highlightRoot from "./settings/highlightRoot.js";
 
@@ -22,7 +23,7 @@
   const validateVerb = verb => {
     const entries = Object.keys(lexicon);
     if (entries.includes(verbInput))
-      state.updateVerb({
+      state.setVerb({
         ...lexicon[verbInput],
         infinitive: verbInput
       });
@@ -177,6 +178,9 @@
           </div>
           <div class="columns">
             <div class="column is-two-fifths is-offset-1">
+              <GPerfectBox />
+            </div>
+            <div class="column is-two-fifths">
               <GPreteriteBox vetitive={true} />
             </div>
           </div>

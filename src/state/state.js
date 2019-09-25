@@ -1,6 +1,6 @@
 import { writable } from "svelte/store";
 
-const store = writable({
+const blankState = {
   rootHighlight: true,
   ventive: false,
   gPreterite: undefined,
@@ -8,8 +8,11 @@ const store = writable({
   gImperative: undefined,
   gPrecative: undefined,
   gVetitive: undefined,
-  gVerbalAdjective: undefined
-});
+  gVerbalAdjective: undefined,
+  gPerfect: undefined
+};
+
+const store = writable(blankState);
 
 const state = {
   subscribe: store.subscribe,
@@ -21,6 +24,9 @@ const state = {
   },
   updateVerb: newForms => {
     store.update(items => ({ ...items, ...newForms }));
+  },
+  setVerb: newForms => {
+    store.set({ ...blankState, ...newForms });
   }
 };
 

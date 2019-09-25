@@ -78,6 +78,13 @@ const addVentive = ({ verb, ps, conjugation, root, infinitive }) => {
     }
   }
 
+  // vowel syncope for sound verbs in perfect
+  if (conjugation === "gPerfect" && !root.includes("Ø")) {
+    if (ps === "3cs" || ps === "2ms" || ps === "1cs" || ps === "1cp") {
+      verb = verb.slice(0, -4) + verb.slice(-3);
+    }
+  }
+
   return verb;
 };
 
