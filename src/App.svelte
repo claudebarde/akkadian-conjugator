@@ -98,7 +98,12 @@
   }
 </style>
 
-<Navbar />
+<Navbar
+  on:selectVerb={event => {
+    const verb = event.detail;
+    verbInput = verb.verb;
+    validateVerb(verb);
+  }} />
 <main>
   <div class="columns">
     <div class="column is-hidden-mobile is-2">
@@ -117,11 +122,6 @@
     <div class="column is-10">
       {#if verbTag}
         <div id="scrolledTitle" transition:fade>
-          <!--<p>
-            <strong class="has-text-white is-size-7">
-              {verbInput.toUpperCase()}
-            </strong>
-          </p>-->
           <div class="control">
             <div class="tags has-addons">
               <span class="tag is-dark">{verbInput.toUpperCase()}</span>

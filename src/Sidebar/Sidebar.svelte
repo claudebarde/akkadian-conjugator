@@ -37,6 +37,10 @@
   .letter-order {
     display: none;
   }
+
+  .menuItem {
+    margin: 0px 10px;
+  }
 </style>
 
 <div class="mainMenu">
@@ -50,7 +54,7 @@
           </span>
           <p class="menu-label">{item[0].toUpperCase()}</p>
         {/if}
-        <li on:click={() => selectNewVerb(item)}>
+        <li on:click={() => selectNewVerb(item)} class="menuItem">
           <a id={item}>{item}</a>
         </li>
       {/each}
