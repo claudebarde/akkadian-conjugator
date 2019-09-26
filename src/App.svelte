@@ -52,7 +52,7 @@
 
   onMount(() => {
     // get verb from URL
-    const url = window.location;
+    const url = window.location; // ?v=šarākum
     const urlObject = new URL(url);
     const v = urlObject.searchParams.get("v");
     // we display verb if exists

@@ -5,6 +5,7 @@
   import gPreteritePrefixes from "../../selectPrefixes";
   import contractLastVowels from "../../../settings/contractLastVowels";
   import addVentive from "../../../settings/addVentive";
+  import { lengthenVowel } from "../../../settings/phonologicalRules";
 
   const vowel_2fs = "ī";
   const vowel_3mp = "ū";
@@ -18,6 +19,7 @@
   $: if ($state.infinitive !== verbInput) {
     verbInput = $state.infinitive;
     let { themeVowel, I_eVerb, type, durativeVowel, ventive, root } = $state;
+    let originalThemeVowel = themeVowel;
     let thisRoot = [...root];
     let verbType = undefined;
     let infix = "ta";
@@ -25,6 +27,9 @@
     // IRREGULAR VERB alākum
     // alākum behaves like a verb I–n in the Perfect
     if (verbInput === "alākum") thisRoot[0] = "n";
+    // The verb babålum exhibits two Perfect conjugations, one like that of other
+    // active verbs I–w and one with a single -t-:
+    if (verbInput === "babālum") thisRoot[0] = "t";
 
     // Person Prefixes
     let {
@@ -37,7 +42,7 @@
       themeVowel,
       I_eVerb,
       type,
-      durative: false
+      durative: thisRoot[1] === "Ø" ? true : false
     });
 
     // The vowel between R2 and R3 is the theme-vowel of the Durative
@@ -61,6 +66,27 @@
     // I-weak verbs
     if (thisRoot[0] === "Ø") {
       thisRoot[0] = "";
+    }
+    // II-weak verbs
+    if (thisRoot[1] === "Ø") {
+      thisRoot[1] = "";
+      infix = "t";
+      themeVowel = lengthenVowel(originalThemeVowel);
+    }
+    // I-w verbs
+    if (thisRoot[0] === "w") {
+      if (type === "stative") {
+        thisRoot[0] = "";
+      } else if (type === "active") {
+        thisRoot[0] = "t";
+        // Active verbs I–w in the Perfect do not have as their prefix vowel u-,
+        // tu-, nu-, as might be expected from the Preterite and Durative forms, but
+        // rather i-, ta-, etc
+        firstPersonPrefix = "a";
+        secondPersonPrefix = "ta";
+        thirdPersonPrefix = "i";
+        firstPersonPluralPrefix = "ni";
+      }
     }
 
     conjugatedVerb = {
