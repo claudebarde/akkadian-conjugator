@@ -7,7 +7,8 @@
   import {
     contiguousVowels,
     allFlavorsOfVowels,
-    shortenVowel
+    shortenVowel,
+    lengthenVowel
   } from "../../../settings/phonologicalRules";
 
   const vowel_2fs = "ī";
@@ -55,6 +56,7 @@
     if (thisRoot[1] === "Ø") {
       // we remove the missing radical
       thisRoot[1] = "";
+      themeVowel = lengthenVowel(themeVowel);
       if (verbInput[1] === "i") {
         // these verbs come from the contraction of "-ay-"
         // they show special behavior in durative
@@ -143,38 +145,36 @@
     };
 
     // Verbs III-weak
-    if (thisRoot[2] === "") {
+    if (root[2] === "Ø") {
       // we contract the last 2 consecutive vowels
       conjugatedVerb = contractLastVowels(conjugatedVerb);
     }
 
     //Verbs II-weak
-    if (thisRoot[1] === "") {
+    if (root[1] === "Ø") {
       // When a vocalic ending does follow, the base of each type has a
       // short vowel, the short version of the long vowel of the Preterite,
       // and a doubled final radical
       Object.keys(conjugatedVerb).forEach(ps => {
         let verb = conjugatedVerb[ps];
 
-        if (allFlavorsOfVowels.includes(verb[verb.length - 1])) {
-          let newVerb =
-            verb.slice(0, -3) +
-            shortenVowel(originalThemeVowel) +
-            thisRoot[2] +
-            thisRoot[2] +
-            verb.slice(-1);
-
-          if (verbInput[1] === "i") {
-            newVerb =
-              newVerb.slice(0, -5) +
-              shortenVowel(
-                contiguousVowels(newVerb.slice(-5, -4), newVerb.slice(-4, -3))
-              ) +
-              newVerb.slice(-3);
-
-            conjugatedVerb[ps] = newVerb;
+        if (allFlavorsOfVowels.includes(verb.slice(-1))) {
+          if (verb[0] === "i") {
+            conjugatedVerb[ps] =
+              "i" +
+              root[0] +
+              originalThemeVowel +
+              root[2] +
+              root[2] +
+              verb.slice(-1);
           } else {
-            conjugatedVerb[ps] = newVerb;
+            conjugatedVerb[ps] =
+              verb.slice(0, 2) +
+              root[0] +
+              originalThemeVowel +
+              root[2] +
+              root[2] +
+              verb.slice(-1);
           }
         }
       });

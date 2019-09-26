@@ -5,6 +5,7 @@
   import gPreteritePrefixes from "../../selectPrefixes";
   import contractLastVowels from "../../../settings/contractLastVowels";
   import addVentive from "../../../settings/addVentive";
+  import { lengthenVowel } from "../../../settings/phonologicalRules";
 
   export let vetitive = false;
 
@@ -74,6 +75,7 @@
       else if (thisRoot[1] === "Ø") {
         // we remove the missing radical
         thisRoot[1] = "";
+        themeVowel = lengthenVowel(themeVowel);
       }
       // Verbs III-weak
       else if (thisRoot[2] === "Ø") {

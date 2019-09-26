@@ -21,6 +21,8 @@
       adjectiveForms = ["išarum", "išartum", "išar-"]; // ešērum => išarum
     } else if (verbInput === "edēšum") {
       adjectiveForms = ["eššum", "eššetum", "ešš-"];
+    } else if (verbInput === "palāšum") {
+      adjectiveForms = ["pilšum", "pilištum", "piliš-"];
     } else {
       let {
         root,

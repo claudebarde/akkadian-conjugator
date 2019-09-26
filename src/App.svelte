@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-  import { fly, fade } from "svelte/transition";
+  import { fade } from "svelte/transition";
   import state from "./state/state";
 
   import Navbar from "./Navbar/Navbar.svelte";
@@ -23,16 +23,18 @@
 
   const validateVerb = verb => {
     const entries = Object.keys(lexicon);
-    if (entries.includes(verbInput))
+    verbInput = verb.verb;
+    if (entries.includes(verbInput)) {
       state.setVerb({
         ...lexicon[verbInput],
         infinitive: verbInput
       });
-    const { durativeVowel, themeVowel } = lexicon[verbInput];
-    if (durativeVowel) {
-      verbInfo = `( ${durativeVowel} - ${themeVowel} )`;
-    } else {
-      verbInfo = `( ${themeVowel} )`;
+      const { durativeVowel, themeVowel } = lexicon[verbInput];
+      if (durativeVowel) {
+        verbInfo = `( ${durativeVowel} - ${themeVowel} )`;
+      } else {
+        verbInfo = `( ${themeVowel} )`;
+      }
     }
   };
 
@@ -47,6 +49,18 @@
       verbTag = false;
     }
   };
+
+  onMount(() => {
+    // get verb from URL
+    const url = window.location;
+    const urlObject = new URL(url);
+    const v = urlObject.searchParams.get("v");
+    // we display verb if exists
+    const entries = Object.keys(lexicon);
+    if (entries.includes(v)) {
+      validateVerb({ verb: v });
+    }
+  });
 </script>
 
 <style>
@@ -72,7 +86,7 @@
     padding: 0px;
     /*border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;*/
-    z-index: 99;
+    z-index: 20;
   }
 
   .tables {
@@ -103,7 +117,6 @@
 <Navbar
   on:selectVerb={event => {
     const verb = event.detail;
-    verbInput = verb.verb;
     validateVerb(verb);
   }} />
 <main>
@@ -112,7 +125,6 @@
       <Sidebar
         on:selectVerb={event => {
           const verb = event.detail;
-          verbInput = verb.verb;
           validateVerb(verb);
         }} />
     </div>

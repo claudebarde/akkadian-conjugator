@@ -286,7 +286,7 @@ const lexicon = {
     meaning: "to do"
   },
   kânum: {
-    themeVowel: "ū",
+    themeVowel: "u",
     durativeVowel: "a",
     root: ["k", "Ø", "n"],
     verbalAdjectiveVowel: "ī",
@@ -294,24 +294,25 @@ const lexicon = {
     meaning: "to be true, honest, correct"
   },
   qiāšum: {
-    themeVowel: "ī",
+    themeVowel: "i",
     root: ["q", "Ø", "š"],
     verbalAdjectiveVowel: "ī",
     class: "verb",
     meaning: "to give, to bestow, to grant"
   },
   šâmum: {
-    themeVowel: "ā",
+    themeVowel: "a",
     root: ["š", "Ø", "m"],
     verbalAdjectiveVowel: "ā",
     class: "verb",
     meaning: "to buy, to purchase"
   },
   nêrum: {
-    themeVowel: "ē",
+    themeVowel: "e",
     root: ["n", "Ø", "r"],
     verbalAdjectiveVowel: "ē",
     class: "verb",
+    I_eVerb: true,
     meaning: "to kill, to slay, to defeat"
   },
   agārum: {
@@ -331,7 +332,7 @@ const lexicon = {
     meaning: "to be weak, powerless"
   },
   miādum: {
-    themeVowel: "ī",
+    themeVowel: "i",
     root: ["m", "Ø", "d"],
     verbalAdjectiveVowel: "ā",
     class: "verb",
@@ -345,7 +346,7 @@ const lexicon = {
     meaning: "to drink"
   },
   târum: {
-    themeVowel: "ū",
+    themeVowel: "u",
     durativeVowel: "a",
     root: ["t", "Ø", "r"],
     verbalAdjectiveVowel: "ā",
@@ -353,7 +354,7 @@ const lexicon = {
     meaning: "to return, to come back"
   },
   ṭiābum: {
-    themeVowel: "ī",
+    themeVowel: "i",
     root: ["ṭ", "Ø", "b"],
     verbalAdjectiveVowel: "ā",
     class: "adjective",
@@ -412,14 +413,14 @@ const lexicon = {
     meaning: "to become old, to last, to endure"
   },
   mâtum: {
-    themeVowel: "ū",
+    themeVowel: "u",
     root: ["m", "Ø", "t"],
     verbalAdjectiveVowel: "ī",
     class: "verb",
     meaning: "to die"
   },
   šiābum: {
-    themeVowel: "ī",
+    themeVowel: "i",
     root: ["š", "Ø", "b"],
     verbalAdjectiveVowel: "ī",
     class: "adjective",
@@ -530,7 +531,7 @@ const lexicon = {
     meaning: "to swear, to take an oath"
   },
   zâzum: {
-    themeVowel: "ū",
+    themeVowel: "u",
     root: ["z", "Ø", "z"],
     verbalAdjectiveVowel: "ī",
     class: "verb",
@@ -545,14 +546,14 @@ const lexicon = {
     meaning: "to answer, to reply, to pay"
   },
   dâkum: {
-    themeVowel: "ū",
+    themeVowel: "u",
     root: ["d", "Ø", "k"],
     verbalAdjectiveVowel: undefined,
     class: "verb",
     meaning: "to kill, to execute, to defeat"
   },
   diānum: {
-    themeVowel: "ī",
+    themeVowel: "i",
     root: ["d", "Ø", "n"],
     verbalAdjectiveVowel: "ī",
     class: "verb",
@@ -686,6 +687,61 @@ const lexicon = {
     verbalAdjectiveVowel: "i",
     class: "verb",
     meaning: "to loosen, to remove, to end"
+  },
+  baqārum: {
+    themeVowel: "u",
+    durativeVowel: "a",
+    root: ["b", "q", "r"],
+    verbalAdjectiveVowel: undefined,
+    class: "verb",
+    meaning: "to claim, to contest"
+  },
+  kabātum: {
+    themeVowel: "i",
+    root: ["k", "b", "t"],
+    verbalAdjectiveVowel: "i",
+    class: "adjective",
+    meaning: "to become heavy, fat, important, difficult"
+  },
+  nasāqum: {
+    themeVowel: "u",
+    durativeVowel: "a",
+    root: ["n", "s", "q"],
+    verbalAdjectiveVowel: "i",
+    class: "verb",
+    meaning: "to choose, to select"
+  },
+  palāšum: {
+    themeVowel: "u",
+    durativeVowel: "a",
+    root: ["p", "l", "š"],
+    verbalAdjectiveVowel: "i",
+    class: "verb",
+    meaning: "to pierce, to break throughš"
+  },
+  riābum: {
+    themeVowel: "i",
+    durativeVowel: "a",
+    root: ["r", "Ø", "b"],
+    verbalAdjectiveVowel: "ī",
+    class: "verb",
+    meaning: "to replace, to give back"
+  },
+  šarākum: {
+    themeVowel: "u",
+    durativeVowel: "a",
+    root: ["š", "r", "k"],
+    verbalAdjectiveVowel: "i",
+    class: "verb",
+    meaning: "to give, to bestow"
+  },
+  zaqāpum: {
+    themeVowel: "u",
+    durativeVowel: "a",
+    root: ["z", "q", "p"],
+    verbalAdjectiveVowel: undefined,
+    class: "verb",
+    meaning: "to erect, to set up, to plant"
   }
 };
 
