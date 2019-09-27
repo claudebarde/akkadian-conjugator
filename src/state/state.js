@@ -9,6 +9,7 @@ const blankState = {
   gPrecative: undefined,
   gVetitive: undefined,
   gVerbalAdjective: undefined,
+  gParticiple: undefined,
   gPerfect: undefined,
   infoModal: { open: false, verb: undefined, person: undefined },
   activeView: "gstem"

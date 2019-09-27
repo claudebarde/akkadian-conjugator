@@ -126,7 +126,7 @@
       <p>Precative</p>
     </div>
     <div class="message-body">
-      <div class="columns">
+      <div class="columns is-mobile">
         <div class="column is-half">
           {#each personSing as ps}
             <p>

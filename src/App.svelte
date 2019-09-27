@@ -8,7 +8,7 @@
   import GPreteriteBox from "./conjugations/components/Gstem/GPreteriteBox.svelte";
   import GDurativeBox from "./conjugations/components/Gstem/GDurativeBox.svelte";
   import GPrecativeBox from "./conjugations/components/Gstem/GPrecativeBox.svelte";
-  import VerbalAdjectiveBox from "./conjugations/components/VerbalAdjectiveBox.svelte";
+  import NonFiniteFormsBox from "./conjugations/components/NonFiniteFormsBox.svelte";
   import GImperativeBox from "./conjugations/components/Gstem/GImperativeBox.svelte";
   import GPerfectBox from "./conjugations/components/Gstem/GPerfectBox.svelte";
   import InfoModal from "./conjugations/components/InfoModal.svelte";
@@ -280,16 +280,16 @@
             </div>
           </div>
           <div class="columns">
-            <div class="column is-3">
+            <div class="column is-3 is-offset-2">
               <GImperativeBox />
             </div>
-            <div class="column is-4">
+            <div class="column is-4 is-offset-1">
               <GPrecativeBox />
             </div>
           </div>
           <div class="columns lastColumns">
-            <div class="column is-one-third">
-              <VerbalAdjectiveBox />
+            <div class="column is-two-thirds is-offset-2">
+              <NonFiniteFormsBox />
             </div>
           </div>
         </div>

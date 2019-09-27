@@ -302,6 +302,18 @@ const verbalAdjective = {
   }
 };
 
+const posParticiple = {
+  masculin: [0, 2, 4],
+  feminin: [0, 2, 4],
+  radical: [0, 2, 4]
+};
+
+const posParticipleIIw = {
+  masculin: [0, 2],
+  feminin: [0, 2],
+  radical: [0, 2]
+};
+
 const highlightVerb = (verb, ps, template) => {
   return [...verb].map((letter, i) => {
     if (template[ps].includes(i)) {
@@ -513,6 +525,12 @@ const highlightRoot = ({
     }
     // we reinstate the asterisk if necessary
     if (nonAttested) highlightedVerb = ["*", ...highlightedVerb];
+  } else if (conjugation === "gParticiple") {
+    if (root[2] === "Ø") {
+      highlightedVerb = highlightVerb(verb, ps, posParticipleIIw);
+    } else {
+      highlightedVerb = highlightVerb(verb, ps, posParticiple);
+    }
   } else {
     highlightedVerb = [...verb];
   }
