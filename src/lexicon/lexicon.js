@@ -731,7 +731,7 @@ const lexicon = {
     themeVowel: "u",
     durativeVowel: "a",
     root: ["š", "r", "k"],
-    verbalAdjectiveVowel: "i",
+    verbalAdjectiveVowel: undefined,
     class: "verb",
     meaning: "to give, to bestow"
   },
@@ -742,6 +742,37 @@ const lexicon = {
     verbalAdjectiveVowel: undefined,
     class: "verb",
     meaning: "to erect, to set up, to plant"
+  },
+  erēšum: {
+    themeVowel: "i",
+    root: ["Ø", "r", "š"],
+    verbalAdjectiveVowel: undefined,
+    class: "verb",
+    I_eVerb: true,
+    meaning: "to ask, to request, to wish"
+  },
+  pašārum: {
+    themeVowel: "u",
+    durativeVowel: "a",
+    root: ["p", "š", "r"],
+    verbalAdjectiveVowel: undefined,
+    class: "verb",
+    meaning: "to loosen, to release, to explain"
+  },
+  râmum: {
+    themeVowel: "a",
+    root: ["r", "Ø", "m"],
+    verbalAdjectiveVowel: "ā",
+    class: "verb",
+    meaning: "to love, to care for"
+  },
+  zakārum: {
+    themeVowel: "u",
+    durativeVowel: "a",
+    root: ["z", "k", "r"],
+    verbalAdjectiveVowel: undefined,
+    class: "verb",
+    meaning: "to declare, to speak, to name"
   }
 };
 

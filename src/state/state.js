@@ -10,7 +10,8 @@ const blankState = {
   gVetitive: undefined,
   gVerbalAdjective: undefined,
   gPerfect: undefined,
-  infoModal: { open: false, verb: undefined, person: undefined }
+  infoModal: { open: false, verb: undefined, person: undefined },
+  activeView: "gstem"
 };
 
 const store = writable(blankState);
@@ -40,6 +41,9 @@ const state = {
       ...items,
       infoModal: { open: info.open, verb: info.verb, person: info.person }
     }));
+  },
+  updateView: view => {
+    store.update(items => ({ ...items, activeView: view }));
   }
 };
 

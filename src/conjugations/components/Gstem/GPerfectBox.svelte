@@ -70,7 +70,7 @@
     // II-weak verbs
     if (thisRoot[1] === "Ø") {
       thisRoot[1] = "";
-      infix = "t";
+      infix = infix[0];
       themeVowel = lengthenVowel(originalThemeVowel);
     }
     // I-w verbs

@@ -132,6 +132,51 @@ const posDurIw = {
   "1cp": [3, 5]
 };
 
+// position to highlight for perfect
+const posPerf3C = {
+  "3cs": [1, 4, 6],
+  "2ms": [2, 5, 7],
+  "2fs": [2, 5, 6],
+  "1cs": [1, 4, 6],
+  "3mp": [1, 4, 5],
+  "3fp": [1, 4, 5],
+  "2cp": [2, 5, 6],
+  "1cp": [2, 5, 7]
+};
+
+const posPerfIweak = {
+  "3cs": [3, 5],
+  "2ms": [4, 6],
+  "2fs": [4, 5],
+  "1cs": [3, 5],
+  "3mp": [3, 4],
+  "3fp": [3, 4],
+  "2cp": [4, 5],
+  "1cp": [4, 6]
+};
+
+const posPerfIwActive = {
+  "3cs": [4, 6],
+  "2ms": [5, 7],
+  "2fs": [5, 6],
+  "1cs": [4, 6],
+  "3mp": [4, 5],
+  "3fp": [4, 5],
+  "2cp": [5, 6],
+  "1cp": [5, 7]
+};
+
+const posPerfIwStative = {
+  "3cs": [3, 5],
+  "2ms": [4, 6],
+  "2fs": [4, 5],
+  "1cs": [3, 5],
+  "3mp": [3, 4],
+  "3fp": [3, 4],
+  "2cp": [4, 5],
+  "1cp": [4, 6]
+};
+
 const posPretNoVentBabalum = {
   "3cs": [1, 3],
   "2ms": [2, 4],
@@ -383,6 +428,24 @@ const highlightRoot = ({
         highlightedVerb = highlightVerb(verb, ps, posPrecVentIweak);
       } else {
         highlightedVerb = highlightVerb(verb, ps, posPrecNoVentIweak);
+      }
+    } else {
+      highlightedVerb = [...verb];
+    }
+  } else if (conjugation === "gPerfect") {
+    if (!root.includes("Ø") && root[0] !== "w") {
+      highlightedVerb = highlightVerb(verb, ps, posPerf3C);
+    } else if (root[0] === "Ø") {
+      highlightedVerb = highlightVerb(verb, ps, posPerfIweak);
+    } else if (root[1] === "Ø") {
+      highlightedVerb = highlightVerb(verb, ps, posDurIIweak);
+    } else if (root[2] === "Ø") {
+      highlightedVerb = highlightVerb(verb, ps, posDurIIIweak);
+    } else if (root[0] === "w") {
+      if (wVerbType === "active") {
+        highlightedVerb = highlightVerb(verb, ps, posPerfIwActive);
+      } else if (wVerbType === "stative") {
+        highlightedVerb = highlightVerb(verb, ps, posPerfIwStative);
       }
     } else {
       highlightedVerb = [...verb];
