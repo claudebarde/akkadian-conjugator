@@ -2,7 +2,10 @@
   import { fly } from "svelte/transition";
   import state from "../../../state/state";
   import settings from "../../../settings/settings";
-  import { contiguousVowels } from "../../../settings/phonologicalRules";
+  import {
+    contiguousVowels,
+    lengthenVowel
+  } from "../../../settings/phonologicalRules";
   import highlightRoot from "../../../settings/highlightRoot";
   import addVentive from "../../../settings/addVentive";
 
@@ -58,6 +61,7 @@
       // Verbs II-weak
       if (thisRoot[1] === "Ø") {
         thisRoot[1] = "";
+        themeVowel = lengthenVowel(themeVowel);
       }
       // Verbs I-w
       if (thisRoot[0] === "w" || verbInput === "babālum") {
