@@ -789,6 +789,14 @@ const lexicon = {
     verbalAdjectiveVowel: undefined,
     wordClass: "verb",
     meaning: "to heap up, to pile up, to store"
+  },
+  elûm: {
+    themeVowel: "e",
+    root: ["Ø", "l", "Ø"],
+    verbalAdjectiveVowel: "i",
+    wordClass: "verb",
+    I_eVerb: true,
+    meaning: "to go up, to ascend"
   }
 };
 

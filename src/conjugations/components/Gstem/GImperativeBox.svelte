@@ -43,11 +43,11 @@
         if (themeVowel === "a") firstVowel = "i";
       }
       // Verbs I-n
-      else if (thisRoot[0] === "n" && thisRoot[1] !== "Ø") {
+      if (thisRoot[0] === "n" && thisRoot[1] !== "Ø") {
         thisRoot[0] = "";
       }
       // Verbs I-a and I-e
-      else if (thisRoot[0] === "Ø") {
+      if (thisRoot[0] === "Ø") {
         thisRoot[0] = "";
         if (I_eVerb === true) {
           firstVowel = "e";
@@ -56,11 +56,11 @@
         }
       }
       // Verbs II-weak
-      else if (thisRoot[1] === "Ø") {
+      if (thisRoot[1] === "Ø") {
         thisRoot[1] = "";
       }
       // Verbs I-w
-      else if (thisRoot[0] === "w" || verbInput === "babālum") {
+      if (thisRoot[0] === "w" || verbInput === "babālum") {
         thisRoot[0] = "";
         firstVowel = "";
       }
@@ -85,7 +85,8 @@
       };
 
       if (
-        (!originalRoot.includes("Ø") || originalRoot[0] === "Ø") &&
+        (!originalRoot.includes("Ø") ||
+          (originalRoot[0] === "Ø" && originalRoot[2] !== "Ø")) &&
         originalRoot[0] !== "w" &&
         verbInput !== "babālum"
       ) {

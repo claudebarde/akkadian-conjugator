@@ -155,7 +155,7 @@
     // When a vocalic suffix (pl -ū, -ā, 2fs -ī, the Ventive -am,
     // Subordination marker -u [§19.2]) is added, the themevowel
     // between R2 and R3 drops out
-    if (!root.includes("Ø") || root[0] === "Ø") {
+    if (!root.includes("Ø") || (root[0] === "Ø" && root[2] !== "Ø")) {
       Object.keys(conjugatedVerb).forEach(ps => {
         if (ps === "2fs" || ps === "3mp" || ps === "3fp" || ps === "2cp") {
           conjugatedVerb[ps] =

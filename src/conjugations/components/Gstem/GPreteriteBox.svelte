@@ -72,13 +72,13 @@
         thisRoot[0] = "";
       }
       // Verbs II-weak
-      else if (thisRoot[1] === "Ø") {
+      if (thisRoot[1] === "Ø") {
         // we remove the missing radical
         thisRoot[1] = "";
         themeVowel = lengthenVowel(themeVowel);
       }
       // Verbs III-weak
-      else if (thisRoot[2] === "Ø") {
+      if (thisRoot[2] === "Ø") {
         // we remove the missing radical
         thisRoot[2] = "";
       }
