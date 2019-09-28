@@ -791,12 +791,26 @@ const lexicon = {
     meaning: "to heap up, to pile up, to store"
   },
   elûm: {
-    themeVowel: "e",
+    themeVowel: "i",
     root: ["Ø", "l", "Ø"],
     verbalAdjectiveVowel: "i",
     wordClass: "verb",
     I_eVerb: true,
     meaning: "to go up, to ascend"
+  },
+  lawûm: {
+    themeVowel: "i",
+    root: ["l", "w", "Ø"],
+    verbalAdjectiveVowel: "i",
+    wordClass: "verb",
+    meaning: "to go around, to circle, to surround"
+  },
+  naˀādum: {
+    themeVowel: "i",
+    root: ["n", "ˀ", "d"],
+    verbalAdjectiveVowel: "i",
+    wordClass: "verb",
+    meaning: "to pay attention, to be concerned"
   }
 };
 

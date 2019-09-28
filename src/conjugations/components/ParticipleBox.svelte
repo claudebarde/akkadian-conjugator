@@ -42,7 +42,7 @@
         secondVowel = "i";
       }
 
-      if (thisRoot[1] === "Ø") thisRoot[1] = "'";
+      if (thisRoot[1] === "Ø") thisRoot[1] = "ˀ";
 
       let masculine =
         thisRoot[0] +

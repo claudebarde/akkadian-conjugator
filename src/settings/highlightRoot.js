@@ -407,9 +407,29 @@ const highlightRoot = ({
   } else if (conjugation === "gImperative") {
     if (!root.includes("Ø") && root[0] !== "w") {
       if (ventive) {
-        highlightedVerb = highlightVerb(verb, ps, posImpVent3C);
+        let schemeVent = { ...posImpVent3C };
+        if (root[0] === "n") {
+          // imperative of verbs starting with n- lose their n-
+          for (let person in schemeVent) {
+            schemeVent[person] = [
+              schemeVent[person][1] - 1,
+              schemeVent[person][2] - 1
+            ];
+          }
+        }
+        highlightedVerb = highlightVerb(verb, ps, schemeVent);
       } else {
-        highlightedVerb = highlightVerb(verb, ps, posImpNoVent3C);
+        let schemeNoVent = { ...posImpNoVent3C };
+        if (root[0] === "n") {
+          // imperative of verbs starting with n- lose their n-
+          for (let person in schemeNoVent) {
+            schemeNoVent[person] = [
+              schemeNoVent[person][1] - 1,
+              schemeNoVent[person][2] - 1
+            ];
+          }
+        }
+        highlightedVerb = highlightVerb(verb, ps, schemeNoVent);
       }
     } else if (root[0] === "Ø") {
       if (ventive) {
