@@ -773,6 +773,22 @@ const lexicon = {
     verbalAdjectiveVowel: undefined,
     wordClass: "verb",
     meaning: "to declare, to speak, to name"
+  },
+  šadādum: {
+    themeVowel: "u",
+    durativeVowel: "a",
+    root: ["š", "d", "d"],
+    verbalAdjectiveVowel: "i",
+    wordClass: "verb",
+    meaning: "to pull, to drag, to stretch"
+  },
+  šapākum: {
+    themeVowel: "u",
+    durativeVowel: "a",
+    root: ["š", "p", "k"],
+    verbalAdjectiveVowel: undefined,
+    wordClass: "verb",
+    meaning: "to heap up, to pile up, to store"
   }
 };
 

@@ -1,5 +1,5 @@
 <script>
-  import { createEventDispatcher } from "svelte";
+  import { createEventDispatcher, onMount } from "svelte";
   import state from "../state/state";
 
   import lexicon from "../lexicon/lexicon.js";
@@ -7,6 +7,29 @@
   const dispatch = createEventDispatcher();
 
   const letters = [];
+  const alphabet = [
+    "A",
+    "B",
+    "D",
+    "E",
+    "G",
+    "Ḫ",
+    "K",
+    "L",
+    "M",
+    "N",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "Š",
+    "Ṣ",
+    "T",
+    "Ṭ",
+    "W",
+    "Z"
+  ];
+  const verbs = {};
 
   const selectNewVerb = item => {
     if (item !== $state.infinitive) {
@@ -20,6 +43,17 @@
       document.getElementById(item).className += " is-active";
     }
   };
+
+  onMount(() => {
+    Object.keys(lexicon).forEach(verb => {
+      const initial = verb[0].toUpperCase();
+      if (!verbs.hasOwnProperty(initial)) {
+        verbs[initial] = [verb];
+      } else {
+        verbs[initial] = [...verbs[initial], verb];
+      }
+    });
+  });
 </script>
 
 <style>
@@ -37,10 +71,6 @@
     text-decoration: none;
   }
 
-  .letter-order {
-    display: none;
-  }
-
   .menuItem {
     margin: 0px 10px;
   }
@@ -50,16 +80,15 @@
   <aside class="menu">
     <p class="menu-label">Verbs ({Object.keys(lexicon).length})</p>
     <ul class="menu-list verbs-menu">
-      {#each Object.keys(lexicon).sort(Intl.Collator().compare) as item}
-        {#if !letters.includes(item[0].toUpperCase())}
-          <span class="letter-order">
-            {letters.push(item[0].toUpperCase())}
-          </span>
-          <p class="menu-label">{item[0].toUpperCase()}</p>
+      {#each alphabet as letter}
+        <li class="has-text-grey-light">{letter}</li>
+        {#if verbs[letter]}
+          {#each verbs[letter].sort(Intl.Collator().compare) as verb}
+            <li on:click={() => selectNewVerb(verb)} class="menuItem">
+              <a id={verb}>{verb}</a>
+            </li>
+          {/each}
         {/if}
-        <li on:click={() => selectNewVerb(item)} class="menuItem">
-          <a id={item}>{item}</a>
-        </li>
       {/each}
     </ul>
   </aside>
