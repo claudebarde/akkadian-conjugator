@@ -36,7 +36,7 @@
       verbType = "III-weak";
     }
     //I-n verbs
-    if (thisRoot[0] === "n") {
+    if (thisRoot[0] === "n" && thisRoot[1] !== "Ø") {
       thisRoot[0] = thisRoot[1];
     }
     //I-a and I-e verbs and I-w verbs

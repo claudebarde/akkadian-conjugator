@@ -299,6 +299,11 @@ const verbalAdjective = {
     masculin: [2, 3],
     feminin: [2, 4],
     radical: [2, 4]
+  },
+  soundR2W: {
+    masculin: [0, 2, 4],
+    feminin: [0, 2, 4],
+    radical: [0, 2, 4]
   }
 };
 
@@ -306,6 +311,12 @@ const posParticiple = {
   masculin: [0, 2, 4],
   feminin: [0, 2, 4],
   radical: [0, 2, 4]
+};
+
+const posParticipleIw = {
+  masculin: [1, 3],
+  feminin: [1, 3],
+  radical: [1, 3]
 };
 
 const posParticipleIIw = {
@@ -324,6 +335,14 @@ const highlightVerb = (verb, ps, template) => {
       return letter;
     }
   });
+};
+
+const reduceForInitialN = scheme => {
+  for (let person in scheme) {
+    scheme[person] = [scheme[person][1] - 1, scheme[person][2] - 1];
+  }
+
+  return scheme;
 };
 
 const highlightRoot = ({
@@ -410,24 +429,14 @@ const highlightRoot = ({
         let schemeVent = { ...posImpVent3C };
         if (root[0] === "n") {
           // imperative of verbs starting with n- lose their n-
-          for (let person in schemeVent) {
-            schemeVent[person] = [
-              schemeVent[person][1] - 1,
-              schemeVent[person][2] - 1
-            ];
-          }
+          schemeVent = reduceForInitialN(schemeVent);
         }
         highlightedVerb = highlightVerb(verb, ps, schemeVent);
       } else {
         let schemeNoVent = { ...posImpNoVent3C };
         if (root[0] === "n") {
           // imperative of verbs starting with n- lose their n-
-          for (let person in schemeNoVent) {
-            schemeNoVent[person] = [
-              schemeNoVent[person][1] - 1,
-              schemeNoVent[person][2] - 1
-            ];
-          }
+          schemeNoVent = reduceForInitialN(schemeNoVent);
         }
         highlightedVerb = highlightVerb(verb, ps, schemeNoVent);
       }
@@ -440,7 +449,12 @@ const highlightRoot = ({
     } else if (root[1] === "Ø") {
       highlightedVerb = highlightVerb(verb, ps, posImpIInIIIweak);
     } else if (root[2] === "Ø") {
-      highlightedVerb = highlightVerb(verb, ps, posImpIInIIIweak);
+      let scheme = { ...posImpIInIIIweak };
+      if (root[0] === "n") {
+        // imperative of verbs starting with n- lose their n-
+        scheme = reduceForInitialN(scheme);
+      }
+      highlightedVerb = highlightVerb(verb, ps, scheme);
     } else if (root[0] === "w") {
       highlightedVerb = highlightVerb(verb, ps, posImpIw);
     } else {
@@ -491,15 +505,28 @@ const highlightRoot = ({
     }
 
     if (!root.includes("Ø") && root[0] !== "w") {
-      highlightedVerb = [...verb].map((letter, i) => {
-        if (verbalAdjective.sound[ps].includes(i)) {
-          // if this is a position to highlight
-          return "<strong>" + letter + "</strong>";
-        } else {
-          // if the position is not to be highlighted
-          return letter;
-        }
-      });
+      if (root[1] === "w") {
+        // verbs with "w" in R2 dont lose the "i" in masculine form
+        highlightedVerb = [...verb].map((letter, i) => {
+          if (verbalAdjective.soundR2W[ps].includes(i)) {
+            // if this is a position to highlight
+            return "<strong>" + letter + "</strong>";
+          } else {
+            // if the position is not to be highlighted
+            return letter;
+          }
+        });
+      } else {
+        highlightedVerb = [...verb].map((letter, i) => {
+          if (verbalAdjective.sound[ps].includes(i)) {
+            // if this is a position to highlight
+            return "<strong>" + letter + "</strong>";
+          } else {
+            // if the position is not to be highlighted
+            return letter;
+          }
+        });
+      }
     } else if (root[0] === "Ø") {
       highlightedVerb = [...verb].map((letter, i) => {
         if (verbalAdjective.Iweak[ps].includes(i)) {
@@ -548,6 +575,8 @@ const highlightRoot = ({
   } else if (conjugation === "gParticiple") {
     if (root[2] === "Ø") {
       highlightedVerb = highlightVerb(verb, ps, posParticipleIIw);
+    } else if (root[0] === "Ø") {
+      highlightedVerb = highlightVerb(verb, ps, posParticipleIw);
     } else {
       highlightedVerb = highlightVerb(verb, ps, posParticiple);
     }

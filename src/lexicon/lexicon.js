@@ -3,7 +3,7 @@ const lexicon = {
     themeVowel: "i",
     root: ["š", "r", "q"],
     verbalAdjectiveVowel: undefined,
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to steal"
   },
   šakānum: {
@@ -11,28 +11,28 @@ const lexicon = {
     durativeVowel: "a",
     root: ["š", "k", "n"],
     verbalAdjectiveVowel: undefined,
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to place"
   },
   ṣabātum: {
     themeVowel: "a",
     root: ["ṣ", "b", "t"],
     verbalAdjectiveVowel: "i",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to seize"
   },
   damāqum: {
     themeVowel: "i",
     root: ["d", "m", "q"],
     verbalAdjectiveVowel: "i",
-    wordClass: "adjective",
+    verbClass: "stative",
     meaning: "to be good"
   },
   danānum: {
     themeVowel: "i",
     root: ["d", "n", "n"],
     verbalAdjectiveVowel: undefined,
-    wordClass: "adjective",
+    verbClass: "stative",
     meaning: "to be strong"
   },
   ḫalāqum: {
@@ -64,21 +64,21 @@ const lexicon = {
     themeVowel: "a",
     root: ["m", "r", "ṣ"],
     verbalAdjectiveVowel: "u",
-    wordClass: "adjective",
+    verbClass: "stative",
     meaning: "to be sick, difficult"
   },
   rapāšum: {
     themeVowel: "i",
     root: ["r", "p", "š"],
     verbalAdjectiveVowel: "a",
-    wordClass: "adjective",
+    verbClass: "stative",
     meaning: "to be wide, broad"
   },
   balāṭum: {
     themeVowel: "u",
     root: ["b", "l", "ṭ"],
     verbalAdjectiveVowel: "i",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to live, to be alive, to be healthy"
   },
   gamārum: {
@@ -86,7 +86,7 @@ const lexicon = {
     durativeVowel: "a",
     root: ["g", "m", "r"],
     verbalAdjectiveVowel: "i",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to bring to an end, to settle, to finish"
   },
   kanākum: {
@@ -94,7 +94,7 @@ const lexicon = {
     durativeVowel: "a",
     root: ["k", "n", "k"],
     verbalAdjectiveVowel: "i",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to seal"
   },
   maḫārum: {
@@ -102,21 +102,21 @@ const lexicon = {
     durativeVowel: "a",
     root: ["m", "ḫ", "r"],
     verbalAdjectiveVowel: "i",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to accept, to receive, to meet, to please"
   },
   šalāmum: {
     themeVowel: "i",
     root: ["š", "l", "m"],
     verbalAdjectiveVowel: "i",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to become well, to succeed, to be completed"
   },
   nadānum: {
     themeVowel: "i",
     root: ["n", "d", "n"],
     verbalAdjectiveVowel: undefined,
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to give, to deliver"
   },
   naqārum: {
@@ -124,7 +124,7 @@ const lexicon = {
     durativeVowel: "a",
     root: ["n", "q", "r"],
     verbalAdjectiveVowel: "i",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to tear down, to destroy"
   },
   nasāḫum: {
@@ -132,7 +132,7 @@ const lexicon = {
     durativeVowel: "a",
     root: ["n", "s", "ḫ"],
     verbalAdjectiveVowel: "i",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to remove, to transfer, to move on"
   },
   naṣārum: {
@@ -140,14 +140,14 @@ const lexicon = {
     durativeVowel: "a",
     root: ["n", "ṣ", "r"],
     verbalAdjectiveVowel: "i",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to watch (over), to protect"
   },
   paqādum: {
     themeVowel: "i",
     root: ["p", "q", "d"],
     verbalAdjectiveVowel: "i",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to hand over, to entrust, to supply, to take care of, to deliver"
   },
   pašāšum: {
@@ -155,70 +155,70 @@ const lexicon = {
     durativeVowel: "a",
     root: ["p", "š", "š"],
     verbalAdjectiveVowel: "i",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to anoint, to rub, to smear"
   },
   qatānum: {
     themeVowel: "i",
     root: ["q", "t", "n"],
     verbalAdjectiveVowel: "a",
-    wordClass: "adjective",
+    verbClass: "stative",
     meaning: "to become thin, narrow"
   },
   rakābum: {
     themeVowel: "a",
     root: ["r", "k", "b"],
     verbalAdjectiveVowel: undefined,
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to mount, to ride, to board"
   },
   banûm: {
     themeVowel: "i",
     root: ["b", "n", "Ø"],
     verbalAdjectiveVowel: "i",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to build"
   },
   ḫadûm: {
     themeVowel: "u",
     root: ["ḫ", "d", "Ø"],
     verbalAdjectiveVowel: "i",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to rejoice, to be happy"
   },
   lequm: {
     themeVowel: "e",
     root: ["l", "q", "Ø"],
     verbalAdjectiveVowel: "i",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to take, to accept"
   },
   malûm: {
     themeVowel: "a",
     root: ["m", "l", "Ø"],
     verbalAdjectiveVowel: "i",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to become full, to fill with"
   },
   rabûm: {
     themeVowel: "i",
     root: ["r", "b", "Ø"],
     verbalAdjectiveVowel: "i",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to become large, great, to grow"
   },
   šemûm: {
     themeVowel: "e",
     root: ["š", "m", "Ø"],
     verbalAdjectiveVowel: "i",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to hear, to listen"
   },
   zakûm: {
     themeVowel: "u",
     root: ["z", "k", "Ø"],
     verbalAdjectiveVowel: "u",
-    wordClass: "adjective",
+    verbClass: "stative",
     meaning: "to become clean, clear"
   },
   amārum: {
@@ -226,14 +226,14 @@ const lexicon = {
     durativeVowel: "a",
     root: ["Ø", "m", "r"],
     verbalAdjectiveVowel: "i",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to see, to find, ro read"
   },
   arākum: {
     themeVowel: "i",
     root: ["Ø", "r", "k"],
     verbalAdjectiveVowel: "i",
-    wordClass: "adjective",
+    verbClass: "stative",
     meaning: "to be long, to last long, to be delayed"
   },
   epēšum: {
@@ -241,7 +241,7 @@ const lexicon = {
     durativeVowel: "e",
     root: ["Ø", "p", "š"],
     verbalAdjectiveVowel: "i",
-    wordClass: "verb",
+    verbClass: "active",
     I_eVerb: true,
     meaning: "to do"
   },
@@ -249,7 +249,7 @@ const lexicon = {
     themeVowel: "i",
     root: ["Ø", "z", "b"],
     verbalAdjectiveVowel: "i",
-    wordClass: "verb",
+    verbClass: "active",
     I_eVerb: true,
     meaning: "to leave, to divorce"
   },
@@ -258,7 +258,7 @@ const lexicon = {
     durativeVowel: "a",
     root: ["Ø", "l", "k"],
     verbalAdjectiveVowel: undefined,
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to go"
   },
   aḫāzum: {
@@ -266,14 +266,14 @@ const lexicon = {
     durativeVowel: "a",
     root: ["Ø", "ḫ", "z"],
     verbalAdjectiveVowel: undefined,
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to seize, to take, to marry, to learn"
   },
   erēbum: {
     themeVowel: "u",
     root: ["Ø", "r", "b"],
     verbalAdjectiveVowel: "i",
-    wordClass: "verb",
+    verbClass: "active",
     I_eVerb: true,
     meaning: "to leave, to divorce"
   },
@@ -281,7 +281,7 @@ const lexicon = {
     themeVowel: "i",
     root: ["Ø", "š", "r"],
     verbalAdjectiveVowel: undefined,
-    wordClass: "verb",
+    verbClass: "active",
     I_eVerb: true,
     meaning: "to do"
   },
@@ -290,28 +290,28 @@ const lexicon = {
     durativeVowel: "a",
     root: ["k", "Ø", "n"],
     verbalAdjectiveVowel: "ī",
-    wordClass: "adjective",
+    verbClass: "stative",
     meaning: "to be true, honest, correct"
   },
   qiāšum: {
     themeVowel: "i",
     root: ["q", "Ø", "š"],
     verbalAdjectiveVowel: "ī",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to give, to bestow, to grant"
   },
   šâmum: {
     themeVowel: "a",
     root: ["š", "Ø", "m"],
     verbalAdjectiveVowel: "ā",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to buy, to purchase"
   },
   nêrum: {
     themeVowel: "e",
     root: ["n", "Ø", "r"],
     verbalAdjectiveVowel: "ē",
-    wordClass: "verb",
+    verbClass: "active",
     I_eVerb: true,
     meaning: "to kill, to slay, to defeat"
   },
@@ -320,14 +320,14 @@ const lexicon = {
     durativeVowel: "a",
     root: ["Ø", "g", "r"],
     verbalAdjectiveVowel: "i",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to hire, to rent"
   },
   enēšum: {
     themeVowel: "i",
     root: ["Ø", "n", "š"],
     verbalAdjectiveVowel: "i",
-    wordClass: "adjective",
+    verbClass: "stative",
     I_eVerb: true,
     meaning: "to be weak, powerless"
   },
@@ -335,14 +335,14 @@ const lexicon = {
     themeVowel: "i",
     root: ["m", "Ø", "d"],
     verbalAdjectiveVowel: "ā",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to increase, to become numerous"
   },
   šatûm: {
     themeVowel: "i",
     root: ["š", "t", "Ø"],
     verbalAdjectiveVowel: undefined,
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to drink"
   },
   târum: {
@@ -350,21 +350,21 @@ const lexicon = {
     durativeVowel: "a",
     root: ["t", "Ø", "r"],
     verbalAdjectiveVowel: "ā",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to return, to come back"
   },
   ṭiābum: {
     themeVowel: "i",
     root: ["ṭ", "Ø", "b"],
     verbalAdjectiveVowel: "ā",
-    wordClass: "adjective",
+    verbClass: "stative",
     meaning: "to become pleasant, sweet"
   },
   watārum: {
     themeVowel: "i",
     root: ["w", "t", "r"],
     verbalAdjectiveVowel: "a",
-    wordClass: "adjective",
+    verbClass: "stative",
     I_eVerb: true,
     type: "stative",
     meaning: "to become exceeding, to exceed"
@@ -374,7 +374,7 @@ const lexicon = {
     durativeVowel: "a",
     root: ["w", "š", "b"],
     verbalAdjectiveVowel: "i",
-    wordClass: "verb",
+    verbClass: "active",
     I_eVerb: false,
     type: "active",
     meaning: "to sit, to remain"
@@ -384,7 +384,7 @@ const lexicon = {
     durativeVowel: "a",
     root: ["b", "b", "l"],
     verbalAdjectiveVowel: "i",
-    wordClass: "verb",
+    verbClass: "active",
     I_eVerb: false,
     type: "active",
     meaning: "to carry, to bear, to transport"
@@ -394,14 +394,14 @@ const lexicon = {
     durativeVowel: "a",
     root: ["Ø", "k", "l"],
     verbalAdjectiveVowel: undefined,
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to eat, to consume, to use"
   },
   edēšum: {
     themeVowel: "i",
     root: ["Ø", "d", "š"],
     verbalAdjectiveVowel: "i",
-    wordClass: "adjective",
+    verbClass: "stative",
     I_eVerb: true,
     meaning: "to be new"
   },
@@ -409,21 +409,21 @@ const lexicon = {
     themeVowel: "i",
     root: ["l", "b", "r"],
     verbalAdjectiveVowel: "i",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to become old, to last, to endure"
   },
   mâtum: {
     themeVowel: "u",
     root: ["m", "Ø", "t"],
     verbalAdjectiveVowel: "ī",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to die"
   },
   šiābum: {
     themeVowel: "i",
     root: ["š", "Ø", "b"],
     verbalAdjectiveVowel: "ī",
-    wordClass: "adjective",
+    verbClass: "stative",
     meaning: "to become old, grey"
   },
   kaṣārum: {
@@ -431,7 +431,7 @@ const lexicon = {
     durativeVowel: "a",
     root: ["k", "ṣ", "r"],
     verbalAdjectiveVowel: "i",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to bind, to tie, to join"
   },
   parāsum: {
@@ -439,7 +439,7 @@ const lexicon = {
     durativeVowel: "a",
     root: ["p", "r", "s"],
     verbalAdjectiveVowel: "i",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to divide, to spearate"
   },
   šaṭārum: {
@@ -447,7 +447,7 @@ const lexicon = {
     durativeVowel: "a",
     root: ["š", "ṭ", "r"],
     verbalAdjectiveVowel: "i",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to inscribe, to write, to register, to assign"
   },
   ṭarādum: {
@@ -455,21 +455,21 @@ const lexicon = {
     durativeVowel: "a",
     root: ["ṭ", "r", "d"],
     verbalAdjectiveVowel: "i",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to send, to dispatch, to drive away"
   },
   nakāsum: {
     themeVowel: "i",
     root: ["n", "k", "s"],
     verbalAdjectiveVowel: "i",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to cut off, to cut down"
   },
   nasākum: {
     themeVowel: "u",
     root: ["n", "s", "k"],
     verbalAdjectiveVowel: undefined,
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to throw, to shoot, to pile up"
   },
   naṭālum: {
@@ -477,7 +477,7 @@ const lexicon = {
     durativeVowel: "a",
     root: ["n", "ṭ", "l"],
     verbalAdjectiveVowel: undefined,
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to see, to look at, to consider"
   },
   rašûm: {
@@ -534,7 +534,7 @@ const lexicon = {
     themeVowel: "u",
     root: ["z", "Ø", "z"],
     verbalAdjectiveVowel: "ī",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to divide, to separate"
   },
   apālum: {
@@ -542,28 +542,28 @@ const lexicon = {
     durativeVowel: "a",
     root: ["Ø", "p", "l"],
     verbalAdjectiveVowel: undefined,
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to answer, to reply, to pay"
   },
   dâkum: {
     themeVowel: "u",
     root: ["d", "Ø", "k"],
     verbalAdjectiveVowel: undefined,
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to kill, to execute, to defeat"
   },
   diānum: {
     themeVowel: "i",
     root: ["d", "Ø", "n"],
     verbalAdjectiveVowel: "ī",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to judge, to give a judgment"
   },
   emēdum: {
     themeVowel: "i",
     root: ["Ø", "m", "d"],
     verbalAdjectiveVowel: undefined,
-    wordClass: "verb",
+    verbClass: "active",
     I_eVerb: true,
     meaning: "to lean against, to touch, to reach"
   },
@@ -584,7 +584,7 @@ const lexicon = {
     themeVowel: "u",
     root: ["m", "q", "t"],
     verbalAdjectiveVowel: "i",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to fall, to collapse, to happen"
   },
   madādum: {
@@ -592,7 +592,7 @@ const lexicon = {
     durativeVowel: "a",
     root: ["m", "d", "d"],
     verbalAdjectiveVowel: undefined,
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to measure out"
   },
   šapārum: {
@@ -600,7 +600,7 @@ const lexicon = {
     durativeVowel: "a",
     root: ["š", "p", "r"],
     verbalAdjectiveVowel: undefined,
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to send (someone/a message)"
   },
   warādum: {
@@ -608,7 +608,7 @@ const lexicon = {
     durativeVowel: "a",
     root: ["w", "r", "d"],
     verbalAdjectiveVowel: undefined,
-    wordClass: "verb",
+    verbClass: "active",
     I_eVerb: false,
     type: "active",
     meaning: "to descend, to go/come down"
@@ -618,7 +618,7 @@ const lexicon = {
     durativeVowel: "a",
     root: ["w", "ṣ", "b"],
     verbalAdjectiveVowel: undefined,
-    wordClass: "verb",
+    verbClass: "active",
     I_eVerb: false,
     type: "active",
     meaning: "to add, to increase"
@@ -627,7 +627,7 @@ const lexicon = {
     themeVowel: "i",
     root: ["Ø", "t", "q"],
     verbalAdjectiveVowel: undefined,
-    wordClass: "verb",
+    verbClass: "active",
     I_eVerb: true,
     meaning: "to pass along, to advance, to avoid"
   },
@@ -635,21 +635,21 @@ const lexicon = {
     themeVowel: "a",
     root: ["p", "l", "ḫ"],
     verbalAdjectiveVowel: "i",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to fear, to worship, to respect"
   },
   petûm: {
     themeVowel: "e",
     root: ["p", "t", "Ø"],
     verbalAdjectiveVowel: "i",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to open"
   },
   redûm: {
     themeVowel: "e",
     root: ["r", "d", "Ø"],
     verbalAdjectiveVowel: "i",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to escort, to lead, to drive"
   },
   šaqālum: {
@@ -657,21 +657,21 @@ const lexicon = {
     durativeVowel: "a",
     root: ["š", "q", "l"],
     verbalAdjectiveVowel: "i",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to weigh out, to pay"
   },
   takālum: {
     themeVowel: "a",
     root: ["t", "k", "l"],
     verbalAdjectiveVowel: "i",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to trust"
   },
   tebûm: {
     themeVowel: "e",
     root: ["t", "b", "Ø"],
     verbalAdjectiveVowel: "i",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to arise, to stand up, to occur"
   },
   kalûm: {
@@ -685,7 +685,7 @@ const lexicon = {
     durativeVowel: "a",
     root: ["m", "q", "t"],
     verbalAdjectiveVowel: "i",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to loosen, to remove, to end"
   },
   baqārum: {
@@ -693,14 +693,14 @@ const lexicon = {
     durativeVowel: "a",
     root: ["b", "q", "r"],
     verbalAdjectiveVowel: undefined,
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to claim, to contest"
   },
   kabātum: {
     themeVowel: "i",
     root: ["k", "b", "t"],
     verbalAdjectiveVowel: "i",
-    wordClass: "adjective",
+    verbClass: "stative",
     meaning: "to become heavy, fat, important, difficult"
   },
   nasāqum: {
@@ -708,7 +708,7 @@ const lexicon = {
     durativeVowel: "a",
     root: ["n", "s", "q"],
     verbalAdjectiveVowel: "i",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to choose, to select"
   },
   palāšum: {
@@ -716,7 +716,7 @@ const lexicon = {
     durativeVowel: "a",
     root: ["p", "l", "š"],
     verbalAdjectiveVowel: "i",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to pierce, to break throughš"
   },
   riābum: {
@@ -724,7 +724,7 @@ const lexicon = {
     durativeVowel: "a",
     root: ["r", "Ø", "b"],
     verbalAdjectiveVowel: "ī",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to replace, to give back"
   },
   šarākum: {
@@ -732,7 +732,7 @@ const lexicon = {
     durativeVowel: "a",
     root: ["š", "r", "k"],
     verbalAdjectiveVowel: undefined,
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to give, to bestow"
   },
   zaqāpum: {
@@ -740,14 +740,14 @@ const lexicon = {
     durativeVowel: "a",
     root: ["z", "q", "p"],
     verbalAdjectiveVowel: undefined,
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to erect, to set up, to plant"
   },
   erēšum: {
     themeVowel: "i",
     root: ["Ø", "r", "š"],
     verbalAdjectiveVowel: undefined,
-    wordClass: "verb",
+    verbClass: "active",
     I_eVerb: true,
     meaning: "to ask, to request, to wish"
   },
@@ -756,14 +756,14 @@ const lexicon = {
     durativeVowel: "a",
     root: ["p", "š", "r"],
     verbalAdjectiveVowel: undefined,
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to loosen, to release, to explain"
   },
   râmum: {
     themeVowel: "a",
     root: ["r", "Ø", "m"],
     verbalAdjectiveVowel: "ā",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to love, to care for"
   },
   zakārum: {
@@ -771,7 +771,7 @@ const lexicon = {
     durativeVowel: "a",
     root: ["z", "k", "r"],
     verbalAdjectiveVowel: undefined,
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to declare, to speak, to name"
   },
   šadādum: {
@@ -779,7 +779,7 @@ const lexicon = {
     durativeVowel: "a",
     root: ["š", "d", "d"],
     verbalAdjectiveVowel: "i",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to pull, to drag, to stretch"
   },
   šapākum: {
@@ -787,14 +787,14 @@ const lexicon = {
     durativeVowel: "a",
     root: ["š", "p", "k"],
     verbalAdjectiveVowel: undefined,
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to heap up, to pile up, to store"
   },
   elûm: {
     themeVowel: "i",
     root: ["Ø", "l", "Ø"],
     verbalAdjectiveVowel: "i",
-    wordClass: "verb",
+    verbClass: "active",
     I_eVerb: true,
     meaning: "to go up, to ascend"
   },
@@ -802,15 +802,67 @@ const lexicon = {
     themeVowel: "i",
     root: ["l", "w", "Ø"],
     verbalAdjectiveVowel: "i",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to go around, to circle, to surround"
   },
   naˀādum: {
     themeVowel: "i",
     root: ["n", "ˀ", "d"],
     verbalAdjectiveVowel: "i",
-    wordClass: "verb",
+    verbClass: "active",
     meaning: "to pay attention, to be concerned"
+  },
+  nawārum: {
+    themeVowel: "i",
+    root: ["n", "w", "r"],
+    verbalAdjectiveVowel: "i",
+    verbClass: "active",
+    meaning: "to become bright, to shine"
+  },
+  nâḫum: {
+    themeVowel: "u",
+    durativeVowel: "a",
+    root: ["n", "Ø", "ḫ"],
+    verbalAdjectiveVowel: "ē",
+    verbClass: "stative",
+    meaning: "to rest, to become peaceful"
+  },
+  niālum: {
+    themeVowel: "i",
+    root: ["n", "Ø", "l"],
+    verbalAdjectiveVowel: "ī",
+    verbClass: "stative",
+    meaning: "to lie downt"
+  },
+  nadûm: {
+    themeVowel: "i",
+    root: ["n", "d", "Ø"],
+    verbalAdjectiveVowel: "i",
+    verbClass: "active",
+    meaning: "to throw down, to set down, to neglect"
+  },
+  nesûm: {
+    themeVowel: "e",
+    root: ["n", "s", "Ø"],
+    verbalAdjectiveVowel: "i",
+    verbClass: "stative",
+    meaning: "to become far away, to depart"
+  },
+  eˀēlum: {
+    themeVowel: "i",
+    root: ["Ø", "ˀ", "l"],
+    verbalAdjectiveVowel: "i",
+    verbClass: "active",
+    I_eVerb: true,
+    meaning: "to bind (by an agreement)"
+  },
+  êrum: {
+    themeVowel: "e",
+    root: ["ˀ", "Ø", "r"],
+    verbalAdjectiveVowel: "ē",
+    verbClass: "active",
+    I_eVerb: true,
+    meaning: "to awaken, to be awaken"
   }
 };
 

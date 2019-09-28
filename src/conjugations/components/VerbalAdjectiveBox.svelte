@@ -28,7 +28,7 @@
         verbalAdjectiveVowel,
         themeVowel,
         attested,
-        wordClass,
+        verbClass,
         I_eVerb
       } = $state;
       let thisRoot = [...root];
@@ -38,7 +38,7 @@
       let firstChar = "";
       if (!verbalAdjectiveVowel) firstChar = "*";
       // checks if verbal adjective with R1 and R2 being the same
-      if (wordClass === "adjective" && thisRoot[1] === thisRoot[2]) {
+      if (verbClass === "stative" && thisRoot[1] === thisRoot[2]) {
         vowel = "";
       }
 
@@ -52,6 +52,11 @@
       if (thisRoot[0] === "Ø") {
         thisRoot[0] = "";
         if (I_eVerb) baseVowel = "e";
+      }
+
+      // Verbs I-ˀ
+      if (thisRoot[0] === "ˀ") {
+        thisRoot[0] = "";
       }
 
       // Verbs III-weak
@@ -109,6 +114,12 @@
             thisRoot[2] +
             "-"
         ];
+      }
+
+      // we reinstate the "i" between R1 and R2 for verbs with R2 = "w"
+      if (root[1] === "w") {
+        adjectiveForms[0] =
+          thisRoot[0] + baseVowel + thisRoot[1] + vowel + thisRoot[2] + "um";
       }
     }
 

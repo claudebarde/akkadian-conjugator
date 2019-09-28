@@ -19,13 +19,13 @@
       verbalAdjectiveVowel,
       themeVowel,
       attested,
-      wordClass,
+      verbClass,
       I_eVerb,
       type
     } = $state;
 
     // Participles of stative verbs, such as watārum or marāṣum, do not occur
-    if (wordClass === "adjective" || (root[0] === "w" && type == "stative")) {
+    if (verbClass === "stative" || (root[0] === "w" && type == "stative")) {
       adjectiveForms = ["-", "-", "-"];
     } else {
       let thisRoot = [...root];

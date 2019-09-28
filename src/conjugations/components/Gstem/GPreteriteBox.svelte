@@ -45,13 +45,11 @@
         "1cp": "nubil"
       };
     } else {
-      let thisRoot = [...$state.root];
+      let root = $state.root;
+      let thisRoot = [...root];
       let { themeVowel, I_eVerb, type } = $state;
       let verbType = undefined;
 
-      // PHONOLOGICAL CHANGES
-      // Verbs I–n
-      if (thisRoot[0] === "n" && thisRoot[1] !== "Ø") thisRoot[0] = thisRoot[1];
       // Person Prefixes
       let {
         firstPersonPrefix,
@@ -66,6 +64,7 @@
         durative: false
       });
 
+      // PHONOLOGICAL CHANGES
       // Verbs I-a and I-e and I-w
       if (thisRoot[0] === "Ø" || thisRoot[0] === "w") {
         if (thisRoot[0] === "w") verbType = "I-w";
@@ -82,6 +81,8 @@
         // we remove the missing radical
         thisRoot[2] = "";
       }
+      // Verbs I–n
+      if (thisRoot[0] === "n" && root[1] !== "Ø") thisRoot[0] = thisRoot[1];
 
       conjugatedVerb = {
         "3cs":
@@ -147,7 +148,7 @@
       };
 
       // Verbs III-weak
-      if (thisRoot[2] === "") {
+      if (root[2] === "Ø") {
         // we contract the last 2 consecutive vowels
         conjugatedVerb = contractLastVowels(conjugatedVerb);
       }
