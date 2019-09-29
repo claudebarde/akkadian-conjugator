@@ -352,7 +352,7 @@ const highlightRoot = ({
   ps,
   infinitive,
   ventive,
-  wVerbType,
+  verbClass,
   vetitive
 }) => {
   let highlightedVerb = [];
@@ -398,9 +398,9 @@ const highlightRoot = ({
       highlightedVerb = highlightVerb(verb, ps, posPretIIIweak);
     } else if (root[0] === "w" && ventive === false) {
       highlightedVerb = highlightVerb(verb, ps, posPretIw);
-    } else if (root[0] === "w" && ventive == true && wVerbType === "active") {
+    } else if (root[0] === "w" && ventive == true && verbClass === "active") {
       highlightedVerb = highlightVerb(verb, ps, posPretIwVentive);
-    } else if (root[0] === "w" && ventive == true && wVerbType === "stative") {
+    } else if (root[0] === "w" && ventive == true && verbClass === "stative") {
       highlightedVerb = highlightVerb(verb, ps, posPretIw);
     } else if (infinitive === "babālum" && ventive === false) {
       highlightedVerb = highlightVerb(verb, ps, posPretNoVentBabalum);
@@ -488,9 +488,9 @@ const highlightRoot = ({
     } else if (root[2] === "Ø") {
       highlightedVerb = highlightVerb(verb, ps, posDurIIIweak);
     } else if (root[0] === "w") {
-      if (wVerbType === "active") {
+      if (verbClass === "active") {
         highlightedVerb = highlightVerb(verb, ps, posPerfIwActive);
-      } else if (wVerbType === "stative") {
+      } else if (verbClass === "stative") {
         highlightedVerb = highlightVerb(verb, ps, posPerfIwStative);
       }
     } else {

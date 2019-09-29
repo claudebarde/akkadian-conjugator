@@ -48,10 +48,13 @@
   onMount(() => {
     Object.keys(lexicon).forEach(verb => {
       const initial = verb[0].toUpperCase();
+      let str = `${verb} <span class="is-size-7">(${
+        lexicon[verb].durativeVowel ? lexicon[verb].durativeVowel + " - " : ""
+      }${lexicon[verb].themeVowel})</span>`;
       if (!verbs.hasOwnProperty(initial)) {
-        verbs[initial] = [verb];
+        verbs[initial] = [str];
       } else {
-        verbs[initial] = [...verbs[initial], verb];
+        str = verbs[initial] = [...verbs[initial], str];
       }
     });
   });
@@ -60,11 +63,12 @@
 <style>
   .mainMenu {
     padding-top: 20px;
+    box-shadow: 0.4rem 0 0.5rem -0.4rem rgba(0, 0, 0, 0.7);
   }
 
   .verbs-menu {
-    height: 87vh;
-    padding-bottom: 0px;
+    height: 90vh;
+    padding-bottom: 20px;
     overflow: auto;
   }
 
@@ -85,8 +89,12 @@
         <li class="has-text-grey-light">{letter}</li>
         {#if verbs[letter]}
           {#each verbs[letter].sort(Intl.Collator().compare) as verb}
-            <li on:click={() => selectNewVerb(verb)} class="menuItem">
-              <a id={verb}>{verb}</a>
+            <li
+              on:click={() => selectNewVerb(verb.split(' ')[0])}
+              class="menuItem">
+              <a id={verb.split(' ')[0]}>
+                {@html verb}
+              </a>
             </li>
           {/each}
         {/if}

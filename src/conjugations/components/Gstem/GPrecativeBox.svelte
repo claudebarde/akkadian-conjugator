@@ -26,7 +26,7 @@
     verbInput = $state.infinitive;
     let conjugatedVerb = {};
     let verbType = undefined;
-    let { themeVowel, root, type } = $state;
+    let { themeVowel, root, verbClass } = $state;
     let thisRoot = [...root];
     let prefixes = { ...precativePrefixes };
 
@@ -40,7 +40,10 @@
       thisRoot[0] = thisRoot[1];
     }
     //I-a and I-e verbs and I-w verbs
-    if (thisRoot[0] === "Ø" || (thisRoot[0] === "w" && type === "stative")) {
+    if (
+      thisRoot[0] === "Ø" ||
+      (thisRoot[0] === "w" && verbClass === "stative")
+    ) {
       thisRoot[0] = "";
       // In verbs I–" and stative verbs I–w, in which the prefix vowel of the
       // Preterite is long (because of the loss of the initial consonant), the vowel
@@ -49,7 +52,7 @@
         prefixes[ps] =
           prefixes[ps].slice(0, -1) + lengthenVowel(prefixes[ps].slice(-1));
       });
-    } else if (thisRoot[0] === "w" && type === "active") {
+    } else if (thisRoot[0] === "w" && verbClass === "active") {
       thisRoot[0] = "";
       prefixes["1cp"] = "i nu";
       verbType = "I-w";
@@ -88,7 +91,7 @@
     }
 
     // I-w active verbs with vowel syncope
-    if (verbType === "I-w" && type === "active") {
+    if (verbType === "I-w" && verbClass === "active") {
       Object.keys(conjugatedVerb).forEach(ps => {
         if (
           conjugatedVerb[ps].slice(-1) === "ā" ||
@@ -147,7 +150,7 @@
                   ps,
                   infinitive: $state.infinitive,
                   ventive: $state.ventive,
-                  wVerbType: $state.wVerbType
+                  wVerbType: $state.verbClass
                 })}
               {:else}
                 {@html $state.ventive ? addVentive({
@@ -181,7 +184,7 @@
                   ps,
                   infinitive: $state.infinitive,
                   ventive: $state.ventive,
-                  wVerbType: $state.wVerbType
+                  wVerbType: $state.verbClass
                 })}
               {:else}
                 {@html $state.ventive ? addVentive({
@@ -228,7 +231,7 @@
                   ps,
                   infinitive: $state.infinitive,
                   ventive: $state.ventive,
-                  wVerbType: $state.wVerbType
+                  wVerbType: $state.verbClass
                 })}
               {:else}
                 {@html $state.ventive ? addVentive({
@@ -262,7 +265,7 @@
                   ps,
                   infinitive: $state.infinitive,
                   ventive: $state.ventive,
-                  wVerbType: $state.wVerbType
+                  wVerbType: $state.verbClass
                 })}
               {:else}
                 {@html $state.ventive ? addVentive({

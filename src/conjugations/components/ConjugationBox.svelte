@@ -34,7 +34,7 @@
       ps,
       infinitive: $state.infinitive,
       ventive: $state.ventive,
-      wVerbType: $state.type,
+      verbClass: $state.verbClass,
       vetitive
     });
   };

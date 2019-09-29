@@ -49,7 +49,7 @@ const addVentive = ({ verb, ps, conjugation, root, infinitive }) => {
   // the addition of "ī", "ū", "ā"
   if (
     root[0] === "w" &&
-    lexicon[infinitive].type === "active" &&
+    lexicon[infinitive].verbClass === "active" &&
     conjugation === "gPreterite"
   ) {
     if (!verb.includes(root[1] + root[2])) {
@@ -71,7 +71,7 @@ const addVentive = ({ verb, ps, conjugation, root, infinitive }) => {
   // vowel syncope for I-w in G precative
   if (
     conjugation === "gPrecative" &&
-    (root[0] === "w" && lexicon[infinitive].type === "active")
+    (root[0] === "w" && lexicon[infinitive].verbClass === "active")
   ) {
     if (ps === "3cs" || ps === "1cs" || ps === "1cp") {
       verb = verb.slice(0, -4) + verb.slice(-3);

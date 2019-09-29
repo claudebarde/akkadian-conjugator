@@ -44,7 +44,7 @@
 
       // Vocalic harmony
       let baseVowel = "a";
-      if (themeVowel === "e") {
+      if (themeVowel === "e" || I_eVerb) {
         baseVowel = "e";
       }
 

@@ -21,7 +21,7 @@
 
   $: if ($state.infinitive !== verbInput) {
     verbInput = $state.infinitive;
-    let { root, themeVowel, I_eVerb, type, durativeVowel } = $state;
+    let { root, themeVowel, I_eVerb, verbClass, durativeVowel } = $state;
     let thisRoot = [...root];
     let originalThemeVowel = themeVowel;
     let firstVowel = themeVowel === "e" ? "e" : "a";
@@ -41,16 +41,24 @@
       root: thisRoot,
       themeVowel,
       I_eVerb,
-      type,
+      verbClass,
       durative: true
     });
 
     //Verbs I-a and I-e and I-w
     if (thisRoot[0] === "Ø" || thisRoot[0] === "w") {
-      // we remove the missing radical
-      thisRoot[0] = "";
-      // first vowel disappears
-      firstVowel = "";
+      if (thisRoot[0] === "w") {
+        if (thisRoot[1] !== "Ø") {
+          thisRoot[0] = "";
+          // first vowel disappears
+          firstVowel = "";
+        }
+      } else {
+        // we remove the missing radical
+        thisRoot[0] = "";
+        // first vowel disappears
+        firstVowel = "";
+      }
     }
     //Verbs II-weak
     if (thisRoot[1] === "Ø") {
@@ -71,6 +79,10 @@
     if (thisRoot[2] === "Ø") {
       // we remove the missing radical
       thisRoot[2] = "";
+      // In verbs III–e (thus, e-class), both the a
+      // between R1 and R2 and the a of the prefixes of the second person forms
+      // and the 1cs form usually, but not invariably, become e
+      if (I_eVerb) firstVowel = "e";
     }
 
     let conjugatedVerb = {

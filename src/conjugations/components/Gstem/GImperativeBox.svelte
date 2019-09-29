@@ -14,11 +14,11 @@
 
   $: if ($state.infinitive !== verbInput) {
     verbInput = $state.infinitive;
-    let { themeVowel, I_eVerb, type, root } = $state;
+    let { themeVowel, I_eVerb, verbClass, root } = $state;
     let thisRoot = [...root];
     let conjugatedVerb = {};
     // For adjectival verbs I–w, such as watårum, no Imperatives are attested.
-    if (thisRoot[0] === "w" && type === "stative") {
+    if (thisRoot[0] === "w" && verbClass === "stative") {
       conjugatedVerb = {
         "2ms": "-",
         "2fs": "-",
@@ -65,7 +65,11 @@
       }
       // Verbs I-w
       if (thisRoot[0] === "w" || verbInput === "babālum") {
-        thisRoot[0] = "";
+        if (root[1] !== "Ø") {
+          thisRoot[0] = "";
+        } else {
+          thisRoot[0] = "ˀ";
+        }
         firstVowel = "";
       }
 
@@ -110,7 +114,7 @@
             conjugatedVerb[ps] = conjugatedVerb[ps].slice(0, -2) + lastVowel;
           }
         });
-      } else if (originalRoot[1] === "Ø") {
+      } else if (originalRoot[1] === "Ø" && root[0] !== "w") {
         Object.keys(conjugatedVerb).forEach(ps => {
           conjugatedVerb[ps] =
             conjugatedVerb[ps][0] + themeVowel + conjugatedVerb[ps].slice(3);
@@ -163,7 +167,7 @@
               ps,
               infinitive: $state.infinitive,
               ventive: $state.ventive,
-              wVerbType: $state.wVerbType
+              wVerbType: $state.verbClass
             })}
           {:else}
             {@html $state.ventive ? addVentive({
@@ -206,7 +210,7 @@
               ps,
               infinitive: $state.infinitive,
               ventive: $state.ventive,
-              wVerbType: $state.wVerbType
+              wVerbType: $state.verbClass
             })}
           {:else}
             {@html $state.ventive ? addVentive({

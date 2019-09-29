@@ -186,7 +186,7 @@ const lexicon = {
     verbClass: "active",
     meaning: "to rejoice, to be happy"
   },
-  lequm: {
+  leqûm: {
     themeVowel: "e",
     root: ["l", "q", "Ø"],
     verbalAdjectiveVowel: "i",
@@ -366,7 +366,7 @@ const lexicon = {
     verbalAdjectiveVowel: "a",
     verbClass: "stative",
     I_eVerb: true,
-    type: "stative",
+    verbClass: "stative",
     meaning: "to become exceeding, to exceed"
   },
   wašābum: {
@@ -376,7 +376,7 @@ const lexicon = {
     verbalAdjectiveVowel: "i",
     verbClass: "active",
     I_eVerb: false,
-    type: "active",
+    verbClass: "active",
     meaning: "to sit, to remain"
   },
   babālum: {
@@ -386,7 +386,7 @@ const lexicon = {
     verbalAdjectiveVowel: "i",
     verbClass: "active",
     I_eVerb: false,
-    type: "active",
+    verbClass: "active",
     meaning: "to carry, to bear, to transport"
   },
   akālum: {
@@ -610,7 +610,7 @@ const lexicon = {
     verbalAdjectiveVowel: undefined,
     verbClass: "active",
     I_eVerb: false,
-    type: "active",
+    verbClass: "active",
     meaning: "to descend, to go/come down"
   },
   waṣābum: {
@@ -620,7 +620,7 @@ const lexicon = {
     verbalAdjectiveVowel: undefined,
     verbClass: "active",
     I_eVerb: false,
-    type: "active",
+    verbClass: "active",
     meaning: "to add, to increase"
   },
   etēqum: {
@@ -863,6 +863,80 @@ const lexicon = {
     verbClass: "active",
     I_eVerb: true,
     meaning: "to awaken, to be awaken"
+  },
+  wârum: {
+    themeVowel: "i",
+    durativeVowel: "a",
+    root: ["w", "Ø", "r"],
+    verbalAdjectiveVowel: undefined,
+    verbClass: "active",
+    meaning: "to advance"
+  },
+  wiāṣum: {
+    themeVowel: "i",
+    root: ["w", "Ø", "ṣ"],
+    verbalAdjectiveVowel: "ī",
+    verbClass: "stative",
+    meaning: "to become small, insufficient"
+  },
+  waṣûm: {
+    themeVowel: "i",
+    root: ["w", "ṣ", "Ø"],
+    verbalAdjectiveVowel: "i",
+    verbClass: "active",
+    meaning: "to go out, to leave"
+  },
+  watûm: {
+    themeVowel: "a",
+    root: ["w", "t", "Ø"],
+    verbalAdjectiveVowel: "i",
+    verbClass: "active",
+    meaning: "to find, to discover"
+  },
+  warûm: {
+    themeVowel: "u",
+    root: ["w", "r", "Ø"],
+    verbalAdjectiveVowel: "i",
+    verbClass: "active",
+    meaning: "to bring, to lead"
+  },
+  leˀûm: {
+    themeVowel: "i",
+    root: ["l", "ˀ", "Ø"],
+    verbalAdjectiveVowel: undefined,
+    verbClass: "active",
+    I_eVerb: true,
+    meaning: "to be able"
+  },
+  bâˀum: {
+    themeVowel: "a",
+    root: ["b", "Ø", "ˀ"],
+    verbalAdjectiveVowel: undefined,
+    verbClass: "active",
+    meaning: "to walk along"
+  },
+  êwum: {
+    themeVowel: "i",
+    root: ["Ø", "w", "Ø"],
+    verbalAdjectiveVowel: undefined,
+    verbClass: "stative",
+    I_eVerb: true,
+    meaning: "to become, to change, to turn into"
+  },
+  nawûm: {
+    themeVowel: "i",
+    root: ["n", "w", "Ø"],
+    verbalAdjectiveVowel: undefined,
+    verbClass: "stative",
+    meaning: "to be abandoned, in ruins"
+  },
+  nêˀum: {
+    themeVowel: "e",
+    root: ["n", "Ø", "ˀ"],
+    verbalAdjectiveVowel: undefined,
+    verbClass: "active",
+    I_eVerb: true,
+    meaning: "to turn around, to loosen"
   }
 };
 

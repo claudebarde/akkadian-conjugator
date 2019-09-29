@@ -18,7 +18,14 @@
 
   $: if ($state.infinitive !== verbInput) {
     verbInput = $state.infinitive;
-    let { themeVowel, I_eVerb, type, durativeVowel, ventive, root } = $state;
+    let {
+      themeVowel,
+      I_eVerb,
+      verbClass,
+      durativeVowel,
+      ventive,
+      root
+    } = $state;
     let originalThemeVowel = themeVowel;
     let thisRoot = [...root];
     let verbType = undefined;
@@ -41,7 +48,7 @@
       root: thisRoot,
       themeVowel,
       I_eVerb,
-      type,
+      verbClass,
       durative: thisRoot[1] === "Ø" ? true : false
     });
 
@@ -75,9 +82,9 @@
     }
     // I-w verbs
     if (thisRoot[0] === "w") {
-      if (type === "stative") {
+      if (verbClass === "stative") {
         thisRoot[0] = "";
-      } else if (type === "active") {
+      } else if (verbClass === "active") {
         thisRoot[0] = "t";
         // Active verbs I–w in the Perfect do not have as their prefix vowel u-,
         // tu-, nu-, as might be expected from the Preterite and Durative forms, but

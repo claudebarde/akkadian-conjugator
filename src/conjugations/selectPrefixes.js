@@ -1,4 +1,10 @@
-const gPreteritePrefixes = ({ root, themeVowel, I_eVerb, type, durative }) => {
+const gPreteritePrefixes = ({
+  root,
+  themeVowel,
+  I_eVerb,
+  verbClass,
+  durative
+}) => {
   let firstPersonPrefix = "a";
   let secondPersonPrefix = "ta";
   let thirdPersonPrefix = "i";
@@ -7,7 +13,7 @@ const gPreteritePrefixes = ({ root, themeVowel, I_eVerb, type, durative }) => {
 
   // Vocalic harmony
   if (
-    (root[2] === "Ø" && themeVowel === "e") ||
+    (root[2] === "Ø" && (themeVowel === "e" || I_eVerb === true)) ||
     (root[1] === "Ø" && themeVowel === "e" && durative === true)
   ) {
     firstPersonPrefix = "e";
@@ -31,19 +37,27 @@ const gPreteritePrefixes = ({ root, themeVowel, I_eVerb, type, durative }) => {
       }
       thirdPersonPrefix = "ī";
       firstPersonPluralPrefix = "nī";
-    } else if (root[0] === "w" && type === "active") {
+    } else if (root[0] === "w" && verbClass === "active") {
       // active I-w verbs have special "u" for person prefix
       firstPersonPrefix = "u";
       secondPersonPrefix = "tu";
       thirdPersonPrefix = "u";
       firstPersonPluralPrefix = "nu";
-    } else if (root[0] === "w" && type === "stative" && durative === false) {
+    } else if (
+      root[0] === "w" &&
+      verbClass === "stative" &&
+      durative === false
+    ) {
       // stative I-w verbs
       firstPersonPrefix = "ē";
       secondPersonPrefix = "tē";
       thirdPersonPrefix = "ī";
       firstPersonPluralPrefix = "nī";
-    } else if (root[0] === "w" && type === "stative" && durative === true) {
+    } else if (
+      root[0] === "w" &&
+      verbClass === "stative" &&
+      durative === true
+    ) {
       // stative I-w verbs
       firstPersonPrefix = "e";
       secondPersonPrefix = "te";

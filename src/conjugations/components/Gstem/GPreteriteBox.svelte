@@ -44,10 +44,22 @@
         "2cp": "tublā/tubilā",
         "1cp": "nubil"
       };
+    } // Irregular Verb leˀûm
+    else if (verbInput === "leˀûm") {
+      conjugatedVerb = {
+        "3cs": "ilˀe",
+        "2ms": "telˀe",
+        "2fs": "telˀê",
+        "1cs": "elˀe",
+        "3mp": "ilˀû",
+        "3fp": "ilˀiā",
+        "2cp": "telˀiā",
+        "1cp": "nilˀe"
+      };
     } else {
       let root = $state.root;
       let thisRoot = [...root];
-      let { themeVowel, I_eVerb, type } = $state;
+      let { themeVowel, I_eVerb, verbClass } = $state;
       let verbType = undefined;
 
       // Person Prefixes
@@ -60,15 +72,19 @@
         root: thisRoot,
         themeVowel,
         I_eVerb,
-        type,
+        verbClass,
         durative: false
       });
 
       // PHONOLOGICAL CHANGES
       // Verbs I-a and I-e and I-w
       if (thisRoot[0] === "Ø" || thisRoot[0] === "w") {
-        if (thisRoot[0] === "w") verbType = "I-w";
-        thisRoot[0] = "";
+        if (thisRoot[0] === "w") {
+          verbType = "I-w";
+          if (thisRoot[1] !== "Ø") thisRoot[0] = "";
+        } else {
+          thisRoot[0] = "";
+        }
       }
       // Verbs II-weak
       if (thisRoot[1] === "Ø") {
