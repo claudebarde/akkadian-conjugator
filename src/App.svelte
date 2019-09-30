@@ -139,7 +139,7 @@
     </div>
     {#if !verbInput}
       <div class="column is-10 welcome">
-        <h1 class="title">Select a verb in the left panel to start.</h1>
+        <h1 class="title is-5">Select a verb in the left panel to start.</h1>
         <br />
         <div class="notification is-warning errorWarning is-size-7-mobile">
           <button class="delete" />

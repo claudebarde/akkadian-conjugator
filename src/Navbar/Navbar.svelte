@@ -68,7 +68,7 @@
   role="navigation"
   aria-label="main navigation">
   <div class="navbar-brand">
-    <a role="button" href="#" class="navbar-item navbar-title is-size-4-tablet">
+    <a role="button" href="#" class="navbar-item navbar-title is-size-4">
       Akkadian Conjugator
     </a>
     <a
