@@ -3,30 +3,70 @@
   import state from "../../state/state";
   import settings from "../../settings/settings";
   import highlightRoot from "../../settings/highlightRoot";
-  import { vowelSyncope } from "../../settings/phonologicalRules";
+  import {
+    vowelSyncope,
+    shortenVowel,
+    allFlavorsOfVowels,
+    contiguousVowels
+  } from "../../settings/phonologicalRules";
 
-  const suffixesSing = {
-    "1cs": "āku",
-    "2ms": "āta",
-    "2fs": "āti",
-    "3ms": "",
-    "3fs": "at"
+  const doubleConsonantSyncope = (verb, ps) => {
+    // removes last consonant for verbs like *dann
+    if (ps === "3ms" && verb.slice(-1) === verb.slice(-2, -1))
+      return verb.slice(0, -1);
+
+    return verb;
   };
 
-  const suffixesPlur = {
-    "1cp": "ānu",
-    "2mp": "ātunu",
-    "2fp": "ātina",
+  $: suffixesSing = {
+    "1cs": vowel + "ku",
+    "2ms": vowel + "ta",
+    "2fs": vowel + "ti",
+    "3ms": "",
+    "3fs": shortenVowel(vowel) + "t"
+  };
+
+  $: suffixesPlur = {
+    "1cp": vowel + "nu",
+    "2mp": vowel + "tunu",
+    "2fp": vowel + "tina",
     "3mp": "ū",
     "3fp": "ā"
   };
 
   let radical = "";
+  let vowel = "";
+  let verbInput = undefined;
 
-  $: if ($state.gVerbalAdjective[2][0] === "*") {
-    radical = $state.gVerbalAdjective[2].slice(1);
-  } else {
-    radical = $state.gVerbalAdjective[2];
+  $: if ($state.infinitive !== verbInput) {
+    verbInput = $state.infinitive;
+    // theme vowel
+    vowel = $state.I_eVerb ? "ē" : "ā";
+    // removes first char *
+    if ($state.gVerbalAdjective[2][0] === "*") {
+      radical = $state.gVerbalAdjective[2].slice(1);
+    } else {
+      radical = $state.gVerbalAdjective[2];
+    }
+    // double vowel contraction
+    const lastVowel = radical.slice(-1);
+    if (allFlavorsOfVowels.includes(lastVowel)) {
+      suffixesSing = {
+        "1cs": contiguousVowels(lastVowel, vowel) + "ku",
+        "2ms": contiguousVowels(lastVowel, vowel) + "ta",
+        "2fs": contiguousVowels(lastVowel, vowel) + "ti",
+        "3ms": lastVowel,
+        "3fs": contiguousVowels(lastVowel, shortenVowel(vowel)) + "t"
+      };
+      suffixesPlur = {
+        "1cp": contiguousVowels(lastVowel, vowel) + "nu",
+        "2mp": contiguousVowels(lastVowel, vowel) + "tunu",
+        "2fp": contiguousVowels(lastVowel, vowel) + "tina",
+        "3mp": contiguousVowels(lastVowel, "ū"),
+        "3fp": contiguousVowels(lastVowel, "ā")
+      };
+      radical = radical.slice(0, -1);
+    }
   }
 </script>
 
@@ -57,7 +97,10 @@
                 {#if $state.rootHighlight}
                   <td>
                     {@html highlightRoot({
-                      verb: vowelSyncope(radical + suffixesSing[ps]),
+                      verb: doubleConsonantSyncope(
+                        vowelSyncope(radical + suffixesSing[ps]),
+                        ps
+                      ),
                       root: $state.root,
                       conjugation: 'gPredicative',
                       ps,
@@ -65,7 +108,9 @@
                     })}
                   </td>
                 {:else}
-                  <td>{vowelSyncope(radical + suffixesSing[ps])}</td>
+                  <td>
+                    {doubleConsonantSyncope(vowelSyncope(radical + suffixesSing[ps]))}
+                  </td>
                 {/if}
               </tr>
             {/each}

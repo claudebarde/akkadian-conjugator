@@ -325,7 +325,7 @@ const posParticipleIIw = {
   radical: [0, 2]
 };
 
-const posPredicative = {
+const posPredicative3C = {
   "1cs": [0, 2, 3],
   "2ms": [0, 2, 3],
   "2fs": [0, 2, 3],
@@ -594,7 +594,31 @@ const highlightRoot = ({
       highlightedVerb = highlightVerb(verb, ps, posParticiple);
     }
   } else if (conjugation === "gPredicative") {
-    highlightedVerb = highlightVerb(verb, ps, posPredicative);
+    if (!root.includes("Ø")) {
+      highlightedVerb = highlightVerb(verb, ps, posPredicative3C);
+    } else if (root[0] === "Ø") {
+      highlightedVerb = [...verb].map((letter, i) => {
+        if (i === 1 || (i === 2 && ps !== "3ms") || (i === 3 && ps === "3ms")) {
+          // if this is a position to highlight
+          return "<strong>" + letter + "</strong>";
+        } else {
+          // if the position is not to be highlighted
+          return letter;
+        }
+      });
+    } else if (root[2] === "Ø" || root[1] === "Ø") {
+      highlightedVerb = [...verb].map((letter, i) => {
+        if (i === 0 || i === 2) {
+          // if this is a position to highlight
+          return "<strong>" + letter + "</strong>";
+        } else {
+          // if the position is not to be highlighted
+          return letter;
+        }
+      });
+    } else {
+      highlightedVerb = [...verb];
+    }
   } else {
     highlightedVerb = [...verb];
   }

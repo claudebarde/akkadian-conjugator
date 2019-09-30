@@ -31,7 +31,7 @@ const lexicon = {
   danānum: {
     themeVowel: "i",
     root: ["d", "n", "n"],
-    verbalAdjectiveVowel: undefined,
+    verbalAdjectiveVowel: " ",
     verbClass: "stative",
     meaning: "to be strong"
   },
