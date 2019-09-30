@@ -92,6 +92,10 @@
   .modal-content table td {
     padding: 10px;
   }
+
+  .modal-title {
+    text-align: center;
+  }
 </style>
 
 {#if $state.infoModal.open}
@@ -103,13 +107,14 @@
     <div class="modal-content" style="overflow:hidden">
       <article class="message is-info is-small">
         <div class="message-header">
-          <p>Object Pronominal Suffixes</p>
+          <p>Object Pronominal Suffixes - {$state.infoModal.verb}</p>
           <button
             class="delete"
             aria-label="delete"
             on:click={state.toggleInfoModal} />
         </div>
-        <div class="message-body" style="height:90%;overflow:auto;">
+        <div class="message-body" style="height:90%;overflow:auto;text">
+          <h4 class="title is-4 modal-title">{$state.infoModal.verb}</h4>
           <table class="table">
             <thead>
               <tr>
@@ -162,6 +167,7 @@
             on:click={state.toggleInfoModal} />
         </div>
         <div class="message-body">
+          <h4 class="title is-4 modal-title">{$state.infoModal.verb}</h4>
           <table class="table">
             <thead>
               <tr>
