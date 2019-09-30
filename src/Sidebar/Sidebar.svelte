@@ -68,7 +68,7 @@
 
   .verbs-menu {
     height: 90vh;
-    padding-bottom: 40px;
+    padding-bottom: 50px;
     overflow: auto;
   }
 
@@ -80,14 +80,18 @@
     margin: 0px 10px;
   }
 
-  .github-sidebar {
+  .link-sidebar {
     text-decoration: none;
     color: inherit;
     font-weight: bold;
-    margin-bottom: 20px;
+    padding-bottom: 10px;
   }
 
-  .github-sidebar-icon {
+  .link-sidebar-bottom {
+    margin-bottom: 10px;
+  }
+
+  .link-sidebar-icon {
     vertical-align: top;
     width: 15px;
     margin-right: 5px;
@@ -95,12 +99,21 @@
 </style>
 
 <div class="mainMenu">
-  <p class="is-size-7 is-hidden-tablet github-sidebar">
+  <p class="is-size-7 is-hidden-tablet link-sidebar">
+    <a
+      href="https://docs.google.com/forms/d/e/1FAIpQLSerY00WPuuPj0CNWZkdF3bfFn-0rlFnQkB5K8BiLlmckcjOCQ/viewform?usp=sf_link"
+      target="_blank"
+      rel="noopener noreferrer">
+      <img src="images/list.svg" alt="contact-form" class="link-sidebar-icon" />
+      Contact Form
+    </a>
+  </p>
+  <p class="is-size-7 is-hidden-tablet link-sidebar link-sidebar-bottom">
     <a
       href="https://github.com/claudebarde/akkadian-conjugator"
       target="_blank"
       rel="noopener noreferrer">
-      <img src="images/github.svg" alt="github" class="github-sidebar-icon" />
+      <img src="images/github.svg" alt="github" class="link-sidebar-icon" />
       Github Repo
     </a>
   </p>

@@ -86,6 +86,13 @@
   <div class="navbar-menu">
     <div class="navbar-end">
       <a
+        href="https://docs.google.com/forms/d/e/1FAIpQLSerY00WPuuPj0CNWZkdF3bfFn-0rlFnQkB5K8BiLlmckcjOCQ/viewform?usp=sf_link"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="navbar-item">
+        <img src="images/list.svg" alt="contact-form" />
+      </a>
+      <a
         href="https://github.com/claudebarde/akkadian-conjugator"
         target="_blank"
         rel="noopener noreferrer"
