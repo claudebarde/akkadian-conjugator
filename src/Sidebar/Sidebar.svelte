@@ -79,9 +79,31 @@
   .menuItem {
     margin: 0px 10px;
   }
+
+  .github-sidebar {
+    text-decoration: none;
+    color: inherit;
+    font-weight: bold;
+  }
+
+  .github-sidebar-icon {
+    vertical-align: bottom;
+    width: 20px;
+    margin-right: 10px;
+  }
 </style>
 
 <div class="mainMenu">
+  <p class="is-size-7 github-sidebar">
+    <a
+      href="https://github.com/claudebarde/akkadian-conjugator"
+      target="_blank"
+      rel="noopener noreferrer">
+      <img src="images/github.svg" alt="github" class="github-sidebar-icon" />
+      Github Repo
+    </a>
+  </p>
+  <br />
   <aside class="menu">
     <p class="menu-label">Verbs ({Object.keys(lexicon).length})</p>
     <ul class="menu-list verbs-menu">

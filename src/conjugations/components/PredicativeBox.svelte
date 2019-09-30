@@ -76,6 +76,7 @@
   }
 </style>
 
+<!-- COMPUTER VERSION-->
 <div
   class="message is-primary is-hidden-mobile conjugation-box"
   transition:fly={{ y: settings.transitionY, duration: settings.transtionDuration }}>
@@ -84,6 +85,79 @@
   </div>
   <div class="message-body">
     <div class="columns">
+      <div class="column is-half">
+        <table class="table verbDisplay">
+          <thead>
+            <th>Person</th>
+            <th>Verb</th>
+          </thead>
+          <tbody>
+            {#each Object.keys(suffixesSing) as ps}
+              <tr>
+                <td>{ps}:</td>
+                {#if $state.rootHighlight}
+                  <td>
+                    {@html highlightRoot({
+                      verb: doubleConsonantSyncope(
+                        vowelSyncope(radical + suffixesSing[ps]),
+                        ps
+                      ),
+                      root: $state.root,
+                      conjugation: 'gPredicative',
+                      ps,
+                      infinitive: $state.infinitive
+                    })}
+                  </td>
+                {:else}
+                  <td>
+                    {doubleConsonantSyncope(vowelSyncope(radical + suffixesSing[ps]))}
+                  </td>
+                {/if}
+              </tr>
+            {/each}
+          </tbody>
+        </table>
+      </div>
+      <div class="column is-half">
+        <table class="table verbDisplay">
+          <thead>
+            <th>Person</th>
+            <th>Verb</th>
+          </thead>
+          <tbody>
+            {#each Object.keys(suffixesPlur) as ps}
+              <tr>
+                <td>{ps}:</td>
+                {#if $state.rootHighlight}
+                  <td>
+                    {@html highlightRoot({
+                      verb: vowelSyncope(radical + suffixesPlur[ps]),
+                      root: $state.root,
+                      conjugation: 'gPredicative',
+                      ps,
+                      infinitive: $state.infinitive
+                    })}
+                  </td>
+                {:else}
+                  <td>{vowelSyncope(radical + suffixesPlur[ps])}</td>
+                {/if}
+              </tr>
+            {/each}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- MOBILE VERSION-->
+<div
+  class="message is-primary is-hidden-tablet is-small conjugation-box"
+  transition:fly={{ y: settings.transitionY, duration: settings.transtionDuration }}>
+  <div class="message-header">
+    <p>Predicative Construction</p>
+  </div>
+  <div class="message-body">
+    <div class="columns is-mobile">
       <div class="column is-half">
         <table class="table verbDisplay">
           <thead>

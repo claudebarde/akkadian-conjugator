@@ -43,6 +43,10 @@
     float: right;
     margin: 5px;
   }
+
+  .navbar-title {
+    font-family: "Gochi Hand", cursive;
+  }
 </style>
 
 {#if menuOpen}
@@ -64,7 +68,9 @@
   role="navigation"
   aria-label="main navigation">
   <div class="navbar-brand">
-    <a role="button" href="#" class="navbar-item">Akkadian Conjugator</a>
+    <a role="button" href="#" class="navbar-item navbar-title is-size-4-tablet">
+      Akkadian Conjugator
+    </a>
     <a
       href="#"
       role="button"
