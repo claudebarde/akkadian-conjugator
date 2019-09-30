@@ -325,6 +325,19 @@ const posParticipleIIw = {
   radical: [0, 2]
 };
 
+const posPredicative = {
+  "1cs": [0, 2, 3],
+  "2ms": [0, 2, 3],
+  "2fs": [0, 2, 3],
+  "3ms": [0, 2, 4],
+  "3fs": [0, 2, 3],
+  "1cp": [0, 2, 3],
+  "2mp": [0, 2, 3],
+  "2fp": [0, 2, 3],
+  "3mp": [0, 2, 3],
+  "3fp": [0, 2, 3]
+};
+
 const highlightVerb = (verb, ps, template) => {
   return [...verb].map((letter, i) => {
     if (template[ps].includes(i)) {
@@ -580,6 +593,8 @@ const highlightRoot = ({
     } else {
       highlightedVerb = highlightVerb(verb, ps, posParticiple);
     }
+  } else if (conjugation === "gPredicative") {
+    highlightedVerb = highlightVerb(verb, ps, posPredicative);
   } else {
     highlightedVerb = [...verb];
   }

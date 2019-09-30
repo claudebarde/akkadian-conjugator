@@ -937,6 +937,28 @@ const lexicon = {
     verbClass: "active",
     I_eVerb: true,
     meaning: "to turn around, to loosen"
+  },
+  nakārum: {
+    themeVowel: "i",
+    root: ["n", "k", "r"],
+    verbalAdjectiveVowel: "i",
+    verbClass: "active",
+    meaning: "to become different, hostile, to change, to dispute"
+  },
+  našûm: {
+    themeVowel: "i",
+    root: ["n", "š", "Ø"],
+    verbalAdjectiveVowel: undefined,
+    verbClass: "active",
+    meaning: "to lift, to raise, to carry, to accept, to receive"
+  },
+  qerēbum: {
+    themeVowel: "e",
+    root: ["q", "r", "b"],
+    verbalAdjectiveVowel: "u",
+    verbClass: "active",
+    I_eVerb: true,
+    meaning: "to draw near, to approach"
   }
 };
 

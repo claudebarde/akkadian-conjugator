@@ -85,8 +85,14 @@
   }
 </script>
 
+<style>
+  .verbDisplay {
+    background-color: transparent;
+  }
+</style>
+
 <h5 class="subtitle is-6 is-size-7-mobile">Participle:</h5>
-<table class="table">
+<table class="table verbDisplay">
   <thead>
     <th>Masculine</th>
     <th>Feminine</th>

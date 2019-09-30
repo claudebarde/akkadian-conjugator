@@ -86,3 +86,20 @@ export const feminineChange = (rootConsonant, consonant) => {
 
   return rootConsonant;
 };
+
+export const vowelSyncope = word => {
+  let newWord = word;
+  const regex = new RegExp(
+    "([aeiu][bdfgḫklmnpqrstwzšṣṭ][aeiu])([bdfgḫklmnpqrstwzšṣṭ][aeiuâêîûāēīū])"
+  );
+  const match = word.match(regex);
+  if (match) {
+    const newGroup = match[1].slice(0, -1) + match[2];
+    newWord =
+      newWord.slice(0, match.index) +
+      newGroup +
+      newWord.slice(match.index + match[0].length);
+  }
+
+  return newWord;
+};

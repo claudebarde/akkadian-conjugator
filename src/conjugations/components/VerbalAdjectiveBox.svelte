@@ -80,8 +80,7 @@
             baseVowel +
             thisRoot[1] +
             vowel +
-            thisRoot[2] +
-            "-"
+            thisRoot[2]
         ];
       }
       // Verbs II-weak
@@ -94,7 +93,7 @@
             thisRoot[1] +
             feminineChange(thisRoot[2], "t") +
             "tum",
-          firstChar + thisRoot[0] + vowel + thisRoot[1] + thisRoot[2] + "-"
+          firstChar + thisRoot[0] + vowel + thisRoot[1] + thisRoot[2]
         ];
       } else {
         adjectiveForms = [
@@ -111,8 +110,7 @@
             baseVowel +
             thisRoot[1] +
             vowel +
-            thisRoot[2] +
-            "-"
+            thisRoot[2]
         ];
       }
 
@@ -127,8 +125,14 @@
   }
 </script>
 
+<style>
+  .verbDisplay {
+    background-color: transparent;
+  }
+</style>
+
 <h5 class="subtitle is-6 is-size-7-mobile">Verbal Adjective:</h5>
-<table class="table">
+<table class="table verbDisplay">
   <thead>
     <th>Masculine</th>
     <th>Feminine</th>
@@ -175,6 +179,7 @@
             ps: 'feminin',
             infinitive: $state.infinitive
           })}
+          -
         </td>
       {:else}
         <td>

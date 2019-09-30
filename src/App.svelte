@@ -11,6 +11,7 @@
   import NonFiniteFormsBox from "./conjugations/components/NonFiniteFormsBox.svelte";
   import GImperativeBox from "./conjugations/components/Gstem/GImperativeBox.svelte";
   import GPerfectBox from "./conjugations/components/Gstem/GPerfectBox.svelte";
+  import PredicativeBox from "./conjugations/components/PredicativeBox.svelte";
   import InfoModal from "./conjugations/components/InfoModal.svelte";
 
   import settings from "./settings/settings.js";
@@ -215,17 +216,17 @@
                 </a>
               </li>
               <li
-                class:is-active={$state.activeView === 'nstem'}
-                on:click={() => $state.updateView('nstem')}>
-                <a href="#">
-                  <span>N Stem</span>
-                </a>
-              </li>
-              <li
                 class:is-active={$state.activeView === 'dstem'}
                 on:click={() => $state.updateView('dstem')}>
                 <a href="#">
                   <span>D Stem</span>
+                </a>
+              </li>
+              <li
+                class:is-active={$state.activeView === 'nstem'}
+                on:click={() => $state.updateView('nstem')}>
+                <a href="#">
+                  <span>N Stem</span>
                 </a>
               </li>
               <li
@@ -247,12 +248,12 @@
               </li>
               <li>
                 <a href="#">
-                  <span>N Stem</span>
+                  <span>D Stem</span>
                 </a>
               </li>
               <li>
                 <a href="#">
-                  <span>D Stem</span>
+                  <span>N Stem</span>
                 </a>
               </li>
               <li>
@@ -287,9 +288,14 @@
               <GPrecativeBox />
             </div>
           </div>
-          <div class="columns lastColumns">
+          <div class="columns">
             <div class="column is-two-thirds is-offset-2">
               <NonFiniteFormsBox />
+            </div>
+          </div>
+          <div class="columns lastColumns">
+            <div class="column is-half is-offset-3">
+              <PredicativeBox />
             </div>
           </div>
         </div>
