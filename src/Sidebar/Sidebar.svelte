@@ -68,7 +68,7 @@
 
   .verbs-menu {
     height: 90vh;
-    padding-bottom: 20px;
+    padding-bottom: 40px;
     overflow: auto;
   }
 
@@ -84,17 +84,18 @@
     text-decoration: none;
     color: inherit;
     font-weight: bold;
+    margin-bottom: 20px;
   }
 
   .github-sidebar-icon {
-    vertical-align: bottom;
-    width: 20px;
-    margin-right: 10px;
+    vertical-align: top;
+    width: 15px;
+    margin-right: 5px;
   }
 </style>
 
 <div class="mainMenu">
-  <p class="is-size-7 github-sidebar">
+  <p class="is-size-7 is-hidden-tablet github-sidebar">
     <a
       href="https://github.com/claudebarde/akkadian-conjugator"
       target="_blank"
@@ -103,7 +104,6 @@
       Github Repo
     </a>
   </p>
-  <br />
   <aside class="menu">
     <p class="menu-label">Verbs ({Object.keys(lexicon).length})</p>
     <ul class="menu-list verbs-menu">
