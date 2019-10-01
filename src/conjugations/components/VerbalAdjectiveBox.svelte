@@ -17,11 +17,13 @@
     // IRREGULAR VERBAL ADJECTIVES
     // ešērum => išarum
     if (verbInput === "ešērum") {
-      adjectiveForms = ["išarum", "išartum", "išar-"]; // ešērum => išarum
+      adjectiveForms = ["išarum", "išartum", "išar"]; // ešērum => išarum
     } else if (verbInput === "edēšum") {
-      adjectiveForms = ["eššum", "eššetum", "ešš-"];
+      adjectiveForms = ["eššum", "eššetum", "ešš"];
     } else if (verbInput === "palāšum") {
-      adjectiveForms = ["pilšum", "pilištum", "piliš-"];
+      adjectiveForms = ["pilšum", "pilištum", "piliš"];
+    } else if (verbInput === "aḫāzum") {
+      adjectiveForms = ["aḫzum", "aḫiztum", "aḫiz-"];
     } else {
       let {
         root,
