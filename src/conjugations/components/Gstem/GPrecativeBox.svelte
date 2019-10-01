@@ -1,5 +1,5 @@
 <script>
-  import { fly } from "svelte/transition";
+  import { fly, fade } from "svelte/transition";
   import state from "../../../state/state";
   import settings from "../../../settings/settings";
   import contractLastVowels from "../../../settings/contractLastVowels";
@@ -122,9 +122,7 @@
   <div />
 {:else}
   <!-- MOBILE VERSION-->
-  <div
-    class="message is-primary is-small is-hidden-tablet conjugation-box"
-    transition:fly={{ y: settings.transitionY, duration: settings.transtionDuration }}>
+  <div class="message is-primary is-small is-hidden-tablet conjugation-box">
     <div class="message-header">
       <p>Precative</p>
     </div>
@@ -203,9 +201,7 @@
   </div>
 
   <!-- MOBILE VERSION-->
-  <div
-    class="message is-primary is-hidden-mobile conjugation-box"
-    transition:fly={{ y: settings.transitionY, duration: settings.transtionDuration }}>
+  <div class="message is-primary is-hidden-mobile conjugation-box">
     <div class="message-header">
       <p>Precative</p>
     </div>

@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-  import { fade } from "svelte/transition";
+  import { fade, fly } from "svelte/transition";
   import state from "./state/state";
 
   import Navbar from "./Navbar/Navbar.svelte";
@@ -13,6 +13,8 @@
   import GPerfectBox from "./conjugations/components/Gstem/GPerfectBox.svelte";
   import PredicativeBox from "./conjugations/components/PredicativeBox.svelte";
   import InfoModal from "./conjugations/components/InfoModal.svelte";
+  import DPreteriteBox from "./conjugations/components/Dstem/DPreteriteBox.svelte";
+  import DDurativeBox from "./conjugations/components/Dstem/DDurativeBox.svelte";
 
   import settings from "./settings/settings.js";
   import highlightRoot from "./settings/highlightRoot.js";
@@ -264,40 +266,66 @@
             </ul>
           </div>
           <br />
-          <div class="columns tables">
-            <div class="column is-two-fifths is-offset-1">
-              <GPreteriteBox />
+          {#if $state.activeView === 'gstem'}
+            <div
+              in:fly={{ x: -100, duration: 500, delay: 200 }}
+              out:fly={{ x: 100, duration: 200 }}>
+              <div class="columns tables">
+                <div class="column is-two-fifths is-offset-1">
+                  <GPreteriteBox />
+                </div>
+                <div class="column is-two-fifths">
+                  <GDurativeBox />
+                </div>
+              </div>
+              <div class="columns">
+                <div class="column is-two-fifths is-offset-1">
+                  <GPerfectBox />
+                </div>
+                <div class="column is-two-fifths">
+                  <GPreteriteBox vetitive={true} />
+                </div>
+              </div>
+              <div class="columns">
+                <div class="column is-3 is-offset-2">
+                  <GImperativeBox />
+                </div>
+                <div class="column is-4 is-offset-1">
+                  <GPrecativeBox />
+                </div>
+              </div>
+              <div class="columns">
+                <div class="column is-two-thirds is-offset-2">
+                  <NonFiniteFormsBox />
+                </div>
+              </div>
+              <div class="columns lastColumns">
+                <div class="column is-half is-offset-3">
+                  <PredicativeBox />
+                </div>
+              </div>
             </div>
-            <div class="column is-two-fifths">
-              <GDurativeBox />
+          {:else if $state.activeView === 'dstem'}
+            <div
+              in:fly={{ x: -100, duration: 500, delay: 200 }}
+              out:fly={{ x: 100, duration: 200 }}>
+              <div class="columns tables">
+                <div class="column is-two-fifths is-offset-1">
+                  <DPreteriteBox />
+                </div>
+                <div class="column is-two-fifths">
+                  <DDurativeBox />
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="columns">
-            <div class="column is-two-fifths is-offset-1">
-              <GPerfectBox />
+          {:else}
+            <div
+              class="message is-info"
+              in:fly={{ x: -100, duration: 500, delay: 200 }}
+              out:fly={{ x: 100, duration: 200 }}>
+              <div class="message-body">This section is empty.</div>
             </div>
-            <div class="column is-two-fifths">
-              <GPreteriteBox vetitive={true} />
-            </div>
-          </div>
-          <div class="columns">
-            <div class="column is-3 is-offset-2">
-              <GImperativeBox />
-            </div>
-            <div class="column is-4 is-offset-1">
-              <GPrecativeBox />
-            </div>
-          </div>
-          <div class="columns">
-            <div class="column is-two-thirds is-offset-2">
-              <NonFiniteFormsBox />
-            </div>
-          </div>
-          <div class="columns lastColumns">
-            <div class="column is-half is-offset-3">
-              <PredicativeBox />
-            </div>
-          </div>
+          {/if}
         </div>
       {/if}
     </div>

@@ -959,6 +959,42 @@ const lexicon = {
     verbClass: "active",
     I_eVerb: true,
     meaning: "to draw near, to approach"
+  },
+  maṣûm: {
+    themeVowel: "i",
+    root: ["m", "ṣ", "Ø"],
+    verbalAdjectiveVowel: "i",
+    verbClass: "stative",
+    meaning: "to be equal, to be sufficient"
+  },
+  saḫārum: {
+    themeVowel: "u",
+    root: ["s", "ḫ", "r"],
+    verbalAdjectiveVowel: undefined,
+    verbClass: "active",
+    meaning: "to go around, to surround, to turn"
+  },
+  šebērum: {
+    themeVowel: "e",
+    root: ["š", "b", "r"],
+    verbalAdjectiveVowel: "i",
+    verbClass: "active",
+    I_eVerb: true,
+    meaning: "to break"
+  },
+  tabālum: {
+    themeVowel: "a",
+    root: ["t", "b", "l"],
+    verbalAdjectiveVowel: undefined,
+    verbClass: "active",
+    meaning: "to take away, to carry away"
+  },
+  bašûm: {
+    themeVowel: "i",
+    root: ["b", "š", "Ø"],
+    verbalAdjectiveVowel: "i",
+    verbClass: "active",
+    meaning: "to exist, to be present"
   }
 };
 

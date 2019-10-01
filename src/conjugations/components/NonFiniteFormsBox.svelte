@@ -1,5 +1,4 @@
 <script>
-  import { fly } from "svelte/transition";
   import settings from "../../settings/settings";
   import state from "../../state/state";
   import VerbalAdjectiveBox from "./VerbalAdjectiveBox.svelte";
@@ -10,9 +9,7 @@
   <div />
 {:else}
   <!-- MOBILE VERSION-->
-  <div
-    class="message is-primary is-small is-hidden-tablet conjugation-box"
-    transition:fly={{ y: settings.transitionY, duration: settings.transtionDuration }}>
+  <div class="message is-primary is-small is-hidden-tablet conjugation-box">
     <div class="message-header">
       <p>Non-finite forms</p>
     </div>
@@ -29,9 +26,7 @@
   </div>
 
   <!-- COMPUTER VERSION-->
-  <div
-    class="message is-primary is-hidden-mobile conjugation-box"
-    transition:fly={{ y: settings.transitionY, duration: settings.transtionDuration }}>
+  <div class="message is-primary is-hidden-mobile conjugation-box">
     <div class="message-header">
       <p>Non-finite forms</p>
     </div>
