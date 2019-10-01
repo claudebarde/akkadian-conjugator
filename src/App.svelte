@@ -173,7 +173,7 @@
           <div class="columns">
             <div class="column is-6 is-offset-3">
               <article
-                class="message is-primary"
+                class="message is-primary conjugation-box"
                 id="verbTitle"
                 transition:fade>
                 <div class="message-body">

@@ -135,7 +135,9 @@
   }
 </style>
 
-<h5 class="subtitle is-6 is-size-7-mobile">Verbal Adjective:</h5>
+<h5 class="subtitle is-6 is-size-7-mobile" style="text-align:left;">
+  Verbal Adjective:
+</h5>
 <table class="table verbDisplay">
   <thead>
     <th>Masculine</th>

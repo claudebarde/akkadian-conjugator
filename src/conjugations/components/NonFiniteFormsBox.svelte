@@ -11,7 +11,7 @@
 {:else}
   <!-- MOBILE VERSION-->
   <div
-    class="message is-primary is-small is-hidden-tablet"
+    class="message is-primary is-small is-hidden-tablet conjugation-box"
     transition:fly={{ y: settings.transitionY, duration: settings.transtionDuration }}>
     <div class="message-header">
       <p>Non-finite forms</p>
@@ -30,7 +30,7 @@
 
   <!-- COMPUTER VERSION-->
   <div
-    class="message is-primary is-hidden-mobile"
+    class="message is-primary is-hidden-mobile conjugation-box"
     transition:fly={{ y: settings.transitionY, duration: settings.transtionDuration }}>
     <div class="message-header">
       <p>Non-finite forms</p>

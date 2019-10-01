@@ -99,7 +99,9 @@
   }
 </style>
 
-<h5 class="subtitle is-6 is-size-7-mobile">Participle:</h5>
+<h5 class="subtitle is-6 is-size-7-mobile" style="text-align:left;">
+  Participle:
+</h5>
 <table class="table verbDisplay">
   <thead>
     <th>Masculine</th>

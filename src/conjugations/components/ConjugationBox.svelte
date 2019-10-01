@@ -55,10 +55,6 @@
 </script>
 
 <style>
-  .conjugation-box {
-    text-align: center;
-  }
-
   .conjugation-person {
     font-size: 0.8rem;
     margin-right: 8px;
