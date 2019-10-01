@@ -23,7 +23,9 @@
     } else if (verbInput === "palāšum") {
       adjectiveForms = ["pilšum", "pilištum", "piliš"];
     } else if (verbInput === "aḫāzum") {
-      adjectiveForms = ["aḫzum", "aḫiztum", "aḫiz-"];
+      adjectiveForms = ["aḫzum", "aḫiztum", "aḫiz"];
+    } else if (verbInput === "zâzum") {
+      adjectiveForms = ["zīzum", "zīztum", "zīz"];
     } else {
       let {
         root,
@@ -180,8 +182,7 @@
             conjugation: 'verbalAdjective',
             ps: 'feminin',
             infinitive: $state.infinitive
-          })}
-          -
+          }) + '-'}
         </td>
       {:else}
         <td>

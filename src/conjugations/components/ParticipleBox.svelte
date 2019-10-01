@@ -18,6 +18,8 @@
     // ešērum => išarum
     if (verbInput === "aḫāzum") {
       adjectiveForms = ["āḫizum", "āḫiztum", "āḫiz"];
+    } else if (verbInput === "zâzum") {
+      adjectiveForms = ["zāˀizum", "zāˀiztum", "zāˀiz"];
     } else {
       let {
         root,
