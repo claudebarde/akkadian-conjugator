@@ -21,7 +21,6 @@
     verbInput = $state.infinitive;
     let { root, I_eVerb } = $state;
     let thisRoot = [...root];
-    console.log(I_eVerb);
     let infix =
       thisRoot[0] === "g" ? (I_eVerb ? "de" : "da") : I_eVerb ? "te" : "ta";
     // The vowels i and ī were apparently pronounced as e and ē,

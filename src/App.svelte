@@ -17,6 +17,8 @@
   import DPreteriteBox from "./conjugations/components/Dstem/DPreteriteBox.svelte";
   import DDurativeBox from "./conjugations/components/Dstem/DDurativeBox.svelte";
   import DPerfectBox from "./conjugations/components/Dstem/DPerfectBox.svelte";
+  import DImperativeBox from "./conjugations/components/Dstem/DImperativeBox.svelte";
+  import DPrecativeBox from "./conjugations/components/Dstem/DPrecativeBox.svelte";
 
   import settings from "./settings/settings.js";
   import highlightRoot from "./settings/highlightRoot.js";
@@ -338,6 +340,14 @@
                 </div>
                 <div class="column is-two-fifths">
                   <DPreteriteBox vetitive={true} />
+                </div>
+              </div>
+              <div class="columns lastColumns">
+                <div class="column is-3 is-offset-2">
+                  <DImperativeBox />
+                </div>
+                <div class="column is-4 is-offset-1">
+                  <DPrecativeBox />
                 </div>
               </div>
             </div>
