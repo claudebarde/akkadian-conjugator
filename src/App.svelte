@@ -5,6 +5,7 @@
 
   import Navbar from "./Navbar/Navbar.svelte";
   import Sidebar from "./Sidebar/Sidebar.svelte";
+  import InfinitiveBox from "./conjugations/components/InfinitiveBox.svelte";
   import GPreteriteBox from "./conjugations/components/Gstem/GPreteriteBox.svelte";
   import GDurativeBox from "./conjugations/components/Gstem/GDurativeBox.svelte";
   import GPrecativeBox from "./conjugations/components/Gstem/GPrecativeBox.svelte";
@@ -15,6 +16,7 @@
   import InfoModal from "./conjugations/components/InfoModal.svelte";
   import DPreteriteBox from "./conjugations/components/Dstem/DPreteriteBox.svelte";
   import DDurativeBox from "./conjugations/components/Dstem/DDurativeBox.svelte";
+  import DPerfectBox from "./conjugations/components/Dstem/DPerfectBox.svelte";
 
   import settings from "./settings/settings.js";
   import highlightRoot from "./settings/highlightRoot.js";
@@ -38,6 +40,7 @@
       } else {
         verbInfo = `( ${themeVowel} )`;
       }
+      state.updateView("gstem");
     }
   };
 
@@ -81,11 +84,6 @@
     align-items: center;
   }
 
-  #verbTitle {
-    text-align: center;
-    margin-top: 50px;
-  }
-
   #scrolledTitle {
     position: fixed;
     margin-top: 10px;
@@ -122,6 +120,11 @@
   .errorWarning {
     text-align: left;
     max-width: 500px;
+  }
+
+  .alert-icon {
+    vertical-align: bottom;
+    margin-right: 10px;
   }
 </style>
 
@@ -174,17 +177,7 @@
         <div class="mainColumn" on:scroll={displayVerbTitle}>
           <div class="columns">
             <div class="column is-6 is-offset-3">
-              <article
-                class="message is-primary conjugation-box"
-                id="verbTitle"
-                transition:fade>
-                <div class="message-body">
-                  <p>
-                    <strong>{verbInput.toUpperCase()}</strong>
-                  </p>
-                  <p>{lexicon[verbInput].meaning}</p>
-                </div>
-              </article>
+              <InfinitiveBox />
             </div>
           </div>
           <div class="columns">
@@ -212,28 +205,28 @@
             <ul>
               <li
                 class:is-active={$state.activeView === 'gstem'}
-                on:click={() => $state.updateView('gstem')}>
+                on:click={() => state.updateView('gstem')}>
                 <a href="#">
                   <span>G Stem</span>
                 </a>
               </li>
               <li
                 class:is-active={$state.activeView === 'dstem'}
-                on:click={() => $state.updateView('dstem')}>
+                on:click={() => state.updateView('dstem')}>
                 <a href="#">
                   <span>D Stem</span>
                 </a>
               </li>
               <li
                 class:is-active={$state.activeView === 'nstem'}
-                on:click={() => $state.updateView('nstem')}>
+                on:click={() => state.updateView('nstem')}>
                 <a href="#">
                   <span>N Stem</span>
                 </a>
               </li>
               <li
                 class:is-active={$state.activeView === 'sstem'}
-                on:click={() => $state.updateView('sstem')}>
+                on:click={() => state.updateView('sstem')}>
                 <a href="#">
                   <span>Š Stem</span>
                 </a>
@@ -245,28 +238,28 @@
             <ul>
               <li
                 class:is-active={$state.activeView === 'gstem'}
-                on:click={() => $state.updateView('gstem')}>
+                on:click={() => state.updateView('gstem')}>
                 <a href="#">
                   <span>G Stem</span>
                 </a>
               </li>
               <li
                 class:is-active={$state.activeView === 'dstem'}
-                on:click={() => $state.updateView('dstem')}>
+                on:click={() => state.updateView('dstem')}>
                 <a href="#">
                   <span>D Stem</span>
                 </a>
               </li>
               <li
                 class:is-active={$state.activeView === 'nstem'}
-                on:click={() => $state.updateView('nstem')}>
+                on:click={() => state.updateView('nstem')}>
                 <a href="#">
                   <span>N Stem</span>
                 </a>
               </li>
               <li
                 class:is-active={$state.activeView === 'sstem'}
-                on:click={() => $state.updateView('sstem')}>
+                on:click={() => state.updateView('sstem')}>
                 <a href="#">
                   <span>Š Stem</span>
                 </a>
@@ -315,6 +308,20 @@
             </div>
           {:else if $state.activeView === 'dstem'}
             <div
+              class="message is-warning"
+              in:fly={{ x: -100, duration: 500, delay: 200 }}
+              out:fly={{ x: 100, duration: 200 }}>
+              <div class="message-body">
+                <img
+                  src="images/alert-triangle.svg"
+                  alt="alert-icon"
+                  class="alert-icon" />
+                <strong>
+                  Please be aware that this section is under construction.
+                </strong>
+              </div>
+            </div>
+            <div
               in:fly={{ x: -100, duration: 500, delay: 200 }}
               out:fly={{ x: 100, duration: 200 }}>
               <div class="columns tables">
@@ -325,13 +332,29 @@
                   <DDurativeBox />
                 </div>
               </div>
+              <div class="columns">
+                <div class="column is-two-fifths is-offset-1">
+                  <DPerfectBox />
+                </div>
+                <div class="column is-two-fifths">
+                  <DPreteriteBox vetitive={true} />
+                </div>
+              </div>
             </div>
           {:else}
             <div
-              class="message is-info"
+              class="message is-warning"
               in:fly={{ x: -100, duration: 500, delay: 200 }}
               out:fly={{ x: 100, duration: 200 }}>
-              <div class="message-body">This section is empty.</div>
+              <div class="message-body">
+                <img
+                  src="images/alert-triangle.svg"
+                  alt="alert-icon"
+                  class="alert-icon" />
+                <strong>
+                  Please be aware that this section is under construction.
+                </strong>
+              </div>
             </div>
           {/if}
         </div>

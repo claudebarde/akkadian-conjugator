@@ -12,7 +12,7 @@ const blankState = {
   gParticiple: undefined,
   gPerfect: undefined,
   infoModal: { open: false, verb: undefined, person: undefined },
-  activeView: "gstem"
+  activeView: undefined
 };
 
 const store = writable(blankState);

@@ -29,7 +29,7 @@
     let originalThemeVowel = themeVowel;
     let thisRoot = [...root];
     let verbType = undefined;
-    let infix = "ta";
+    let infix = thisRoot[0] === "g" ? "da" : "ta";
 
     // IRREGULAR VERB alākum
     // alākum behaves like a verb I–n in the Perfect

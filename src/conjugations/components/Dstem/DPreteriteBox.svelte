@@ -20,9 +20,17 @@
 
   $: if ($state.infinitive !== verbInput) {
     verbInput = $state.infinitive;
-    let thisRoot = [...$state.root];
-    let firstVowel = "a";
-    let secondVowel = "i";
+    let { root, I_eVerb } = $state;
+    let thisRoot = [...root];
+    let firstVowel = I_eVerb ? "e" : "a";
+    // The vowels i and ī were apparently pronounced as e and ē,
+    // respectively, when they occurred before the consonants r and ḫ.
+    let secondVowel = thisRoot[2] === "r" || thisRoot[2] === "ḫ" ? "e" : "i";
+
+    // III-weak
+    if (thisRoot[2] === "Ø") {
+      thisRoot[2] = "";
+    }
 
     conjugatedVerb = {
       "3cs":
@@ -102,6 +110,11 @@
         secondVowel +
         thisRoot[2]
     };
+
+    // III-weak
+    if (root[2] === "Ø") {
+      contractLastVowels(conjugatedVerb);
+    }
 
     if (vetitive) {
       state.updateVerb({ ...state, dVetitive: conjugatedVerb });

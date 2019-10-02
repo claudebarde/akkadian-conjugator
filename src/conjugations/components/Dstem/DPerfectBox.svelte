@@ -4,15 +4,8 @@
   import lexicon from "../../../lexicon/lexicon";
   import gPreteritePrefixes from "../../selectPrefixes";
   import contractLastVowels from "../../../settings/contractLastVowels";
-  import {
-    contiguousVowels,
-    allFlavorsOfVowels,
-    shortenVowel,
-    lengthenVowel
-  } from "../../../settings/phonologicalRules";
-
-  let conjugatedVerb = {};
-  let verbInput = undefined;
+  import addVentive from "../../../settings/addVentive";
+  import { lengthenVowel } from "../../../settings/phonologicalRules";
 
   const personPrefixes = ["u", "tu", "nu"];
   const vowel_2fs = "ī";
@@ -20,23 +13,38 @@
   const vowel_3fp = "ā";
   const vowel_2cp = "ā";
 
+  let conjugatedVerb = {};
+  let verbInput = undefined;
+  const assimilatingConsonants = ["d", "ṭ", "s", "ṣ", "z"];
+
   $: if ($state.infinitive !== verbInput) {
     verbInput = $state.infinitive;
     let { root, I_eVerb } = $state;
     let thisRoot = [...root];
-    let firstVowel = I_eVerb ? "e" : "a";
-    let secondVowel = I_eVerb ? "e" : "a";
+    console.log(I_eVerb);
+    let infix =
+      thisRoot[0] === "g" ? (I_eVerb ? "de" : "da") : I_eVerb ? "te" : "ta";
+    // The vowels i and ī were apparently pronounced as e and ē,
+    // respectively, when they occurred before the consonants r and ḫ.
+    let secondVowel = thisRoot[2] === "r" || thisRoot[2] === "ḫ" ? "e" : "i";
 
+    // When the first radical of the root is d, †, s, ß, or z (but not ⇥),
+    // the infixed -t- of the Perfect is assimilated completely to that consonant
+    if (assimilatingConsonants.includes(thisRoot[0]))
+      infix = thisRoot[0] + infix[1];
+
+    // I-n
+    if (thisRoot[0] === "n") thisRoot[0] = "t";
     // III-weak
     if (thisRoot[2] === "Ø") {
       thisRoot[2] = "";
     }
 
-    let conjugatedVerb = {
+    conjugatedVerb = {
       "3cs":
         personPrefixes[0] +
         thisRoot[0] +
-        firstVowel +
+        infix +
         thisRoot[1] +
         thisRoot[1] +
         secondVowel +
@@ -44,7 +52,7 @@
       "2ms":
         personPrefixes[1] +
         thisRoot[0] +
-        firstVowel +
+        infix +
         thisRoot[1] +
         thisRoot[1] +
         secondVowel +
@@ -52,7 +60,7 @@
       "2fs":
         personPrefixes[1] +
         thisRoot[0] +
-        firstVowel +
+        infix +
         thisRoot[1] +
         thisRoot[1] +
         secondVowel +
@@ -61,7 +69,7 @@
       "1cs":
         personPrefixes[0] +
         thisRoot[0] +
-        firstVowel +
+        infix +
         thisRoot[1] +
         thisRoot[1] +
         secondVowel +
@@ -69,7 +77,7 @@
       "3mp":
         personPrefixes[0] +
         thisRoot[0] +
-        firstVowel +
+        infix +
         thisRoot[1] +
         thisRoot[1] +
         secondVowel +
@@ -78,7 +86,7 @@
       "3fp":
         personPrefixes[0] +
         thisRoot[0] +
-        firstVowel +
+        infix +
         thisRoot[1] +
         thisRoot[1] +
         secondVowel +
@@ -87,7 +95,7 @@
       "2cp":
         personPrefixes[1] +
         thisRoot[0] +
-        firstVowel +
+        infix +
         thisRoot[1] +
         thisRoot[1] +
         secondVowel +
@@ -96,7 +104,7 @@
       "1cp":
         personPrefixes[2] +
         thisRoot[0] +
-        firstVowel +
+        infix +
         thisRoot[1] +
         thisRoot[1] +
         secondVowel +
@@ -108,15 +116,15 @@
       contractLastVowels(conjugatedVerb);
     }
 
-    state.updateVerb({ ...state, dDurative: conjugatedVerb });
+    state.updateVerb({ ...state, dPerfect: conjugatedVerb });
   }
 </script>
 
-{#if $state.gDurative === undefined}
+{#if $state.dPerfect === undefined}
   <div />
 {:else}
   <ConjugationBox
-    verb={$state.dDurative}
-    title="D Durative"
-    conjugation="dDurative" />
+    verb={$state.dPerfect}
+    title={'D Perfect'}
+    conjugation="dPerfect" />
 {/if}

@@ -191,6 +191,7 @@ const lexicon = {
     root: ["l", "q", "Ø"],
     verbalAdjectiveVowel: "i",
     verbClass: "active",
+    I_eVerb: true,
     meaning: "to take, to accept"
   },
   malûm: {
@@ -212,6 +213,7 @@ const lexicon = {
     root: ["š", "m", "Ø"],
     verbalAdjectiveVowel: "i",
     verbClass: "active",
+    I_eVerb: true,
     meaning: "to hear, to listen"
   },
   zakûm: {
@@ -490,24 +492,30 @@ const lexicon = {
     themeVowel: "e",
     root: ["ṭ", "ḫ", "Ø"],
     verbalAdjectiveVowel: undefined,
+    verbClass: "active",
+    I_eVerb: true,
     meaning: "to go near, to approach"
   },
   ḫepûm: {
     themeVowel: "e",
     root: ["ḫ", "p", "Ø"],
     verbalAdjectiveVowel: "i",
+    verbClass: "active",
+    I_eVerb: true,
     meaning: "to smash, to destroy, to break"
   },
   kanāšum: {
     themeVowel: "u",
     root: ["k", "n", "š"],
     verbalAdjectiveVowel: "i",
+    verbClass: "active",
     meaning: "to bow down, to submit"
   },
   pašāḫum: {
     themeVowel: "a",
     root: ["p", "š", "ḫ"],
     verbalAdjectiveVowel: undefined,
+    verbClass: "active",
     meaning: "to refresh oneself, to calm down"
   },
   saḫāpum: {
@@ -515,6 +523,7 @@ const lexicon = {
     durativeVowel: "u",
     root: ["s", "ḫ", "p"],
     verbalAdjectiveVowel: undefined,
+    verbClass: "active",
     meaning: "to cover, to spread over, to overwhelm"
   },
   ragāmum: {
@@ -522,6 +531,7 @@ const lexicon = {
     durativeVowel: "a",
     root: ["r", "g", "m"],
     verbalAdjectiveVowel: undefined,
+    verbClass: "active",
     meaning: "to shout, to call, to complain"
   },
   tamûm: {
@@ -643,6 +653,7 @@ const lexicon = {
     root: ["p", "t", "Ø"],
     verbalAdjectiveVowel: "i",
     verbClass: "active",
+    I_eVerb: true,
     meaning: "to open"
   },
   redûm: {
@@ -650,6 +661,7 @@ const lexicon = {
     root: ["r", "d", "Ø"],
     verbalAdjectiveVowel: "i",
     verbClass: "active",
+    I_eVerb: true,
     meaning: "to escort, to lead, to drive"
   },
   šaqālum: {
@@ -672,6 +684,7 @@ const lexicon = {
     root: ["t", "b", "Ø"],
     verbalAdjectiveVowel: "i",
     verbClass: "active",
+    I_eVerb: true,
     meaning: "to arise, to stand up, to occur"
   },
   kalûm: {
@@ -846,6 +859,7 @@ const lexicon = {
     root: ["n", "s", "Ø"],
     verbalAdjectiveVowel: "i",
     verbClass: "stative",
+    I_eVerb: true,
     meaning: "to become far away, to depart"
   },
   eˀēlum: {
