@@ -243,22 +243,30 @@
           <!-- MOBILE VERSION -->
           <div class="tabs is-small is-toggle is-fullwidth is-hidden-tablet">
             <ul>
-              <li class="is-active">
+              <li
+                class:is-active={$state.activeView === 'gstem'}
+                on:click={() => $state.updateView('gstem')}>
                 <a href="#">
                   <span>G Stem</span>
                 </a>
               </li>
-              <li>
+              <li
+                class:is-active={$state.activeView === 'dstem'}
+                on:click={() => $state.updateView('dstem')}>
                 <a href="#">
                   <span>D Stem</span>
                 </a>
               </li>
-              <li>
+              <li
+                class:is-active={$state.activeView === 'nstem'}
+                on:click={() => $state.updateView('nstem')}>
                 <a href="#">
                   <span>N Stem</span>
                 </a>
               </li>
-              <li>
+              <li
+                class:is-active={$state.activeView === 'sstem'}
+                on:click={() => $state.updateView('sstem')}>
                 <a href="#">
                   <span>Š Stem</span>
                 </a>

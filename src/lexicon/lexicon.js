@@ -995,6 +995,13 @@ const lexicon = {
     verbalAdjectiveVowel: "i",
     verbClass: "active",
     meaning: "to exist, to be present"
+  },
+  sakātum: {
+    themeVowel: "u",
+    root: ["s", "k", "t"],
+    verbalAdjectiveVowel: "i",
+    verbClass: "stative",
+    meaning: "to be silent"
   }
 };
 
