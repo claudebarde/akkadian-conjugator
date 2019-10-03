@@ -3,14 +3,6 @@ import { writable } from "svelte/store";
 const blankState = {
   rootHighlight: true,
   ventive: false,
-  gPreterite: undefined,
-  gDurative: undefined,
-  gImperative: undefined,
-  gPrecative: undefined,
-  gVetitive: undefined,
-  gVerbalAdjective: undefined,
-  gParticiple: undefined,
-  gPerfect: undefined,
   infoModal: { open: false, verb: undefined, person: undefined },
   activeView: undefined
 };

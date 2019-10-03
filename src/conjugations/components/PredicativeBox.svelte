@@ -43,10 +43,10 @@
     // theme vowel
     vowel = $state.I_eVerb ? "ē" : "ā";
     // removes first char *
-    if ($state.gVerbalAdjective[2][0] === "*") {
-      radical = $state.gVerbalAdjective[2].slice(1);
+    if ($state.verbalAdjective[2][0] === "*") {
+      radical = $state.verbalAdjective[2].slice(1);
     } else {
-      radical = $state.gVerbalAdjective[2];
+      radical = $state.verbalAdjective[2];
     }
     // double vowel contraction
     const lastVowel = radical.slice(-1);

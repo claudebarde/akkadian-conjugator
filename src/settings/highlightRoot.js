@@ -366,7 +366,8 @@ const highlightRoot = ({
   infinitive,
   ventive,
   verbClass,
-  vetitive
+  vetitive,
+  stem
 }) => {
   let highlightedVerb = [];
   let vetitivePrefix = undefined;
@@ -509,7 +510,7 @@ const highlightRoot = ({
     } else {
       highlightedVerb = [...verb];
     }
-  } else if (conjugation === "verbalAdjective") {
+  } else if (conjugation === "verbalAdjective" && stem === "gstem") {
     // we store the non attested status to add it back after highlighting
     let nonAttested = false;
     if (verb[0] === "*") {
@@ -585,7 +586,7 @@ const highlightRoot = ({
     }
     // we reinstate the asterisk if necessary
     if (nonAttested) highlightedVerb = ["*", ...highlightedVerb];
-  } else if (conjugation === "gParticiple") {
+  } else if (conjugation === "participle" && stem === "gstem") {
     if (root[2] === "Ø") {
       highlightedVerb = highlightVerb(verb, ps, posParticipleIIw);
     } else if (root[0] === "Ø") {

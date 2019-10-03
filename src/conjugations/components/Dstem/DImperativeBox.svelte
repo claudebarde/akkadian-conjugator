@@ -2,6 +2,7 @@
   import state from "../../../state/state";
   import highlightRoot from "../../../settings/highlightRoot";
   import addVentive from "../../../settings/addVentive";
+  import contractLastVowels from "../../../settings/contractLastVowels";
 
   const persons = ["2ms", "2fs", "2cp"];
   let verbInput = undefined;
@@ -12,7 +13,14 @@
     let { root } = $state;
     let thisRoot = [...root];
     let firstVowel = "u";
-    let secondVowel = "i";
+    // The vowels i and ī were apparently pronounced as e and ē,
+    // respectively, when they occurred before the consonants r and ḫ.
+    let secondVowel = thisRoot[2] === "r" || thisRoot[2] === "ḫ" ? "e" : "i";
+
+    // III-weak verbs
+    if (thisRoot[2] === "Ø") {
+      thisRoot[2] = "";
+    }
 
     conjugatedVerb = {
       "2ms":
@@ -39,6 +47,11 @@
         thisRoot[2] +
         "ā"
     };
+
+    // III-weak
+    if (root[2] === "Ø") {
+      contractLastVowels(conjugatedVerb);
+    }
 
     state.updateVerb({ ...state, dImperative: conjugatedVerb });
   }

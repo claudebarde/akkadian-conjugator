@@ -32,6 +32,11 @@
     // respectively, when they occurred before the consonants r and ḫ.
     let secondVowel = thisRoot[2] === "r" || thisRoot[2] === "ḫ" ? "e" : "i";
 
+    // III-weak verbs
+    if (thisRoot[2] === "Ø") {
+      thisRoot[2] = "";
+    }
+
     conjugatedVerb = {
       "3cs":
         prefixes["3cs"] +
@@ -76,6 +81,11 @@
         secondVowel +
         thisRoot[2]
     };
+
+    // III-weak
+    if (root[2] === "Ø") {
+      contractLastVowels(conjugatedVerb);
+    }
 
     state.updateVerb({ ...state, dPrecative: conjugatedVerb });
   }
