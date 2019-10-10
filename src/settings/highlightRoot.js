@@ -1,366 +1,4 @@
-// position to highlight for preterite
-const posPret3C = {
-  "3cs": [1, 2, 4],
-  "2ms": [2, 3, 5],
-  "2fs": [2, 3, 5],
-  "1cs": [1, 2, 4],
-  "3mp": [1, 2, 4],
-  "3fp": [1, 2, 4],
-  "2cp": [2, 3, 5],
-  "1cp": [2, 3, 5]
-};
-
-const posPretIIIweak = {
-  "3cs": [1, 2],
-  "2ms": [2, 3],
-  "2fs": [2, 3],
-  "1cs": [1, 2],
-  "3mp": [1, 2],
-  "3fp": [1, 2],
-  "2cp": [2, 3],
-  "1cp": [2, 3]
-};
-
-const posPretIweak = {
-  "3cs": [1, 3],
-  "2ms": [2, 4],
-  "2fs": [2, 4],
-  "1cs": [1, 3],
-  "3mp": [1, 3],
-  "3fp": [1, 3],
-  "2cp": [2, 4],
-  "1cp": [2, 4]
-};
-
-const posPretalakum = {
-  "3cs": [2, 4],
-  "2ms": [3, 5],
-  "2fs": [3, 5],
-  "1cs": [2, 4],
-  "3mp": [2, 4],
-  "3fp": [2, 4],
-  "2cp": [3, 5],
-  "1cp": [3, 5]
-};
-
-const posPretIIweak = {
-  "3cs": [1, 3],
-  "2ms": [2, 4],
-  "2fs": [2, 4],
-  "1cs": [1, 3],
-  "3mp": [1, 3],
-  "3fp": [1, 3],
-  "2cp": [2, 4],
-  "1cp": [2, 4]
-};
-
-const posPretIw = {
-  "3cs": [1, 3],
-  "2ms": [2, 4],
-  "2fs": [2, 3],
-  "1cs": [1, 3],
-  "3mp": [1, 2],
-  "3fp": [1, 2],
-  "2cp": [2, 3],
-  "1cp": [2, 4]
-};
-
-const posPretIwVentive = {
-  "3cs": [1, 2],
-  "2ms": [2, 3],
-  "2fs": [2, 3],
-  "1cs": [1, 2],
-  "3mp": [1, 2],
-  "3fp": [1, 2],
-  "2cp": [2, 3],
-  "1cp": [2, 3]
-};
-
-// position to highlight for durative
-const posDur3C = {
-  "3cs": [1, 4, 6],
-  "2ms": [2, 5, 7],
-  "2fs": [2, 5, 7],
-  "1cs": [1, 4, 6],
-  "3mp": [1, 4, 6],
-  "3fp": [1, 4, 6],
-  "2cp": [2, 5, 7],
-  "1cp": [2, 5, 7]
-};
-
-const posDurIIIweak = {
-  "3cs": [1, 4],
-  "2ms": [2, 5],
-  "2fs": [2, 5],
-  "1cs": [1, 4],
-  "3mp": [1, 4],
-  "3fp": [1, 4],
-  "2cp": [2, 5],
-  "1cp": [2, 5]
-};
-
-const posDurIweak = {
-  "3cs": [2, 4],
-  "2ms": [3, 5],
-  "2fs": [3, 5],
-  "1cs": [2, 4],
-  "3mp": [2, 4],
-  "3fp": [2, 4],
-  "2cp": [3, 5],
-  "1cp": [3, 5]
-};
-
-const posDurIIweak = {
-  "3cs": [1, 4],
-  "2ms": [2, 5],
-  "2fs": [2, 5],
-  "1cs": [1, 4],
-  "3mp": [1, 4],
-  "3fp": [1, 4],
-  "2cp": [2, 5],
-  "1cp": [2, 5]
-};
-
-const posDurIw = {
-  "3cs": [2, 4],
-  "2ms": [3, 5],
-  "2fs": [3, 5],
-  "1cs": [2, 4],
-  "3mp": [2, 4],
-  "3fp": [2, 4],
-  "2cp": [3, 5],
-  "1cp": [3, 5]
-};
-
-// position to highlight for perfect
-const posPerf3C = {
-  "3cs": [1, 4, 6],
-  "2ms": [2, 5, 7],
-  "2fs": [2, 5, 6],
-  "1cs": [1, 4, 6],
-  "3mp": [1, 4, 5],
-  "3fp": [1, 4, 5],
-  "2cp": [2, 5, 6],
-  "1cp": [2, 5, 7]
-};
-
-const posPerfIweak = {
-  "3cs": [3, 5],
-  "2ms": [4, 6],
-  "2fs": [4, 5],
-  "1cs": [3, 5],
-  "3mp": [3, 4],
-  "3fp": [3, 4],
-  "2cp": [4, 5],
-  "1cp": [4, 6]
-};
-
-const posPerfIwActive = {
-  "3cs": [4, 6],
-  "2ms": [5, 7],
-  "2fs": [5, 6],
-  "1cs": [4, 6],
-  "3mp": [4, 5],
-  "3fp": [4, 5],
-  "2cp": [5, 6],
-  "1cp": [5, 7]
-};
-
-const posPerfIwStative = {
-  "3cs": [3, 5],
-  "2ms": [4, 6],
-  "2fs": [4, 5],
-  "1cs": [3, 5],
-  "3mp": [3, 4],
-  "3fp": [3, 4],
-  "2cp": [4, 5],
-  "1cp": [4, 6]
-};
-
-const posPretNoVentBabalum = {
-  "3cs": [1, 3],
-  "2ms": [2, 4],
-  "2fs": [2, 3, 8, 10],
-  "1cs": [1, 3],
-  "3mp": [1, 2, 6, 8],
-  "3fp": [1, 2, 6, 8],
-  "2cp": [2, 3, 8, 10],
-  "1cp": [2, 4]
-};
-
-const posPretVentBabalum = {
-  "3cs": [1, 2],
-  "2ms": [2, 3],
-  "2fs": [2, 3],
-  "1cs": [1, 2],
-  "3mp": [1, 2],
-  "3fp": [1, 2],
-  "2cp": [2, 3],
-  "1cp": [2, 3]
-};
-
-const posImpNoVent3C = {
-  "2ms": [0, 2, 4],
-  "2fs": [0, 2, 3],
-  "2cp": [0, 2, 3]
-};
-
-const posImpVent3C = {
-  "2ms": [0, 2, 3],
-  "2fs": [0, 2, 3],
-  "2cp": [0, 2, 3]
-};
-
-const posImpNoVentIweak = {
-  "2ms": [1, 3],
-  "2fs": [1, 2],
-  "2cp": [1, 2]
-};
-const posImpVentIweak = {
-  "2ms": [1, 2],
-  "2fs": [1, 2],
-  "2cp": [1, 2]
-};
-
-const posImpIInIIIweak = {
-  "2ms": [0, 2],
-  "2fs": [0, 2],
-  "2cp": [0, 2]
-};
-
-const posImpIw = {
-  "2ms": [0, 2],
-  "2fs": [0, 2],
-  "2cp": [0, 2]
-};
-
-const posPrec3C = {
-  "3cs": [2, 3, 5],
-  "1cs": [2, 3, 5],
-  "3mp": [2, 3, 5],
-  "3fp": [2, 3, 5],
-  "1cp": [4, 5, 7]
-};
-
-const posPrecInIIweak = {
-  "3cs": [2, 4],
-  "1cs": [2, 4],
-  "3mp": [2, 4],
-  "3fp": [2, 4],
-  "1cp": [4, 6]
-};
-
-const posPrecIIIweak = {
-  "3cs": [2, 3],
-  "1cs": [2, 3],
-  "3mp": [2, 3],
-  "3fp": [2, 3],
-  "1cp": [4, 5]
-};
-
-const posPrecNoVentIweak = {
-  "3cs": [2, 4],
-  "1cs": [2, 4],
-  "3mp": [2, 4],
-  "3fp": [2, 4],
-  "1cp": [4, 6]
-};
-
-const posPrecVentIweak = {
-  "3cs": [2, 3],
-  "1cs": [2, 3],
-  "3mp": [2, 4],
-  "3fp": [2, 4],
-  "1cp": [4, 5]
-};
-
-// position to highlight for preterite D stem
-const posDPret3C = {
-  "3cs": [1, 4, 6],
-  "2ms": [2, 5, 7],
-  "2fs": [2, 5, 7],
-  "1cs": [1, 4, 6],
-  "3mp": [1, 4, 6],
-  "3fp": [1, 4, 6],
-  "2cp": [2, 5, 7],
-  "1cp": [2, 5, 7]
-};
-
-// position to highlight for vetitive D stem
-const posDVet3C = {
-  "3cs": [4, 7, 9],
-  "2ms": [3, 6, 8],
-  "2fs": [3, 6, 8],
-  "1cs": [4, 7, 9],
-  "3mp": [4, 7, 9],
-  "3fp": [4, 7, 9],
-  "2cp": [3, 6, 8],
-  "1cp": [3, 6, 8]
-};
-
-const verbalAdjective = {
-  sound: {
-    masculin: [0, 2, 3],
-    feminin: [0, 2, 4],
-    radical: [0, 2, 4]
-  },
-  Iweak: {
-    masculin: [1, 2],
-    feminin: [1, 3],
-    radical: [1, 3]
-  },
-  IIweak: {
-    masculin: [0, 2],
-    feminin: [0, 2],
-    radical: [0, 2]
-  },
-  IIIweak: {
-    masculin: [0, 2],
-    feminin: [0, 2],
-    radical: [0, 2]
-  },
-  Iw: {
-    masculin: [2, 3],
-    feminin: [2, 4],
-    radical: [2, 4]
-  },
-  soundR2W: {
-    masculin: [0, 2, 4],
-    feminin: [0, 2, 4],
-    radical: [0, 2, 4]
-  }
-};
-
-const posParticiple = {
-  masculin: [0, 2, 4],
-  feminin: [0, 2, 4],
-  radical: [0, 2, 4]
-};
-
-const posParticipleIw = {
-  masculin: [1, 3],
-  feminin: [1, 3],
-  radical: [1, 3]
-};
-
-const posParticipleIIw = {
-  masculin: [0, 2],
-  feminin: [0, 2],
-  radical: [0, 2]
-};
-
-const posPredicative3C = {
-  "1cs": [0, 2, 3],
-  "2ms": [0, 2, 3],
-  "2fs": [0, 2, 3],
-  "3ms": [0, 2, 4],
-  "3fs": [0, 2, 3],
-  "1cp": [0, 2, 3],
-  "2mp": [0, 2, 3],
-  "2fp": [0, 2, 3],
-  "3mp": [0, 2, 3],
-  "3fp": [0, 2, 3]
-};
+import * as patterns from "./highlightRootPatterns";
 
 const highlightVerb = (verb, ps, template) => {
   return [...verb].map((letter, i) => {
@@ -409,7 +47,7 @@ const highlightRoot = ({
     }
     // 3 consonant root
     if (!root.includes("Ø") && root[0] !== "w" && infinitive !== "babālum") {
-      highlightedVerb = highlightVerb(verb, ps, posPret3C);
+      highlightedVerb = highlightVerb(verb, ps, patterns.posPret3C);
     } else if (root[0] === "Ø") {
       highlightedVerb = [...verb].map((letter, i) => {
         if (infinitive === "alākum") {
@@ -431,47 +69,51 @@ const highlightRoot = ({
         }
       });
     } else if (root[1] === "Ø") {
-      highlightedVerb = highlightVerb(verb, ps, posPretIIweak);
+      highlightedVerb = highlightVerb(
+        verb,
+        ps,
+        patterns.patterns.posPretIIweak
+      );
     } else if (root[2] === "Ø") {
-      highlightedVerb = highlightVerb(verb, ps, posPretIIIweak);
+      highlightedVerb = highlightVerb(verb, ps, patterns.posPretIIIweak);
     } else if (root[0] === "w" && ventive === false) {
-      highlightedVerb = highlightVerb(verb, ps, posPretIw);
+      highlightedVerb = highlightVerb(verb, ps, patterns.posPretIw);
     } else if (root[0] === "w" && ventive == true && verbClass === "active") {
-      highlightedVerb = highlightVerb(verb, ps, posPretIwVentive);
+      highlightedVerb = highlightVerb(verb, ps, patterns.posPretIwVentive);
     } else if (root[0] === "w" && ventive == true && verbClass === "stative") {
-      highlightedVerb = highlightVerb(verb, ps, posPretIw);
+      highlightedVerb = highlightVerb(verb, ps, patterns.posPretIw);
     } else if (infinitive === "babālum" && ventive === false) {
-      highlightedVerb = highlightVerb(verb, ps, posPretNoVentBabalum);
+      highlightedVerb = highlightVerb(verb, ps, patterns.posPretNoVentBabalum);
     } else if (infinitive === "babālum" && ventive === true) {
-      highlightedVerb = highlightVerb(verb, ps, posPretVentBabalum);
+      highlightedVerb = highlightVerb(verb, ps, patterns.posPretVentBabalum);
     } else {
       highlightedVerb = [...verb];
     }
   } else if (conjugation === "gDurative") {
     if (!root.includes("Ø") && root[0] !== "w") {
-      highlightedVerb = highlightVerb(verb, ps, posDur3C);
+      highlightedVerb = highlightVerb(verb, ps, patterns.posDur3C);
     } else if (root[0] === "Ø") {
-      highlightedVerb = highlightVerb(verb, ps, posDurIweak);
+      highlightedVerb = highlightVerb(verb, ps, patterns.posDurIweak);
     } else if (root[1] === "Ø") {
-      highlightedVerb = highlightVerb(verb, ps, posDurIIweak);
+      highlightedVerb = highlightVerb(verb, ps, patterns.posDurIIweak);
     } else if (root[2] === "Ø") {
-      highlightedVerb = highlightVerb(verb, ps, posDurIIIweak);
+      highlightedVerb = highlightVerb(verb, ps, patterns.posDurIIIweak);
     } else if (root[0] === "w") {
-      highlightedVerb = highlightVerb(verb, ps, posDurIw);
+      highlightedVerb = highlightVerb(verb, ps, patterns.posDurIw);
     } else {
       highlightedVerb = [...verb];
     }
   } else if (conjugation === "gImperative") {
     if (!root.includes("Ø") && root[0] !== "w") {
       if (ventive) {
-        let schemeVent = { ...posImpVent3C };
+        let schemeVent = { ...patterns.posImpVent3C };
         if (root[0] === "n") {
           // imperative of verbs starting with n- lose their n-
           schemeVent = reduceForInitialN(schemeVent);
         }
         highlightedVerb = highlightVerb(verb, ps, schemeVent);
       } else {
-        let schemeNoVent = { ...posImpNoVent3C };
+        let schemeNoVent = { ...patterns.posImpNoVent3C };
         if (root[0] === "n") {
           // imperative of verbs starting with n- lose their n-
           schemeNoVent = reduceForInitialN(schemeNoVent);
@@ -480,56 +122,56 @@ const highlightRoot = ({
       }
     } else if (root[0] === "Ø") {
       if (ventive) {
-        highlightedVerb = highlightVerb(verb, ps, posImpVentIweak);
+        highlightedVerb = highlightVerb(verb, ps, patterns.posImpVentIweak);
       } else {
-        highlightedVerb = highlightVerb(verb, ps, posImpNoVentIweak);
+        highlightedVerb = highlightVerb(verb, ps, patterns.posImpNoVentIweak);
       }
     } else if (root[1] === "Ø") {
-      highlightedVerb = highlightVerb(verb, ps, posImpIInIIIweak);
+      highlightedVerb = highlightVerb(verb, ps, patterns.posImpIInIIIweak);
     } else if (root[2] === "Ø") {
       let scheme = { ...posImpIInIIIweak };
       if (root[0] === "n") {
         // imperative of verbs starting with n- lose their n-
         scheme = reduceForInitialN(scheme);
       }
-      highlightedVerb = highlightVerb(verb, ps, scheme);
+      highlightedVerb = highlightVerb(verb, ps, patterns.scheme);
     } else if (root[0] === "w") {
-      highlightedVerb = highlightVerb(verb, ps, posImpIw);
+      highlightedVerb = highlightVerb(verb, ps, patterns.posImpIw);
     } else {
       highlightedVerb = [...verb];
     }
   } else if (conjugation === "gPrecative") {
     if (!root.includes("Ø") && root[0] !== "w") {
-      highlightedVerb = highlightVerb(verb, ps, posPrec3C);
+      highlightedVerb = highlightVerb(verb, ps, patterns.posPrec3C);
     } else if (root[0] === "Ø") {
-      highlightedVerb = highlightVerb(verb, ps, posPrecInIIweak);
+      highlightedVerb = highlightVerb(verb, ps, patterns.posPrecInIIweak);
     } else if (root[1] === "Ø") {
-      highlightedVerb = highlightVerb(verb, ps, posPrecInIIweak);
+      highlightedVerb = highlightVerb(verb, ps, patterns.posPrecInIIweak);
     } else if (root[2] === "Ø") {
-      highlightedVerb = highlightVerb(verb, ps, posPrecIIIweak);
+      highlightedVerb = highlightVerb(verb, ps, patterns.posPrecIIIweak);
     } else if (root[0] === "w") {
       if (ventive) {
-        highlightedVerb = highlightVerb(verb, ps, posPrecVentIweak);
+        highlightedVerb = highlightVerb(verb, ps, patterns.posPrecVentIweak);
       } else {
-        highlightedVerb = highlightVerb(verb, ps, posPrecNoVentIweak);
+        highlightedVerb = highlightVerb(verb, ps, patterns.posPrecNoVentIweak);
       }
     } else {
       highlightedVerb = [...verb];
     }
   } else if (conjugation === "gPerfect") {
     if (!root.includes("Ø") && root[0] !== "w") {
-      highlightedVerb = highlightVerb(verb, ps, posPerf3C);
+      highlightedVerb = highlightVerb(verb, ps, patterns.posPerf3C);
     } else if (root[0] === "Ø") {
-      highlightedVerb = highlightVerb(verb, ps, posPerfIweak);
+      highlightedVerb = highlightVerb(verb, ps, patterns.posPerfIweak);
     } else if (root[1] === "Ø") {
-      highlightedVerb = highlightVerb(verb, ps, posDurIIweak);
+      highlightedVerb = highlightVerb(verb, ps, patterns.posDurIIweak);
     } else if (root[2] === "Ø") {
-      highlightedVerb = highlightVerb(verb, ps, posDurIIIweak);
+      highlightedVerb = highlightVerb(verb, ps, patterns.posDurIIIweak);
     } else if (root[0] === "w") {
       if (verbClass === "active") {
-        highlightedVerb = highlightVerb(verb, ps, posPerfIwActive);
+        highlightedVerb = highlightVerb(verb, ps, patterns.posPerfIwActive);
       } else if (verbClass === "stative") {
-        highlightedVerb = highlightVerb(verb, ps, posPerfIwStative);
+        highlightedVerb = highlightVerb(verb, ps, patterns.posPerfIwStative);
       }
     } else {
       highlightedVerb = [...verb];
@@ -537,14 +179,15 @@ const highlightRoot = ({
   } else if (conjugation === "dPreterite") {
     if (!root.includes("Ø") && root[0] !== "w") {
       if (vetitive === false) {
-        highlightedVerb = highlightVerb(verb, ps, posDPret3C);
+        highlightedVerb = highlightVerb(verb, ps, patterns.posDPret3C);
       } else {
-        highlightedVerb = highlightVerb(verb, ps, posDVet3C);
+        highlightedVerb = highlightVerb(verb, ps, patterns.posDVet3C);
       }
     } else {
       highlightedVerb = [...verb];
     }
   } else if (conjugation === "verbalAdjective" && stem === "gstem") {
+    const verbalAdjective = { ...patterns.verbalAdjective };
     // we store the non attested status to add it back after highlighting
     let nonAttested = false;
     if (verb[0] === "*") {
@@ -622,15 +265,15 @@ const highlightRoot = ({
     if (nonAttested) highlightedVerb = ["*", ...highlightedVerb];
   } else if (conjugation === "participle" && stem === "gstem") {
     if (root[2] === "Ø") {
-      highlightedVerb = highlightVerb(verb, ps, posParticipleIIw);
+      highlightedVerb = highlightVerb(verb, ps, patterns.posParticipleIIw);
     } else if (root[0] === "Ø") {
-      highlightedVerb = highlightVerb(verb, ps, posParticipleIw);
+      highlightedVerb = highlightVerb(verb, ps, patterns.posParticipleIw);
     } else {
-      highlightedVerb = highlightVerb(verb, ps, posParticiple);
+      highlightedVerb = highlightVerb(verb, ps, patterns.posParticiple);
     }
   } else if (conjugation === "gPredicative") {
     if (!root.includes("Ø")) {
-      highlightedVerb = highlightVerb(verb, ps, posPredicative3C);
+      highlightedVerb = highlightVerb(verb, ps, patterns.posPredicative3C);
     } else if (root[0] === "Ø") {
       highlightedVerb = [...verb].map((letter, i) => {
         if (i === 1 || (i === 2 && ps !== "3ms") || (i === 3 && ps === "3ms")) {

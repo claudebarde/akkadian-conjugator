@@ -184,7 +184,8 @@
             root: $state.root,
             conjugation: 'participle',
             ps: 'masculin',
-            infinitive: $state.infinitive
+            infinitive: $state.infinitive,
+            stem: $state.activeView
           })}
         </td>
       {:else}
@@ -199,7 +200,8 @@
             root: $state.root,
             conjugation: 'participle',
             ps: 'feminin',
-            infinitive: $state.infinitive
+            infinitive: $state.infinitive,
+            stem: $state.activeView
           })}
         </td>
       {:else}
@@ -214,7 +216,8 @@
             root: $state.root,
             conjugation: 'participle',
             ps: 'feminin',
-            infinitive: $state.infinitive
+            infinitive: $state.infinitive,
+            stem: $state.activeView
           })}
         </td>
       {:else}
