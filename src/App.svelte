@@ -6,20 +6,18 @@
   import Navbar from "./Navbar/Navbar.svelte";
   import Sidebar from "./Sidebar/Sidebar.svelte";
   import InfinitiveBox from "./conjugations/components/InfinitiveBox.svelte";
-  import GDurativeBox from "./conjugations/components/Gstem/GDurativeBox.svelte";
   import GPrecativeBox from "./conjugations/components/Gstem/GPrecativeBox.svelte";
   import NonFiniteFormsBox from "./conjugations/components/NonFiniteFormsBox.svelte";
   import GImperativeBox from "./conjugations/components/Gstem/GImperativeBox.svelte";
-  import GPerfectBox from "./conjugations/components/Gstem/GPerfectBox.svelte";
   import PredicativeBox from "./conjugations/components/PredicativeBox.svelte";
   import InfoModal from "./conjugations/components/InfoModal.svelte";
-  import DDurativeBox from "./conjugations/components/Dstem/DDurativeBox.svelte";
-  import DPerfectBox from "./conjugations/components/Dstem/DPerfectBox.svelte";
   import DImperativeBox from "./conjugations/components/Dstem/DImperativeBox.svelte";
   import DPrecativeBox from "./conjugations/components/Dstem/DPrecativeBox.svelte";
 
   import PreteriteBox from "./conjugations/components/PreteriteBox.svelte";
   import VetitiveBox from "./conjugations/components/VetitiveBox.svelte";
+  import DurativeBox from "./conjugations/components/DurativeBox.svelte";
+  import PerfectBox from "./conjugations/components/PerfectBox.svelte";
 
   import settings from "./settings/settings.js";
   import highlightRoot from "./settings/highlightRoot.js";
@@ -280,12 +278,14 @@
                   <PreteriteBox />
                 </div>
                 <div class="column is-two-fifths">
-                  <GDurativeBox />
+                  <!--<GDurativeBox />-->
+                  <DurativeBox />
                 </div>
               </div>
               <div class="columns">
                 <div class="column is-two-fifths is-offset-1">
-                  <GPerfectBox />
+                  <!--<GPerfectBox />-->
+                  <PerfectBox />
                 </div>
                 <div class="column is-two-fifths">
                   <!--<GPreteriteBox vetitive={true} />-->
@@ -335,12 +335,14 @@
                   <PreteriteBox />
                 </div>
                 <div class="column is-two-fifths">
-                  <DDurativeBox />
+                  <!--<DDurativeBox />-->
+                  <DurativeBox />
                 </div>
               </div>
               <div class="columns">
                 <div class="column is-two-fifths is-offset-1">
-                  <DPerfectBox />
+                  <!--<DPerfectBox />-->
+                  <PerfectBox />
                 </div>
                 <div class="column is-two-fifths">
                   <!--<DPreteriteBox vetitive={true} />-->

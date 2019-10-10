@@ -125,12 +125,12 @@ const highlightRoot = ({
     } else if (root[1] === "Ø") {
       highlightedVerb = highlightVerb(verb, ps, patterns.posImpIInIIIweak);
     } else if (root[2] === "Ø") {
-      let scheme = { ...posImpIInIIIweak };
+      let scheme = { ...patterns.posImpIInIIIweak };
       if (root[0] === "n") {
         // imperative of verbs starting with n- lose their n-
         scheme = reduceForInitialN(scheme);
       }
-      highlightedVerb = highlightVerb(verb, ps, patterns.scheme);
+      highlightedVerb = highlightVerb(verb, ps, scheme);
     } else if (root[0] === "w") {
       highlightedVerb = highlightVerb(verb, ps, patterns.posImpIw);
     } else {
