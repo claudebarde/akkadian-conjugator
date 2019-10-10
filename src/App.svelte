@@ -6,7 +6,6 @@
   import Navbar from "./Navbar/Navbar.svelte";
   import Sidebar from "./Sidebar/Sidebar.svelte";
   import InfinitiveBox from "./conjugations/components/InfinitiveBox.svelte";
-  import GPreteriteBox from "./conjugations/components/Gstem/GPreteriteBox.svelte";
   import GDurativeBox from "./conjugations/components/Gstem/GDurativeBox.svelte";
   import GPrecativeBox from "./conjugations/components/Gstem/GPrecativeBox.svelte";
   import NonFiniteFormsBox from "./conjugations/components/NonFiniteFormsBox.svelte";
@@ -14,11 +13,13 @@
   import GPerfectBox from "./conjugations/components/Gstem/GPerfectBox.svelte";
   import PredicativeBox from "./conjugations/components/PredicativeBox.svelte";
   import InfoModal from "./conjugations/components/InfoModal.svelte";
-  import DPreteriteBox from "./conjugations/components/Dstem/DPreteriteBox.svelte";
   import DDurativeBox from "./conjugations/components/Dstem/DDurativeBox.svelte";
   import DPerfectBox from "./conjugations/components/Dstem/DPerfectBox.svelte";
   import DImperativeBox from "./conjugations/components/Dstem/DImperativeBox.svelte";
   import DPrecativeBox from "./conjugations/components/Dstem/DPrecativeBox.svelte";
+
+  import PreteriteBox from "./conjugations/components/PreteriteBox.svelte";
+  import VetitiveBox from "./conjugations/components/VetitiveBox.svelte";
 
   import settings from "./settings/settings.js";
   import highlightRoot from "./settings/highlightRoot.js";
@@ -275,7 +276,8 @@
               out:fly={{ x: 100, duration: 200 }}>
               <div class="columns tables">
                 <div class="column is-two-fifths is-offset-1">
-                  <GPreteriteBox />
+                  <!--<GPreteriteBox />-->
+                  <PreteriteBox />
                 </div>
                 <div class="column is-two-fifths">
                   <GDurativeBox />
@@ -286,7 +288,8 @@
                   <GPerfectBox />
                 </div>
                 <div class="column is-two-fifths">
-                  <GPreteriteBox vetitive={true} />
+                  <!--<GPreteriteBox vetitive={true} />-->
+                  <VetitiveBox />
                 </div>
               </div>
               <div class="columns">
@@ -328,7 +331,8 @@
               out:fly={{ x: 100, duration: 200 }}>
               <div class="columns tables">
                 <div class="column is-two-fifths is-offset-1">
-                  <DPreteriteBox />
+                  <!--<DPreteriteBox />-->
+                  <PreteriteBox />
                 </div>
                 <div class="column is-two-fifths">
                   <DDurativeBox />
@@ -339,7 +343,8 @@
                   <DPerfectBox />
                 </div>
                 <div class="column is-two-fifths">
-                  <DPreteriteBox vetitive={true} />
+                  <!--<DPreteriteBox vetitive={true} />-->
+                  <VetitiveBox />
                 </div>
               </div>
               <div class="columns">

@@ -274,6 +274,30 @@ const posPrecVentIweak = {
   "1cp": [4, 5]
 };
 
+// position to highlight for preterite D stem
+const posDPret3C = {
+  "3cs": [1, 4, 6],
+  "2ms": [2, 5, 7],
+  "2fs": [2, 5, 7],
+  "1cs": [1, 4, 6],
+  "3mp": [1, 4, 6],
+  "3fp": [1, 4, 6],
+  "2cp": [2, 5, 7],
+  "1cp": [2, 5, 7]
+};
+
+// position to highlight for vetitive D stem
+const posDVet3C = {
+  "3cs": [4, 7, 9],
+  "2ms": [3, 6, 8],
+  "2fs": [3, 6, 8],
+  "1cs": [4, 7, 9],
+  "3mp": [4, 7, 9],
+  "3fp": [4, 7, 9],
+  "2cp": [3, 6, 8],
+  "1cp": [3, 6, 8]
+};
+
 const verbalAdjective = {
   sound: {
     masculin: [0, 2, 3],
@@ -506,6 +530,16 @@ const highlightRoot = ({
         highlightedVerb = highlightVerb(verb, ps, posPerfIwActive);
       } else if (verbClass === "stative") {
         highlightedVerb = highlightVerb(verb, ps, posPerfIwStative);
+      }
+    } else {
+      highlightedVerb = [...verb];
+    }
+  } else if (conjugation === "dPreterite") {
+    if (!root.includes("Ø") && root[0] !== "w") {
+      if (vetitive === false) {
+        highlightedVerb = highlightVerb(verb, ps, posDPret3C);
+      } else {
+        highlightedVerb = highlightVerb(verb, ps, posDVet3C);
       }
     } else {
       highlightedVerb = [...verb];
