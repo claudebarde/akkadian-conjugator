@@ -51,7 +51,7 @@ const highlightRoot = ({
     } else if (root[0] === "Ø") {
       highlightedVerb = [...verb].map((letter, i) => {
         if (infinitive === "alākum") {
-          if (posPretalakum[ps].includes(i)) {
+          if (patterns.posPretalakum[ps].includes(i)) {
             // if this is a position to highlight
             return "<strong>" + letter + "</strong>";
           } else {
@@ -59,7 +59,7 @@ const highlightRoot = ({
             return letter;
           }
         } else {
-          if (posPretIweak[ps].includes(i)) {
+          if (patterns.posPretIweak[ps].includes(i)) {
             // if this is a position to highlight
             return "<strong>" + letter + "</strong>";
           } else {
@@ -69,11 +69,7 @@ const highlightRoot = ({
         }
       });
     } else if (root[1] === "Ø") {
-      highlightedVerb = highlightVerb(
-        verb,
-        ps,
-        patterns.patterns.posPretIIweak
-      );
+      highlightedVerb = highlightVerb(verb, ps, patterns.posPretIIweak);
     } else if (root[2] === "Ø") {
       highlightedVerb = highlightVerb(verb, ps, patterns.posPretIIIweak);
     } else if (root[0] === "w" && ventive === false) {

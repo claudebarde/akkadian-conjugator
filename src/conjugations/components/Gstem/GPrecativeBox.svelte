@@ -47,7 +47,7 @@
       // In verbs I–" and stative verbs I–w, in which the prefix vowel of the
       // Preterite is long (because of the loss of the initial consonant), the vowel
       // of the prefix in the Precative is likewise long
-      Object.keys(precativePrefixes).forEach(ps => {
+      Object.keys(prefixes).forEach(ps => {
         prefixes[ps] =
           prefixes[ps].slice(0, -1) + lengthenVowel(prefixes[ps].slice(-1));
       });
