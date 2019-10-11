@@ -1,3 +1,5 @@
+import contractLastVowels from "../../../settings/contractLastVowels";
+
 const personPrefixes = ["u", "tu", "nu"];
 const vowel_2fs = "ī";
 const vowel_3mp = "ū";

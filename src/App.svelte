@@ -358,7 +358,7 @@
                 </div>
               </div>
               <div class="columns lastColumns">
-                <div class="column is-two-thirds is-offset-2">
+                <div class="column is-four-fifths is-offset-1">
                   <NonFiniteFormsBox />
                 </div>
               </div>

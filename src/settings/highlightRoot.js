@@ -1,6 +1,8 @@
 import * as patterns from "./highlightRootPatterns";
 
 const highlightVerb = (verb, ps, template) => {
+  if (!verb) return;
+
   return [...verb].map((letter, i) => {
     if (template[ps].includes(i)) {
       // if this is a position to highlight
@@ -33,6 +35,8 @@ const highlightRoot = ({
 }) => {
   let highlightedVerb = [];
   let vetitivePrefix = undefined;
+
+  if (!verb) return null;
 
   if (conjugation === "gPreterite") {
     // we remove vetitive prefix before highlighting the root
@@ -304,6 +308,14 @@ const highlightRoot = ({
       highlightedVerb = highlightVerb(verb, ps, patterns.posParticipleIw);
     } else {
       highlightedVerb = highlightVerb(verb, ps, patterns.posParticiple);
+    }
+  } else if (conjugation === "participle" && stem === "dstem") {
+    if (root[2] === "Ø") {
+      highlightedVerb = highlightVerb(verb, ps, patterns.posParticipleIIw);
+    } else if (root[0] === "Ø") {
+      highlightedVerb = highlightVerb(verb, ps, patterns.posParticipleIw);
+    } else {
+      highlightedVerb = highlightVerb(verb, ps, patterns.posDParticiple);
     }
   } else if (conjugation === "gPredicative") {
     if (!root.includes("Ø")) {
