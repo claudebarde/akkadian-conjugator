@@ -172,13 +172,31 @@ const highlightRoot = ({
     } else {
       highlightedVerb = [...verb];
     }
-  } else if (conjugation === "dPreterite") {
+  } else if (conjugation === "dPreterite" || conjugation === "dDurative") {
     if (!root.includes("Ø") && root[0] !== "w") {
       if (vetitive === false) {
         highlightedVerb = highlightVerb(verb, ps, patterns.posDPret3C);
       } else {
         highlightedVerb = highlightVerb(verb, ps, patterns.posDVet3C);
       }
+    } else {
+      highlightedVerb = [...verb];
+    }
+  } else if (conjugation === "dPerfect") {
+    if (!root.includes("Ø") && root[0] !== "w") {
+      highlightedVerb = highlightVerb(verb, ps, patterns.posDPerf3C);
+    } else {
+      highlightedVerb = [...verb];
+    }
+  } else if (conjugation === "dImperative") {
+    if (!root.includes("Ø") && root[0] !== "w") {
+      highlightedVerb = highlightVerb(verb, ps, patterns.posDImp3C);
+    } else {
+      highlightedVerb = [...verb];
+    }
+  } else if (conjugation === "dPrecative") {
+    if (!root.includes("Ø") && root[0] !== "w") {
+      highlightedVerb = highlightVerb(verb, ps, patterns.posDPrec3C);
     } else {
       highlightedVerb = [...verb];
     }
@@ -259,6 +277,26 @@ const highlightRoot = ({
     }
     // we reinstate the asterisk if necessary
     if (nonAttested) highlightedVerb = ["*", ...highlightedVerb];
+  } else if (conjugation === "verbalAdjective" && stem === "dstem") {
+    const verbalAdjective = { ...patterns.dVerbalAdjective };
+    // we store the non attested status to add it back after highlighting
+    let nonAttested = false;
+    if (verb[0] === "*") {
+      verb = verb.slice(1);
+      nonAttested = true;
+    }
+
+    if (!root.includes("Ø") && root[0] !== "w") {
+      highlightedVerb = [...verb].map((letter, i) => {
+        if (verbalAdjective.sound[ps].includes(i)) {
+          // if this is a position to highlight
+          return "<strong>" + letter + "</strong>";
+        } else {
+          // if the position is not to be highlighted
+          return letter;
+        }
+      });
+    }
   } else if (conjugation === "participle" && stem === "gstem") {
     if (root[2] === "Ø") {
       highlightedVerb = highlightVerb(verb, ps, patterns.posParticipleIIw);

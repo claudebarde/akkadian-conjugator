@@ -298,11 +298,70 @@ export const posDVet3C = {
   "1cp": [3, 6, 8]
 };
 
+// position to highlight for durative D stem
+export const posDPerf3C = {
+  "3cs": [1, 5, 7],
+  "2ms": [2, 6, 8],
+  "2fs": [2, 6, 8],
+  "1cs": [1, 5, 7],
+  "3mp": [1, 5, 7],
+  "3fp": [1, 5, 7],
+  "2cp": [2, 6, 8],
+  "1cp": [2, 6, 8]
+};
+
+export const posDImp3C = {
+  "2ms": [0, 3, 5],
+  "2fs": [0, 3, 5],
+  "2cp": [0, 3, 5]
+};
+
+export const posDPrec3C = {
+  "3cs": [2, 5, 7],
+  "1cs": [2, 5, 7],
+  "3mp": [2, 5, 7],
+  "3fp": [2, 5, 7],
+  "1cp": [4, 7, 9]
+};
+
 export const verbalAdjective = {
   sound: {
     masculin: [0, 2, 3],
     feminin: [0, 2, 4],
     radical: [0, 2, 4]
+  },
+  Iweak: {
+    masculin: [1, 2],
+    feminin: [1, 3],
+    radical: [1, 3]
+  },
+  IIweak: {
+    masculin: [0, 2],
+    feminin: [0, 2],
+    radical: [0, 2]
+  },
+  IIIweak: {
+    masculin: [0, 2],
+    feminin: [0, 2],
+    radical: [0, 2]
+  },
+  Iw: {
+    masculin: [2, 3],
+    feminin: [2, 4],
+    radical: [2, 4]
+  },
+  soundR2W: {
+    masculin: [0, 2, 4],
+    feminin: [0, 2, 4],
+    radical: [0, 2, 4]
+  }
+};
+
+export const dVerbalAdjective = {
+  sound: {
+    masculin: [0, 3, 5],
+    feminin: [0, 3, 5],
+    radical: [0, 3, 5]
   },
   Iweak: {
     masculin: [1, 2],
