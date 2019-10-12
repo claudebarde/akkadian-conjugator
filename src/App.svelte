@@ -40,9 +40,18 @@
       if (durativeVowel) {
         verbInfo = `( ${durativeVowel} - ${themeVowel} )`;
       } else {
-        verbInfo = `( ${themeVowel} )`;
+        if (themeVowel) {
+          verbInfo = `( ${themeVowel} )`;
+        } else {
+          verbInfo = "-";
+        }
       }
-      state.updateView("gstem");
+
+      if (lexicon[verbInput].onlyDstem) {
+        state.updateView("dstem");
+      } else {
+        state.updateView("gstem");
+      }
     }
   };
 
@@ -212,13 +221,21 @@
           <!-- COMPUTER VERSION -->
           <div class="tabs is-small is-toggle is-fullwidth is-hidden-mobile">
             <ul>
-              <li
-                class:is-active={$state.activeView === 'gstem'}
-                on:click={() => state.updateView('gstem')}>
-                <a href="#">
-                  <span>G Stem</span>
-                </a>
-              </li>
+              {#if $state.onlyDstem}
+                <li>
+                  <a href="#">
+                    <span>G Stem (none)</span>
+                  </a>
+                </li>
+              {:else}
+                <li
+                  class:is-active={$state.activeView === 'gstem'}
+                  on:click={() => state.updateView('gstem')}>
+                  <a href="#">
+                    <span>G Stem</span>
+                  </a>
+                </li>
+              {/if}
               <li
                 class:is-active={$state.activeView === 'dstem'}
                 on:click={() => state.updateView('dstem')}>

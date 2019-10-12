@@ -16,7 +16,6 @@ const gPreterite = ({
   vetitive,
   onlyDstem
 }) => {
-  console.log(vetitive, onlyDstem);
   if (onlyDstem)
     return {
       "3cs": "-",

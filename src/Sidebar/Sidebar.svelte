@@ -50,7 +50,7 @@
       const initial = verb[0].toUpperCase();
       let str = `${verb} <span class="is-size-7">(${
         lexicon[verb].durativeVowel ? lexicon[verb].durativeVowel + " - " : ""
-      }${lexicon[verb].themeVowel})</span>`;
+      }${lexicon[verb].themeVowel || "-"})</span>`;
       if (!verbs.hasOwnProperty(initial)) {
         verbs[initial] = [str];
       } else {
