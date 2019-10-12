@@ -19,7 +19,8 @@
         themeVowel: $state.themeVowel,
         I_eVerb: $state.I_eVerb,
         verbClass: $state.verbClass,
-        vetitive: true
+        vetitive: true,
+        onlyDstem: $state.onlyDstem
       });
     } else if ($state.activeView === "dstem") {
       conjugation = "dPreterite";

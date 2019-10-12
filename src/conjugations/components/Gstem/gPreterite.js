@@ -13,8 +13,22 @@ const gPreterite = ({
   themeVowel,
   I_eVerb,
   verbClass,
-  vetitive
+  vetitive,
+  onlyDstem
 }) => {
+  console.log(vetitive, onlyDstem);
+  if (onlyDstem)
+    return {
+      "3cs": "-",
+      "2ms": "-",
+      "2fs": "-",
+      "1cs": "-",
+      "3mp": "-",
+      "3fp": "-",
+      "2cp": "-",
+      "1cp": "-"
+    };
+
   let conjugatedVerb = {};
   // Irregular Verb alākum
   if (verbInput === "alākum") {

@@ -17,8 +17,21 @@ const gDurative = ({
   themeVowel,
   I_eVerb,
   verbClass,
-  durativeVowel
+  durativeVowel,
+  onlyDstem
 }) => {
+  if (onlyDstem)
+    return {
+      "3cs": "-",
+      "2ms": "-",
+      "2fs": "-",
+      "1cs": "-",
+      "3mp": "-",
+      "3fp": "-",
+      "2cp": "-",
+      "1cp": "-"
+    };
+
   let conjugatedVerb = {};
   let thisRoot = [...root];
   let originalThemeVowel = themeVowel;

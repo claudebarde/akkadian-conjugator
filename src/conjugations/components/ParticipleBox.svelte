@@ -95,7 +95,7 @@
     } else if ($state.activeView === "dstem") {
       let { root } = $state;
       let thisRoot = [...root];
-      let firstVowel = "a";
+      let firstVowel = $state.I_eVerb ? "e" : "a";
       // The vowels i and ī were apparently pronounced as e and ē,
       // respectively, when they occurred before the consonants r and ḫ.
       let secondVowel = thisRoot[2] === "r" || thisRoot[2] === "ḫ" ? "e" : "i";

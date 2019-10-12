@@ -26,6 +26,7 @@
   let verbInput = "";
   let verbTag = false;
   let verbInfo = "";
+  let lastUpdate = "loading...";
 
   const validateVerb = verb => {
     const entries = Object.keys(lexicon);
@@ -57,7 +58,13 @@
     }
   };
 
-  onMount(() => {
+  onMount(async () => {
+    // get last update
+    const data = await fetch(
+      "https://api.github.com/repos/claudebarde/akkadian-conjugator/commits/master"
+    );
+    const json = await data.json();
+    lastUpdate = json.commit.committer.date.split("T")[0];
     // get verb from URL
     const url = window.location; // ?v=šarākum
     const urlObject = new URL(url);
@@ -146,6 +153,7 @@
     {#if !verbInput}
       <div class="column is-10 welcome">
         <h1 class="title is-5">Select a verb in the left panel to start.</h1>
+        <h2 class="subtitle is-6">Last update: {lastUpdate}</h2>
         <br />
         <div class="notification is-warning errorWarning is-size-7-mobile">
           <button class="delete" />

@@ -414,6 +414,12 @@ export const posDParticiple = {
   radical: [2, 5, 7]
 };
 
+export const posDParticipleIIIw = {
+  masculin: [2, 5],
+  feminin: [2, 5],
+  radical: [2, 5]
+};
+
 export const posPredicative3C = {
   "1cs": [0, 2, 3],
   "2ms": [0, 2, 3],

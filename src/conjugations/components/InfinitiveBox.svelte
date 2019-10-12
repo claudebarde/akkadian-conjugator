@@ -21,7 +21,11 @@
         "um";
     }
 
-    verbMeaning = `to cause ${$state.meaning}`;
+    if ($state.dMeaning) {
+      verbMeaning = $state.dMeaning;
+    } else {
+      verbMeaning = `to cause ${$state.meaning}`;
+    }
   } else {
     verbTitle = $state.infinitive;
     verbMeaning = $state.meaning;

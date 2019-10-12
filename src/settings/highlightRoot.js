@@ -38,6 +38,8 @@ const highlightRoot = ({
 
   if (!verb) return null;
 
+  if (verb === "-") return verb;
+
   if (conjugation === "gPreterite") {
     // we remove vetitive prefix before highlighting the root
     if (vetitive) {
@@ -300,6 +302,8 @@ const highlightRoot = ({
           return letter;
         }
       });
+    } else {
+      highlightedVerb = [...verb];
     }
   } else if (conjugation === "participle" && stem === "gstem") {
     if (root[2] === "Ø") {
@@ -310,12 +314,14 @@ const highlightRoot = ({
       highlightedVerb = highlightVerb(verb, ps, patterns.posParticiple);
     }
   } else if (conjugation === "participle" && stem === "dstem") {
-    if (root[2] === "Ø") {
-      highlightedVerb = highlightVerb(verb, ps, patterns.posParticipleIIw);
+    if (!root.includes("Ø")) {
+      highlightedVerb = highlightVerb(verb, ps, patterns.posDParticiple);
+    } else if (root[2] === "Ø") {
+      highlightedVerb = highlightVerb(verb, ps, patterns.posDParticipleIIIw);
     } else if (root[0] === "Ø") {
       highlightedVerb = highlightVerb(verb, ps, patterns.posParticipleIw);
     } else {
-      highlightedVerb = highlightVerb(verb, ps, patterns.posDParticiple);
+      highlightedVerb = [...verb];
     }
   } else if (conjugation === "gPredicative") {
     if (!root.includes("Ø")) {

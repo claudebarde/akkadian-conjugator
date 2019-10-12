@@ -24,7 +24,8 @@
         themeVowel: $state.themeVowel,
         I_eVerb: $state.I_eVerb,
         verbClass: $state.verbClass,
-        durativeVowel: $state.durativeVowel
+        durativeVowel: $state.durativeVowel,
+        onlyDstem: $state.onlyDstem
       });
     } else if ($state.activeView === "dstem") {
       conjugation = "dDurative";

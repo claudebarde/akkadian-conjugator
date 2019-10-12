@@ -1016,6 +1016,38 @@ const lexicon = {
     verbalAdjectiveVowel: "i",
     verbClass: "stative",
     meaning: "to be silent"
+  },
+  ḫiārum: {
+    themeVowel: "i",
+    durativeVowel: "a",
+    root: ["ḫ", "Ø", "r"],
+    verbalAdjectiveVowel: "ī",
+    verbClass: "active",
+    meaning: "to chose a mate"
+  },
+  lamādum: {
+    themeVowel: "a",
+    root: ["l", "m", "d"],
+    verbalAdjectiveVowel: undefined,
+    verbClass: "active",
+    meaning: "to learn, to study, to understand",
+    dMeaning: "to inform"
+  },
+  manûm: {
+    themeVowel: "u",
+    root: ["m", "n", "Ø"],
+    verbalAdjectiveVowel: "i",
+    verbClass: "active",
+    meaning: "to count, to include, to hand over"
+  },
+  kullumum: {
+    themeVowel: undefined,
+    onlyDstem: true,
+    root: ["k", "l", "m"],
+    verbalAdjectiveVowel: undefined,
+    verbClass: "active",
+    meaning: undefined,
+    dMeaning: "to show, to reveal, to produce (document)"
   }
 };
 
