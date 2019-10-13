@@ -10,6 +10,9 @@
 
     if (thisRoot[2] === "Ø") {
       verbTitle = thisRoot[0] + "u" + thisRoot[1] + thisRoot[1] + "ûm";
+    } else if (thisRoot[0] === "Ø") {
+      // At the beginning of a form, ' is lost with no further changes
+      verbTitle = "u" + thisRoot[1] + thisRoot[1] + "u" + thisRoot[2] + "um";
     } else {
       verbTitle =
         thisRoot[0] +

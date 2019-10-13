@@ -21,6 +21,10 @@
     if (thisRoot[2] === "Ø") {
       thisRoot[2] = "";
     }
+    // I-weak verbs
+    if (thisRoot[0] === "Ø") {
+      thisRoot[0] = "";
+    }
 
     conjugatedVerb = {
       "2ms":

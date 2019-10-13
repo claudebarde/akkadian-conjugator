@@ -143,6 +143,9 @@
           thisRoot[0] + "u" + thisRoot[1] + thisRoot[1] + "u"
         ];
       } else {
+        // I-weak verbs
+        if (thisRoot[0] === "Ø") thisRoot[0] = "";
+
         adjectiveForms = [
           thisRoot[0] +
             "u" +
