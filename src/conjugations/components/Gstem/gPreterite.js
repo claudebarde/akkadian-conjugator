@@ -66,6 +66,18 @@ const gPreterite = ({
       "2cp": "telˀiā",
       "1cp": "nilˀe"
     };
+  } // Irregular Verb edûm
+  else if (verbInput === "edûm") {
+    conjugatedVerb = {
+      "3cs": "īde",
+      "2ms": "tīde",
+      "2fs": "tīdî",
+      "1cs": "īde",
+      "3mp": "īdû",
+      "3fp": "īdeā",
+      "2cp": "tīdeā",
+      "1cp": "nīde"
+    };
   } else {
     let thisRoot = [...root];
     let verbType = undefined;

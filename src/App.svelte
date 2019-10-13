@@ -8,16 +8,15 @@
   import InfinitiveBox from "./conjugations/components/InfinitiveBox.svelte";
   import GPrecativeBox from "./conjugations/components/Gstem/GPrecativeBox.svelte";
   import NonFiniteFormsBox from "./conjugations/components/NonFiniteFormsBox.svelte";
-  import GImperativeBox from "./conjugations/components/Gstem/GImperativeBox.svelte";
   import PredicativeBox from "./conjugations/components/PredicativeBox.svelte";
   import InfoModal from "./conjugations/components/InfoModal.svelte";
-  import DImperativeBox from "./conjugations/components/Dstem/DImperativeBox.svelte";
   import DPrecativeBox from "./conjugations/components/Dstem/DPrecativeBox.svelte";
 
   import PreteriteBox from "./conjugations/components/PreteriteBox.svelte";
   import VetitiveBox from "./conjugations/components/VetitiveBox.svelte";
   import DurativeBox from "./conjugations/components/DurativeBox.svelte";
   import PerfectBox from "./conjugations/components/PerfectBox.svelte";
+  import ImperativeBox from "./conjugations/components/ImperativeBox.svelte";
 
   import settings from "./settings/settings.js";
   import highlightRoot from "./settings/highlightRoot.js";
@@ -319,7 +318,8 @@
               </div>
               <div class="columns">
                 <div class="column is-3 is-offset-2">
-                  <GImperativeBox />
+                  <!--<GImperativeBox />-->
+                  <ImperativeBox />
                 </div>
                 <div class="column is-4 is-offset-1">
                   <GPrecativeBox />
@@ -376,7 +376,8 @@
               </div>
               <div class="columns">
                 <div class="column is-3 is-offset-2">
-                  <DImperativeBox />
+                  <!--<DImperativeBox />-->
+                  <ImperativeBox />
                 </div>
                 <div class="column is-4 is-offset-1">
                   <DPrecativeBox />

@@ -20,6 +20,10 @@
       // At the beginning of a form, ' is lost with no further changes
       thisRoot[0] = "";
     }
+    // I-w verbs
+    if (thisRoot[0] === "w") {
+      thisRoot[0] = "";
+    }
 
     verbTitle =
       thisRoot[0] +

@@ -236,7 +236,8 @@ const lexicon = {
     root: ["Ø", "r", "k"],
     verbalAdjectiveVowel: "i",
     verbClass: "stative",
-    meaning: "to be long, to last long, to be delayed"
+    meaning: "to be long, to last long, to be delayed",
+    dMeaning: "to lengthen, to extend, to delay"
   },
   epēšum: {
     themeVowel: "u",
@@ -269,7 +270,8 @@ const lexicon = {
     root: ["Ø", "ḫ", "z"],
     verbalAdjectiveVowel: undefined,
     verbClass: "active",
-    meaning: "to seize, to take, to marry, to learn"
+    meaning: "to seize, to take, to marry, to learn",
+    dMeaning: "to mount, to set, to overlay"
   },
   erēbum: {
     themeVowel: "u",
@@ -331,7 +333,8 @@ const lexicon = {
     verbalAdjectiveVowel: "i",
     verbClass: "stative",
     I_eVerb: true,
-    meaning: "to be weak, powerless"
+    meaning: "to be weak, powerless",
+    dMeaning: "to make weak, to weaken"
   },
   miādum: {
     themeVowel: "i",
@@ -369,7 +372,8 @@ const lexicon = {
     verbClass: "stative",
     I_eVerb: true,
     verbClass: "stative",
-    meaning: "to become exceeding, to exceed"
+    meaning: "to become exceeding, to exceed",
+    dMeaning: "to augment, to increase"
   },
   wašābum: {
     themeVowel: "i",
@@ -405,7 +409,8 @@ const lexicon = {
     verbalAdjectiveVowel: "i",
     verbClass: "stative",
     I_eVerb: true,
-    meaning: "to be new"
+    meaning: "to be new",
+    dMeaning: "to renew, to restore"
   },
   labārum: {
     themeVowel: "i",
@@ -575,7 +580,8 @@ const lexicon = {
     verbalAdjectiveVowel: undefined,
     verbClass: "active",
     I_eVerb: true,
-    meaning: "to lean against, to touch, to reach"
+    meaning: "to lean against, to touch, to reach",
+    dMeaning: "to lean, to push, to rest against"
   },
   qabûm: {
     themeVowel: "i",
@@ -809,7 +815,8 @@ const lexicon = {
     verbalAdjectiveVowel: "i",
     verbClass: "active",
     I_eVerb: true,
-    meaning: "to go up, to ascend"
+    meaning: "to go up, to ascend",
+    dMeaning: "to raise, to elevate"
   },
   lawûm: {
     themeVowel: "i",
@@ -1048,6 +1055,79 @@ const lexicon = {
     verbClass: "active",
     meaning: undefined,
     dMeaning: "to show, to reveal, to produce (document)"
+  },
+  ebēbum: {
+    themeVowel: "i",
+    root: ["Ø", "b", "b"],
+    verbalAdjectiveVowel: undefined,
+    verbClass: "active",
+    I_eVerb: true,
+    meaning: "to become clean",
+    dMeaning: "to clean, to purify, to clear"
+  },
+  erēšum: {
+    themeVowel: "i",
+    root: ["Ø", "r", "š"],
+    verbalAdjectiveVowel: undefined,
+    verbClass: "active",
+    I_eVerb: true,
+    meaning: "to seed, to plant, to cultivate"
+  },
+  "esērum-a": {
+    themeVowel: "i",
+    root: ["Ø", "s", "r"],
+    verbalAdjectiveVowel: undefined,
+    verbClass: "active",
+    I_eVerb: true,
+    meaning: "to enclose, to shut in",
+    dMeaning: "to enclose, to take captive"
+  },
+  "esērum-b": {
+    themeVowel: "i",
+    root: ["Ø", "s", "r"],
+    verbalAdjectiveVowel: undefined,
+    verbClass: "active",
+    I_eVerb: true,
+    meaning: "to press, to put under pressure, to collect",
+    dMeaning: "to press, to put under pressure, to collect"
+  },
+  gerûm: {
+    themeVowel: "e",
+    root: ["g", "r", "Ø"],
+    verbalAdjectiveVowel: undefined,
+    verbClass: "stative",
+    I_eVerb: true,
+    meaning: "to be hostile",
+    dMeaning: "to be hostile"
+  },
+  lapātum: {
+    themeVowel: "u",
+    durativeVowel: "a",
+    root: ["l", "p", "t"],
+    verbalAdjectiveVowel: undefined,
+    verbClass: "active",
+    meaning: "to touch, to strike, to apply, to assign",
+    dMeaning: "to touch, to tarry, to delay"
+  },
+  sanāqum: {
+    themeVowel: "i",
+    root: ["s", "n", "q"],
+    verbalAdjectiveVowel: undefined,
+    verbClass: "active",
+    meaning: "to arrive at, to reach, to check",
+    dMeaning: "to check, to control, to question"
+  },
+  uššurum: {
+    themeVowel: undefined,
+    onlyDstem: true,
+    root: ["w", "š", "r"],
+    verbalAdjectiveVowel: undefined,
+    verbClass: "active",
+    meaning: undefined,
+    dMeaning: "to release, to set free"
+  },
+  edûm: {
+    meaning: "to know"
   }
 };
 

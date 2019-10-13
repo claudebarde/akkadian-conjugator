@@ -38,7 +38,7 @@ const highlightRoot = ({
 
   if (!verb) return null;
 
-  if (verb === "-") return verb;
+  if (verb === "-" || infinitive === "edûm") return verb;
 
   if (conjugation === "gPreterite") {
     // we remove vetitive prefix before highlighting the root

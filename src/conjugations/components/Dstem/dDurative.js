@@ -9,10 +9,8 @@ const vowel_2cp = "ā";
 const dDurative = ({ root, I_eVerb }) => {
   let conjugatedVerb = {};
   let thisRoot = [...root];
-  //let firstVowel = I_eVerb ? "e" : "a";
-  //let secondVowel = I_eVerb ? "e" : "a";
-  let firstVowel = "a";
-  let secondVowel = "a";
+  let firstVowel = I_eVerb ? "e" : "a";
+  let secondVowel = I_eVerb ? "e" : "a";
 
   // III-weak
   if (thisRoot[2] === "Ø") {
@@ -23,6 +21,11 @@ const dDurative = ({ root, I_eVerb }) => {
   if (thisRoot[0] === "Ø") {
     thisRoot[0] = "";
     firstVowel = "";
+  }
+  // I-w verbs
+  if (thisRoot[0] === "w") {
+    firstVowel = "a";
+    secondVowel = "a";
   }
 
   conjugatedVerb = {

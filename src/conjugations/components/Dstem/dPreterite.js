@@ -24,6 +24,10 @@ const dPreterite = ({ verbInput, root, I_eVerb, vetitive }) => {
     thisRoot[0] = "";
     firstVowel = "";
   }
+  // I-w verbs
+  if (thisRoot[0] === "w") {
+    firstVowel = "a";
+  }
 
   conjugatedVerb = {
     "3cs":

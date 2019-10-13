@@ -30,6 +30,8 @@
         adjectiveForms = ["aḫzum", "aḫiztum", "aḫiz"];
       } else if (verbInput === "zâzum") {
         adjectiveForms = ["zīzum", "zīztum", "zīz"];
+      } else if (verbInput === "ebēbum") {
+        adjectiveForms = ["ebbum", "ebbetum", "ebb"];
       } else {
         let {
           root,
@@ -153,6 +155,10 @@
       }
       // I-weak verbs
       if (thisRoot[0] === "Ø") thisRoot[0] = "";
+      // I-w verbs
+      if (thisRoot[0] === "w") {
+        thisRoot[0] = "";
+      }
 
       adjectiveForms = [
         thisRoot[0] +

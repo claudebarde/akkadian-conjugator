@@ -34,6 +34,12 @@ const dPerfect = ({ root, I_eVerb }) => {
     thisRoot[0] = "";
     personPrefixes = ["ū", "tū", "nū"];
   }
+  // I-w verbs
+  if (thisRoot[0] === "w") {
+    thisRoot[0] = "";
+    personPrefixes = ["ū", "tū", "nū"];
+    infix = "ta";
+  }
 
   conjugatedVerb = {
     "3cs":
