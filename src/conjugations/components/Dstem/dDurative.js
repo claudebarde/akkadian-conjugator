@@ -9,12 +9,20 @@ const vowel_2cp = "ā";
 const dDurative = ({ root, I_eVerb }) => {
   let conjugatedVerb = {};
   let thisRoot = [...root];
-  let firstVowel = I_eVerb ? "e" : "a";
-  let secondVowel = I_eVerb ? "e" : "a";
+  //let firstVowel = I_eVerb ? "e" : "a";
+  //let secondVowel = I_eVerb ? "e" : "a";
+  let firstVowel = "a";
+  let secondVowel = "a";
 
   // III-weak
   if (thisRoot[2] === "Ø") {
     thisRoot[2] = "";
+  }
+  // I-weak
+  // Between vowels, both ' and the vowel following it are lost
+  if (thisRoot[0] === "Ø") {
+    thisRoot[0] = "";
+    firstVowel = "";
   }
 
   conjugatedVerb = {

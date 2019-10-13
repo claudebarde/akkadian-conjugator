@@ -1,6 +1,6 @@
 import contractLastVowels from "../../../settings/contractLastVowels";
 
-const personPrefixes = ["u", "tu", "nu"];
+let personPrefixes = ["u", "tu", "nu"];
 const vowel_2fs = "ī";
 const vowel_3mp = "ū";
 const vowel_3fp = "ā";
@@ -27,6 +27,12 @@ const dPerfect = ({ root, I_eVerb }) => {
   // III-weak
   if (thisRoot[2] === "Ø") {
     thisRoot[2] = "";
+  }
+  // I-weak verbs
+  // Before a consonant, the loss of ' caused the lengthening of the preceding vowel
+  if (thisRoot[0] === "Ø") {
+    thisRoot[0] = "";
+    personPrefixes = ["ū", "tū", "nū"];
   }
 
   conjugatedVerb = {

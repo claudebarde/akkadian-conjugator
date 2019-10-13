@@ -36,6 +36,12 @@
     if (thisRoot[2] === "Ø") {
       thisRoot[2] = "";
     }
+    // I-weak
+    // Between vowels, both ' and the vowel following it are lost
+    if (thisRoot[0] === "Ø") {
+      thisRoot[0] = "";
+      firstVowel = "";
+    }
 
     conjugatedVerb = {
       "3cs":

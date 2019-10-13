@@ -99,61 +99,46 @@
       // The vowels i and ī were apparently pronounced as e and ē,
       // respectively, when they occurred before the consonants r and ḫ.
       let secondVowel = thisRoot[2] === "r" || thisRoot[2] === "ḫ" ? "e" : "i";
+      let secondVowelMasculine = secondVowel;
+      let suffix = "um";
 
+      // III-weak verbs
       if (thisRoot[2] === "Ø") {
         thisRoot[2] = "";
-        adjectiveForms = [
-          "mu" +
-            thisRoot[0] +
-            firstVowel +
-            thisRoot[1] +
-            thisRoot[1] +
-            thisRoot[2] +
-            contiguousVowels(secondVowel, "u") +
-            "m",
-          "mu" +
-            thisRoot[0] +
-            firstVowel +
-            thisRoot[1] +
-            thisRoot[1] +
-            "ī" +
-            thisRoot[2] +
-            "tum",
-          "mu" +
-            thisRoot[0] +
-            firstVowel +
-            thisRoot[1] +
-            thisRoot[1] +
-            secondVowel +
-            thisRoot[2]
-        ];
-      } else {
-        adjectiveForms = [
-          "mu" +
-            thisRoot[0] +
-            firstVowel +
-            thisRoot[1] +
-            thisRoot[1] +
-            secondVowel +
-            thisRoot[2] +
-            "um",
-          "mu" +
-            thisRoot[0] +
-            firstVowel +
-            thisRoot[1] +
-            thisRoot[1] +
-            secondVowel +
-            feminineChange(thisRoot[2], "t") +
-            "tum",
-          "mu" +
-            thisRoot[0] +
-            firstVowel +
-            thisRoot[1] +
-            thisRoot[1] +
-            secondVowel +
-            thisRoot[2]
-        ];
+        suffix = "ûm";
+        secondVowelMasculine = "";
       }
+      // I-weak verbs
+      if (thisRoot[0] === "Ø") {
+        thisRoot[0] = "";
+        firstVowel = "";
+      }
+
+      adjectiveForms = [
+        "mu" +
+          thisRoot[0] +
+          firstVowel +
+          thisRoot[1] +
+          thisRoot[1] +
+          secondVowelMasculine +
+          thisRoot[2] +
+          suffix,
+        "mu" +
+          thisRoot[0] +
+          firstVowel +
+          thisRoot[1] +
+          thisRoot[1] +
+          secondVowel +
+          feminineChange(thisRoot[2], "t") +
+          "tum",
+        "mu" +
+          thisRoot[0] +
+          firstVowel +
+          thisRoot[1] +
+          thisRoot[1] +
+          secondVowel +
+          thisRoot[2]
+      ];
 
       state.updateVerb({ ...state, participle: adjectiveForms });
     }

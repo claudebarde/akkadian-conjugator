@@ -135,35 +135,43 @@
        * D STEM
        */
       let thisRoot = [...$state.root];
+      let secondVowelMasculine = "u";
+      let secondVowelFeminine = "u";
+      let suffix = "um";
 
+      // III-weak verbs
       if (thisRoot[2] === "Ø") {
-        adjectiveForms = [
+        thisRoot[2] = "";
+        suffix = "ûm";
+        secondVowelMasculine = "";
+        secondVowelFeminine = "ū";
+        /*adjectiveForms = [
           thisRoot[0] + "u" + thisRoot[1] + thisRoot[1] + "ûm",
           thisRoot[0] + "u" + thisRoot[1] + thisRoot[1] + "ūtum",
           thisRoot[0] + "u" + thisRoot[1] + thisRoot[1] + "u"
-        ];
-      } else {
-        // I-weak verbs
-        if (thisRoot[0] === "Ø") thisRoot[0] = "";
-
-        adjectiveForms = [
-          thisRoot[0] +
-            "u" +
-            thisRoot[1] +
-            thisRoot[1] +
-            "u" +
-            thisRoot[2] +
-            "um",
-          thisRoot[0] +
-            "u" +
-            thisRoot[1] +
-            thisRoot[1] +
-            "u" +
-            feminineChange(thisRoot[2], "t") +
-            "tum",
-          thisRoot[0] + "u" + thisRoot[1] + thisRoot[1] + "u" + thisRoot[2]
-        ];
+        ];*/
       }
+      // I-weak verbs
+      if (thisRoot[0] === "Ø") thisRoot[0] = "";
+
+      adjectiveForms = [
+        thisRoot[0] +
+          "u" +
+          thisRoot[1] +
+          thisRoot[1] +
+          secondVowelMasculine +
+          thisRoot[2] +
+          suffix,
+        thisRoot[0] +
+          "u" +
+          thisRoot[1] +
+          thisRoot[1] +
+          secondVowelFeminine +
+          feminineChange(thisRoot[2], "t") +
+          "tum",
+        thisRoot[0] + "u" + thisRoot[1] + thisRoot[1] + "u" + thisRoot[2]
+      ];
+
       state.updateVerb({ ...state, verbalAdjective: adjectiveForms });
     }
   }
