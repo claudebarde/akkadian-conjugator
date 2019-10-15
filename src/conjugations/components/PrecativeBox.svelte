@@ -1,15 +1,14 @@
 <script>
-  import { fly, fade } from "svelte/transition";
-  import state from "../../../state/state";
-  import settings from "../../../settings/settings";
-  import contractLastVowels from "../../../settings/contractLastVowels";
-  import {
-    contiguousVowels,
-    lengthenVowel
-  } from "../../../settings/phonologicalRules";
-  import highlightRoot from "../../../settings/highlightRoot";
-  import addVentive from "../../../settings/addVentive";
+  import ConjugationBox from "./ConjugationBox.svelte";
+  import state from "../../state/state";
+  import gPrecative from "./Gstem/gPrecative";
+  import dPrecative from "./Dstem/dPrecative";
+  import highlightRoot from "../../settings/highlightRoot";
+  import addVentive from "../../settings/addVentive";
 
+  let verbInput = undefined;
+  let conjugation = undefined;
+  let previousView = undefined;
   const personSing = ["3cs", "1cs"];
   const personPlur = ["3mp", "3fp", "1cp"];
   const prefixes = {
@@ -17,102 +16,38 @@
     "1cs": "lu",
     "3mp": "li",
     "3fp": "li",
-    "1cp": "i nu"
+    "1cp": "i ni"
   };
 
-  let verbInput = undefined;
-
-  $: if ($state.infinitive !== verbInput) {
+  $: if (
+    $state.infinitive !== verbInput ||
+    $state.activeView !== previousView
+  ) {
+    previousView = $state.activeView;
     verbInput = $state.infinitive;
     let conjugatedVerb = {};
-    let { root, I_eVerb } = $state;
-    let thisRoot = [...root];
-    let firstVowel = I_eVerb ? "e" : "a";
-    // The vowels i and ī were apparently pronounced as e and ē,
-    // respectively, when they occurred before the consonants r and ḫ.
-    let secondVowel = thisRoot[2] === "r" || thisRoot[2] === "ḫ" ? "e" : "i";
 
-    // III-weak verbs
-    if (thisRoot[2] === "Ø") {
-      thisRoot[2] = "";
-    }
-    // I-weak
-    // Between vowels, both ' and the vowel following it are lost
-    if (thisRoot[0] === "Ø") {
-      thisRoot[0] = "";
-      firstVowel = "";
-    }
-    // I-w verbs
-    if (thisRoot[0] === "w") {
-      firstVowel = "a";
+    if ($state.activeView === "gstem") {
+      conjugation = "gPrecative";
+      conjugatedVerb = gPrecative({
+        verbInput,
+        root: $state.root,
+        themeVowel: $state.themeVowel,
+        I_eVerb: $state.I_eVerb,
+        verbClass: $state.verbClass
+      });
+    } else if ($state.activeView === "dstem") {
+      conjugation = "dPrecative";
+      conjugatedVerb = dPrecative({
+        root: $state.root
+      });
     }
 
-    conjugatedVerb = {
-      "3cs":
-        prefixes["3cs"] +
-        thisRoot[0] +
-        firstVowel +
-        thisRoot[1] +
-        thisRoot[1] +
-        secondVowel +
-        thisRoot[2],
-      "1cs":
-        prefixes["1cs"] +
-        thisRoot[0] +
-        firstVowel +
-        thisRoot[1] +
-        thisRoot[1] +
-        secondVowel +
-        thisRoot[2],
-      "3mp":
-        prefixes["3mp"] +
-        thisRoot[0] +
-        firstVowel +
-        thisRoot[1] +
-        thisRoot[1] +
-        secondVowel +
-        thisRoot[2] +
-        "ū",
-      "3fp":
-        prefixes["3fp"] +
-        thisRoot[0] +
-        firstVowel +
-        thisRoot[1] +
-        thisRoot[1] +
-        secondVowel +
-        thisRoot[2] +
-        "ā",
-      "1cp":
-        prefixes["1cp"] +
-        thisRoot[0] +
-        firstVowel +
-        thisRoot[1] +
-        thisRoot[1] +
-        secondVowel +
-        thisRoot[2]
-    };
-
-    // III-weak
-    if (root[2] === "Ø") {
-      contractLastVowels(conjugatedVerb);
-    }
-
-    state.updateVerb({ ...state, dPrecative: conjugatedVerb });
+    state.updateVerb({ ...state, precative: conjugatedVerb });
   }
 </script>
 
-<style>
-  .conjugation-box {
-    text-align: center;
-  }
-
-  .conjugation-person {
-    font-size: 0.8rem;
-    margin-right: 8px;
-  }
-</style>
-
-{#if $state.dPrecative === undefined}
+{#if $state.precative === undefined}
   <div />
 {:else}
   <!-- MOBILE VERSION-->
@@ -130,15 +65,15 @@
                 {@html highlightRoot({
                   verb: $state.ventive
                     ? addVentive({
-                        verb: $state.dPrecative[ps],
+                        verb: $state.precative[ps],
                         ps,
-                        conjugation: 'dPrecative',
+                        conjugation,
                         root: $state.root,
                         infinitive: $state.infinitive
                       })
-                    : $state.dPrecative[ps],
+                    : $state.precative[ps],
                   root: $state.root,
-                  conjugation: 'dPrecative',
+                  conjugation,
                   ps,
                   infinitive: $state.infinitive,
                   ventive: $state.ventive,
@@ -146,12 +81,12 @@
                 })}
               {:else}
                 {@html $state.ventive ? addVentive({
-                      verb: $state.dPrecative[ps],
+                      verb: $state.precative[ps],
                       ps,
-                      conjugation: 'dPrecative',
+                      conjugation,
                       root: $state.root,
                       infinitive: $state.infinitive
-                    }) : $state.dPrecative[ps]}
+                    }) : $state.precative[ps]}
               {/if}
             </p>
           {/each}
@@ -164,15 +99,15 @@
                 {@html highlightRoot({
                   verb: $state.ventive
                     ? addVentive({
-                        verb: $state.dPrecative[ps],
+                        verb: $state.precative[ps],
                         ps,
-                        conjugation: 'dPrecative',
+                        conjugation,
                         root: $state.root,
                         infinitive: $state.infinitive
                       })
-                    : $state.dPrecative[ps],
+                    : $state.precative[ps],
                   root: $state.root,
-                  conjugation: 'dPrecative',
+                  conjugation,
                   ps,
                   infinitive: $state.infinitive,
                   ventive: $state.ventive,
@@ -180,12 +115,12 @@
                 })}
               {:else}
                 {@html $state.ventive ? addVentive({
-                      verb: $state.dPrecative[ps],
+                      verb: $state.precative[ps],
                       ps,
-                      conjugation: 'dPrecative',
+                      conjugation,
                       root: $state.root,
                       infinitive: $state.infinitive
-                    }) : $state.dPrecative[ps]}
+                    }) : $state.precative[ps]}
               {/if}
             </p>
           {/each}
@@ -209,15 +144,15 @@
                 {@html highlightRoot({
                   verb: $state.ventive
                     ? addVentive({
-                        verb: $state.dPrecative[ps],
+                        verb: $state.precative[ps],
                         ps,
-                        conjugation: 'dPrecative',
+                        conjugation,
                         root: $state.root,
                         infinitive: $state.infinitive
                       })
-                    : $state.dPrecative[ps],
+                    : $state.precative[ps],
                   root: $state.root,
-                  conjugation: 'dPrecative',
+                  conjugation,
                   ps,
                   infinitive: $state.infinitive,
                   ventive: $state.ventive,
@@ -225,12 +160,12 @@
                 })}
               {:else}
                 {@html $state.ventive ? addVentive({
-                      verb: $state.dPrecative[ps],
+                      verb: $state.precative[ps],
                       ps,
-                      conjugation: 'dPrecative',
+                      conjugation,
                       root: $state.root,
                       infinitive: $state.infinitive
-                    }) : $state.dPrecative[ps]}
+                    }) : $state.precative[ps]}
               {/if}
             </p>
           {/each}
@@ -243,15 +178,15 @@
                 {@html highlightRoot({
                   verb: $state.ventive
                     ? addVentive({
-                        verb: $state.dPrecative[ps],
+                        verb: $state.precative[ps],
                         ps,
-                        conjugation: 'dPrecative',
+                        conjugation,
                         root: $state.root,
                         infinitive: $state.infinitive
                       })
-                    : $state.dPrecative[ps],
+                    : $state.precative[ps],
                   root: $state.root,
-                  conjugation: 'dPrecative',
+                  conjugation,
                   ps,
                   infinitive: $state.infinitive,
                   ventive: $state.ventive,
@@ -259,12 +194,12 @@
                 })}
               {:else}
                 {@html $state.ventive ? addVentive({
-                      verb: $state.dPrecative[ps],
+                      verb: $state.precative[ps],
                       ps,
-                      conjugation: 'dPrecative',
+                      conjugation,
                       root: $state.root,
                       infinitive: $state.infinitive
-                    }) : $state.dPrecative[ps]}
+                    }) : $state.precative[ps]}
               {/if}
             </p>
           {/each}

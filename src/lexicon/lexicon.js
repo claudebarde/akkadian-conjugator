@@ -1127,7 +1127,8 @@ const lexicon = {
     dMeaning: "to release, to set free"
   },
   edûm: {
-    meaning: "to know"
+    meaning: "to know",
+    onlyGstem: true
   }
 };
 

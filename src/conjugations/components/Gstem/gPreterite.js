@@ -16,7 +16,7 @@ const gPreterite = ({
   vetitive,
   onlyDstem
 }) => {
-  if (onlyDstem)
+  if (onlyDstem || (verbInput === "edûm" && vetitive))
     return {
       "3cs": "-",
       "2ms": "-",

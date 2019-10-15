@@ -4,6 +4,13 @@ import {
 } from "../../../settings/phonologicalRules";
 
 const gImperative = ({ verbInput, root, themeVowel, I_eVerb, verbClass }) => {
+  if (verbInput === "edûm")
+    return {
+      "2ms": "-",
+      "2fs": "-",
+      "2cp": "-"
+    };
+
   let thisRoot = [...root];
   let conjugatedVerb = {};
   // For adjectival verbs I–w, such as watårum, no Imperatives are attested.

@@ -6,17 +6,16 @@
   import Navbar from "./Navbar/Navbar.svelte";
   import Sidebar from "./Sidebar/Sidebar.svelte";
   import InfinitiveBox from "./conjugations/components/InfinitiveBox.svelte";
-  import GPrecativeBox from "./conjugations/components/Gstem/GPrecativeBox.svelte";
   import NonFiniteFormsBox from "./conjugations/components/NonFiniteFormsBox.svelte";
   import PredicativeBox from "./conjugations/components/PredicativeBox.svelte";
   import InfoModal from "./conjugations/components/InfoModal.svelte";
-  import DPrecativeBox from "./conjugations/components/Dstem/DPrecativeBox.svelte";
 
   import PreteriteBox from "./conjugations/components/PreteriteBox.svelte";
   import VetitiveBox from "./conjugations/components/VetitiveBox.svelte";
   import DurativeBox from "./conjugations/components/DurativeBox.svelte";
   import PerfectBox from "./conjugations/components/PerfectBox.svelte";
   import ImperativeBox from "./conjugations/components/ImperativeBox.svelte";
+  import PrecativeBox from "./conjugations/components/PrecativeBox.svelte";
 
   import settings from "./settings/settings.js";
   import highlightRoot from "./settings/highlightRoot.js";
@@ -235,27 +234,45 @@
                   </a>
                 </li>
               {/if}
-              <li
-                class:is-active={$state.activeView === 'dstem'}
-                on:click={() => state.updateView('dstem')}>
-                <a href="#">
-                  <span>D Stem</span>
-                </a>
-              </li>
-              <li
-                class:is-active={$state.activeView === 'nstem'}
-                on:click={() => state.updateView('nstem')}>
-                <a href="#">
-                  <span>N Stem</span>
-                </a>
-              </li>
-              <li
-                class:is-active={$state.activeView === 'sstem'}
-                on:click={() => state.updateView('sstem')}>
-                <a href="#">
-                  <span>Š Stem</span>
-                </a>
-              </li>
+              {#if $state.onlyGstem}
+                <li>
+                  <a href="#">
+                    <span>D Stem (none)</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span>N Stem (none)</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span>Š Stem (none)</span>
+                  </a>
+                </li>
+              {:else}
+                <li
+                  class:is-active={$state.activeView === 'dstem'}
+                  on:click={() => state.updateView('dstem')}>
+                  <a href="#">
+                    <span>D Stem</span>
+                  </a>
+                </li>
+                <li
+                  class:is-active={$state.activeView === 'nstem'}
+                  on:click={() => state.updateView('nstem')}>
+                  <a href="#">
+                    <span>N Stem</span>
+                  </a>
+                </li>
+                <li
+                  class:is-active={$state.activeView === 'sstem'}
+                  on:click={() => state.updateView('sstem')}>
+                  <a href="#">
+                    <span>Š Stem</span>
+                  </a>
+                </li>
+              {/if}
             </ul>
           </div>
           <!-- MOBILE VERSION -->
@@ -298,31 +315,26 @@
               out:fly={{ x: 100, duration: 200 }}>
               <div class="columns tables">
                 <div class="column is-two-fifths is-offset-1">
-                  <!--<GPreteriteBox />-->
                   <PreteriteBox />
                 </div>
                 <div class="column is-two-fifths">
-                  <!--<GDurativeBox />-->
                   <DurativeBox />
                 </div>
               </div>
               <div class="columns">
                 <div class="column is-two-fifths is-offset-1">
-                  <!--<GPerfectBox />-->
                   <PerfectBox />
                 </div>
                 <div class="column is-two-fifths">
-                  <!--<GPreteriteBox vetitive={true} />-->
                   <VetitiveBox />
                 </div>
               </div>
               <div class="columns">
                 <div class="column is-3 is-offset-2">
-                  <!--<GImperativeBox />-->
                   <ImperativeBox />
                 </div>
                 <div class="column is-4 is-offset-1">
-                  <GPrecativeBox />
+                  <PrecativeBox />
                 </div>
               </div>
               <div class="columns">
@@ -356,31 +368,26 @@
               out:fly={{ x: 100, duration: 200 }}>
               <div class="columns tables">
                 <div class="column is-two-fifths is-offset-1">
-                  <!--<DPreteriteBox />-->
                   <PreteriteBox />
                 </div>
                 <div class="column is-two-fifths">
-                  <!--<DDurativeBox />-->
                   <DurativeBox />
                 </div>
               </div>
               <div class="columns">
                 <div class="column is-two-fifths is-offset-1">
-                  <!--<DPerfectBox />-->
                   <PerfectBox />
                 </div>
                 <div class="column is-two-fifths">
-                  <!--<DPreteriteBox vetitive={true} />-->
                   <VetitiveBox />
                 </div>
               </div>
               <div class="columns">
                 <div class="column is-3 is-offset-2">
-                  <!--<DImperativeBox />-->
                   <ImperativeBox />
                 </div>
                 <div class="column is-4 is-offset-1">
-                  <DPrecativeBox />
+                  <PrecativeBox />
                 </div>
               </div>
               <div class="columns lastColumns">

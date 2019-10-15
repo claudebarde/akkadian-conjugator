@@ -2,6 +2,7 @@ import {
   lengthenVowel,
   contiguousVowels
 } from "../../../settings/phonologicalRules";
+import contractLastVowels from "../../../settings/contractLastVowels";
 
 const dImperative = ({ root }) => {
   let thisRoot = [...root];
