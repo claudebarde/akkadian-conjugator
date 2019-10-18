@@ -1127,8 +1127,11 @@ const lexicon = {
     dMeaning: "to release, to set free"
   },
   edûm: {
+    themeVowel: "e",
     meaning: "to know",
-    onlyGstem: true
+    root: ["w", "d", "Ø"],
+    I_eVerb: true,
+    dMeaning: "to mark, to inform, to recognize, to identify"
   }
 };
 

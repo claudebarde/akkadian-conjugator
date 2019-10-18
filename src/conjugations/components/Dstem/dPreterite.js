@@ -25,7 +25,7 @@ const dPreterite = ({ verbInput, root, I_eVerb, vetitive }) => {
     firstVowel = "";
   }
   // I-w verbs
-  if (thisRoot[0] === "w") {
+  if (thisRoot[0] === "w" && verbInput !== "edûm") {
     firstVowel = "a";
   }
 

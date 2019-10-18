@@ -23,7 +23,7 @@
       } else if (verbInput === "zâzum") {
         adjectiveForms = ["zāˀizum", "zāˀiztum", "zāˀiz"];
       } else if (verbInput === "edûm") {
-        adjectiveForms = ["-", "-", "-"];
+        adjectiveForms = ["mūdûm", "mūdētum", "mūde"];
       } else {
         let {
           root,
