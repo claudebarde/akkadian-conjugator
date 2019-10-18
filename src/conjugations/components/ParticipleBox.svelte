@@ -24,6 +24,8 @@
         adjectiveForms = ["zāˀizum", "zāˀiztum", "zāˀiz"];
       } else if (verbInput === "edûm") {
         adjectiveForms = ["mūdûm", "mūdētum", "mūde"];
+      } else if (verbInput === "išûm") {
+        adjectiveForms = ["-", "-", "-"];
       } else {
         let {
           root,

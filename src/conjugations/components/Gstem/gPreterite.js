@@ -16,7 +16,11 @@ const gPreterite = ({
   vetitive,
   onlyDstem
 }) => {
-  if (onlyDstem || (verbInput === "edûm" && vetitive))
+  if (
+    onlyDstem ||
+    (verbInput === "edûm" && vetitive) ||
+    (verbInput === "išûm" && vetitive)
+  )
     return {
       "3cs": "-",
       "2ms": "-",
@@ -77,6 +81,18 @@ const gPreterite = ({
       "3fp": "īdeā",
       "2cp": "tīdeā",
       "1cp": "nīde"
+    };
+  } // Irregular Verb išûm
+  else if (verbInput === "išûm") {
+    conjugatedVerb = {
+      "3cs": "īšu",
+      "2ms": "tīšu",
+      "2fs": "tīšî",
+      "1cs": "īšu",
+      "3mp": "īšû",
+      "3fp": "īšâ",
+      "2cp": "tīšâ",
+      "1cp": "nīšu"
     };
   } else {
     let thisRoot = [...root];

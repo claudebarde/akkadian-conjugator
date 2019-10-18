@@ -1132,6 +1132,10 @@ const lexicon = {
     root: ["w", "d", "Ø"],
     I_eVerb: true,
     dMeaning: "to mark, to inform, to recognize, to identify"
+  },
+  išûm: {
+    meaning: "to have",
+    onlyGstem: true
   }
 };
 

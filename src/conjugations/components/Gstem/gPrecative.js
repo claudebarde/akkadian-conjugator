@@ -10,7 +10,7 @@ const prefixes = {
 };
 
 const gPrecative = ({ verbInput, root, themeVowel, verbClass }) => {
-  if (verbInput === "edûm")
+  if (verbInput === "edûm" || verbInput === "išûm")
     return {
       "3cs": "-",
       "1cs": "-",

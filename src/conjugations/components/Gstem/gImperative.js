@@ -4,7 +4,7 @@ import {
 } from "../../../settings/phonologicalRules";
 
 const gImperative = ({ verbInput, root, themeVowel, I_eVerb, verbClass }) => {
-  if (verbInput === "edûm")
+  if (verbInput === "edûm" || verbInput === "išûm")
     return {
       "2ms": "-",
       "2fs": "-",

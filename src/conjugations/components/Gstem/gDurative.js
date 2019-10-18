@@ -20,7 +20,7 @@ const gDurative = ({
   durativeVowel,
   onlyDstem
 }) => {
-  if (onlyDstem || verbInput === "edûm")
+  if (onlyDstem || verbInput === "edûm" || verbInput === "išûm")
     return {
       "3cs": "-",
       "2ms": "-",
