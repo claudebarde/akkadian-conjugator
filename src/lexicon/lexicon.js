@@ -1136,6 +1136,23 @@ const lexicon = {
   išûm: {
     meaning: "to have",
     onlyGstem: true
+  },
+  elēlum: {
+    themeVowel: "i",
+    root: ["Ø", "l", "l"],
+    verbalAdjectiveVowel: undefined,
+    verbClass: "stative",
+    I_eVerb: true,
+    meaning: "to become pure, clean, free",
+    dMeaning: "to purify, to keep pure, to consacrate"
+  },
+  zêrum: {
+    themeVowel: "e",
+    root: ["z", "Ø", "r"],
+    verbalAdjectiveVowel: "ē",
+    verbClass: "active",
+    I_eVerb: true,
+    meaning: "to dislike, to hate, to reject, to avoid"
   }
 };
 
