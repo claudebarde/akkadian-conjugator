@@ -192,6 +192,12 @@ const highlightRoot = ({
       } else {
         highlightedVerb = highlightVerb(verb, ps, patterns.posDVetIweak);
       }
+    } else if (root[2] === "Ø") {
+      if (vetitive === false) {
+        highlightedVerb = highlightVerb(verb, ps, patterns.posDPretIIIweak);
+      } else {
+        highlightedVerb = highlightVerb(verb, ps, patterns.posDVetIIIweak);
+      }
     } else {
       highlightedVerb = [...verb];
     }
@@ -200,6 +206,8 @@ const highlightRoot = ({
       highlightedVerb = highlightVerb(verb, ps, patterns.posDPerf3C);
     } else if (root[0] === "Ø") {
       highlightedVerb = highlightVerb(verb, ps, patterns.posDPerfIweak);
+    } else if (root[2] === "Ø") {
+      highlightedVerb = highlightVerb(verb, ps, patterns.posDPerfIIIweak);
     } else {
       highlightedVerb = [...verb];
     }
@@ -208,6 +216,8 @@ const highlightRoot = ({
       highlightedVerb = highlightVerb(verb, ps, patterns.posDImp3C);
     } else if (root[0] === "Ø") {
       highlightedVerb = highlightVerb(verb, ps, patterns.posDImpIweak);
+    } else if (root[2] === "Ø") {
+      highlightedVerb = highlightVerb(verb, ps, patterns.posDImpIIIweak);
     } else {
       highlightedVerb = [...verb];
     }
@@ -216,6 +226,8 @@ const highlightRoot = ({
       highlightedVerb = highlightVerb(verb, ps, patterns.posDPrec3C);
     } else if (root[0] === "Ø") {
       highlightedVerb = highlightVerb(verb, ps, patterns.posDPrecIweak);
+    } else if (root[2] === "Ø") {
+      highlightedVerb = highlightVerb(verb, ps, patterns.posDPrecIIIweak);
     } else {
       highlightedVerb = [...verb];
     }
@@ -315,10 +327,19 @@ const highlightRoot = ({
           return letter;
         }
       });
-    }
-    if (root[0] === "Ø") {
+    } else if (root[0] === "Ø") {
       highlightedVerb = [...verb].map((letter, i) => {
         if (verbalAdjective.Iweak[ps].includes(i)) {
+          // if this is a position to highlight
+          return "<strong>" + letter + "</strong>";
+        } else {
+          // if the position is not to be highlighted
+          return letter;
+        }
+      });
+    } else if (root[2] === "Ø") {
+      highlightedVerb = [...verb].map((letter, i) => {
+        if (verbalAdjective.IIIweak[ps].includes(i)) {
           // if this is a position to highlight
           return "<strong>" + letter + "</strong>";
         } else {
