@@ -286,6 +286,17 @@ export const posDPret3C = {
   "1cp": [2, 5, 7]
 };
 
+export const posDPretIweak = {
+  "3cs": [2, 4],
+  "2ms": [3, 5],
+  "2fs": [3, 5],
+  "1cs": [2, 4],
+  "3mp": [2, 4],
+  "3fp": [2, 4],
+  "2cp": [3, 5],
+  "1cp": [3, 5]
+};
+
 // position to highlight for vetitive D stem
 export const posDVet3C = {
   "3cs": [4, 7, 9],
@@ -296,6 +307,17 @@ export const posDVet3C = {
   "3fp": [4, 7, 9],
   "2cp": [3, 6, 8],
   "1cp": [3, 6, 8]
+};
+
+export const posDVetIweak = {
+  "3cs": [5, 7],
+  "2ms": [4, 6],
+  "2fs": [4, 6],
+  "1cs": [5, 7],
+  "3mp": [5, 7],
+  "3fp": [5, 7],
+  "2cp": [4, 6],
+  "1cp": [4, 6]
 };
 
 // position to highlight for durative D stem
@@ -310,10 +332,27 @@ export const posDPerf3C = {
   "1cp": [2, 6, 8]
 };
 
+export const posDPerfIweak = {
+  "3cs": [4, 6],
+  "2ms": [5, 7],
+  "2fs": [5, 7],
+  "1cs": [4, 6],
+  "3mp": [4, 6],
+  "3fp": [4, 6],
+  "2cp": [5, 7],
+  "1cp": [5, 7]
+};
+
 export const posDImp3C = {
   "2ms": [0, 3, 5],
   "2fs": [0, 3, 5],
   "2cp": [0, 3, 5]
+};
+
+export const posDImpIweak = {
+  "2ms": [2, 4],
+  "2fs": [2, 4],
+  "2cp": [2, 4]
 };
 
 export const posDPrec3C = {
@@ -322,6 +361,14 @@ export const posDPrec3C = {
   "3mp": [2, 5, 7],
   "3fp": [2, 5, 7],
   "1cp": [4, 7, 9]
+};
+
+export const posDPrecIweak = {
+  "3cs": [3, 5],
+  "1cs": [3, 5],
+  "3mp": [3, 5],
+  "3fp": [3, 5],
+  "1cp": [5, 7]
 };
 
 export const verbalAdjective = {
@@ -364,9 +411,9 @@ export const dVerbalAdjective = {
     radical: [0, 3, 5]
   },
   Iweak: {
-    masculin: [1, 2],
-    feminin: [1, 3],
-    radical: [1, 3]
+    masculin: [2, 4],
+    feminin: [2, 4],
+    radical: [2, 4]
   },
   IIweak: {
     masculin: [0, 2],
@@ -397,9 +444,9 @@ export const posParticiple = {
 };
 
 export const posParticipleIw = {
-  masculin: [1, 3],
-  feminin: [1, 3],
-  radical: [1, 3]
+  masculin: [3, 5],
+  feminin: [3, 5],
+  radical: [3, 5]
 };
 
 export const posParticipleIIw = {

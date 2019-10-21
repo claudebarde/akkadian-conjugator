@@ -186,24 +186,36 @@ const highlightRoot = ({
       } else {
         highlightedVerb = highlightVerb(verb, ps, patterns.posDVet3C);
       }
+    } else if (root[0] === "Ø") {
+      if (vetitive === false) {
+        highlightedVerb = highlightVerb(verb, ps, patterns.posDPretIweak);
+      } else {
+        highlightedVerb = highlightVerb(verb, ps, patterns.posDVetIweak);
+      }
     } else {
       highlightedVerb = [...verb];
     }
   } else if (conjugation === "dPerfect") {
     if (!root.includes("Ø") && root[0] !== "w") {
       highlightedVerb = highlightVerb(verb, ps, patterns.posDPerf3C);
+    } else if (root[0] === "Ø") {
+      highlightedVerb = highlightVerb(verb, ps, patterns.posDPerfIweak);
     } else {
       highlightedVerb = [...verb];
     }
   } else if (conjugation === "dImperative") {
     if (!root.includes("Ø") && root[0] !== "w") {
       highlightedVerb = highlightVerb(verb, ps, patterns.posDImp3C);
+    } else if (root[0] === "Ø") {
+      highlightedVerb = highlightVerb(verb, ps, patterns.posDImpIweak);
     } else {
       highlightedVerb = [...verb];
     }
   } else if (conjugation === "dPrecative") {
     if (!root.includes("Ø") && root[0] !== "w") {
       highlightedVerb = highlightVerb(verb, ps, patterns.posDPrec3C);
+    } else if (root[0] === "Ø") {
+      highlightedVerb = highlightVerb(verb, ps, patterns.posDPrecIweak);
     } else {
       highlightedVerb = [...verb];
     }
@@ -295,7 +307,18 @@ const highlightRoot = ({
 
     if (!root.includes("Ø") && root[0] !== "w") {
       highlightedVerb = [...verb].map((letter, i) => {
-        if (verbalAdjective.sound[ps].includes(i)) {
+        if (erbalAdjective.sound[ps].includes(i)) {
+          // if this is a position to highlight
+          return "<strong>" + letter + "</strong>";
+        } else {
+          // if the position is not to be highlighted
+          return letter;
+        }
+      });
+    }
+    if (root[0] === "Ø") {
+      highlightedVerb = [...verb].map((letter, i) => {
+        if (verbalAdjective.Iweak[ps].includes(i)) {
           // if this is a position to highlight
           return "<strong>" + letter + "</strong>";
         } else {

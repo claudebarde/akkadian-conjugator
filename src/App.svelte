@@ -184,7 +184,13 @@
             <div class="tags has-addons">
               <span class="tag is-dark">{verbInput.toUpperCase()}</span>
               <span class="tag is-info">{verbInfo}</span>
-              <span class="tag">G Stem</span>
+              <span class="tag">{#if $state.activeView === "gstem"}
+                 G Stem
+              {:else if  $state.activeView === "dstem"}
+                 D Stem
+              {:else}
+                 <!-- else content here -->
+              {/if}</span>
             </div>
           </div>
         </div>
