@@ -9,8 +9,15 @@ const vowel_2cp = "ā";
 const shPreterite = ({ verbInput, root, I_eVerb, vetitive }) => {
   let conjugatedVerb = {};
   let thisRoot = [...root];
-  let firstVowel = "a";
+  let firstVowel = I_eVerb ? "e" : "a";
   let secondVowel = "i";
+
+  // III-weak
+  if (thisRoot[2] === "Ø") {
+    thisRoot[2] = "";
+  }
+  // Verbs I–n
+  if (thisRoot[0] === "n" && root[1] !== "Ø") thisRoot[0] = thisRoot[1];
 
   conjugatedVerb = {
     "3cs":
@@ -90,6 +97,11 @@ const shPreterite = ({ verbInput, root, I_eVerb, vetitive }) => {
       secondVowel +
       thisRoot[2]
   };
+
+  // III-weak
+  if (root[2] === "Ø") {
+    contractLastVowels(conjugatedVerb);
+  }
 
   return conjugatedVerb;
 };

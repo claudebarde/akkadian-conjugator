@@ -3,6 +3,7 @@
   import state from "../../state/state";
   import gPrecative from "./Gstem/gPrecative";
   import dPrecative from "./Dstem/dPrecative";
+  import shPrecative from "./SHstem/shPrecative";
   import highlightRoot from "../../settings/highlightRoot";
   import addVentive from "../../settings/addVentive";
 
@@ -18,6 +19,7 @@
     "3fp": "li",
     "1cp": "i ni"
   };
+  let title = "";
 
   $: if (
     $state.infinitive !== verbInput ||
@@ -29,6 +31,7 @@
 
     if ($state.activeView === "gstem") {
       conjugation = "gPrecative";
+      title = "G Precative";
       conjugatedVerb = gPrecative({
         verbInput,
         root: $state.root,
@@ -38,8 +41,17 @@
       });
     } else if ($state.activeView === "dstem") {
       conjugation = "dPrecative";
+      title = "D Precative";
       conjugatedVerb = dPrecative({
-        root: $state.root
+        root: $state.root,
+        I_eVerb: $state.I_eVerb
+      });
+    } else if ($state.activeView === "shstem") {
+      conjugation = "shPrecative";
+      title = "Š Precative";
+      conjugatedVerb = shPrecative({
+        root: $state.root,
+        I_eVerb: $state.I_eVerb
       });
     }
 
@@ -53,7 +65,7 @@
   <!-- MOBILE VERSION-->
   <div class="message is-primary is-small is-hidden-tablet conjugation-box">
     <div class="message-header">
-      <p>Precative</p>
+      <p>{title}</p>
     </div>
     <div class="message-body">
       <div class="columns is-mobile">
@@ -132,7 +144,7 @@
   <!-- MOBILE VERSION-->
   <div class="message is-primary is-hidden-mobile conjugation-box">
     <div class="message-header">
-      <p>Precative</p>
+      <p>{title}</p>
     </div>
     <div class="message-body">
       <div class="columns">

@@ -430,23 +430,23 @@
               </div>
               <div class="columns">
                 <div class="column is-two-fifths is-offset-1">
-                  <!--<PerfectBox />-->
+                  <PerfectBox />
                 </div>
                 <div class="column is-two-fifths">
-                  <!--<VetitiveBox />-->
+                  <VetitiveBox />
                 </div>
               </div>
               <div class="columns">
                 <div class="column is-3 is-offset-2">
-                  <!--<ImperativeBox />-->
+                  <ImperativeBox />
                 </div>
                 <div class="column is-4 is-offset-1">
-                  <!--<PrecativeBox />-->
+                  <PrecativeBox />
                 </div>
               </div>
               <div class="columns lastColumns">
                 <div class="column is-four-fifths is-offset-1">
-                  <!--<NonFiniteFormsBox />-->
+                  <NonFiniteFormsBox />
                 </div>
               </div>
             </div>

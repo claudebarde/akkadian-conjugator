@@ -44,6 +44,16 @@
     let secondVowel = "u";
     let suffix = "um";
 
+    if (thisRoot[2] === "Ø") {
+      thisRoot[2] = "";
+      suffix = "ûm";
+      secondVowel = "";
+    }
+
+    // Verbs I–n
+    if (thisRoot[0] === "n" && $state.root[1] !== "Ø")
+      thisRoot[0] = thisRoot[1];
+
     verbTitle =
       "šu" + thisRoot[0] + thisRoot[1] + secondVowel + thisRoot[2] + suffix;
 

@@ -6,11 +6,11 @@ const vowel_3mp = "ū";
 const vowel_3fp = "ā";
 const vowel_2cp = "ā";
 
-const shDurative = ({ root, I_eVerb }) => {
+const shPerfect = ({ verbInput, root, I_eVerb, vetitive }) => {
   let conjugatedVerb = {};
   let thisRoot = [...root];
-  let firstVowel = I_eVerb ? "e" : "a";
-  let secondVowel = I_eVerb ? "e" : "a";
+  let prefix = I_eVerb ? "te" : "ta";
+  let secondVowel = "i";
 
   // III-weak
   if (thisRoot[2] === "Ø") {
@@ -23,7 +23,7 @@ const shDurative = ({ root, I_eVerb }) => {
     "3cs":
       personPrefixes[0] +
       "š" +
-      firstVowel +
+      prefix +
       thisRoot[0] +
       thisRoot[1] +
       secondVowel +
@@ -31,7 +31,7 @@ const shDurative = ({ root, I_eVerb }) => {
     "2ms":
       personPrefixes[1] +
       "š" +
-      firstVowel +
+      prefix +
       thisRoot[0] +
       thisRoot[1] +
       secondVowel +
@@ -39,7 +39,7 @@ const shDurative = ({ root, I_eVerb }) => {
     "2fs":
       personPrefixes[1] +
       "š" +
-      firstVowel +
+      prefix +
       thisRoot[0] +
       thisRoot[1] +
       secondVowel +
@@ -48,7 +48,7 @@ const shDurative = ({ root, I_eVerb }) => {
     "1cs":
       personPrefixes[0] +
       "š" +
-      firstVowel +
+      prefix +
       thisRoot[0] +
       thisRoot[1] +
       secondVowel +
@@ -56,7 +56,7 @@ const shDurative = ({ root, I_eVerb }) => {
     "3mp":
       personPrefixes[0] +
       "š" +
-      firstVowel +
+      prefix +
       thisRoot[0] +
       thisRoot[1] +
       secondVowel +
@@ -65,7 +65,7 @@ const shDurative = ({ root, I_eVerb }) => {
     "3fp":
       personPrefixes[0] +
       "š" +
-      firstVowel +
+      prefix +
       thisRoot[0] +
       thisRoot[1] +
       secondVowel +
@@ -74,7 +74,7 @@ const shDurative = ({ root, I_eVerb }) => {
     "2cp":
       personPrefixes[1] +
       "š" +
-      firstVowel +
+      prefix +
       thisRoot[0] +
       thisRoot[1] +
       secondVowel +
@@ -83,7 +83,7 @@ const shDurative = ({ root, I_eVerb }) => {
     "1cp":
       personPrefixes[2] +
       "š" +
-      firstVowel +
+      prefix +
       thisRoot[0] +
       thisRoot[1] +
       secondVowel +
@@ -98,4 +98,4 @@ const shDurative = ({ root, I_eVerb }) => {
   return conjugatedVerb;
 };
 
-export default shDurative;
+export default shPerfect;

@@ -183,6 +183,49 @@
       ];
 
       state.updateVerb({ ...state, verbalAdjective: adjectiveForms });
+    } else if ($state.activeView === "shstem") {
+      /*
+       * SH STEM
+       */
+      let thisRoot = [...$state.root];
+      let secondVowelMasculine = "u";
+      let secondVowelFeminine = "u";
+      let suffix = "um";
+
+      // III-weak verbs
+      if (thisRoot[2] === "Ø") {
+        thisRoot[2] = "";
+        suffix = "ûm";
+        secondVowelMasculine = "";
+        secondVowelFeminine = "ū";
+      }
+      // I-weak verbs
+      if (thisRoot[0] === "Ø") thisRoot[0] = "";
+      // I-w verbs
+      if (thisRoot[0] === "w") {
+        thisRoot[0] = "";
+      }
+      // Verbs I–n
+      if (thisRoot[0] === "n" && $state.root[1] !== "Ø")
+        thisRoot[0] = thisRoot[1];
+
+      adjectiveForms = [
+        "šu" +
+          thisRoot[0] +
+          thisRoot[1] +
+          secondVowelMasculine +
+          thisRoot[2] +
+          suffix,
+        "šu" +
+          thisRoot[0] +
+          thisRoot[1] +
+          secondVowelFeminine +
+          feminineChange(thisRoot[2], "t") +
+          "tum",
+        "šu" + thisRoot[0] + thisRoot[1] + "u" + thisRoot[2]
+      ];
+
+      state.updateVerb({ ...state, verbalAdjective: adjectiveForms });
     }
   }
 </script>
