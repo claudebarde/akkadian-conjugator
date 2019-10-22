@@ -3,7 +3,7 @@
   import state from "../../state/state";
   import gPreterite from "./Gstem/gPreterite";
   import dPreterite from "./Dstem/dPreterite";
-  import shPreterite from "./Shstem/shPreterite";
+  import shPreterite from "./SHstem/shPreterite";
 
   let verbInput = undefined;
   let conjugation = undefined;

@@ -425,7 +425,7 @@
                   <PreteriteBox />
                 </div>
                 <div class="column is-two-fifths">
-                  <!--<DurativeBox />-->
+                  <DurativeBox />
                 </div>
               </div>
               <div class="columns">
