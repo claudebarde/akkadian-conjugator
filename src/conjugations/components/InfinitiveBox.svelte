@@ -39,6 +39,19 @@
     } else {
       verbMeaning = `to cause ${$state.meaning}`;
     }
+  } else if ($state.activeView === "shstem") {
+    let thisRoot = [...$state.root];
+    let secondVowel = "u";
+    let suffix = "um";
+
+    verbTitle =
+      "šu" + thisRoot[0] + thisRoot[1] + secondVowel + thisRoot[2] + suffix;
+
+    if ($state.shMeaning) {
+      verbMeaning = $state.shMeaning;
+    } else {
+      verbMeaning = `to cause ${$state.meaning}`;
+    }
   } else {
     verbTitle = $state.infinitive;
     verbMeaning = $state.meaning;

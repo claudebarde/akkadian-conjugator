@@ -319,7 +319,7 @@ const highlightRoot = ({
 
     if (!root.includes("Ø") && root[0] !== "w") {
       highlightedVerb = [...verb].map((letter, i) => {
-        if (erbalAdjective.sound[ps].includes(i)) {
+        if (verbalAdjective.sound[ps].includes(i)) {
           // if this is a position to highlight
           return "<strong>" + letter + "</strong>";
         } else {
