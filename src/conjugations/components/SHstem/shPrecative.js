@@ -1,4 +1,5 @@
 import contractLastVowels from "../../../settings/contractLastVowels";
+import { lengthenVowel } from "../../../settings/phonologicalRules";
 
 const prefixes = {
   "3cs": "li",
@@ -12,7 +13,7 @@ const shPrecative = ({ verbInput, root, I_eVerb }) => {
   let thisRoot = [...root];
   let conjugatedVerb = {};
 
-  let prefix = I_eVerb ? "še" : "ša";
+  let firstVowel = I_eVerb ? "e" : "a";
   let secondVowel = "i";
 
   // III-weak
@@ -21,25 +22,33 @@ const shPrecative = ({ verbInput, root, I_eVerb }) => {
   }
   // Verbs I–n
   if (thisRoot[0] === "n" && root[1] !== "Ø") thisRoot[0] = thisRoot[1];
+  // Verbs I-weak
+  if (thisRoot[0] === "Ø") {
+    thisRoot[0] = "";
+    firstVowel = lengthenVowel(firstVowel);
+  }
 
   conjugatedVerb = {
     "3cs":
       prefixes["3cs"] +
-      prefix +
+      "š" +
+      firstVowel +
       thisRoot[0] +
       thisRoot[1] +
       secondVowel +
       thisRoot[2],
     "1cs":
       prefixes["1cs"] +
-      prefix +
+      "š" +
+      firstVowel +
       thisRoot[0] +
       thisRoot[1] +
       secondVowel +
       thisRoot[2],
     "3mp":
       prefixes["3mp"] +
-      prefix +
+      "š" +
+      firstVowel +
       thisRoot[0] +
       thisRoot[1] +
       secondVowel +
@@ -47,7 +56,8 @@ const shPrecative = ({ verbInput, root, I_eVerb }) => {
       "ū",
     "3fp":
       prefixes["3fp"] +
-      prefix +
+      "š" +
+      firstVowel +
       thisRoot[0] +
       thisRoot[1] +
       secondVowel +
@@ -55,7 +65,8 @@ const shPrecative = ({ verbInput, root, I_eVerb }) => {
       "ā",
     "1cp":
       prefixes["1cp"] +
-      prefix +
+      "š" +
+      firstVowel +
       thisRoot[0] +
       thisRoot[1] +
       secondVowel +

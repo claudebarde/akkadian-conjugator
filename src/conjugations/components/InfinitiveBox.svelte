@@ -41,6 +41,7 @@
     }
   } else if ($state.activeView === "shstem") {
     let thisRoot = [...$state.root];
+    let firstVowel = "u";
     let secondVowel = "u";
     let suffix = "um";
 
@@ -54,8 +55,20 @@
     if (thisRoot[0] === "n" && $state.root[1] !== "Ø")
       thisRoot[0] = thisRoot[1];
 
+    // Vernàbs I-weak
+    if (thisRoot[0] === "Ø") {
+      thisRoot[0] = "";
+      firstVowel = "ū";
+    }
+
     verbTitle =
-      "šu" + thisRoot[0] + thisRoot[1] + secondVowel + thisRoot[2] + suffix;
+      "š" +
+      firstVowel +
+      thisRoot[0] +
+      thisRoot[1] +
+      secondVowel +
+      thisRoot[2] +
+      suffix;
 
     if ($state.shMeaning) {
       verbMeaning = $state.shMeaning;

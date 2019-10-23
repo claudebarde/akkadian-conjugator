@@ -1153,6 +1153,45 @@ const lexicon = {
     verbClass: "active",
     I_eVerb: true,
     meaning: "to dislike, to hate, to reject, to avoid"
+  },
+  egûm: {
+    themeVowel: "i",
+    meaning: "to be careless",
+    root: ["Ø", "g", "Ø"],
+    verbClass: "stative",
+    I_eVerb: true
+  },
+  enûm: {
+    themeVowel: "i",
+    meaning: "to change, to invert, to revoke",
+    root: ["Ø", "n", "Ø"],
+    verbClass: "active",
+    I_eVerb: true
+  },
+  rakāsum: {
+    themeVowel: "u",
+    durativeVowel: "a",
+    root: ["r", "k", "s"],
+    verbalAdjectiveVowel: undefined,
+    verbClass: "active",
+    meaning: "to bind, to tie, to put on",
+    dMeaning: "to contract (with someone)"
+  },
+  reˀûm: {
+    themeVowel: "i",
+    root: ["r", "ˀ", "Ø"],
+    verbalAdjectiveVowel: undefined,
+    verbClass: "active",
+    I_eVerb: true,
+    meaning: "to pasture, to graze"
+  },
+  tarāṣum: {
+    themeVowel: "u",
+    durativeVowel: "a",
+    root: ["t", "r", "ṣ"],
+    verbalAdjectiveVowel: undefined,
+    verbClass: "active",
+    meaning: "to reach out, to extend, to set up"
   }
 };
 

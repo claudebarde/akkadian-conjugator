@@ -154,10 +154,10 @@
     } else if ($state.activeView === "shstem") {
       let { root } = $state;
       let thisRoot = [...root];
-      let prefix = $state.I_eVerb ? "še" : "ša";
+      let firstVowel = $state.I_eVerb ? "e" : "a";
       // The vowels i and ī were apparently pronounced as e and ē,
       // respectively, when they occurred before the consonants r and ḫ.
-      let secondVowel = thisRoot[2] === "r" || thisRoot[2] === "ḫ" ? "e" : "i";
+      let secondVowel = "i";
       let secondVowelMasculine = secondVowel;
       let secondVowelFeminine = secondVowel;
       let suffix = "um";
@@ -169,34 +169,41 @@
         secondVowelMasculine = "";
         secondVowelFeminine = lengthenVowel(secondVowelFeminine);
       }
-      // I-weak verbs
+      // Verbs I-weak
       if (thisRoot[0] === "Ø") {
         thisRoot[0] = "";
-        firstVowel = "";
+        firstVowel = lengthenVowel(firstVowel);
       }
       // I-w verbs
       if (thisRoot[0] === "w") {
-        firstVowel = "a";
       }
       // Verbs I–n
       if (thisRoot[0] === "n" && root[1] !== "Ø") thisRoot[0] = thisRoot[1];
 
       adjectiveForms = [
         "mu" +
-          prefix +
+          "š" +
+          firstVowel +
           thisRoot[0] +
           thisRoot[1] +
           secondVowelMasculine +
           thisRoot[2] +
           suffix,
         "mu" +
-          prefix +
+          "š" +
+          firstVowel +
           thisRoot[0] +
           thisRoot[1] +
           secondVowelFeminine +
           feminineChange(thisRoot[2], "t") +
           "tum",
-        "mu" + prefix + thisRoot[0] + thisRoot[1] + secondVowel + thisRoot[2]
+        "mu" +
+          "š" +
+          firstVowel +
+          thisRoot[0] +
+          thisRoot[1] +
+          secondVowel +
+          thisRoot[2]
       ];
 
       state.updateVerb({ ...state, participle: adjectiveForms });

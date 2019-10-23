@@ -7,6 +7,7 @@
     lengthenVowel,
     feminineChange
   } from "../../settings/phonologicalRules";
+  import irregularVerbalAdjectives from "../../settings/irregularVerbalAdjectives.js";
 
   // returns masculine, feminine and base
   let adjectiveForms = [];
@@ -19,23 +20,8 @@
      */
     if ($state.activeView === "gstem") {
       // IRREGULAR VERBAL ADJECTIVES
-      // ešērum => išarum
-      if (verbInput === "ešērum") {
-        adjectiveForms = ["išarum", "išartum", "išar"]; // ešērum => išarum
-      } else if (verbInput === "edēšum") {
-        adjectiveForms = ["eššum", "eššetum", "ešš"];
-      } else if (verbInput === "palāšum") {
-        adjectiveForms = ["pilšum", "pilištum", "piliš"];
-      } else if (verbInput === "aḫāzum") {
-        adjectiveForms = ["aḫzum", "aḫiztum", "aḫiz"];
-      } else if (verbInput === "zâzum") {
-        adjectiveForms = ["zīzum", "zīztum", "zīz"];
-      } else if (verbInput === "ebēbum") {
-        adjectiveForms = ["ebbum", "ebbetum", "ebb"];
-      } else if (verbInput === "elēlum") {
-        adjectiveForms = ["ellum", "elletum", "ell"];
-      } else if (verbInput === "edûm" || verbInput === "išûm") {
-        adjectiveForms = ["-", "-", "-"];
+      if (Object.keys(irregularVerbalAdjectives).includes(verbInput)) {
+        adjectiveForms = [...irregularVerbalAdjectives[verbInput]];
       } else {
         let {
           root,
@@ -188,6 +174,7 @@
        * SH STEM
        */
       let thisRoot = [...$state.root];
+      let firstVowel = "u";
       let secondVowelMasculine = "u";
       let secondVowelFeminine = "u";
       let suffix = "um";
@@ -199,8 +186,11 @@
         secondVowelMasculine = "";
         secondVowelFeminine = "ū";
       }
-      // I-weak verbs
-      if (thisRoot[0] === "Ø") thisRoot[0] = "";
+      // Verbs I-weak
+      if (thisRoot[0] === "Ø") {
+        thisRoot[0] = "";
+        firstVowel = lengthenVowel(firstVowel);
+      }
       // I-w verbs
       if (thisRoot[0] === "w") {
         thisRoot[0] = "";
@@ -210,19 +200,21 @@
         thisRoot[0] = thisRoot[1];
 
       adjectiveForms = [
-        "šu" +
+        "š" +
+          firstVowel +
           thisRoot[0] +
           thisRoot[1] +
           secondVowelMasculine +
           thisRoot[2] +
           suffix,
-        "šu" +
+        "š" +
+          firstVowel +
           thisRoot[0] +
           thisRoot[1] +
           secondVowelFeminine +
           feminineChange(thisRoot[2], "t") +
           "tum",
-        "šu" + thisRoot[0] + thisRoot[1] + "u" + thisRoot[2]
+        "š" + firstVowel + thisRoot[0] + thisRoot[1] + "u" + thisRoot[2]
       ];
 
       state.updateVerb({ ...state, verbalAdjective: adjectiveForms });

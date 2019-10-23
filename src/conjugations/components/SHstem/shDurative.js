@@ -18,6 +18,10 @@ const shDurative = ({ root, I_eVerb }) => {
   }
   // Verbs I–n
   if (thisRoot[0] === "n" && root[1] !== "Ø") thisRoot[0] = thisRoot[1];
+  // Verbs I-weak
+  if (thisRoot[0] === "Ø") {
+    thisRoot[0] = thisRoot[1];
+  }
 
   conjugatedVerb = {
     "3cs":

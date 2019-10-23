@@ -1,4 +1,5 @@
 import contractLastVowels from "../../../settings/contractLastVowels";
+import { lengthenVowel } from "../../../settings/phonologicalRules";
 
 const personPrefixes = ["u", "tu", "nu"];
 const vowel_2fs = "ī";
@@ -18,6 +19,11 @@ const shPreterite = ({ verbInput, root, I_eVerb, vetitive }) => {
   }
   // Verbs I–n
   if (thisRoot[0] === "n" && root[1] !== "Ø") thisRoot[0] = thisRoot[1];
+  // Verbs I-weak
+  if (thisRoot[0] === "Ø") {
+    thisRoot[0] = "";
+    firstVowel = lengthenVowel(firstVowel);
+  }
 
   conjugatedVerb = {
     "3cs":
