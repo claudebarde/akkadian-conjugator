@@ -4,7 +4,7 @@ import {
 } from "../../../settings/phonologicalRules";
 import contractLastVowels from "../../../settings/contractLastVowels";
 
-const shImperative = ({ root }) => {
+const shImperative = ({ verbInput, root }) => {
   let thisRoot = [...root];
   let conjugatedVerb = {};
   let firstVowel = "u";
@@ -16,8 +16,8 @@ const shImperative = ({ root }) => {
   }
   // Verbs I–n
   if (thisRoot[0] === "n" && root[1] !== "Ø") thisRoot[0] = thisRoot[1];
-  // Verbs I-weak
-  if (thisRoot[0] === "Ø") {
+  // Verbs I-weak && Irregular verb babālum
+  if (thisRoot[0] === "Ø" || verbInput === "babālum") {
     thisRoot[0] = "";
     firstVowel = lengthenVowel(firstVowel);
   }

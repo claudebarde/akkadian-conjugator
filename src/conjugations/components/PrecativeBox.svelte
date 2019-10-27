@@ -50,6 +50,7 @@
       conjugation = "shPrecative";
       title = "Š Precative";
       conjugatedVerb = shPrecative({
+        verbInput,
         root: $state.root,
         I_eVerb: $state.I_eVerb
       });

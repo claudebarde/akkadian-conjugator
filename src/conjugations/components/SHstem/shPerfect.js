@@ -19,8 +19,8 @@ const shPerfect = ({ verbInput, root, I_eVerb, vetitive }) => {
   }
   // Verbs I–n
   if (thisRoot[0] === "n" && root[1] !== "Ø") thisRoot[0] = thisRoot[1];
-  // Verbs I-weak
-  if (thisRoot[0] === "Ø") {
+  // Verbs I-weak && Irregular verb babālum
+  if (thisRoot[0] === "Ø" || verbInput === "babālum") {
     thisRoot[0] = "";
     firstVowel = lengthenVowel(firstVowel);
   }

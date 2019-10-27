@@ -41,6 +41,7 @@
       conjugation = "shImperative";
       title = "Š Imperative";
       conjugatedVerb = shImperative({
+        verbInput,
         root: $state.root
       });
     }

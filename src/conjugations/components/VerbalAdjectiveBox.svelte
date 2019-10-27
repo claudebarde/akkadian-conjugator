@@ -186,8 +186,8 @@
         secondVowelMasculine = "";
         secondVowelFeminine = "ū";
       }
-      // Verbs I-weak
-      if (thisRoot[0] === "Ø") {
+      // Verbs I-weak && Irregular verb babālum
+      if (thisRoot[0] === "Ø" || verbInput === "babālum") {
         thisRoot[0] = "";
         firstVowel = lengthenVowel(firstVowel);
       }

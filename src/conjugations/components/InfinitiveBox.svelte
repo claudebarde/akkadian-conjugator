@@ -55,11 +55,13 @@
     if (thisRoot[0] === "n" && $state.root[1] !== "Ø")
       thisRoot[0] = thisRoot[1];
 
-    // Vernàbs I-weak
+    // Verbs I-weak
     if (thisRoot[0] === "Ø") {
       thisRoot[0] = "";
       firstVowel = "ū";
     }
+    // Irregular verb babālum
+    if ($state.infinitive === "babālum") thisRoot[0] = "";
 
     verbTitle =
       "š" +
