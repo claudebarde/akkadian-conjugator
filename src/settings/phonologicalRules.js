@@ -71,6 +71,8 @@ export const shortenVowel = vowel => {
     return "i";
   } else if (vowel === "ū" || vowel === "û") {
     return "u";
+  } else {
+    return vowel;
   }
 };
 

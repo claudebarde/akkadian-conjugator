@@ -1,4 +1,8 @@
 import contractLastVowels from "../../../settings/contractLastVowels";
+import {
+  lengthenVowel,
+  shortenVowel
+} from "../../../settings/phonologicalRules";
 
 let personPrefixes = ["u", "tu", "nu"];
 const vowel_2fs = "ī";
@@ -40,6 +44,12 @@ const dPerfect = ({ root, I_eVerb }) => {
     personPrefixes = ["ū", "tū", "nū"];
     infix = "ta";
   }
+  // II-weak verbs
+  if (thisRoot[1] === "Ø") {
+    thisRoot[1] = "";
+    secondVowel = lengthenVowel(secondVowel);
+    infix = infix[0];
+  }
 
   conjugatedVerb = {
     "3cs":
@@ -64,8 +74,9 @@ const dPerfect = ({ root, I_eVerb }) => {
       infix +
       thisRoot[1] +
       thisRoot[1] +
-      secondVowel +
+      (root[1] === "Ø" ? shortenVowel(secondVowel) : secondVowel) +
       thisRoot[2] +
+      (root[1] === "Ø" ? thisRoot[2] : "") +
       vowel_2fs,
     "1cs":
       personPrefixes[0] +
@@ -74,6 +85,7 @@ const dPerfect = ({ root, I_eVerb }) => {
       thisRoot[1] +
       thisRoot[1] +
       secondVowel +
+      (root[1] === "Ø" ? thisRoot[2] : "") +
       thisRoot[2],
     "3mp":
       personPrefixes[0] +
@@ -81,8 +93,9 @@ const dPerfect = ({ root, I_eVerb }) => {
       infix +
       thisRoot[1] +
       thisRoot[1] +
-      secondVowel +
+      (root[1] === "Ø" ? shortenVowel(secondVowel) : secondVowel) +
       thisRoot[2] +
+      (root[1] === "Ø" ? thisRoot[2] : "") +
       vowel_3mp,
     "3fp":
       personPrefixes[0] +
@@ -90,8 +103,9 @@ const dPerfect = ({ root, I_eVerb }) => {
       infix +
       thisRoot[1] +
       thisRoot[1] +
-      secondVowel +
+      (root[1] === "Ø" ? shortenVowel(secondVowel) : secondVowel) +
       thisRoot[2] +
+      (root[1] === "Ø" ? thisRoot[2] : "") +
       vowel_3fp,
     "2cp":
       personPrefixes[1] +
@@ -99,8 +113,9 @@ const dPerfect = ({ root, I_eVerb }) => {
       infix +
       thisRoot[1] +
       thisRoot[1] +
-      secondVowel +
+      (root[1] === "Ø" ? shortenVowel(secondVowel) : secondVowel) +
       thisRoot[2] +
+      (root[1] === "Ø" ? thisRoot[2] : "") +
       vowel_2cp,
     "1cp":
       personPrefixes[2] +

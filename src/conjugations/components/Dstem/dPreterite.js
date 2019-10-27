@@ -1,4 +1,8 @@
 import contractLastVowels from "../../../settings/contractLastVowels";
+import {
+  lengthenVowel,
+  shortenVowel
+} from "../../../settings/phonologicalRules";
 
 const personPrefixes = ["u", "tu", "nu"];
 const vowel_2fs = "ī";
@@ -28,6 +32,12 @@ const dPreterite = ({ verbInput, root, I_eVerb, vetitive }) => {
   if (thisRoot[0] === "w" && verbInput !== "edûm") {
     firstVowel = "a";
   }
+  // II-weak verbs
+  if (thisRoot[1] === "Ø") {
+    thisRoot[1] = "";
+    firstVowel = "";
+    secondVowel = lengthenVowel(secondVowel);
+  }
 
   conjugatedVerb = {
     "3cs":
@@ -55,8 +65,9 @@ const dPreterite = ({ verbInput, root, I_eVerb, vetitive }) => {
       firstVowel +
       thisRoot[1] +
       thisRoot[1] +
-      secondVowel +
+      (root[1] === "Ø" ? shortenVowel(secondVowel) : secondVowel) +
       thisRoot[2] +
+      (root[1] === "Ø" ? thisRoot[2] : "") +
       vowel_2fs,
     "1cs":
       (vetitive ? "ayy" : "") +
@@ -74,8 +85,9 @@ const dPreterite = ({ verbInput, root, I_eVerb, vetitive }) => {
       firstVowel +
       thisRoot[1] +
       thisRoot[1] +
-      secondVowel +
+      (root[1] === "Ø" ? shortenVowel(secondVowel) : secondVowel) +
       thisRoot[2] +
+      (root[1] === "Ø" ? thisRoot[2] : "") +
       vowel_3mp,
     "3fp":
       (vetitive ? "ayy" : "") +
@@ -84,8 +96,9 @@ const dPreterite = ({ verbInput, root, I_eVerb, vetitive }) => {
       firstVowel +
       thisRoot[1] +
       thisRoot[1] +
-      secondVowel +
+      (root[1] === "Ø" ? shortenVowel(secondVowel) : secondVowel) +
       thisRoot[2] +
+      (root[1] === "Ø" ? thisRoot[2] : "") +
       vowel_3fp,
     "2cp":
       (vetitive ? "ē" : "") +
@@ -94,8 +107,9 @@ const dPreterite = ({ verbInput, root, I_eVerb, vetitive }) => {
       firstVowel +
       thisRoot[1] +
       thisRoot[1] +
-      secondVowel +
+      (root[1] === "Ø" ? shortenVowel(secondVowel) : secondVowel) +
       thisRoot[2] +
+      (root[1] === "Ø" ? thisRoot[2] : "") +
       vowel_2cp,
     "1cp":
       (vetitive ? "ē" : "") +

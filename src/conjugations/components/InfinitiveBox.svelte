@@ -24,6 +24,12 @@
     if (thisRoot[0] === "w") {
       thisRoot[0] = "";
     }
+    // II verbs
+    if (thisRoot[1] === "Ø") {
+      thisRoot[1] = thisRoot[2];
+      thisRoot[2] = "";
+      secondVowel = "";
+    }
 
     verbTitle =
       thisRoot[0] +

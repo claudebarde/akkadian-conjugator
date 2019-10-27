@@ -1,4 +1,8 @@
 import contractLastVowels from "../../../settings/contractLastVowels";
+import {
+  lengthenVowel,
+  shortenVowel
+} from "../../../settings/phonologicalRules";
 
 const personPrefixes = ["u", "tu", "nu"];
 const vowel_2fs = "ī";
@@ -27,6 +31,12 @@ const dDurative = ({ root, I_eVerb }) => {
     firstVowel = "a";
     secondVowel = "a";
   }
+  // II-weak verbs
+  if (thisRoot[1] === "Ø") {
+    thisRoot[1] = "";
+    firstVowel = lengthenVowel(firstVowel);
+    secondVowel = "";
+  }
 
   conjugatedVerb = {
     "3cs":
@@ -48,11 +58,12 @@ const dDurative = ({ root, I_eVerb }) => {
     "2fs":
       personPrefixes[1] +
       thisRoot[0] +
-      firstVowel +
+      (root[1] === "Ø" ? shortenVowel(firstVowel) : firstVowel) +
       thisRoot[1] +
       thisRoot[1] +
       secondVowel +
       thisRoot[2] +
+      (root[1] === "Ø" ? thisRoot[2] : "") +
       vowel_2fs,
     "1cs":
       personPrefixes[0] +
@@ -65,29 +76,32 @@ const dDurative = ({ root, I_eVerb }) => {
     "3mp":
       personPrefixes[0] +
       thisRoot[0] +
-      firstVowel +
+      (root[1] === "Ø" ? shortenVowel(firstVowel) : firstVowel) +
       thisRoot[1] +
       thisRoot[1] +
       secondVowel +
       thisRoot[2] +
+      (root[1] === "Ø" ? thisRoot[2] : "") +
       vowel_3mp,
     "3fp":
       personPrefixes[0] +
       thisRoot[0] +
-      firstVowel +
+      (root[1] === "Ø" ? shortenVowel(firstVowel) : firstVowel) +
       thisRoot[1] +
       thisRoot[1] +
       secondVowel +
       thisRoot[2] +
+      (root[1] === "Ø" ? thisRoot[2] : "") +
       vowel_3fp,
     "2cp":
       personPrefixes[1] +
       thisRoot[0] +
-      firstVowel +
+      (root[1] === "Ø" ? shortenVowel(firstVowel) : firstVowel) +
       thisRoot[1] +
       thisRoot[1] +
       secondVowel +
       thisRoot[2] +
+      (root[1] === "Ø" ? thisRoot[2] : "") +
       vowel_2cp,
     "1cp":
       personPrefixes[2] +
