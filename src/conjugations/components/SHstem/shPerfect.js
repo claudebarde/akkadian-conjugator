@@ -29,7 +29,7 @@ const shPerfect = ({ verbInput, root, I_eVerb, vetitive }) => {
     thisRoot[0] = "";
     // Most follow the pattern of verbs I–a, but a few have the change of a-vowels to e
     // that is characteristic of Verbs I–e.
-    if (verbInput === "wašābum") {
+    if (["wašābum", "warādum"].includes(verbInput) || root[2] === "Ø") {
       firstVowel = "ē";
     } else {
       firstVowel = lengthenVowel(firstVowel);

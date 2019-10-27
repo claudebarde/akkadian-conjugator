@@ -246,7 +246,8 @@ const lexicon = {
     verbalAdjectiveVowel: "i",
     verbClass: "active",
     I_eVerb: true,
-    meaning: "to do"
+    meaning: "to do",
+    shMeaning: "to have (sth) built, to direct work"
   },
   ezēbum: {
     themeVowel: "i",
@@ -254,7 +255,8 @@ const lexicon = {
     verbalAdjectiveVowel: "i",
     verbClass: "active",
     I_eVerb: true,
-    meaning: "to leave, to divorce"
+    meaning: "to leave, to divorce",
+    shMeaning: "to have (a document) made out, to save (persons, cities)"
   },
   alākum: {
     themeVowel: "i",
@@ -287,7 +289,8 @@ const lexicon = {
     verbalAdjectiveVowel: undefined,
     verbClass: "active",
     I_eVerb: true,
-    meaning: "to do"
+    meaning: "to do",
+    shMeaning: "to move straight toward, to set straight"
   },
   kânum: {
     themeVowel: "u",
@@ -383,7 +386,9 @@ const lexicon = {
     verbClass: "active",
     I_eVerb: false,
     verbClass: "active",
-    meaning: "to sit, to remain"
+    meaning: "to sit, to remain",
+    shMeaning:
+      "to install (officers), to garrison (soldiers), to settle (people)"
   },
   babālum: {
     themeVowel: "i",
@@ -401,7 +406,8 @@ const lexicon = {
     root: ["Ø", "k", "l"],
     verbalAdjectiveVowel: undefined,
     verbClass: "active",
-    meaning: "to eat, to consume, to use"
+    meaning: "to eat, to consume, to use",
+    shMeaning: "to feed"
   },
   edēšum: {
     themeVowel: "i",
@@ -816,7 +822,8 @@ const lexicon = {
     verbClass: "active",
     I_eVerb: true,
     meaning: "to go up, to ascend",
-    dMeaning: "to raise, to elevate"
+    dMeaning: "to raise, to elevate",
+    shMeaning: "to send/lead/take/bring up, to produce a witness"
   },
   lawûm: {
     themeVowel: "i",
@@ -905,7 +912,8 @@ const lexicon = {
     root: ["w", "ṣ", "Ø"],
     verbalAdjectiveVowel: "i",
     verbClass: "active",
-    meaning: "to go out, to leave"
+    meaning: "to go out, to leave",
+    shMeaning: "to send away, to expel, to release, to rent, to hire"
   },
   watûm: {
     themeVowel: "a",
@@ -1131,7 +1139,8 @@ const lexicon = {
     meaning: "to know",
     root: ["w", "d", "Ø"],
     I_eVerb: true,
-    dMeaning: "to mark, to inform, to recognize, to identify"
+    dMeaning: "to mark, to inform, to recognize, to identify",
+    shMeaning: "to announce, to proclaim"
   },
   išûm: {
     meaning: "to have",
@@ -1192,6 +1201,22 @@ const lexicon = {
     verbalAdjectiveVowel: undefined,
     verbClass: "active",
     meaning: "to reach out, to extend, to set up"
+  },
+  ekēmum: {
+    themeVowel: "i",
+    root: ["Ø", "k", "m"],
+    verbalAdjectiveVowel: "i",
+    verbClass: "active",
+    I_eVerb: true,
+    meaning: "to take away, to conquer, to absorb"
+  },
+  esēḫum: {
+    themeVowel: "i",
+    root: ["Ø", "s", "ḫ"],
+    verbalAdjectiveVowel: undefined,
+    verbClass: "active",
+    I_eVerb: true,
+    meaning: "to assign"
   }
 };
 
