@@ -21,6 +21,11 @@ const shImperative = ({ verbInput, root }) => {
     thisRoot[0] = "";
     firstVowel = lengthenVowel(firstVowel);
   }
+  // Verbs I-w
+  if (thisRoot[0] === "w") {
+    thisRoot[0] = "";
+    firstVowel = "ū";
+  }
 
   conjugatedVerb = {
     "2ms":

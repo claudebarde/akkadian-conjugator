@@ -6,7 +6,7 @@ const vowel_3mp = "ū";
 const vowel_3fp = "ā";
 const vowel_2cp = "ā";
 
-const shDurative = ({ root, I_eVerb }) => {
+const shDurative = ({ root, I_eVerb, verbInput }) => {
   let conjugatedVerb = {};
   let thisRoot = [...root];
   let firstVowel = I_eVerb ? "e" : "a";
@@ -21,6 +21,16 @@ const shDurative = ({ root, I_eVerb }) => {
   // Verbs I-weak
   if (thisRoot[0] === "Ø") {
     thisRoot[0] = thisRoot[1];
+  }
+  // Verbs I-w
+  if (thisRoot[0] === "w") {
+    thisRoot[0] = thisRoot[1];
+    // Most follow the pattern of verbs I–a, but a few have the change of a-vowels to e
+    // that is characteristic of Verbs I–e.
+    if (verbInput === "wašābum") {
+      firstVowel = "e";
+      secondVowel = "e";
+    }
   }
 
   conjugatedVerb = {

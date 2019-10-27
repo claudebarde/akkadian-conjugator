@@ -174,8 +174,16 @@
         thisRoot[0] = "";
         firstVowel = lengthenVowel(firstVowel);
       }
-      // I-w verbs
+      // Verbs I-w
       if (thisRoot[0] === "w") {
+        thisRoot[0] = "";
+        // Most follow the pattern of verbs I–a, but a few have the change of a-vowels to e
+        // that is characteristic of Verbs I–e.
+        if (verbInput === "wašābum") {
+          firstVowel = "ē";
+        } else {
+          firstVowel = lengthenVowel(firstVowel);
+        }
       }
       // Verbs I–n
       if (thisRoot[0] === "n" && root[1] !== "Ø") thisRoot[0] = thisRoot[1];

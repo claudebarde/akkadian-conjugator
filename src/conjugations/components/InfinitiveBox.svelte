@@ -55,8 +55,8 @@
     if (thisRoot[0] === "n" && $state.root[1] !== "Ø")
       thisRoot[0] = thisRoot[1];
 
-    // Verbs I-weak
-    if (thisRoot[0] === "Ø") {
+    // Verbs I-weak && I-w
+    if (thisRoot[0] === "Ø" || thisRoot[0] === "w") {
       thisRoot[0] = "";
       firstVowel = "ū";
     }

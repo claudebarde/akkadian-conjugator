@@ -194,6 +194,7 @@
       // I-w verbs
       if (thisRoot[0] === "w") {
         thisRoot[0] = "";
+        firstVowel = lengthenVowel(firstVowel);
       }
       // Verbs I–n
       if (thisRoot[0] === "n" && $state.root[1] !== "Ø")

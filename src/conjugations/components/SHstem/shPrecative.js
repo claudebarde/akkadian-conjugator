@@ -27,6 +27,17 @@ const shPrecative = ({ verbInput, root, I_eVerb }) => {
     thisRoot[0] = "";
     firstVowel = lengthenVowel(firstVowel);
   }
+  // Verbs I-w
+  if (thisRoot[0] === "w") {
+    thisRoot[0] = "";
+    // Most follow the pattern of verbs I–a, but a few have the change of a-vowels to e
+    // that is characteristic of Verbs I–e.
+    if (verbInput === "wašābum") {
+      firstVowel = "ē";
+    } else {
+      firstVowel = lengthenVowel(firstVowel);
+    }
+  }
 
   conjugatedVerb = {
     "3cs":
