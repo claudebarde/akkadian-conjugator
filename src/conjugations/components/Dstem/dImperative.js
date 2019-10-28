@@ -1,6 +1,6 @@
 import {
   lengthenVowel,
-  contiguousVowels
+  shortenVowel
 } from "../../../settings/phonologicalRules";
 import contractLastVowels from "../../../settings/contractLastVowels";
 
@@ -20,6 +20,12 @@ const dImperative = ({ root }) => {
   if (thisRoot[0] === "Ø" || thisRoot[0] === "w") {
     thisRoot[0] = "";
   }
+  // II-weak verbs
+  if (thisRoot[1] === "Ø") {
+    thisRoot[1] = "";
+    firstVowel = "";
+    secondVowel = lengthenVowel(secondVowel);
+  }
 
   conjugatedVerb = {
     "2ms":
@@ -34,16 +40,18 @@ const dImperative = ({ root }) => {
       firstVowel +
       thisRoot[1] +
       thisRoot[1] +
-      secondVowel +
+      (root[1] === "Ø" ? shortenVowel(secondVowel) : secondVowel) +
       thisRoot[2] +
+      (root[1] === "Ø" ? thisRoot[2] : "") +
       "ī",
     "2cp":
       thisRoot[0] +
       firstVowel +
       thisRoot[1] +
       thisRoot[1] +
-      secondVowel +
+      (root[1] === "Ø" ? shortenVowel(secondVowel) : secondVowel) +
       thisRoot[2] +
+      (root[1] === "Ø" ? thisRoot[2] : "") +
       "ā"
   };
 

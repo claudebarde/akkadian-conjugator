@@ -149,24 +149,32 @@
       if (thisRoot[0] === "w") {
         thisRoot[0] = "";
       }
-
-      adjectiveForms = [
-        thisRoot[0] +
-          "u" +
-          thisRoot[1] +
-          thisRoot[1] +
-          secondVowelMasculine +
-          thisRoot[2] +
-          suffix,
-        thisRoot[0] +
-          "u" +
-          thisRoot[1] +
-          thisRoot[1] +
-          secondVowelFeminine +
-          feminineChange(thisRoot[2], "t") +
-          "tum",
-        thisRoot[0] + "u" + thisRoot[1] + thisRoot[1] + "u" + thisRoot[2]
-      ];
+      // II-weak verbs
+      if (thisRoot[1] === "Ø") {
+        adjectiveForms = [
+          thisRoot[0] + "u" + thisRoot[2] + thisRoot[2] + suffix,
+          thisRoot[0] + "u" + thisRoot[2] + thisRoot[2] + "utum",
+          thisRoot[0] + "ū" + thisRoot[2]
+        ];
+      } else {
+        adjectiveForms = [
+          thisRoot[0] +
+            "u" +
+            thisRoot[1] +
+            thisRoot[1] +
+            secondVowelMasculine +
+            thisRoot[2] +
+            suffix,
+          thisRoot[0] +
+            "u" +
+            thisRoot[1] +
+            thisRoot[1] +
+            secondVowelFeminine +
+            feminineChange(thisRoot[2], "t") +
+            "tum",
+          thisRoot[0] + "u" + thisRoot[1] + thisRoot[1] + "u" + thisRoot[2]
+        ];
+      }
 
       state.updateVerb({ ...state, verbalAdjective: adjectiveForms });
     } else if ($state.activeView === "shstem") {

@@ -1,3 +1,7 @@
+import {
+  lengthenVowel,
+  shortenVowel
+} from "../../../settings/phonologicalRules";
 import contractLastVowels from "../../../settings/contractLastVowels";
 
 const prefixes = {
@@ -40,6 +44,12 @@ const dPrecative = ({ verbInput, root, I_eVerb }) => {
   if (thisRoot[0] === "w") {
     firstVowel = "a";
   }
+  // II-weak verbs
+  if (thisRoot[1] === "Ø") {
+    thisRoot[1] = "";
+    firstVowel = "";
+    secondVowel = lengthenVowel(secondVowel);
+  }
 
   conjugatedVerb = {
     "3cs":
@@ -64,8 +74,9 @@ const dPrecative = ({ verbInput, root, I_eVerb }) => {
       firstVowel +
       thisRoot[1] +
       thisRoot[1] +
-      secondVowel +
+      (root[1] === "Ø" ? shortenVowel(secondVowel) : secondVowel) +
       thisRoot[2] +
+      (root[1] === "Ø" ? thisRoot[2] : "") +
       "ū",
     "3fp":
       prefixes["3fp"] +
@@ -73,8 +84,9 @@ const dPrecative = ({ verbInput, root, I_eVerb }) => {
       firstVowel +
       thisRoot[1] +
       thisRoot[1] +
-      secondVowel +
+      (root[1] === "Ø" ? shortenVowel(secondVowel) : secondVowel) +
       thisRoot[2] +
+      (root[1] === "Ø" ? thisRoot[2] : "") +
       "ā",
     "1cp":
       prefixes["1cp"] +

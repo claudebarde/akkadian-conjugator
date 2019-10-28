@@ -123,32 +123,40 @@
       if (thisRoot[0] === "w") {
         firstVowel = "a";
       }
-
-      adjectiveForms = [
-        "mu" +
-          thisRoot[0] +
-          firstVowel +
-          thisRoot[1] +
-          thisRoot[1] +
-          secondVowelMasculine +
-          thisRoot[2] +
-          suffix,
-        "mu" +
-          thisRoot[0] +
-          firstVowel +
-          thisRoot[1] +
-          thisRoot[1] +
-          secondVowelFeminine +
-          feminineChange(thisRoot[2], "t") +
-          "tum",
-        "mu" +
-          thisRoot[0] +
-          firstVowel +
-          thisRoot[1] +
-          thisRoot[1] +
-          secondVowel +
-          thisRoot[2]
-      ];
+      // II-weak verbs
+      if (thisRoot[1] === "Ø") {
+        adjectiveForms = [
+          "mu" + thisRoot[0] + "i" + thisRoot[2] + thisRoot[2] + suffix,
+          "mu" + thisRoot[0] + "i" + thisRoot[2] + thisRoot[2] + "utum",
+          "mu" + thisRoot[0] + "ī" + thisRoot[2]
+        ];
+      } else {
+        adjectiveForms = [
+          "mu" +
+            thisRoot[0] +
+            firstVowel +
+            thisRoot[1] +
+            thisRoot[1] +
+            secondVowelMasculine +
+            thisRoot[2] +
+            suffix,
+          "mu" +
+            thisRoot[0] +
+            firstVowel +
+            thisRoot[1] +
+            thisRoot[1] +
+            secondVowelFeminine +
+            feminineChange(thisRoot[2], "t") +
+            "tum",
+          "mu" +
+            thisRoot[0] +
+            firstVowel +
+            thisRoot[1] +
+            thisRoot[1] +
+            secondVowel +
+            thisRoot[2]
+        ];
+      }
 
       state.updateVerb({ ...state, participle: adjectiveForms });
     } else if ($state.activeView === "shstem") {
@@ -278,6 +286,7 @@
             infinitive: $state.infinitive,
             stem: $state.activeView
           })}
+          -
         </td>
       {:else}
         <td>
