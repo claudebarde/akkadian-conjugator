@@ -1,5 +1,6 @@
 <script>
   import { createEventDispatcher, onMount } from "svelte";
+  import { slide } from "svelte/transition";
   import state from "../state/state";
 
   import lexicon from "../lexicon/lexicon.js";
@@ -32,7 +33,9 @@
     "W",
     "Z"
   ];
-  const verbs = {};
+  let verbs = {};
+  let verbsDropdown = false;
+  $: verbType = "allverbs";
 
   const selectNewVerb = item => {
     if (item !== $state.infinitive) {
@@ -47,8 +50,26 @@
     }
   };
 
-  onMount(() => {
-    Object.keys(lexicon).forEach(verb => {
+  const showVerbsDropdown = () => {
+    verbsDropdown = !verbsDropdown;
+  };
+
+  const selectVerbType = newVerbType => {
+    verbType = newVerbType;
+    verbsDropdown = false;
+    verbs = { ...createVerbsList() };
+  };
+
+  const createVerbsList = () => {
+    let verbs = {};
+    let newList = [];
+    if (verbType === "allverbs") {
+      newList = Object.keys(lexicon);
+    } else if (verbType === "Iweak") {
+      newList = Object.keys(lexicon).filter(el => lexicon[el].root[0] === "Ø");
+    }
+
+    newList.forEach(verb => {
       const initial = verb[0].toUpperCase();
       let str = `${verb} <span class="is-size-7">(${
         lexicon[verb].durativeVowel ? lexicon[verb].durativeVowel + " - " : ""
@@ -59,6 +80,12 @@
         str = verbs[initial] = [...verbs[initial], str];
       }
     });
+
+    return verbs;
+  };
+
+  onMount(() => {
+    verbs = createVerbsList(lexicon);
   });
 </script>
 
@@ -120,7 +147,55 @@
     </a>
   </p>
   <aside class="menu">
-    <p class="menu-label">Verbs ({Object.keys(lexicon).length})</p>
+    <div class="menu-label">
+      <div class="dropdown" class:is-active={verbsDropdown}>
+        <div class="dropdown-trigger" on:click={showVerbsDropdown}>
+          <button
+            class="button"
+            aria-haspopup="true"
+            aria-controls="dropdown-menu">
+            <span>Verbs ({Object.keys(lexicon).length})</span>
+            <span class="icon is-small">
+              <img src="images/chevron-down.svg" alt="chevron down" />
+            </span>
+          </button>
+        </div>
+        {#if verbsDropdown}
+          <div
+            class="dropdown-menu"
+            id="dropdown-menu"
+            role="menu"
+            transition:slide={{ y: 20, duration: 200 }}>
+            <div class="dropdown-content">
+              <a
+                href="#"
+                class={`dropdown-item is-size-7 ${verbType === 'allverbs' && 'is-active'}`}
+                on:click={() => selectVerbType('allverbs')}>
+                All verbs
+              </a>
+              <a
+                href="#"
+                class={`dropdown-item is-size-7 ${verbType === 'Iweak' && 'is-active'}`}
+                on:click={() => selectVerbType('Iweak')}>
+                I-weak verbs
+              </a>
+              <a
+                href="#"
+                class={`dropdown-item is-size-7 ${verbType === 'IIweak' && 'is-active'}`}
+                on:click={() => selectVerbType('IIweak')}>
+                II-weak verbs
+              </a>
+              <a
+                href="#"
+                class={`dropdown-item is-size-7 ${verbType === 'IIIweak' && 'is-active'}`}
+                on:click={() => selectVerbType('IIIweak')}>
+                III-weak verbs
+              </a>
+            </div>
+          </div>
+        {/if}
+      </div>
+    </div>
     <ul class="menu-list verbs-menu">
       {#each alphabet as letter}
         <li class="has-text-grey-light">{letter}</li>
@@ -129,7 +204,7 @@
             <li
               on:click={() => selectNewVerb(verb.split(' ')[0])}
               class="menuItem">
-              <a id={verb.split(' ')[0]}>
+              <a href="#" id={verb.split(' ')[0]}>
                 {@html verb}
               </a>
             </li>

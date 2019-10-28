@@ -1144,6 +1144,7 @@ const lexicon = {
   },
   išûm: {
     meaning: "to have",
+    root: ["", "", ""],
     onlyGstem: true
   },
   elēlum: {
