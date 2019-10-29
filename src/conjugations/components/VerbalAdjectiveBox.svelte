@@ -207,6 +207,10 @@
       // Verbs I–n
       if (thisRoot[0] === "n" && $state.root[1] !== "Ø")
         thisRoot[0] = thisRoot[1];
+      // II-weak verbs
+      if (thisRoot[1] === "Ø") {
+        thisRoot[1] = "";
+      }
 
       adjectiveForms = [
         "š" +
@@ -215,15 +219,23 @@
           thisRoot[1] +
           secondVowelMasculine +
           thisRoot[2] +
+          ($state.root[1] === "Ø" ? thisRoot[2] : "") +
           suffix,
         "š" +
           firstVowel +
           thisRoot[0] +
           thisRoot[1] +
-          secondVowelFeminine +
+          ($state.root[1] === "Ø"
+            ? lengthenVowel(secondVowelFeminine)
+            : secondVowelFeminine) +
           feminineChange(thisRoot[2], "t") +
           "tum",
-        "š" + firstVowel + thisRoot[0] + thisRoot[1] + "u" + thisRoot[2]
+        "š" +
+          firstVowel +
+          thisRoot[0] +
+          thisRoot[1] +
+          ($state.root[1] === "Ø" ? lengthenVowel("u") : "u") +
+          thisRoot[2]
       ];
 
       state.updateVerb({ ...state, verbalAdjective: adjectiveForms });

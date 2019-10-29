@@ -38,6 +38,11 @@ const shPrecative = ({ verbInput, root, I_eVerb }) => {
       firstVowel = lengthenVowel(firstVowel);
     }
   }
+  // II-weak verbs
+  if (thisRoot[1] === "Ø") {
+    thisRoot[1] = "";
+    firstVowel = "";
+  }
 
   conjugatedVerb = {
     "3cs":
@@ -46,7 +51,7 @@ const shPrecative = ({ verbInput, root, I_eVerb }) => {
       firstVowel +
       thisRoot[0] +
       thisRoot[1] +
-      secondVowel +
+      (root[1] === "Ø" ? lengthenVowel(secondVowel) : secondVowel) +
       thisRoot[2],
     "1cs":
       prefixes["1cs"] +
@@ -54,7 +59,7 @@ const shPrecative = ({ verbInput, root, I_eVerb }) => {
       firstVowel +
       thisRoot[0] +
       thisRoot[1] +
-      secondVowel +
+      (root[1] === "Ø" ? lengthenVowel(secondVowel) : secondVowel) +
       thisRoot[2],
     "3mp":
       prefixes["3mp"] +
@@ -64,6 +69,7 @@ const shPrecative = ({ verbInput, root, I_eVerb }) => {
       thisRoot[1] +
       secondVowel +
       thisRoot[2] +
+      (root[1] === "Ø" ? thisRoot[2] : "") +
       "ū",
     "3fp":
       prefixes["3fp"] +
@@ -73,6 +79,7 @@ const shPrecative = ({ verbInput, root, I_eVerb }) => {
       thisRoot[1] +
       secondVowel +
       thisRoot[2] +
+      (root[1] === "Ø" ? thisRoot[2] : "") +
       "ā",
     "1cp":
       prefixes["1cp"] +
@@ -80,7 +87,7 @@ const shPrecative = ({ verbInput, root, I_eVerb }) => {
       firstVowel +
       thisRoot[0] +
       thisRoot[1] +
-      secondVowel +
+      (root[1] === "Ø" ? lengthenVowel(secondVowel) : secondVowel) +
       thisRoot[2]
   };
 

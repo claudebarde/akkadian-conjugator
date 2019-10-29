@@ -66,6 +66,10 @@
       thisRoot[0] = "";
       firstVowel = "ū";
     }
+    // II-weak verbs
+    if (thisRoot[1] === "Ø") {
+      thisRoot[1] = "";
+    }
     // Irregular verb babālum
     if ($state.infinitive === "babālum") thisRoot[0] = "";
 
@@ -76,6 +80,7 @@
       thisRoot[1] +
       secondVowel +
       thisRoot[2] +
+      ($state.root[1] === "Ø" ? thisRoot[2] : "") +
       suffix;
 
     if ($state.shMeaning) {

@@ -195,6 +195,11 @@
       }
       // Verbs I–n
       if (thisRoot[0] === "n" && root[1] !== "Ø") thisRoot[0] = thisRoot[1];
+      // II-weak verbs
+      if (thisRoot[1] === "Ø") {
+        thisRoot[1] = "";
+        firstVowel = "";
+      }
 
       adjectiveForms = [
         "mu" +
@@ -204,13 +209,16 @@
           thisRoot[1] +
           secondVowelMasculine +
           thisRoot[2] +
+          (root[1] === "Ø" ? thisRoot[2] : "") +
           suffix,
         "mu" +
           "š" +
           firstVowel +
           thisRoot[0] +
           thisRoot[1] +
-          secondVowelFeminine +
+          (root[1] === "Ø"
+            ? lengthenVowel(secondVowelFeminine)
+            : secondVowelFeminine) +
           feminineChange(thisRoot[2], "t") +
           "tum",
         "mu" +
@@ -218,7 +226,7 @@
           firstVowel +
           thisRoot[0] +
           thisRoot[1] +
-          secondVowel +
+          (root[1] === "Ø" ? lengthenVowel(secondVowel) : secondVowel) +
           thisRoot[2]
       ];
 

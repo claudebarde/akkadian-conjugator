@@ -35,6 +35,10 @@ const shPerfect = ({ verbInput, root, I_eVerb, vetitive }) => {
       firstVowel = lengthenVowel(firstVowel);
     }
   }
+  // II-weak verbs
+  if (thisRoot[1] === "Ø") {
+    thisRoot[1] = "";
+  }
 
   conjugatedVerb = {
     "3cs":
@@ -43,7 +47,7 @@ const shPerfect = ({ verbInput, root, I_eVerb, vetitive }) => {
       firstVowel +
       thisRoot[0] +
       thisRoot[1] +
-      secondVowel +
+      (root[1] === "Ø" ? lengthenVowel(secondVowel) : secondVowel) +
       thisRoot[2],
     "2ms":
       personPrefixes[1] +
@@ -51,7 +55,7 @@ const shPerfect = ({ verbInput, root, I_eVerb, vetitive }) => {
       firstVowel +
       thisRoot[0] +
       thisRoot[1] +
-      secondVowel +
+      (root[1] === "Ø" ? lengthenVowel(secondVowel) : secondVowel) +
       thisRoot[2],
     "2fs":
       personPrefixes[1] +
@@ -61,6 +65,7 @@ const shPerfect = ({ verbInput, root, I_eVerb, vetitive }) => {
       thisRoot[1] +
       secondVowel +
       thisRoot[2] +
+      (root[1] === "Ø" ? thisRoot[2] : "") +
       vowel_2fs,
     "1cs":
       personPrefixes[0] +
@@ -68,7 +73,7 @@ const shPerfect = ({ verbInput, root, I_eVerb, vetitive }) => {
       firstVowel +
       thisRoot[0] +
       thisRoot[1] +
-      secondVowel +
+      (root[1] === "Ø" ? lengthenVowel(secondVowel) : secondVowel) +
       thisRoot[2],
     "3mp":
       personPrefixes[0] +
@@ -78,6 +83,7 @@ const shPerfect = ({ verbInput, root, I_eVerb, vetitive }) => {
       thisRoot[1] +
       secondVowel +
       thisRoot[2] +
+      (root[1] === "Ø" ? thisRoot[2] : "") +
       vowel_3mp,
     "3fp":
       personPrefixes[0] +
@@ -87,6 +93,7 @@ const shPerfect = ({ verbInput, root, I_eVerb, vetitive }) => {
       thisRoot[1] +
       secondVowel +
       thisRoot[2] +
+      (root[1] === "Ø" ? thisRoot[2] : "") +
       vowel_3fp,
     "2cp":
       personPrefixes[1] +
@@ -96,6 +103,7 @@ const shPerfect = ({ verbInput, root, I_eVerb, vetitive }) => {
       thisRoot[1] +
       secondVowel +
       thisRoot[2] +
+      (root[1] === "Ø" ? thisRoot[2] : "") +
       vowel_2cp,
     "1cp":
       personPrefixes[2] +
@@ -103,7 +111,7 @@ const shPerfect = ({ verbInput, root, I_eVerb, vetitive }) => {
       firstVowel +
       thisRoot[0] +
       thisRoot[1] +
-      secondVowel +
+      (root[1] === "Ø" ? lengthenVowel(secondVowel) : secondVowel) +
       thisRoot[2]
   };
 

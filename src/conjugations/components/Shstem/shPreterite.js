@@ -35,6 +35,11 @@ const shPreterite = ({ verbInput, root, I_eVerb, vetitive }) => {
       firstVowel = lengthenVowel(firstVowel);
     }
   }
+  // II-weak verbs
+  if (thisRoot[1] === "Ø") {
+    thisRoot[1] = "";
+    firstVowel = "";
+  }
 
   conjugatedVerb = {
     "3cs":
@@ -44,7 +49,7 @@ const shPreterite = ({ verbInput, root, I_eVerb, vetitive }) => {
       firstVowel +
       thisRoot[0] +
       thisRoot[1] +
-      secondVowel +
+      (root[1] === "Ø" ? lengthenVowel(secondVowel) : secondVowel) +
       thisRoot[2],
     "2ms":
       (vetitive ? "ē" : "") +
@@ -53,7 +58,7 @@ const shPreterite = ({ verbInput, root, I_eVerb, vetitive }) => {
       firstVowel +
       thisRoot[0] +
       thisRoot[1] +
-      secondVowel +
+      (root[1] === "Ø" ? lengthenVowel(secondVowel) : secondVowel) +
       thisRoot[2],
     "2fs":
       (vetitive ? "ē" : "") +
@@ -64,6 +69,7 @@ const shPreterite = ({ verbInput, root, I_eVerb, vetitive }) => {
       thisRoot[1] +
       secondVowel +
       thisRoot[2] +
+      (root[1] === "Ø" ? thisRoot[2] : "") +
       vowel_2fs,
     "1cs":
       (vetitive ? "ayy" : "") +
@@ -72,7 +78,7 @@ const shPreterite = ({ verbInput, root, I_eVerb, vetitive }) => {
       firstVowel +
       thisRoot[0] +
       thisRoot[1] +
-      secondVowel +
+      (root[1] === "Ø" ? lengthenVowel(secondVowel) : secondVowel) +
       thisRoot[2],
     "3mp":
       (vetitive ? "ayy" : "") +
@@ -83,6 +89,7 @@ const shPreterite = ({ verbInput, root, I_eVerb, vetitive }) => {
       thisRoot[1] +
       secondVowel +
       thisRoot[2] +
+      (root[1] === "Ø" ? thisRoot[2] : "") +
       vowel_3mp,
     "3fp":
       (vetitive ? "ayy" : "") +
@@ -93,6 +100,7 @@ const shPreterite = ({ verbInput, root, I_eVerb, vetitive }) => {
       thisRoot[1] +
       secondVowel +
       thisRoot[2] +
+      (root[1] === "Ø" ? thisRoot[2] : "") +
       vowel_3fp,
     "2cp":
       (vetitive ? "ē" : "") +
@@ -103,6 +111,7 @@ const shPreterite = ({ verbInput, root, I_eVerb, vetitive }) => {
       thisRoot[1] +
       secondVowel +
       thisRoot[2] +
+      (root[1] === "Ø" ? thisRoot[2] : "") +
       vowel_2cp,
     "1cp":
       (vetitive ? "ē" : "") +
@@ -111,7 +120,7 @@ const shPreterite = ({ verbInput, root, I_eVerb, vetitive }) => {
       firstVowel +
       thisRoot[0] +
       thisRoot[1] +
-      secondVowel +
+      (root[1] === "Ø" ? lengthenVowel(secondVowel) : secondVowel) +
       thisRoot[2]
   };
 

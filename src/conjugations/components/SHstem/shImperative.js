@@ -26,10 +26,19 @@ const shImperative = ({ verbInput, root }) => {
     thisRoot[0] = "";
     firstVowel = "ū";
   }
+  // II-weak verbs
+  if (thisRoot[1] === "Ø") {
+    thisRoot[1] = "";
+  }
 
   conjugatedVerb = {
     "2ms":
-      "š" + firstVowel + thisRoot[0] + thisRoot[1] + secondVowel + thisRoot[2],
+      "š" +
+      firstVowel +
+      thisRoot[0] +
+      thisRoot[1] +
+      (root[1] === "Ø" ? lengthenVowel(secondVowel) : secondVowel) +
+      thisRoot[2],
     "2fs":
       "š" +
       firstVowel +
@@ -37,6 +46,7 @@ const shImperative = ({ verbInput, root }) => {
       thisRoot[1] +
       secondVowel +
       thisRoot[2] +
+      (root[1] === "Ø" ? thisRoot[2] : "") +
       "ī",
     "2cp":
       "š" +
@@ -45,6 +55,7 @@ const shImperative = ({ verbInput, root }) => {
       thisRoot[1] +
       secondVowel +
       thisRoot[2] +
+      (root[1] === "Ø" ? thisRoot[2] : "") +
       "ā"
   };
 
