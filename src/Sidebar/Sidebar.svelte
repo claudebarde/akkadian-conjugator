@@ -67,6 +67,10 @@
       newList = Object.keys(lexicon);
     } else if (verbType === "Iweak") {
       newList = Object.keys(lexicon).filter(el => lexicon[el].root[0] === "Ø");
+    } else if (verbType === "IIweak") {
+      newList = Object.keys(lexicon).filter(el => lexicon[el].root[1] === "Ø");
+    } else if (verbType === "IIIweak") {
+      newList = Object.keys(lexicon).filter(el => lexicon[el].root[2] === "Ø");
     }
 
     newList.forEach(verb => {
@@ -198,7 +202,9 @@
     </div>
     <ul class="menu-list verbs-menu">
       {#each alphabet as letter}
-        <li class="has-text-grey-light">{letter}</li>
+        {#if verbs[letter]}
+          <li class="has-text-grey-light">{letter}</li>
+        {/if}
         {#if verbs[letter]}
           {#each verbs[letter].sort(Intl.Collator().compare) as verb}
             <li
