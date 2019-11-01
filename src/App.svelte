@@ -47,6 +47,8 @@
 
       if (lexicon[verbInput].onlyDstem) {
         state.updateView("dstem");
+      } else if (lexicon[verbInput].onlySHstem) {
+        state.updateView("shstem");
       } else {
         state.updateView("gstem");
       }
@@ -225,7 +227,7 @@
           <!-- COMPUTER VERSION -->
           <div class="tabs is-small is-toggle is-fullwidth is-hidden-mobile">
             <ul>
-              {#if $state.onlyDstem}
+              {#if $state.onlyDstem || $state.onlySHstem}
                 <li>
                   <a href="#">
                     <span>G Stem (none)</span>
@@ -257,13 +259,21 @@
                   </a>
                 </li>
               {:else}
-                <li
-                  class:is-active={$state.activeView === 'dstem'}
-                  on:click={() => state.updateView('dstem')}>
-                  <a href="#">
-                    <span>D Stem</span>
-                  </a>
-                </li>
+                {#if $state.onlySHstem}
+                  <li>
+                    <a href="#">
+                      <span>D Stem (none)</span>
+                    </a>
+                  </li>
+                {:else}
+                  <li
+                    class:is-active={$state.activeView === 'dstem'}
+                    on:click={() => state.updateView('dstem')}>
+                    <a href="#">
+                      <span>D Stem</span>
+                    </a>
+                  </li>
+                {/if}
                 <li
                   class:is-active={$state.activeView === 'shstem'}
                   on:click={() => state.updateView('shstem')}>

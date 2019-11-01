@@ -898,7 +898,7 @@ const lexicon = {
     root: ["w", "Ø", "r"],
     verbalAdjectiveVowel: undefined,
     verbClass: "active",
-    meaning: "to advance"
+    meaning: "to advance against, to attack"
   },
   wiāṣum: {
     themeVowel: "i",
@@ -1218,6 +1218,57 @@ const lexicon = {
     verbClass: "active",
     I_eVerb: true,
     meaning: "to assign"
+  },
+  bârum: {
+    themeVowel: "u",
+    durativeVowel: "a",
+    root: ["b", "Ø", "r"],
+    verbalAdjectiveVowel: undefined,
+    verbClass: "stative",
+    meaning: "to be firm",
+    dMeaning: "to establish (the truth), to prove"
+  },
+  kullum: {
+    themeVowel: undefined,
+    onlyDstem: true,
+    root: ["k", "Ø", "l"],
+    verbalAdjectiveVowel: undefined,
+    verbClass: "active",
+    meaning: undefined,
+    dMeaning: "to hold, to contain"
+  },
+  raḫāṣum: {
+    themeVowel: "i",
+    root: ["r", "ḫ", "ṣ"],
+    verbalAdjectiveVowel: undefined,
+    verbClass: "active",
+    meaning: "to flood"
+  },
+  riāqum: {
+    themeVowel: "i",
+    durativeVowel: "a",
+    root: ["r", "Ø", "q"],
+    verbalAdjectiveVowel: "ī",
+    verbClass: "stative",
+    meaning: "to be empty, idle",
+    dMeaning: "to empty",
+    shMeaning: "to empty"
+  },
+  šuklulum: {
+    themeVowel: undefined,
+    onlySHstem: true,
+    root: ["k", "l", "l"],
+    verbalAdjectiveVowel: undefined,
+    verbClass: "active",
+    meaning: undefined,
+    shMeaning: "to complete, to finish, to accomplish"
+  },
+  warāqum: {
+    themeVowel: "i",
+    root: ["w", "r", "q"],
+    verbalAdjectiveVowel: "u",
+    verbClass: "stative",
+    meaning: "to become yellow, green, to turn pale"
   }
 };
 

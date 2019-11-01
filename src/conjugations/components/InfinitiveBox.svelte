@@ -43,7 +43,7 @@
     if ($state.dMeaning) {
       verbMeaning = $state.dMeaning;
     } else {
-      verbMeaning = `to cause ${$state.meaning}`;
+      verbMeaning = $state.meaning ? `to cause ${$state.meaning}` : "no data";
     }
   } else if ($state.activeView === "shstem") {
     let thisRoot = [...$state.root];
@@ -86,7 +86,7 @@
     if ($state.shMeaning) {
       verbMeaning = $state.shMeaning;
     } else {
-      verbMeaning = `to cause ${$state.meaning}`;
+      verbMeaning = $state.meaning ? `to cause ${$state.meaning}` : "no data";
     }
   } else {
     verbTitle = $state.infinitive;
