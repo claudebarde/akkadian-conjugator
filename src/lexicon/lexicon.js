@@ -1269,6 +1269,14 @@ const lexicon = {
     verbalAdjectiveVowel: "u",
     verbClass: "stative",
     meaning: "to become yellow, green, to turn pale"
+  },
+  qerûm: {
+    themeVowel: "i",
+    root: ["q", "r", "Ø"],
+    verbalAdjectiveVowel: undefined,
+    verbClass: "active",
+    I_eVerb: true,
+    meaning: "to summon, to invite"
   }
 };
 
