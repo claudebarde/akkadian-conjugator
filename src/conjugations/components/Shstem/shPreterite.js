@@ -41,6 +41,7 @@ const shPreterite = ({ verbInput, root, I_eVerb, vetitive }) => {
     firstVowel = "";
   }
 
+  // conjugated form
   conjugatedVerb = {
     "3cs":
       (vetitive ? "ayy" : "") +
