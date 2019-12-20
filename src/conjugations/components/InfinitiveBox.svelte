@@ -88,6 +88,26 @@
     } else {
       verbMeaning = $state.meaning ? `to cause ${$state.meaning}` : "no data";
     }
+  } else if ($state.activeView === "nstem") {
+    let thisRoot = [...$state.root];
+    let firstVowel = "a";
+    let secondVowel = "u";
+    let suffix = "um";
+
+    verbTitle =
+      "n" +
+      firstVowel +
+      thisRoot[0] +
+      thisRoot[1] +
+      secondVowel +
+      thisRoot[2] +
+      suffix;
+
+    if ($state.nMeaning) {
+      verbMeaning = $state.shMeaning;
+    } else {
+      verbMeaning = $state.meaning ? `passive of ${$state.meaning}` : "no data";
+    }
   } else {
     verbTitle = $state.infinitive;
     verbMeaning = $state.meaning;

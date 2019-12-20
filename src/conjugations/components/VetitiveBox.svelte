@@ -4,6 +4,7 @@
   import gPreterite from "./Gstem/gPreterite";
   import dPreterite from "./Dstem/dPreterite";
   import shPreterite from "./SHstem/shPreterite";
+  import nPreterite from "./Nstem/nPreterite";
 
   let verbInput = undefined;
   let conjugation = undefined;
@@ -40,6 +41,17 @@
       conjugation = "shPreterite";
       title = "Š Vetitive";
       conjugatedVerb = shPreterite({
+        verbInput,
+        root: $state.root,
+        themeVowel: $state.themeVowel,
+        I_eVerb: $state.I_eVerb,
+        verbClass: $state.verbClass,
+        vetitive: true
+      });
+    } else if ($state.activeView === "nstem") {
+      conjugation = "nPreterite";
+      title = "N Vetitive";
+      conjugatedVerb = nPreterite({
         verbInput,
         root: $state.root,
         themeVowel: $state.themeVowel,

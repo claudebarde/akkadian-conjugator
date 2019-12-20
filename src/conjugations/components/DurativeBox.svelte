@@ -4,6 +4,7 @@
   import gDurative from "./Gstem/gDurative";
   import dDurative from "./Dstem/dDurative";
   import shDurative from "./SHstem/shDurative";
+  import nDurative from "./Nstem/nDurative";
 
   let verbInput = undefined;
   let conjugation = undefined;
@@ -51,6 +52,18 @@
         I_eVerb: $state.I_eVerb,
         verbClass: $state.verbClass,
         durativeVowel: $state.durativeVowel
+      });
+    } else if ($state.activeView === "nstem") {
+      conjugation = "nDurative";
+      title = "N Durative";
+      conjugatedVerb = nDurative({
+        verbInput,
+        root: $state.root,
+        themeVowel: $state.themeVowel,
+        I_eVerb: $state.I_eVerb,
+        verbClass: $state.verbClass,
+        durativeVowel: $state.durativeVowel,
+        onlyNstem: $state.onlyNstem
       });
     }
 

@@ -4,6 +4,7 @@
   import gPerfect from "./Gstem/gPerfect";
   import dPerfect from "./Dstem/dPerfect";
   import shPerfect from "./SHstem/shPerfect";
+  import nPerfect from "./Nstem/nPerfect";
 
   let verbInput = undefined;
   let conjugation = undefined;
@@ -51,6 +52,18 @@
         I_eVerb: $state.I_eVerb,
         verbClass: $state.verbClass,
         durativeVowel: $state.durativeVowel
+      });
+    } else if ($state.activeView === "nstem") {
+      conjugation = "nPerfect";
+      title = "N Perfect";
+      conjugatedVerb = nPerfect({
+        verbInput,
+        root: $state.root,
+        themeVowel: $state.themeVowel,
+        I_eVerb: $state.I_eVerb,
+        verbClass: $state.verbClass,
+        durativeVowel: $state.durativeVowel,
+        onlyNstem: $state.onlyDstem
       });
     }
 

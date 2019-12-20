@@ -460,6 +460,54 @@
                 </div>
               </div>
             </div>
+          {:else if $state.activeView === 'nstem'}
+          <div
+              class="message is-warning"
+              in:fly={{ x: -100, duration: 500, delay: 200 }}
+              out:fly={{ x: 100, duration: 200 }}>
+              <div class="message-body">
+                <img
+                  src="images/alert-triangle.svg"
+                  alt="alert-icon"
+                  class="alert-icon" />
+                <strong>
+                  Please be aware that this section is under construction.
+                </strong>
+              </div>
+            </div>
+            <div
+              in:fly={{ x: -100, duration: 500, delay: 200 }}
+              out:fly={{ x: 100, duration: 200 }}>
+              <div class="columns tables">
+                <div class="column is-two-fifths is-offset-1">
+                  <PreteriteBox />
+                </div>
+                <div class="column is-two-fifths">
+                  <DurativeBox />
+                </div>
+              </div>
+              <div class="columns">
+                <div class="column is-two-fifths is-offset-1">
+                  <PerfectBox />
+                </div>
+                <div class="column is-two-fifths">
+                  <VetitiveBox />
+                </div>
+              </div>
+              <div class="columns">
+                <div class="column is-3 is-offset-2">
+                  <ImperativeBox />
+                </div>
+                <div class="column is-4 is-offset-1">
+                  <PrecativeBox />
+                </div>
+              </div>
+              <div class="columns lastColumns">
+                <div class="column is-four-fifths is-offset-1">
+                  <NonFiniteFormsBox />
+                </div>
+              </div>
+            </div>
           {:else}
             <div
               class="message is-warning"

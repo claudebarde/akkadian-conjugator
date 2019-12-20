@@ -453,7 +453,7 @@ const lexicon = {
     root: ["p", "r", "s"],
     verbalAdjectiveVowel: "i",
     verbClass: "active",
-    meaning: "to divide, to spearate"
+    meaning: "to divide, to separate"
   },
   šaṭārum: {
     themeVowel: "u",
@@ -1277,6 +1277,29 @@ const lexicon = {
     verbClass: "active",
     I_eVerb: true,
     meaning: "to summon, to invite"
+  },
+  bêlum: {
+    themeVowel: "e",
+    root: ["b", "Ø", "l"],
+    verbalAdjectiveVowel: "ē",
+    verbClass: "active",
+    I_eVerb: true,
+    meaning: "to rule, to have authority, power over"
+  },
+  magārum: {
+    themeVowel: "u",
+    durativeVowel: "a",
+    root: ["m", "g", "r"],
+    verbalAdjectiveVowel: undefined,
+    verbClass: "active",
+    meaning: "to be agreeable, to agree, to permit"
+  },
+  nabûm: {
+    themeVowel: "i",
+    root: ["n", "b", "Ø"],
+    verbalAdjectiveVowel: "i",
+    verbClass: "active",
+    meaning: "to name, to call, to proclaim"
   }
 };
 
