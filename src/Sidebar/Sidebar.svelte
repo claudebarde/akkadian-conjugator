@@ -132,7 +132,7 @@
 </style>
 
 <div class="mainMenu">
-  <p class="is-size-7 is-hidden-tablet link-sidebar">
+  <p class="is-size-7 is-hidden-desktop link-sidebar">
     <a
       href="https://docs.google.com/forms/d/e/1FAIpQLSerY00WPuuPj0CNWZkdF3bfFn-0rlFnQkB5K8BiLlmckcjOCQ/viewform?usp=sf_link"
       target="_blank"
@@ -141,7 +141,7 @@
       Contact Form
     </a>
   </p>
-  <p class="is-size-7 is-hidden-tablet link-sidebar link-sidebar-bottom">
+  <p class="is-size-7 is-hidden-desktop link-sidebar link-sidebar-bottom">
     <a
       href="https://github.com/claudebarde/akkadian-conjugator"
       target="_blank"
