@@ -51,7 +51,7 @@
 
 {#if menuOpen}
   <div
-    class="sidebar is-hidden-tablet has-background-white"
+    class="sidebar has-background-white"
     transition:fly={{ x: -200, duration: 400 }}>
     <a class="delete" id="closeMenu" on:click={() => (menuOpen = false)} />
     <Sidebar

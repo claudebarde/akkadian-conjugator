@@ -152,7 +152,7 @@
   }} />
 <main>
   <div class="columns">
-    <div class="column is-hidden-mobile is-2">
+    <div class="column is-hidden-touch is-2">
       <Sidebar
         on:selectVerb={event => {
           const verb = event.detail;
@@ -461,7 +461,7 @@
               </div>
             </div>
           {:else if $state.activeView === 'nstem'}
-          <div
+            <div
               class="message is-warning"
               in:fly={{ x: -100, duration: 500, delay: 200 }}
               out:fly={{ x: 100, duration: 200 }}>
