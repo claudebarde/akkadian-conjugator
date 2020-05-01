@@ -14,7 +14,7 @@ const gPreterite = ({
   I_eVerb,
   verbClass,
   vetitive,
-  onlyDstem
+  onlyDstem,
 }) => {
   if (
     onlyDstem ||
@@ -29,7 +29,7 @@ const gPreterite = ({
       "3mp": "-",
       "3fp": "-",
       "2cp": "-",
-      "1cp": "-"
+      "1cp": "-",
     };
 
   let conjugatedVerb = {};
@@ -40,10 +40,10 @@ const gPreterite = ({
       "2ms": "tallik",
       "2fs": "tallikī",
       "1cs": "allik",
-      "3mp": "illukū",
-      "3fp": "illukā",
+      "3mp": "illikū",
+      "3fp": "illikā",
       "2cp": "tallikā",
-      "1cp": "nillik"
+      "1cp": "nillik",
     };
   }
   // Irregular Verb babālum
@@ -56,7 +56,7 @@ const gPreterite = ({
       "3mp": "ublū/ubilū",
       "3fp": "ublā/ubilā",
       "2cp": "tublā/tubilā",
-      "1cp": "nubil"
+      "1cp": "nubil",
     };
   } // Irregular Verb leˀûm
   else if (verbInput === "leˀûm") {
@@ -68,7 +68,7 @@ const gPreterite = ({
       "3mp": "ilˀû",
       "3fp": "ilˀiā",
       "2cp": "telˀiā",
-      "1cp": "nilˀe"
+      "1cp": "nilˀe",
     };
   } // Irregular Verb edûm
   else if (verbInput === "edûm") {
@@ -80,7 +80,7 @@ const gPreterite = ({
       "3mp": "īdû",
       "3fp": "īdeā",
       "2cp": "tīdeā",
-      "1cp": "nīde"
+      "1cp": "nīde",
     };
   } // Irregular Verb išûm
   else if (verbInput === "išûm") {
@@ -92,7 +92,7 @@ const gPreterite = ({
       "3mp": "īšû",
       "3fp": "īšâ",
       "2cp": "tīšâ",
-      "1cp": "nīšu"
+      "1cp": "nīšu",
     };
   } else {
     let thisRoot = [...root];
@@ -103,13 +103,13 @@ const gPreterite = ({
       firstPersonPrefix,
       secondPersonPrefix,
       thirdPersonPrefix,
-      firstPersonPluralPrefix
+      firstPersonPluralPrefix,
     } = gPreteritePrefixes({
       root: thisRoot,
       themeVowel,
       I_eVerb,
       verbClass,
-      durative: false
+      durative: false,
     });
 
     // PHONOLOGICAL CHANGES
@@ -196,7 +196,7 @@ const gPreterite = ({
         thisRoot[0] +
         thisRoot[1] +
         themeVowel +
-        thisRoot[2]
+        thisRoot[2],
     };
 
     // Verbs III-weak
@@ -209,7 +209,7 @@ const gPreterite = ({
     if (verbType === "I-w") {
       // when a vocalic ending (i.e., an ending beginning with a vowel) is added,
       // the theme-vowel i is lost through syncope
-      Object.keys(conjugatedVerb).forEach(ps => {
+      Object.keys(conjugatedVerb).forEach((ps) => {
         if (["ī", "ū", "ā"].includes(conjugatedVerb[ps].slice(-1))) {
           conjugatedVerb[ps] =
             conjugatedVerb[ps].slice(0, -3) + conjugatedVerb[ps].slice(-2);
