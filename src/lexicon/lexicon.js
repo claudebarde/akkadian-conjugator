@@ -530,8 +530,8 @@ const lexicon = {
     meaning: "to refresh oneself, to calm down",
   },
   saḫāpum: {
-    themeVowel: "a",
-    durativeVowel: "u",
+    themeVowel: "u",
+    durativeVowel: "a",
     root: ["s", "ḫ", "p"],
     verbalAdjectiveVowel: undefined,
     verbClass: "active",
